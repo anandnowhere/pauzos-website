@@ -11,22 +11,22 @@
     .download-hero {
       padding: 120px 20px 60px;
       text-align: center;
-      max-width: 900px;
+      max-width: 1040px;
       margin: 0 auto;
     }
     .os-card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
       margin: 40px auto;
-      max-width: 900px;
+      max-width: 1040px;
       text-align: left;
     }
     .os-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 28px;
+      padding: 26px 24px;
       transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
@@ -39,7 +39,7 @@
       box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     }
     .os-card.recommended {
-      border-color: var(--accent-blue);
+      border-color: #3b82f6;
       box-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
     }
     .os-card.recommended::before {
@@ -55,20 +55,44 @@
       padding: 3px 10px;
       border-radius: 20px;
     }
+    .os-card.office-highlight {
+      border-color: #10b981;
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.05) 0%, rgba(13, 21, 39, 1) 100%);
+    }
+    .os-card.office-highlight:hover {
+      border-color: #34d399;
+      box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2);
+    }
+    .badge-office-safe {
+      position: absolute;
+      top: -12px;
+      right: 18px;
+      background: #059669;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
     .os-icon {
-      font-size: 36px;
-      margin-bottom: 12px;
+      font-size: 34px;
+      margin-bottom: 10px;
     }
     .os-title {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .os-specs {
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
+      line-height: 1.5;
     }
     .dl-btn {
       display: block;
@@ -83,9 +107,18 @@
       font-weight: 600;
       transition: background 0.2s;
       margin-bottom: 8px;
+      cursor: pointer;
+      border: none;
+      box-sizing: border-box;
     }
     .dl-btn:hover {
       background: var(--accent-blue-hover);
+    }
+    .dl-btn-green {
+      background: #10b981;
+    }
+    .dl-btn-green:hover {
+      background: #059669;
     }
     .dl-btn-sub {
       display: block;
@@ -99,6 +132,8 @@
       font-size: 12px;
       border: 1px solid var(--border-color);
       transition: all 0.2s;
+      cursor: pointer;
+      box-sizing: border-box;
     }
     .dl-btn-sub:hover {
       color: #ffffff;
@@ -109,8 +144,8 @@
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
       padding: 32px;
-      max-width: 720px;
-      margin: 40px auto;
+      max-width: 760px;
+      margin: 40px auto 20px auto;
       text-align: left;
     }
     .guide-step {
@@ -160,29 +195,55 @@
   <!-- Download Hero -->
   <section class="download-hero">
     <span class="section-pill">Official Pauzos Download</span>
-    <h1 style="font-size: 38px; font-weight: 800; margin: 16px 0 10px; color: #ffffff;">
+    <h1 style="font-size: 36px; font-weight: 800; margin: 16px 0 10px; color: #ffffff;">
       Download Personal Reminder Assistant
     </h1>
-    <p style="font-size: 16px; color: var(--text-muted); max-width: 620px; margin: 0 auto;">
-      Thank you for purchasing your Pauzos Workstation License. Select your platform below to download and install.
+    <p style="font-size: 15.5px; color: var(--text-muted); max-width: 640px; margin: 0 auto;">
+      Thank you for your purchase! Select your workstation platform below to download.
     </p>
 
     <!-- OS Cards Grid -->
     <div class="os-card-grid">
       
-      <!-- Windows Card -->
+      <!-- Windows Card 1: Corporate / Office Portable (Zero-Admin) -->
+      <div class="os-card office-highlight" id="card-windows-portable">
+        <div class="badge-office-safe">
+          <span>🛡️</span> OFFICE / CORPORATE SAFE
+        </div>
+        <div>
+          <div class="os-icon">🏢</div>
+          <div class="os-title">Windows Portable</div>
+          <div class="os-specs">
+            <strong>Zero Admin Rights Required</strong><br>
+            Ideal for office & company-managed laptops. No installation, does not modify system registry. Run directly from Downloads or Desktop.
+          </div>
+        </div>
+        <div>
+          <a href="#download-windows-portable" onclick="triggerPauzosDownload('win-portable'); return false;" class="dl-btn dl-btn-green">
+            🛡️ Download Office Portable (.exe)
+          </a>
+          <div style="font-size: 11px; color: #10b981; text-align: center; margin-top: 4px;">
+            ✔ 100% Offline & Corporate IT Safe
+          </div>
+        </div>
+      </div>
+
+      <!-- Windows Card 2: Standard Installer -->
       <div class="os-card" id="card-windows">
         <div>
           <div class="os-icon">🪟</div>
-          <div class="os-title">Windows</div>
-          <div class="os-specs">Windows 10, 11 (64-bit) • v1.0.11</div>
+          <div class="os-title">Windows Setup</div>
+          <div class="os-specs">
+            <strong>Standard Installer (64-bit)</strong><br>
+            Windows 10 & 11 personal PCs. Automatically integrates with Windows Start Menu and desktop shortcuts.
+          </div>
         </div>
         <div>
-          <a href="https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.11/Personal-Reminder-Assistant-Setup-1.0.11.exe" class="dl-btn">
+          <a href="#download-windows-setup" onclick="triggerPauzosDownload('win-setup'); return false;" class="dl-btn">
             ⚡ Download Setup (.exe)
           </a>
-          <a href="https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.11/Personal-Reminder-Assistant-Portable-1.0.11.exe" class="dl-btn-sub">
-            Download Portable (.exe)
+          <a href="#download-windows-portable" onclick="triggerPauzosDownload('win-portable'); return false;" class="dl-btn-sub">
+            Or get Office Portable Edition
           </a>
         </div>
       </div>
@@ -192,13 +253,16 @@
         <div>
           <div class="os-icon">🍎</div>
           <div class="os-title">macOS</div>
-          <div class="os-specs">Apple Silicon (M1/M2/M3/M4) & Intel • v1.0.11</div>
+          <div class="os-specs">
+            <strong>Apple Silicon & Intel</strong><br>
+            macOS 11 Big Sur to macOS 15 Sequoia. Drag-and-drop DMG package optimized for Mac workstations.
+          </div>
         </div>
         <div>
-          <a href="https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.11/Personal-Reminder-Assistant-1.0.11-mac.dmg" class="dl-btn">
+          <a href="#download-mac-dmg" onclick="triggerPauzosDownload('mac-dmg'); return false;" class="dl-btn">
             ⚡ Download DMG (.dmg)
           </a>
-          <a href="https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.11/Personal-Reminder-Assistant-1.0.11-mac.zip" class="dl-btn-sub">
+          <a href="#download-mac-zip" onclick="triggerPauzosDownload('mac-zip'); return false;" class="dl-btn-sub">
             Download Universal ZIP
           </a>
         </div>
@@ -209,14 +273,17 @@
         <div>
           <div class="os-icon">🐧</div>
           <div class="os-title">Linux</div>
-          <div class="os-specs">Ubuntu, Debian, Fedora, Arch • v1.0.11</div>
+          <div class="os-specs">
+            <strong>AppImage & Debian</strong><br>
+            Ubuntu, Debian, Fedora, Arch, Mint. Runs standalone without root privileges.
+          </div>
         </div>
         <div>
-          <a href="https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.11/Personal-Reminder-Assistant-1.0.11.AppImage" class="dl-btn">
+          <a href="#download-linux-appimage" onclick="triggerPauzosDownload('linux-appimage'); return false;" class="dl-btn">
             ⚡ Download AppImage
           </a>
-          <a href="https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.11/Personal-Reminder-Assistant-1.0.11.deb" class="dl-btn-sub">
-            Download Debian (.deb)
+          <a href="#download-linux-deb" onclick="triggerPauzosDownload('linux-deb'); return false;" class="dl-btn-sub">
+            Download Debian Package (.deb)
           </a>
         </div>
       </div>
@@ -232,9 +299,9 @@
       <div class="guide-step">
         <div class="step-num">1</div>
         <div>
-          <div style="font-weight: 600; color: #f8fafc; font-size: 14px;">Install and Open the Desktop App</div>
+          <div style="font-weight: 600; color: #f8fafc; font-size: 14px;">Open Pauzos on Your Machine</div>
           <div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
-            Run the downloaded installer or launch the portable file on your computer.
+            Run the installer or simply double-click the <strong>Office Portable (.exe)</strong> to launch immediately without admin prompts.
           </div>
         </div>
       </div>
@@ -244,7 +311,7 @@
         <div>
           <div style="font-weight: 600; color: #f8fafc; font-size: 14px;">Enter Your Registered Purchase Email</div>
           <div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
-            Type the exact email address you entered during your license checkout.
+            Enter the exact email address you used during your license purchase.
           </div>
         </div>
       </div>
@@ -254,13 +321,22 @@
         <div>
           <div style="font-weight: 600; color: #f8fafc; font-size: 14px;">Enter the Temporary Password from Your Email</div>
           <div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
-            Copy the 6-digit temporary code sent to your inbox from <code>hello@stratexa.in</code>. Once entered, you can create your permanent personal password and start using the app forever!
+            Copy the 6-digit temporary code sent from <code>hello@stratexa.in</code>. Once entered, you can create your permanent personal password and use the app forever!
           </div>
         </div>
       </div>
     </div>
 
   </section>
+
+  <!-- Download Toast Notification -->
+  <div id="dlNotification" style="display: none; position: fixed; bottom: 24px; right: 24px; background: #0f172a; border: 1px solid #3b82f6; border-radius: 14px; padding: 14px 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.8); z-index: 99999; color: #fff; font-size: 13.5px; align-items: center; gap: 14px; max-width: 360px;">
+    <span style="font-size: 24px;">⬇️</span>
+    <div>
+      <div style="font-weight: 700; color: #60a5fa;" id="dlNotifTitle">Starting Download...</div>
+      <div style="font-size: 12px; color: #94a3b8;" id="dlNotifDesc">Your Pauzos binary is downloading directly to your browser.</div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -270,6 +346,49 @@
   </footer>
 
   <script>
+    // Direct Download Map (Hidden from link hover status bar)
+    const DOWNLOAD_MAP = {
+      'win-setup': 'https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.11/Personal-Reminder-Assistant-Setup-1.0.11.exe',
+      'win-portable': 'https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.11/Personal-Reminder-Assistant-Portable-1.0.11.exe',
+      'mac-dmg': 'https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.11/Personal-Reminder-Assistant-1.0.11-mac.dmg',
+      'mac-zip': 'https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.11/Personal-Reminder-Assistant-1.0.11-mac.zip',
+      'linux-appimage': 'https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.11/Personal-Reminder-Assistant-1.0.11.AppImage',
+      'linux-deb': 'https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.11/Personal-Reminder-Assistant-1.0.11.deb'
+    };
+
+    const NAMES_MAP = {
+      'win-setup': 'Windows Setup Installer (.exe)',
+      'win-portable': 'Windows Office & Corporate Portable (.exe)',
+      'mac-dmg': 'macOS Universal DMG (.dmg)',
+      'mac-zip': 'macOS Universal ZIP (.zip)',
+      'linux-appimage': 'Linux Standalone (.AppImage)',
+      'linux-deb': 'Linux Debian Package (.deb)'
+    };
+
+    function triggerPauzosDownload(key) {
+      const url = DOWNLOAD_MAP[key];
+      if (!url) return;
+
+      showDownloadToast(NAMES_MAP[key] || 'Pauzos App');
+
+      // Trigger download seamlessly without exposing GitHub on link hover
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = url;
+      document.body.appendChild(iframe);
+      setTimeout(() => { iframe.remove(); }, 60000);
+    }
+
+    function showDownloadToast(fileName) {
+      const toast = document.getElementById('dlNotification');
+      const desc = document.getElementById('dlNotifDesc');
+      if (toast && desc) {
+        desc.textContent = `Downloading ${fileName}...`;
+        toast.style.display = 'flex';
+        setTimeout(() => { toast.style.display = 'none'; }, 6000);
+      }
+    }
+
     // Automatic OS detection & highlighting
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -282,11 +401,18 @@
         else if (platform.includes('linux')) os = 'linux';
       }
 
-      if (os) {
-        const targetCard = document.getElementById('card-' + os);
-        if (targetCard) {
-          targetCard.classList.add('recommended');
-        }
+      if (os === 'windows') {
+        const targetCard = document.getElementById('card-windows');
+        if (targetCard) targetCard.classList.add('recommended');
+      } else if (os === 'portable') {
+        const targetCard = document.getElementById('card-windows-portable');
+        if (targetCard) targetCard.classList.add('recommended');
+      } else if (os === 'mac') {
+        const targetCard = document.getElementById('card-mac');
+        if (targetCard) targetCard.classList.add('recommended');
+      } else if (os === 'linux') {
+        const targetCard = document.getElementById('card-linux');
+        if (targetCard) targetCard.classList.add('recommended');
       }
     });
   </script>
