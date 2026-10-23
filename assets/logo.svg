@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="50%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </linearGradient>
+
+    <!-- Border Glow Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+
+    <!-- Soft Drop Shadow -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <!-- Inner G Glow -->
+    <filter id="gGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Squircle Base -->
+  <rect x="14" y="14" width="228" height="228" rx="52" ry="52"
+        fill="url(#bgGrad)"
+        stroke="url(#borderGrad)"
+        stroke-width="3.5"
+        filter="url(#softShadow)"/>
+
+  <!-- Google G Monogram -->
+  <g transform="translate(128, 128) scale(0.72) translate(-128, -128)" filter="url(#gGlow)">
+    <!-- Blue arm & quadrant -->
+    <path fill="#4285F4" d="M225.28 130.5c0-8.2-.7-16.1-2.02-23.7H128v44.82h54.67c-2.36 12.72-9.5 23.5-20.28 30.73v25.54h32.84c19.22-17.7 30.05-43.76 30.05-77.39z"/>
+    <!-- Green bottom arc -->
+    <path fill="#34A853" d="M128 229.5c27.42 0 50.42-9.1 67.22-24.61l-32.84-25.54c-9.1 6.1-20.73 9.7-34.38 9.7-26.44 0-48.82-17.86-56.82-41.87H36.96v26.34C53.76 206.9 88.3 229.5 128 229.5z"/>
+    <!-- Yellow left arc -->
+    <path fill="#FBBC05" d="M71.18 147.18c-2.04-6.1-3.18-12.63-3.18-19.18s1.14-13.08 3.18-19.18V82.48H36.96C29.84 96.6 25.8 112.5 25.8 128s4.04 31.4 11.16 45.52l34.22-26.34z"/>
+    <!-- Red top arc -->
+    <path fill="#EA4335" d="M128 66.5c14.9 0 28.3 5.12 38.82 15.17l29.13-29.13C178.38 35.8 155.4 26.5 128 26.5c-39.7 0-74.24 22.6-91.04 55.98l34.22 26.34c8-24.01 30.38-41.87 56.82-41.87z"/>
+  </g>
+</svg>

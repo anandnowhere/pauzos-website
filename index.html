@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pauzos — High-Performance Software & Productivity Tools</title>
+  <meta name="description" content="Pauzos software portfolio. Introducing Personal Reminder Assistant: 100% private, offline-first desktop routine & accountability assistant for Windows, Mac & Linux.">
+  
+  <!-- OpenGraph / Social Sharing (Instagram, WhatsApp, Facebook) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pauzos.com/">
+  <meta property="og:title" content="Pauzos — Personal Reminder Assistant">
+  <meta property="og:description" content="Never miss a critical routine again. 100% offline & private desktop companion. Lifetime access for just ₹249.">
+  <meta property="og:image" content="https://pauzos.com/assets/screenshots/hero_homepage_4k.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glow -->
+  <div class="bg-glow-container">
+    <div class="glow-orb-1"></div>
+    <div class="glow-orb-2"></div>
+  </div>
+
+  <!-- Professional Company-Level Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-link">
+        <img src="assets/logo.png" alt="Pauzos Logo" class="brand-logo">
+        <div class="brand-text-block">
+          <span class="brand-title">Pauzos</span>
+          <span class="brand-tagline">Software & Tools</span>
+        </div>
+      </a>
+
+      <!-- Professional Portfolio Menu -->
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="#overview">Overview</a></li>
+        <li class="nav-item"><a href="#features">Features</a></li>
+        <li class="nav-item"><a href="#apps">Portfolio</a></li>
+        <li class="nav-item"><a href="#pricing">Pricing</a></li>
+        <li class="nav-item"><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary" style="font-size: 13.5px; padding: 8px 18px;">
+          Get Access • ₹249
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with 4K Master Screenshot -->
+  <section class="hero-section" id="overview">
+    <div class="container">
+      <div class="hero-pill">
+        <span class="hero-pill-pulse"></span>
+        <span>Featured App #1 • Personal Reminder Assistant</span>
+      </div>
+
+      <h1 class="hero-title">
+        Master Your Daily Routines.<br>
+        <span class="gradient-text">Built for Unbreakable Consistency.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Pauzos presents <strong>Personal Reminder Assistant</strong> — the distraction-free, 
+        privacy-first desktop accountability tool for busy professionals. Unmissable on-screen alerts, 
+        ergonomic wellness breaks, and habit audit reports for Windows, macOS, and Linux.
+      </p>
+
+      <div class="hero-cta-group">
+        <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary btn-lg">
+          ⚡ Get Lifetime Access — Only ₹249
+        </button>
+        <a href="#features" class="btn btn-secondary btn-lg">
+          Explore Features ↓
+        </a>
+      </div>
+
+      <div class="hero-trust-row">
+        <div class="trust-item">
+          <span>🔒</span> 100% Offline (Local SQLite)
+        </div>
+        <div class="trust-item">
+          <span>⚡</span> Zero-Admin Portable Mode Included
+        </div>
+        <div class="trust-item">
+          <span>🔄</span> Free Lifetime Updates
+        </div>
+        <div class="trust-item">
+          <span>💻</span> Windows • macOS • Linux
+        </div>
+      </div>
+
+      <!-- Hero 4K Master Screenshot -->
+      <div class="hero-app-frame">
+        <div class="hero-app-img-wrapper">
+          <img src="assets/screenshots/hero_homepage_4k.png" alt="Personal Reminder Assistant 4K Master Dashboard" style="width: 100%; display: block;">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Marketing Feature 1: Today's Agenda -->
+  <section class="split-feature-section" id="features">
+    <div class="container">
+      <div class="split-row">
+        
+        <!-- Left: Text -->
+        <div class="split-text-col">
+          <span class="split-pill">Daily Agenda Command Center</span>
+          <h2 class="split-title">Start Every Morning With Absolute Clarity</h2>
+          <p class="split-desc">
+            Your centralized daily dashboard. View scheduled routines, live completion scores, 
+            and pending checkpoints with clean, real-time status counters.
+          </p>
+
+          <ul class="split-checklist">
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Live KPI Dashboard:</strong> Real-time overview of Scheduled, Completed, Pending, and Snoozed tasks for today.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>1-Click Do Not Disturb:</strong> Silence all reminder popups while presenting or in deep work; resets automatically tomorrow.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Immediate Action Rows:</strong> Mark completed or test alert triggers directly from the table.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Real Screenshot of Today's Agenda -->
+        <div class="split-visual-col">
+          <div class="split-app-frame">
+            <img src="assets/screenshots/tab_today_agenda.png" alt="Today's Agenda Tab Screenshot">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketing Feature: Interactive Reminder Alert Pop-up -->
+  <section class="split-feature-section">
+    <div class="container">
+      <div class="split-row">
+        
+        <!-- Left: Text -->
+        <div class="split-text-col">
+          <span class="split-pill">Interactive Smart Alert</span>
+          <h2 class="split-title">Actionable Reminders That Demand Attention Without Disruption</h2>
+          <p class="split-desc">
+            When a critical routine or compliance deadline arrives, a focused floating alert appears directly on your screen. 
+            Review complete task instructions, record optional audit notes, or snooze in seconds without breaking your stride.
+          </p>
+
+          <ul class="split-checklist">
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Context-Rich Priority Badges:</strong> Immediate category classification, priority tagging, and scheduled time at a glance.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>1-Click Action & Audit Notes:</strong> Mark as Completed with optional reference numbers or notes saved directly to your local database.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Smart Snooze & Skip Controls:</strong> Postpone in 1 click for 15, 30, or 60 minutes, or skip today while keeping full audit integrity.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Real Screenshot of Reminder Alert Pop-up -->
+        <div class="split-visual-col">
+          <div class="split-app-frame compact" style="max-width: 520px;">
+            <img src="assets/screenshots/reminder_popup_timesheet.png" alt="Interactive Reminder Alert Pop-up">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketing Feature 2: All Reminders (Routine Engine) -->
+  <section class="split-feature-section">
+    <div class="container">
+      <div class="split-row">
+        
+        <!-- Left: Text -->
+        <div class="split-text-col">
+          <span class="split-pill">Flexible Routine Engine</span>
+          <h2 class="split-title">Organize Work, Deliverables, Health & Habits</h2>
+          <p class="split-desc">
+            Build your custom productivity operating system. Group routines into categories, customize frequencies, 
+            and toggle triggers on or off whenever needed.
+          </p>
+
+          <ul class="split-checklist">
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Complete Routine Library:</strong> Manage all recurring checkpoints across your professional and personal life.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Advanced Recurrence:</strong> Set daily routines, specific weekdays (Mon–Fri), or custom repeating intervals.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Priority Filtering:</strong> Isolate mission-critical deliverables from secondary daily habits.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Real Screenshot of All Reminders Tab -->
+        <div class="split-visual-col">
+          <div class="split-app-frame">
+            <img src="assets/screenshots/tab_all_reminders.png" alt="All Reminders Tab Screenshot">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketing Feature 3: Add New Routine & Custom Categories -->
+  <section class="split-feature-section">
+    <div class="container">
+      <div class="split-row">
+        
+        <!-- Left: Text -->
+        <div class="split-text-col">
+          <span class="split-pill">Precision Scheduling</span>
+          <h2 class="split-title">Add New Routines with Flexible Frequency Rules</h2>
+          <p class="split-desc">
+            Effortlessly configure routines with custom categories, priority levels, and flexible frequency schedules 
+            including workday-of-month, daily, weekly, or specific calendar dates.
+          </p>
+
+          <ul class="split-checklist">
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Workday-of-Month Frequency:</strong> Schedule routines for specific business days (e.g., WD 3, WD 4) ideal for accounting & billing.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Custom Categories:</strong> Create and manage custom tags like Accounting - AR, Treasury, Compliance, and Operations.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Priority & Toggle Controls:</strong> Assign priority levels and enable or pause routines with a single click.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: User Attached New Routine Modal Screenshot -->
+        <div class="split-visual-col">
+          <div class="split-app-frame compact" style="max-width: 520px;">
+            <img src="assets/screenshots/modal_new_routine_attached.png" alt="New Reminder Routine Modal">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketing Feature 4: Audit & Reports -->
+  <section class="split-feature-section">
+    <div class="container">
+      <div class="split-row">
+        
+        <!-- Left: Text -->
+        <div class="split-text-col">
+          <span class="split-pill">Accountability & Excel</span>
+          <h2 class="split-title">Verify Consistency with 1-Click Excel Audit Logs</h2>
+          <p class="split-desc">
+            Prove your habit consistency to yourself. An immutable, local audit log timestamps every action 
+            and allows you to export complete spreadsheets in a single click.
+          </p>
+
+          <ul class="split-checklist">
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>1-Click Excel Export:</strong> Download comprehensive `.xlsx` logs for personal reviews or work compliance.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>100% Offline Privacy:</strong> All logs remain exclusively on your computer hard drive in SQLite.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Zero Cloud Telemetry:</strong> No external servers tracking your work habits or schedule.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Real Screenshot of Audit & Reports Tab -->
+        <div class="split-visual-col">
+          <div class="split-app-frame">
+            <img src="assets/screenshots/tab_audit_reports.png" alt="Audit & Reports Tab Screenshot">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketing Feature 5: Health & Wellness Notification Pop-Up -->
+  <section class="split-feature-section">
+    <div class="container">
+      <div class="split-row">
+        
+        <!-- Left: Text -->
+        <div class="split-text-col">
+          <span class="split-pill">Health & Ergonomics</span>
+          <h2 class="split-title">Notification Pop-Up for Health & Wellness</h2>
+          <p class="split-desc">
+            Long hours in front of screens cause eye fatigue, stiffness, and mental burnout. 
+            The integrated Health & Wellness companion delivers gentle, timely prompts to reset posture, 
+            hydrate, and relax your eyes.
+          </p>
+
+          <ul class="split-checklist">
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>20-20-20 Eye Strain Rule:</strong> Timely cues to look 20 feet away for 20 seconds, preventing chronic digital eye strain.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Hydration Checkpoints:</strong> Prompts to drink water at regular intervals to sustain focus.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Ergonomic Stretches:</strong> Micro-cues for shoulder rolls and neck releases that keep physical stiffness away.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Seamless Dark Theme:</strong> Clean notification design that blends naturally into your dark workspace.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Clean Health & Wellness Pop-Up Screenshot -->
+        <div class="split-visual-col">
+          <div class="split-app-frame compact" style="max-width: 440px;">
+            <img src="assets/screenshots/notification_wellness.png" alt="Health and Wellness Notification Pop-Up">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Suite Section -->
+  <section class="portfolio-section" id="apps">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">The Pauzos Portfolio</span>
+        <h2 class="section-title">Practical Software Engineered For Output</h2>
+        <p class="section-subtitle">Pauzos develops dedicated, standalone desktop and web tools designed without unnecessary bloat or recurring SaaS subscriptions.</p>
+      </div>
+
+      <div class="portfolio-grid">
+        
+        <!-- App 1: Personal Reminder Assistant -->
+        <div class="portfolio-card-featured">
+          <h3 style="font-size: 26px; font-weight: 800; margin-bottom: 10px;">Personal Reminder Assistant</h3>
+          <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6;">
+            A privacy-first desktop routine manager. Features intelligent on-screen popups with custom placement memory, 1-click Do Not Disturb, zero-admin portable mode for office laptops, and automated Excel audit exports.
+          </p>
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+            <div style="font-size: 24px; font-weight: 800; color: #34d399;">
+              ₹249 <span style="font-size: 13px; font-weight: 500; color: var(--text-dim);">one-time lifetime access</span>
+            </div>
+            <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary">
+              ⚡ Buy License & Get Access
+            </button>
+          </div>
+        </div>
+
+        <!-- Future Apps Teaser -->
+        <div class="portfolio-upcoming-card">
+          <div style="font-size: 36px; margin-bottom: 14px;">🚀</div>
+          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">More Pauzos Apps Coming Soon</h3>
+          <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
+            We are actively developing specialized tools for professionals, traders, focus management, and workflow automation.
+          </p>
+          <div style="margin-top: 18px; font-size: 12px; color: #60a5fa; font-weight: 600;">Stay Tuned on Instagram</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Professionally Formatted Pricing Section -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">Transparent Pricing</span>
+        <h2 class="section-title">Simple One-Time Purchase</h2>
+        <p class="section-subtitle">No monthly subscriptions or renewal fees. One payment unlocks lifetime access across all your devices.</p>
+      </div>
+
+      <div class="pricing-single-container">
+        <div class="pricing-single-card">
+          
+          <div class="pricing-header-row">
+            <div class="pricing-plan-info">
+              <span class="pricing-pill-badge">LIFETIME ACCESS</span>
+              <h3 class="pricing-plan-title">Personal Reminder Assistant</h3>
+              <p class="pricing-plan-sub">Full multi-platform suite for Windows, macOS, and Linux.</p>
+            </div>
+            
+            <div class="pricing-price-display">
+              <div class="pricing-price-val">
+                <span class="price-currency">₹</span>
+                <span class="price-number">249</span>
+              </div>
+              <div class="price-period">per download • lifetime access</div>
+            </div>
+          </div>
+
+          <ul class="pricing-features-checklist">
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Cross-Platform Package:</strong> Windows (.exe + Portable), macOS (.dmg), and Linux (.deb).</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Unlimited Routines:</strong> Create and track habits without restrictions.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Zero-Admin Portable Mode:</strong> Run on corporate laptops without admin privileges.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Audit Trails & Excel:</strong> Export full completion history to `.xlsx`.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Lifetime Updates:</strong> Receive all future version releases included.</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span><strong>Instant Activation:</strong> Automated bank sync & immediate download delivery.</span>
+            </li>
+          </ul>
+
+          <div class="pricing-cta-box">
+            <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary btn-full btn-lg">
+              Get Instant Access for ₹249
+            </button>
+          </div>
+
+          <div class="pricing-guarantee-note">
+            <span>🔒 Secure Encrypted Checkout</span> • 
+            <span>⚡ Instant Download Delivery</span> • 
+            <span>🇮🇳 Direct UPI (GPay • PhonePe • Paytm • BHIM)</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">Got Questions?</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know about purchasing and using Pauzos apps.</p>
+      </div>
+
+      <div class="faq-grid">
+        
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I receive the application after paying ₹249?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Immediately after paying via UPI (Google Pay, PhonePe, Paytm, or BHIM), enter your 12-digit UPI Reference (UTR) number on the checkout screen. Our automated bank listener verifies the credit within seconds and grants your lifetime access, delivering your download links and login credentials right away.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I use this on my office laptop without admin access?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Yes! Your purchase includes the <strong>Windows Portable (.exe)</strong> edition. You can simply double-click and run it directly without installing anything or requiring administrator permissions.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is my personal data and schedule kept private?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            100% private. The application stores all schedules, routines, and logs in a local SQLite database directly on your computer. Nothing is ever sent to or stored on cloud servers.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What payment methods are supported?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            We support direct 1-click UPI payments via Google Pay, PhonePe, Paytm, BHIM, Cred, and any UPI banking app. Scan the dynamic QR code on checkout, enter your 12-digit UPI reference number, and your license is instantly activated with zero payment gateway fees.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Checkout / Payment Modal -->
+  <div id="checkoutModal" class="checkout-modal-backdrop">
+    <div class="checkout-modal-card">
+      <div class="checkout-modal-header">
+        <div class="checkout-modal-title">
+          <span>⚡ Instant UPI Checkout</span>
+          <span style="font-size: 13px; font-weight: 600; color: #34d399; background: rgba(16, 185, 129, 0.15); padding: 3px 12px; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.3);">₹249 Lifetime</span>
+        </div>
+        <button onclick="closeModal()" class="checkout-modal-close" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="checkout-modal-body">
+        <!-- Left Column: Sleek UI-Matched QR Card -->
+        <div class="checkout-qr-col">
+          <img src="assets/pauzos_upi_qr.png" alt="Scan to pay with UPI" class="checkout-qr-img">
+          
+          <div class="checkout-vpa-pill">
+            <span style="color: #94a3b8; font-size: 11px;">UPI ID:</span>
+            <span style="font-weight: 600; color: #f8fafc;">anandnowhere-2@okaxis</span>
+            <button type="button" id="btnCopyUpi" onclick="copyUpiId()" class="checkout-copy-btn">Copy</button>
+          </div>
+
+          <!-- Mobile Deep Link Button -->
+          <a href="upi://pay?pa=anandnowhere-2@okaxis&pn=ganapathy%20ganapathy&am=249.00&cu=INR&aid=uGICAgIDAp6XKeQ" class="checkout-mobile-pay-btn">
+            📱 Tap to Pay ₹249 on UPI App
+          </a>
+
+          <div style="font-size: 11.5px; color: #64748b; line-height: 1.4;">
+            Scan with <strong>Google Pay, PhonePe, Paytm, BHIM</strong>, or any UPI app.
+          </div>
+        </div>
+
+        <!-- Right Column: Verification Form / Success State -->
+        <div class="checkout-form-col">
+          
+          <!-- State 1: Input Form -->
+          <div id="checkoutFormState">
+            <div style="margin-bottom: 20px;">
+              <h4 style="font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 6px;">Activate Your License</h4>
+              <p style="font-size: 13px; color: #94a3b8; line-height: 1.5;">
+                After completing the ₹249 payment in your UPI app, enter your details below for instant verification:
+              </p>
+            </div>
+
+            <div class="checkout-field-group">
+              <label for="checkoutEmail" class="checkout-label">1. Your Email Address *</label>
+              <input type="email" id="checkoutEmail" class="checkout-input" placeholder="name@example.com" required autocomplete="email">
+              <div class="checkout-helper">Your license key and login password will be delivered here.</div>
+            </div>
+
+            <div class="checkout-field-group">
+              <label for="checkoutUtr" class="checkout-label">2. 12-Digit UPI Reference (UTR) *</label>
+              <input type="text" id="checkoutUtr" class="checkout-input" placeholder="e.g. 429618294102" maxlength="12" pattern="\d{12}" required>
+              <div class="checkout-helper">Found on your UPI confirmation screen or bank SMS alert.</div>
+            </div>
+
+            <div id="checkoutStatusMsg" class="checkout-status-msg"></div>
+
+            <button type="button" id="btnVerifyUpi" onclick="verifyAndActivateLicense()" class="btn btn-primary btn-full btn-lg" style="margin-bottom: 8px; width: 100%;">
+              ⚡ Verify Payment & Activate (₹249)
+            </button>
+          </div>
+
+          <!-- State 2: Success State -->
+          <div id="checkoutSuccessState" style="display: none; text-align: center; padding: 10px 0;">
+            <div style="font-size: 48px; margin-bottom: 12px;">🎉</div>
+            <h4 style="font-size: 22px; font-weight: 800; color: #34d399; margin-bottom: 8px;">Payment Verified!</h4>
+            <p style="font-size: 13.5px; color: #e2e8f0; line-height: 1.6; margin-bottom: 18px;">
+              Your lifetime license has been activated for:<br>
+              <strong id="confirmedEmail" style="color: #60a5fa; font-size: 15px;"></strong>
+            </p>
+
+            <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; padding: 16px; margin-bottom: 22px; text-align: left; font-size: 13px; color: #94a3b8; line-height: 1.6;">
+              <div style="color: #34d399; font-weight: 700; margin-bottom: 6px;">Next Steps:</div>
+              <div>1. We have sent your temporary login code to your email.</div>
+              <div>2. Download and launch Personal Reminder Assistant below.</div>
+              <div>3. Sign in with your email and code to start using the app.</div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <a href="#apps" onclick="closeModal()" class="btn btn-primary btn-full">
+                ⬇ Download Personal Reminder Assistant
+              </a>
+              <button onclick="closeModal()" class="btn btn-secondary" style="font-size: 13px; padding: 8px 24px; align-self: center; margin-top: 6px;">
+                Close
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="#" class="brand-link">
+            <img src="assets/logo.png" alt="Pauzos Logo" class="brand-logo" style="width: 32px; height: 32px;">
+            <div class="brand-text-block">
+              <span class="brand-title" style="font-size: 18px;">Pauzos</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            Independent software portfolio developing practical, distraction-free desktop and productivity tools.
+          </p>
+
+          <a href="https://stratexa.in" target="_blank" rel="noopener noreferrer" class="stratexa-badge-container">
+            <span class="stratexa-badge-label">A Product Of</span>
+            <div class="stratexa-badge-content">
+              <div class="stratexa-logo-box">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M25 75L75 25M75 25H45M75 25V55" stroke="#10b981" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M25 45V75H55" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="stratexa-brand-info">
+                <span class="stratexa-title">STRATEXA<span class="tld">.IN</span></span>
+                <span class="stratexa-tagline">Automate • Execute • Elevate</span>
+              </div>
+              <span class="stratexa-arrow">↗</span>
+            </div>
+          </a>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Portfolio</h4>
+          <ul class="footer-links">
+            <li><a href="#apps">Personal Reminder Assistant</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing (₹249)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Platforms Supported</h4>
+          <ul class="footer-links">
+            <li><a href="#pricing">Windows</a></li>
+            <li><a href="#pricing">macOS</a></li>
+            <li><a href="#pricing">Linux</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Legal & Trust</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-copy">
+          <span>© 2026 Pauzos. All rights reserved.</span>
+          <span style="opacity: 0.3;">•</span>
+          <a href="https://stratexa.in" target="_blank" rel="noopener noreferrer" class="footer-bottom-stratexa">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="mini-stratexa-svg">
+              <path d="M25 75L75 25M75 25H45M75 25V55" stroke="#10b981" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M25 45V75H55" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>A Product of <strong>Stratexa.in</strong></span>
+          </a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
