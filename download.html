@@ -4,21 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Download Pauzos — Personal Reminder Assistant</title>
-  <meta name="description" content="Download Personal Reminder Assistant for Windows, macOS, and Linux. Offline, privacy-first workstation routines.">
+  <meta name="description" content="Download Personal Reminder Assistant for Windows, macOS, and Linux. Office laptop friendly, zero-admin portable edition for corporate workstations.">
   <link rel="icon" type="image/png" href="../assets/logo.png">
   <link rel="stylesheet" href="../styles.css">
   <style>
     .download-hero {
-      padding: 120px 20px 60px;
+      padding: 110px 20px 40px;
       text-align: center;
       max-width: 1040px;
       margin: 0 auto;
+    }
+    .corporate-trust-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 13.5px;
+      color: #34d399;
+      margin-top: 18px;
+      font-weight: 600;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     .os-card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 22px;
-      margin: 40px auto;
+      margin: 36px auto 40px auto;
       max-width: 1040px;
       text-align: left;
     }
@@ -55,13 +70,14 @@
       padding: 3px 10px;
       border-radius: 20px;
     }
-    .os-card.office-highlight {
+    .os-card.office-star {
       border-color: #10b981;
-      background: linear-gradient(180deg, rgba(16, 185, 129, 0.05) 0%, rgba(13, 21, 39, 1) 100%);
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, rgba(13, 21, 39, 1) 100%);
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
     }
-    .os-card.office-highlight:hover {
+    .os-card.office-star:hover {
       border-color: #34d399;
-      box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2);
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3);
     }
     .badge-office-safe {
       position: absolute;
@@ -69,14 +85,15 @@
       right: 18px;
       background: #059669;
       color: #ffffff;
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 800;
       letter-spacing: 0.8px;
-      padding: 3px 10px;
+      padding: 4px 12px;
       border-radius: 20px;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.4);
     }
     .os-icon {
       font-size: 34px;
@@ -92,7 +109,24 @@
       font-size: 12.5px;
       color: var(--text-muted);
       margin-bottom: 18px;
-      line-height: 1.5;
+      line-height: 1.6;
+    }
+    .feature-check-list {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 16px 0;
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+    .feature-check-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .feature-check-list li span.tick {
+      color: #34d399;
+      font-weight: 800;
     }
     .dl-btn {
       display: block;
@@ -139,13 +173,27 @@
       color: #ffffff;
       border-color: var(--border-hover);
     }
+    .corp-callout-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      max-width: 1040px;
+      margin: 0 auto 40px auto;
+      text-align: left;
+    }
+    .corp-callout-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
     .guide-box {
       background: rgba(255,255,255,0.02);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
       padding: 32px;
-      max-width: 760px;
-      margin: 40px auto 20px auto;
+      max-width: 820px;
+      margin: 0 auto 30px auto;
       text-align: left;
     }
     .guide-step {
@@ -198,32 +246,44 @@
     <h1 style="font-size: 36px; font-weight: 800; margin: 16px 0 10px; color: #ffffff;">
       Download Personal Reminder Assistant
     </h1>
-    <p style="font-size: 15.5px; color: var(--text-muted); max-width: 640px; margin: 0 auto;">
-      Thank you for your purchase! Select your workstation platform below to download.
+    <p style="font-size: 15.5px; color: var(--text-muted); max-width: 660px; margin: 0 auto;">
+      Thank you for your purchase! Select your workstation edition below.
     </p>
+
+    <!-- Prominent Office Friendly Trust Banner -->
+    <div class="corporate-trust-banner">
+      <span>🏢</span> <strong>Office Laptop & Workstation Friendly</strong> • No Admin Rights Required • Zero IT Password Prompts
+    </div>
 
     <!-- OS Cards Grid -->
     <div class="os-card-grid">
       
       <!-- Windows Card 1: Corporate / Office Portable (Zero-Admin) -->
-      <div class="os-card office-highlight" id="card-windows-portable">
+      <div class="os-card office-star" id="card-windows-portable">
         <div class="badge-office-safe">
-          <span>🛡️</span> OFFICE / CORPORATE SAFE
+          <span>🛡️</span> OFFICE & WORK LAPTOP FRIENDLY
         </div>
         <div>
           <div class="os-icon">🏢</div>
-          <div class="os-title">Windows Portable</div>
+          <div class="os-title" style="color: #34d399;">Windows Office Portable</div>
           <div class="os-specs">
-            <strong>Zero Admin Rights Required</strong><br>
-            Ideal for office & company-managed laptops. No installation, does not modify system registry. Run directly from Downloads or Desktop.
+            <strong style="color: #ffffff;">Zero-Admin Standalone Edition</strong><br>
+            Engineered specifically for corporate, company-managed, and office laptops with restricted administrative rights.
           </div>
+
+          <ul class="feature-check-list">
+            <li><span class="tick">✓</span> <span><strong>No Admin Installs:</strong> Zero Windows UAC or IT approval prompts</span></li>
+            <li><span class="tick">✓</span> <span><strong>Zero System Footprint:</strong> Does not touch Windows Registry</span></li>
+            <li><span class="tick">✓</span> <span><strong>Double-Click to Run:</strong> Run straight from Downloads or Desktop</span></li>
+            <li><span class="tick">✓</span> <span><strong>100% Offline:</strong> Local SQLite database, zero corporate data leaks</span></li>
+          </ul>
         </div>
         <div>
           <a href="#download-windows-portable" onclick="triggerPauzosDownload('win-portable'); return false;" class="dl-btn dl-btn-green">
             🛡️ Download Office Portable (.exe)
           </a>
-          <div style="font-size: 11px; color: #10b981; text-align: center; margin-top: 4px;">
-            ✔ 100% Offline & Corporate IT Safe
+          <div style="font-size: 11px; color: #34d399; text-align: center; margin-top: 4px; font-weight: 600;">
+            ✔ Recommended for Work & Corporate Systems
           </div>
         </div>
       </div>
@@ -232,18 +292,24 @@
       <div class="os-card" id="card-windows">
         <div>
           <div class="os-icon">🪟</div>
-          <div class="os-title">Windows Setup</div>
+          <div class="os-title">Windows Personal Setup</div>
           <div class="os-specs">
-            <strong>Standard Installer (64-bit)</strong><br>
-            Windows 10 & 11 personal PCs. Automatically integrates with Windows Start Menu and desktop shortcuts.
+            <strong style="color: #ffffff;">Standard Installer (64-bit)</strong><br>
+            Best for personal laptops, home PCs, and workstations with full administrator access.
           </div>
+
+          <ul class="feature-check-list">
+            <li><span class="tick">✓</span> <span><strong>Desktop & Start Menu:</strong> Automatic Windows shortcuts</span></li>
+            <li><span class="tick">✓</span> <span><strong>Auto-Updates:</strong> Automatic silent background updates</span></li>
+            <li><span class="tick">✓</span> <span><strong>Fast Installation:</strong> Standard 1-click NSIS setup wizard</span></li>
+          </ul>
         </div>
         <div>
           <a href="#download-windows-setup" onclick="triggerPauzosDownload('win-setup'); return false;" class="dl-btn">
-            ⚡ Download Setup (.exe)
+            ⚡ Download Personal Setup (.exe)
           </a>
           <a href="#download-windows-portable" onclick="triggerPauzosDownload('win-portable'); return false;" class="dl-btn-sub">
-            Or get Office Portable Edition
+            Switch to Office Portable (No Admin)
           </a>
         </div>
       </div>
@@ -254,9 +320,15 @@
           <div class="os-icon">🍎</div>
           <div class="os-title">macOS</div>
           <div class="os-specs">
-            <strong>Apple Silicon & Intel</strong><br>
-            macOS 11 Big Sur to macOS 15 Sequoia. Drag-and-drop DMG package optimized for Mac workstations.
+            <strong style="color: #ffffff;">Apple Silicon & Intel Universal</strong><br>
+            Native build supporting M1/M2/M3/M4 and Intel Macs running macOS 11 Big Sur to macOS 15 Sequoia.
           </div>
+
+          <ul class="feature-check-list">
+            <li><span class="tick">✓</span> <span><strong>Universal Binary:</strong> Native performance on all Macs</span></li>
+            <li><span class="tick">✓</span> <span><strong>Simple DMG:</strong> Drag into Applications and launch</span></li>
+            <li><span class="tick">✓</span> <span><strong>Retina Display:</strong> Crisp high-DPI notification popups</span></li>
+          </ul>
         </div>
         <div>
           <a href="#download-mac-dmg" onclick="triggerPauzosDownload('mac-dmg'); return false;" class="dl-btn">
@@ -274,9 +346,15 @@
           <div class="os-icon">🐧</div>
           <div class="os-title">Linux</div>
           <div class="os-specs">
-            <strong>AppImage & Debian</strong><br>
-            Ubuntu, Debian, Fedora, Arch, Mint. Runs standalone without root privileges.
+            <strong style="color: #ffffff;">AppImage & Debian Package</strong><br>
+            Designed for Linux developers, finance professionals, and sysadmins on Ubuntu, Debian, Fedora, Arch.
           </div>
+
+          <ul class="feature-check-list">
+            <li><span class="tick">✓</span> <span><strong>Zero Root Needed:</strong> AppImage runs without sudo/root</span></li>
+            <li><span class="tick">✓</span> <span><strong>Debian/Ubuntu:</strong> Native .deb package installer included</span></li>
+            <li><span class="tick">✓</span> <span><strong>Desktop Notifications:</strong> Works with GNOME, KDE, XFCE</span></li>
+          </ul>
         </div>
         <div>
           <a href="#download-linux-appimage" onclick="triggerPauzosDownload('linux-appimage'); return false;" class="dl-btn">
@@ -290,6 +368,33 @@
 
     </div>
 
+    <!-- Corporate Friendly Deep-Dive Section -->
+    <div class="corp-callout-grid">
+      <div class="corp-callout-card">
+        <div style="font-size: 22px; margin-bottom: 8px;">💼</div>
+        <div style="font-size: 15px; font-weight: 700; color: #f8fafc; margin-bottom: 6px;">No Admin Password Needed</div>
+        <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+          The <strong>Office Portable edition</strong> runs entirely in user-space. You don't need to ask corporate IT or raise tickets for installation approval.
+        </div>
+      </div>
+
+      <div class="corp-callout-card">
+        <div style="font-size: 22px; margin-bottom: 8px;">🔒</div>
+        <div style="font-size: 15px; font-weight: 700; color: #f8fafc; margin-bottom: 6px;">100% Offline & Corporate Safe</div>
+        <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+          Zero cloud data transfer. Your routines, notes, and audit logs remain strictly stored on your laptop's local drive in SQLite.
+        </div>
+      </div>
+
+      <div class="corp-callout-card">
+        <div style="font-size: 22px; margin-bottom: 8px;">📊</div>
+        <div style="font-size: 15px; font-weight: 700; color: #f8fafc; margin-bottom: 6px;">Compliance & Excel Audits</div>
+        <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+          1-click export of your routine adherence records into `.xlsx` spreadsheets for manager reviews, audits, and performance tracking.
+        </div>
+      </div>
+    </div>
+
     <!-- 3-Step Setup Guide -->
     <div class="guide-box">
       <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 18px; color: #ffffff;">
@@ -299,9 +404,9 @@
       <div class="guide-step">
         <div class="step-num">1</div>
         <div>
-          <div style="font-weight: 600; color: #f8fafc; font-size: 14px;">Open Pauzos on Your Machine</div>
+          <div style="font-weight: 600; color: #f8fafc; font-size: 14px;">Open Pauzos on Your Workstation</div>
           <div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
-            Run the installer or simply double-click the <strong>Office Portable (.exe)</strong> to launch immediately without admin prompts.
+            Run the installer or simply double-click the <strong>Office Portable (.exe)</strong> to launch immediately without administrative prompts.
           </div>
         </div>
       </div>
@@ -311,7 +416,7 @@
         <div>
           <div style="font-weight: 600; color: #f8fafc; font-size: 14px;">Enter Your Registered Purchase Email</div>
           <div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
-            Enter the exact email address you used during your license purchase.
+            Enter the exact email address you used during your license checkout.
           </div>
         </div>
       </div>
@@ -330,10 +435,10 @@
   </section>
 
   <!-- Download Toast Notification -->
-  <div id="dlNotification" style="display: none; position: fixed; bottom: 24px; right: 24px; background: #0f172a; border: 1px solid #3b82f6; border-radius: 14px; padding: 14px 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.8); z-index: 99999; color: #fff; font-size: 13.5px; align-items: center; gap: 14px; max-width: 360px;">
+  <div id="dlNotification" style="display: none; position: fixed; bottom: 24px; right: 24px; background: #0f172a; border: 1px solid #10b981; border-radius: 14px; padding: 14px 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.8); z-index: 99999; color: #fff; font-size: 13.5px; align-items: center; gap: 14px; max-width: 360px;">
     <span style="font-size: 24px;">⬇️</span>
     <div>
-      <div style="font-weight: 700; color: #60a5fa;" id="dlNotifTitle">Starting Download...</div>
+      <div style="font-weight: 700; color: #34d399;" id="dlNotifTitle">Starting Download...</div>
       <div style="font-size: 12px; color: #94a3b8;" id="dlNotifDesc">Your Pauzos binary is downloading directly to your browser.</div>
     </div>
   </div>
@@ -341,7 +446,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container" style="text-align: center; padding: 40px 0 20px; font-size: 12px; color: var(--text-dim);">
-      <p>© 2026 Pauzos. A Product of <a href="https://stratexa.in" target="_blank" style="color: #60a5fa; text-decoration: none;">Stratexa.in</a> • 100% Offline & Private Routine Assistant</p>
+      <p>© 2026 Pauzos. A Product of <a href="https://stratexa.in" target="_blank" style="color: #60a5fa; text-decoration: none;">Stratexa.in</a> • 100% Offline & Corporate Workstation Routine Assistant</p>
     </div>
   </footer>
 
@@ -401,10 +506,8 @@
         else if (platform.includes('linux')) os = 'linux';
       }
 
-      if (os === 'windows') {
-        const targetCard = document.getElementById('card-windows');
-        if (targetCard) targetCard.classList.add('recommended');
-      } else if (os === 'portable') {
+      // If Windows, prioritize the Office Portable edition
+      if (os === 'windows' || os === 'portable') {
         const targetCard = document.getElementById('card-windows-portable');
         if (targetCard) targetCard.classList.add('recommended');
       } else if (os === 'mac') {
