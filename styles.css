@@ -558,6 +558,29 @@ body {
   text-align: left;
 }
 
+.pricing-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.introductory-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
 .pricing-pill-badge {
   display: inline-block;
   font-size: 11px;
@@ -569,7 +592,6 @@ body {
   border: 1px solid rgba(59, 130, 246, 0.28);
   padding: 4px 12px;
   border-radius: 20px;
-  margin-bottom: 10px;
 }
 
 .pricing-plan-title {
@@ -586,6 +608,32 @@ body {
 
 .pricing-price-display {
   text-align: right;
+}
+
+.pricing-original-strike {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  font-size: 13.5px;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.pricing-strike-amount {
+  text-decoration: line-through;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.discount-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 2px 7px;
+  border-radius: 10px;
 }
 
 .pricing-price-val {
@@ -613,6 +661,22 @@ body {
   font-size: 12.5px;
   color: var(--text-dim);
   margin-top: 4px;
+}
+
+.pricing-urgency-note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  border-radius: 12px;
+  padding: 11px 16px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  line-height: 1.45;
 }
 
 .pricing-features-checklist {
@@ -1164,6 +1228,9 @@ body {
   .nav-menu {
     display: none;
   }
+  .nav-intro-tag {
+    display: none;
+  }
   .pricing-single-card {
     padding: 30px 20px;
   }
@@ -1173,6 +1240,9 @@ body {
   }
   .pricing-price-display {
     text-align: left;
+  }
+  .pricing-original-strike {
+    justify-content: flex-start;
   }
   .pricing-price-val {
     justify-content: flex-start;
