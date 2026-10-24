@@ -309,4 +309,34 @@ document.addEventListener('DOMContentLoaded', () => {
       statusMsg.style.border = `1px solid ${bgColor}`;
     }
   }
+
+  // Auto-open Checkout Modal if navigated with #checkout or ?action=checkout
+  if (window.location.hash === '#checkout' || new URLSearchParams(window.location.search).get('action') === 'checkout') {
+    setTimeout(() => {
+      if (typeof window.handleCheckout === 'function') {
+        window.handleCheckout();
+      }
+    }, 300);
+  }
+
+  // Live Pricing Synchronizer (reads pricing.json)
+  fetch('pricing.json')
+    .then(r => r.json())
+    .then(cfg => {
+      if (!cfg || !cfg.price) return;
+      const priceNum = document.querySelector('.price-number');
+      if (priceNum && cfg.amount) priceNum.textContent = cfg.amount;
+
+      const mobilePayBtn = document.querySelector('.checkout-mobile-pay-btn');
+      if (mobilePayBtn && cfg.amount) {
+        mobilePayBtn.href = `upi://pay?pa=anandnowhere-2@okaxis&pn=ganapathy%20ganapathy&am=${cfg.amount}.00&cu=INR&aid=uGICAgIDAp6XKeQ`;
+        mobilePayBtn.textContent = `📱 Tap to Pay ${cfg.price} on UPI App`;
+      }
+
+      const verifyBtn = document.getElementById('btnVerifyUpi');
+      if (verifyBtn) {
+        verifyBtn.textContent = `⚡ Verify Payment & Activate (${cfg.price})`;
+      }
+    })
+    .catch(() => {});
 });
