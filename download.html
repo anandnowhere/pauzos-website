@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     .download-hero {
-      padding: 110px 20px 40px;
+      padding: 105px 20px 40px;
       text-align: center;
-      max-width: 1040px;
+      max-width: 1260px;
       margin: 0 auto;
     }
     .corporate-trust-banner {
@@ -31,17 +31,29 @@
     }
     .os-card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 22px;
-      margin: 36px auto 40px auto;
-      max-width: 1040px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 34px auto 36px auto;
+      max-width: 1240px;
       text-align: left;
+    }
+    @media (max-width: 1100px) {
+      .os-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+    }
+    @media (max-width: 620px) {
+      .os-card-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
     }
     .os-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 26px 24px;
+      padding: 22px 18px;
       transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
@@ -61,34 +73,37 @@
       content: "YOUR OS DETECTED";
       position: absolute;
       top: -12px;
-      right: 20px;
+      right: 18px;
       background: var(--accent-blue);
       color: #fff;
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       padding: 3px 10px;
       border-radius: 20px;
     }
     .os-card.office-star {
       border-color: #10b981;
       background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, rgba(13, 21, 39, 1) 100%);
-      box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.18);
     }
     .os-card.office-star:hover {
       border-color: #34d399;
       box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3);
     }
+    .os-card.office-star.recommended::before {
+      display: none;
+    }
     .badge-office-safe {
       position: absolute;
       top: -12px;
-      right: 18px;
+      right: 14px;
       background: #059669;
       color: #ffffff;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 800;
-      letter-spacing: 0.8px;
-      padding: 4px 12px;
+      letter-spacing: 0.6px;
+      padding: 3px 10px;
       border-radius: 20px;
       display: flex;
       align-items: center;
@@ -96,33 +111,35 @@
       box-shadow: 0 4px 12px rgba(5, 150, 105, 0.4);
     }
     .os-icon {
-      font-size: 34px;
-      margin-bottom: 10px;
+      font-size: 32px;
+      margin-bottom: 8px;
     }
     .os-title {
-      font-size: 19px;
+      font-size: 17.5px;
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 4px;
     }
     .os-specs {
-      font-size: 12.5px;
+      font-size: 11.5px;
       color: var(--text-muted);
-      margin-bottom: 18px;
-      line-height: 1.6;
+      margin-bottom: 14px;
+      line-height: 1.5;
+      min-height: 48px;
     }
     .feature-check-list {
       list-style: none;
       padding: 0;
-      margin: 10px 0 16px 0;
-      font-size: 12px;
+      margin: 8px 0 16px 0;
+      font-size: 11.5px;
       color: #cbd5e1;
-      line-height: 1.7;
+      line-height: 1.65;
     }
     .feature-check-list li {
       display: flex;
       align-items: baseline;
       gap: 6px;
+      margin-bottom: 4px;
     }
     .feature-check-list li span.tick {
       color: #34d399;
@@ -132,15 +149,15 @@
       display: block;
       width: 100%;
       text-align: center;
-      padding: 12px;
+      padding: 10px 8px;
       background: var(--accent-blue);
       color: #ffffff;
       text-decoration: none;
       border-radius: var(--radius-sm);
-      font-size: 13.5px;
+      font-size: 12.5px;
       font-weight: 600;
       transition: background 0.2s;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       cursor: pointer;
       border: none;
       box-sizing: border-box;
@@ -158,12 +175,12 @@
       display: block;
       width: 100%;
       text-align: center;
-      padding: 8px;
+      padding: 7px 6px;
       background: rgba(255, 255, 255, 0.05);
       color: var(--text-muted);
       text-decoration: none;
       border-radius: var(--radius-sm);
-      font-size: 12px;
+      font-size: 11px;
       border: 1px solid var(--border-color);
       transition: all 0.2s;
       cursor: pointer;
@@ -176,23 +193,148 @@
     .corp-callout-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
-      max-width: 1040px;
-      margin: 0 auto 40px auto;
+      gap: 16px;
+      max-width: 1240px;
+      margin: 0 auto 36px auto;
       text-align: left;
     }
     .corp-callout-card {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 20px;
+      padding: 18px 20px;
     }
+    
+    /* Dedicated Installation Guide */
+    .install-guide-section {
+      max-width: 1040px;
+      margin: 10px auto 40px auto;
+      text-align: left;
+    }
+    .guide-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .guide-tab-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 9px 16px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s ease;
+    }
+    .guide-tab-btn:hover {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.07);
+    }
+    .guide-tab-btn.active {
+      color: #ffffff;
+      background: #2563eb;
+      border-color: #60a5fa;
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.45);
+    }
+    .guide-tab-panel {
+      display: none;
+    }
+    .guide-tab-panel.active {
+      display: block;
+    }
+    .guide-panel-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 26px 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .guide-panel-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .smartscreen-callout {
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .smartscreen-callout .callout-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .guide-steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .guide-step-row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .guide-step-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .step-badge {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #93c5fd;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .guide-step-row strong {
+      color: #f8fafc;
+      font-size: 13.5px;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .guide-step-row p {
+      margin: 0;
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    .guide-step-row code {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: monospace;
+      font-size: 11.5px;
+      color: #93c5fd;
+    }
+
     .guide-box {
       background: rgba(255,255,255,0.02);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 32px;
-      max-width: 820px;
+      padding: 28px 30px;
+      max-width: 1040px;
       margin: 0 auto 30px auto;
       text-align: left;
     }
@@ -218,41 +360,6 @@
       font-weight: 700;
       font-size: 14px;
       flex-shrink: 0;
-    }
-    .mac-install-steps {
-      background: rgba(251, 191, 36, 0.05);
-      border: 1px solid rgba(251, 191, 36, 0.25);
-      border-radius: 10px;
-      padding: 14px 16px;
-      margin-top: 12px;
-      font-size: 12px;
-      color: #cbd5e1;
-      line-height: 1.75;
-    }
-    .mac-install-steps strong {
-      color: #fbbf24;
-      display: block;
-      margin-bottom: 6px;
-      font-size: 12.5px;
-    }
-    .mac-install-steps ol {
-      margin: 0;
-      padding-left: 18px;
-    }
-    .mac-install-steps .or-divider {
-      text-align: center;
-      color: #64748b;
-      font-size: 11px;
-      margin: 8px 0;
-      letter-spacing: 0.05em;
-    }
-    .mac-install-steps code {
-      background: rgba(255,255,255,0.07);
-      border-radius: 4px;
-      padding: 1px 5px;
-      font-family: monospace;
-      font-size: 11px;
-      color: #93c5fd;
     }
   </style>
 </head>
@@ -303,29 +410,29 @@
       <!-- Windows Card 1: Corporate / Office Portable (Zero-Admin) -->
       <div class="os-card office-star" id="card-windows-portable">
         <div class="badge-office-safe">
-          <span>🛡️</span> OFFICE & WORK LAPTOP FRIENDLY
+          <span>🛡️</span> NO ADMIN TO INSTALL
         </div>
         <div>
           <div class="os-icon">🏢</div>
           <div class="os-title" style="color: #34d399;">Windows Office Portable</div>
           <div class="os-specs">
-            <strong style="color: #ffffff;">Zero-Admin Standalone Edition</strong><br>
-            Engineered specifically for corporate, company-managed, and office laptops with restricted administrative rights.
+            <strong style="color: #ffffff;">No Admin to Install • Standalone</strong><br>
+            Engineered for corporate &amp; office laptops with zero administrative rights needed.
           </div>
 
           <ul class="feature-check-list">
-            <li><span class="tick">✓</span> <span><strong>No Admin Installs:</strong> Zero Windows UAC or IT approval prompts</span></li>
+            <li><span class="tick">✓</span> <span><strong>No Admin to Install:</strong> Zero Windows UAC or IT approval prompts</span></li>
             <li><span class="tick">✓</span> <span><strong>Zero System Footprint:</strong> Does not touch Windows Registry</span></li>
-            <li><span class="tick">✓</span> <span><strong>Double-Click to Run:</strong> Run straight from Downloads or Desktop</span></li>
+            <li><span class="tick">✓</span> <span><strong>Double-Click to Run:</strong> Run straight from Downloads or USB drive</span></li>
             <li><span class="tick">✓</span> <span><strong>100% Offline:</strong> Local SQLite database, zero corporate data leaks</span></li>
           </ul>
         </div>
         <div>
           <a href="#download-windows-portable" onclick="triggerPauzosDownload('win-portable'); return false;" class="dl-btn dl-btn-green">
-            🛡️ Download Office Portable (.exe)
+            🛡️ Download Portable (.exe)
           </a>
-          <div style="font-size: 11px; color: #34d399; text-align: center; margin-top: 4px; font-weight: 600;">
-            ✔ Recommended for Work & Corporate Systems
+          <div style="font-size: 11px; color: #34d399; text-align: center; margin-top: 5px; font-weight: 700;">
+            ✔ No Admin to Install • Office Safe
           </div>
         </div>
       </div>
@@ -337,21 +444,19 @@
           <div class="os-title">Windows Personal Setup</div>
           <div class="os-specs">
             <strong style="color: #ffffff;">Standard Installer (64-bit)</strong><br>
-            Best for personal laptops, home PCs, and workstations with full administrator access.
+            Best for personal laptops, home PCs, and workstations with administrative privileges.
           </div>
 
           <ul class="feature-check-list">
-            <li><span class="tick">✓</span> <span><strong>Desktop & Start Menu:</strong> Automatic Windows shortcuts</span></li>
+            <li><span class="tick">✓</span> <span><strong>Desktop &amp; Start Menu:</strong> Automatic Windows shortcuts</span></li>
             <li><span class="tick">✓</span> <span><strong>Auto-Updates:</strong> Automatic silent background updates</span></li>
             <li><span class="tick">✓</span> <span><strong>Fast Installation:</strong> Standard 1-click NSIS setup wizard</span></li>
+            <li><span class="tick">✓</span> <span><strong>All Windows:</strong> Compatible with Windows 10 &amp; 11</span></li>
           </ul>
         </div>
         <div>
           <a href="#download-windows-setup" onclick="triggerPauzosDownload('win-setup'); return false;" class="dl-btn">
             ⚡ Download Personal Setup (.exe)
-          </a>
-          <a href="#download-windows-portable" onclick="triggerPauzosDownload('win-portable'); return false;" class="dl-btn-sub">
-            Switch to Office Portable (No Admin)
           </a>
           <!-- Microsoft Store alternative -->
           <a href="https://apps.microsoft.com/store/detail/personal-reminder-assistant" target="_blank" rel="noopener" class="dl-btn-sub" style="margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 6px;">
@@ -366,7 +471,7 @@
           <div class="os-icon">🍎</div>
           <div class="os-title">macOS</div>
           <div class="os-specs">
-            <strong style="color: #ffffff;">Apple Silicon & Intel Universal</strong><br>
+            <strong style="color: #ffffff;">Apple Silicon &amp; Intel Universal</strong><br>
             Native build supporting M1/M2/M3/M4 and Intel Macs running macOS 11 Big Sur to macOS 15 Sequoia.
           </div>
 
@@ -374,6 +479,7 @@
             <li><span class="tick">✓</span> <span><strong>Universal Binary:</strong> Native performance on all Macs</span></li>
             <li><span class="tick">✓</span> <span><strong>Simple DMG:</strong> Drag into Applications and launch</span></li>
             <li><span class="tick">✓</span> <span><strong>Retina Display:</strong> Crisp high-DPI notification popups</span></li>
+            <li><span class="tick">✓</span> <span><strong>Zero Dependencies:</strong> No extra runtime needed</span></li>
           </ul>
         </div>
         <div>
@@ -383,21 +489,6 @@
           <a href="#download-mac-zip" onclick="triggerPauzosDownload('mac-zip'); return false;" class="dl-btn-sub">
             Download Universal ZIP
           </a>
-          <!-- macOS Gatekeeper install tip -->
-          <div class="mac-install-steps">
-            <strong>⚠️ First-time install on Mac? Do this:</strong>
-            <ol>
-              <li>Open the DMG and double-click <strong>"📦 Install (Double-click me)"</strong></li>
-              <li>macOS will ask to allow Terminal — click <strong>OK</strong></li>
-              <li>The app installs automatically &amp; launches ✅</li>
-            </ol>
-            <div class="or-divider">— OR manually —</div>
-            <ol>
-              <li>Drag the app to <strong>Applications</strong></li>
-              <li><strong>Right-click</strong> the app → click <strong>Open</strong></li>
-              <li>Click <strong>"Open"</strong> in the Gatekeeper dialog (once only)</li>
-            </ol>
-          </div>
         </div>
       </div>
 
@@ -407,7 +498,7 @@
           <div class="os-icon">🐧</div>
           <div class="os-title">Linux</div>
           <div class="os-specs">
-            <strong style="color: #ffffff;">AppImage & Debian Package</strong><br>
+            <strong style="color: #ffffff;">AppImage &amp; Debian Package</strong><br>
             Designed for Linux developers, finance professionals, and sysadmins on Ubuntu, Debian, Fedora, Arch.
           </div>
 
@@ -415,6 +506,7 @@
             <li><span class="tick">✓</span> <span><strong>Zero Root Needed:</strong> AppImage runs without sudo/root</span></li>
             <li><span class="tick">✓</span> <span><strong>Debian/Ubuntu:</strong> Native .deb package installer included</span></li>
             <li><span class="tick">✓</span> <span><strong>Desktop Notifications:</strong> Works with GNOME, KDE, XFCE</span></li>
+            <li><span class="tick">✓</span> <span><strong>Isolated Sandbox:</strong> Safe SQLite data storage</span></li>
           </ul>
         </div>
         <div>
@@ -455,6 +547,225 @@
         </div>
       </div>
     </div>
+
+    <!-- Dedicated OS Installation & Setup Guide -->
+    <section class="install-guide-section" id="install-guide">
+      <div style="text-align: center; margin-bottom: 22px;">
+        <span class="section-pill">Workstation Setup</span>
+        <h2 style="font-size: 24px; font-weight: 800; margin: 12px 0 8px; color: #ffffff;">
+          OS Installation &amp; First-Time Setup Guide
+        </h2>
+        <p style="font-size: 14px; color: var(--text-muted); max-width: 620px; margin: 0 auto;">
+          Follow the simple steps below to launch Pauzos and smoothly bypass OS security prompts on your platform.
+        </p>
+
+        <!-- OS Tabs -->
+        <div class="guide-tabs">
+          <button type="button" class="guide-tab-btn active" data-target="tab-win-portable" onclick="switchGuideTab('tab-win-portable', this);">
+            <span>🏢</span> Windows Portable (No Admin)
+          </button>
+          <button type="button" class="guide-tab-btn" data-target="tab-win-setup" onclick="switchGuideTab('tab-win-setup', this);">
+            <span>🪟</span> Windows Setup (.exe)
+          </button>
+          <button type="button" class="guide-tab-btn" data-target="tab-mac" onclick="switchGuideTab('tab-mac', this);">
+            <span>🍎</span> macOS (Gatekeeper)
+          </button>
+          <button type="button" class="guide-tab-btn" data-target="tab-linux" onclick="switchGuideTab('tab-linux', this);">
+            <span>🐧</span> Linux (AppImage &amp; deb)
+          </button>
+        </div>
+      </div>
+
+      <div class="guide-tab-contents">
+        
+        <!-- Tab 1: Windows Portable -->
+        <div class="guide-tab-panel active" id="tab-win-portable">
+          <div class="guide-panel-card">
+            <div class="guide-panel-title">
+              <span>🏢</span> Windows Office Portable (.exe) — Zero-Admin Quick Start
+            </div>
+
+            <div class="smartscreen-callout" style="border-color: rgba(16, 185, 129, 0.35); background: rgba(16, 185, 129, 0.08);">
+              <div class="callout-icon" style="color: #34d399;">🛡️</div>
+              <div>
+                <strong style="color: #34d399;">No Administrator Rights Needed • Zero System Changes</strong>
+                <p style="margin: 4px 0 0 0; font-size: 12.5px; color: #cbd5e1; line-height: 1.6;">
+                  Engineered specifically for corporate, locked-down, and enterprise laptops. Does not require UAC permissions, does not write to Program Files, and does not alter the Windows Registry.
+                </p>
+              </div>
+            </div>
+
+            <div class="guide-steps-list">
+              <div class="guide-step-row">
+                <div class="step-badge">Step 1</div>
+                <div>
+                  <strong>Download the Portable .exe</strong>
+                  <p>Click the green <strong>"Download Portable (.exe)"</strong> button above to download <code>Personal-Reminder-Assistant-Portable-1.0.24.exe</code>.</p>
+                </div>
+              </div>
+
+              <div class="guide-step-row">
+                <div class="step-badge">Step 2</div>
+                <div>
+                  <strong>Place it in your preferred folder (or keep in Downloads)</strong>
+                  <p>You can run it directly from your <code>Downloads</code>, <code>Documents</code>, <code>Desktop</code>, or a USB drive without running any installation wizard.</p>
+                </div>
+              </div>
+
+              <div class="guide-step-row">
+                <div class="step-badge">Step 3</div>
+                <div>
+                  <strong>Double-click to run immediately</strong>
+                  <p>If Microsoft SmartScreen appears, click <span style="color: #93c5fd; text-decoration: underline; font-weight: 700;">More info</span>, and then click <span style="background: rgba(255,255,255,0.12); color: #fff; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.25); font-weight: 700;">Run anyway</span>. The application starts instantly!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Windows Setup & SmartScreen Bypass -->
+        <div class="guide-tab-panel" id="tab-win-setup">
+          <div class="guide-panel-card">
+            <div class="guide-panel-title">
+              <span>🪟</span> Windows Full Setup (.exe) — How to Skip SmartScreen
+            </div>
+            
+            <div class="smartscreen-callout">
+              <div class="callout-icon">ℹ️</div>
+              <div>
+                <strong style="color: #60a5fa;">How to skip Microsoft Defender SmartScreen ("Windows protected your PC")</strong>
+                <p style="margin: 4px 0 0 0; font-size: 12.5px; color: #cbd5e1; line-height: 1.6;">
+                  Because Pauzos is a newly released independent application, Windows SmartScreen may show an informational protection banner until download volume reaches Microsoft's automated trust threshold. This is completely safe and standard for indie software.
+                </p>
+              </div>
+            </div>
+
+            <div class="guide-steps-list">
+              <div class="guide-step-row">
+                <div class="step-badge">Step 1</div>
+                <div>
+                  <strong>Double-click the downloaded setup file</strong>
+                  <p>Open <code>Personal-Reminder-Assistant-Setup-1.0.24.exe</code> from your Downloads folder.</p>
+                </div>
+              </div>
+
+              <div class="guide-step-row">
+                <div class="step-badge">Step 2</div>
+                <div>
+                  <strong>Click "More info" on the blue SmartScreen dialog</strong>
+                  <p>When the blue window titled <em>"Windows protected your PC"</em> appears, click the underlined link: <strong style="color: #93c5fd; text-decoration: underline;">More info</strong>.</p>
+                </div>
+              </div>
+
+              <div class="guide-step-row">
+                <div class="step-badge">Step 3</div>
+                <div>
+                  <strong>Click "Run anyway"</strong>
+                  <p>A new button named <span style="background: rgba(255,255,255,0.12); color: #fff; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.25); font-weight: 700;">Run anyway</span> will appear in the bottom-right corner. Click it to proceed with installation.</p>
+                </div>
+              </div>
+
+              <div class="guide-step-row">
+                <div class="step-badge">Step 4</div>
+                <div>
+                  <strong>Finish setup &amp; launch</strong>
+                  <p>The installer finishes in seconds, adds desktop shortcuts, and launches your assistant automatically.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: macOS -->
+        <div class="guide-tab-panel" id="tab-mac">
+          <div class="guide-panel-card">
+            <div class="guide-panel-title">
+              <span>🍎</span> macOS Installation &amp; Gatekeeper Unblock Guide
+            </div>
+
+            <div class="smartscreen-callout" style="border-color: rgba(245, 158, 11, 0.35); background: rgba(245, 158, 11, 0.08);">
+              <div class="callout-icon" style="color: #fbbf24;">⚠️</div>
+              <div>
+                <strong style="color: #fbbf24;">Opening Pauzos on macOS (Apple Silicon &amp; Intel)</strong>
+                <p style="margin: 4px 0 0 0; font-size: 12.5px; color: #cbd5e1; line-height: 1.6;">
+                  For downloads outside the Apple App Store, macOS Gatekeeper may show <em>"App cannot be opened because it is from an unidentified developer"</em>. You only need to approve it once using either method below.
+                </p>
+              </div>
+            </div>
+
+            <div class="guide-steps-list">
+              <div class="guide-step-row">
+                <div class="step-badge">Step 1</div>
+                <div>
+                  <strong>Mount DMG and drag to Applications</strong>
+                  <p>Double-click <code>Personal-Reminder-Assistant-1.0.24-mac.dmg</code> and drag <strong>Personal Reminder Assistant</strong> into your <strong>Applications</strong> folder.</p>
+                </div>
+              </div>
+
+              <div class="guide-step-row">
+                <div class="step-badge">Step 2 (Method A)</div>
+                <div>
+                  <strong>Right-Click → Open (Easiest Method)</strong>
+                  <p>In your <strong>Applications</strong> folder, <strong>Right-click</strong> (or hold <kbd style="background: rgba(255,255,255,0.1); padding: 1px 5px; border-radius: 3px;">Control</kbd> and click) on <strong>Personal Reminder Assistant</strong>, then click <strong>"Open"</strong> in the popup menu. In the confirmation prompt, click <strong>"Open"</strong>. It launches smoothly and won't prompt again!</p>
+                </div>
+              </div>
+
+              <div class="guide-step-row">
+                <div class="step-badge">Step 2 (Method B)</div>
+                <div>
+                  <strong>System Settings → Open Anyway</strong>
+                  <p>Open <strong>System Settings</strong> → <strong>Privacy &amp; Security</strong> → scroll to the <em>Security</em> section → click <strong>"Open Anyway"</strong>.</p>
+                </div>
+              </div>
+
+              <div class="guide-step-row">
+                <div class="step-badge">Power User</div>
+                <div>
+                  <strong>Terminal Command (Optional)</strong>
+                  <p>Run once in Terminal: <code>xattr -cr /Applications/Personal\ Reminder\ Assistant.app</code></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Linux -->
+        <div class="guide-tab-panel" id="tab-linux">
+          <div class="guide-panel-card">
+            <div class="guide-panel-title">
+              <span>🐧</span> Linux Installation &amp; Execution Guide
+            </div>
+
+            <div class="guide-steps-list">
+              <div class="guide-step-row">
+                <div class="step-badge">AppImage</div>
+                <div>
+                  <strong>Standalone AppImage (Ubuntu, Debian, Fedora, Arch)</strong>
+                  <p>AppImage runs directly without installation or root privileges.</p>
+                  <ol style="margin: 8px 0 0 18px; padding: 0; font-size: 12.5px; color: #cbd5e1; line-height: 1.8;">
+                    <li>Open terminal in your Downloads folder: <code>cd ~/Downloads</code></li>
+                    <li>Make executable: <code>chmod +x Personal-Reminder-Assistant-1.0.24.AppImage</code></li>
+                    <li>Run: <code>./Personal-Reminder-Assistant-1.0.24.AppImage</code></li>
+                  </ol>
+                </div>
+              </div>
+
+              <div class="guide-step-row">
+                <div class="step-badge">Debian / Ubuntu</div>
+                <div>
+                  <strong>Native Package Installer (.deb)</strong>
+                  <p>Installs into your system application launcher and desktop menu:</p>
+                  <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 12px; margin-top: 6px; font-family: monospace; font-size: 12px; color: #93c5fd;">
+                    sudo dpkg -i Personal-Reminder-Assistant-1.0.24.deb
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- 3-Step Setup Guide -->
     <div class="guide-box">
@@ -555,6 +866,18 @@
       }
     }
 
+    // Switch Installation Guide Tabs
+    function switchGuideTab(tabId, btn) {
+      document.querySelectorAll('.guide-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.guide-tab-panel').forEach(p => p.classList.remove('active'));
+      
+      const targetPanel = document.getElementById(tabId);
+      if (targetPanel) targetPanel.classList.add('active');
+
+      const targetBtn = btn || document.querySelector(`.guide-tab-btn[data-target="${tabId}"]`);
+      if (targetBtn) targetBtn.classList.add('active');
+    }
+
     // Automatic OS detection & highlighting
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -571,12 +894,15 @@
       if (os === 'windows' || os === 'portable') {
         const targetCard = document.getElementById('card-windows-portable');
         if (targetCard) targetCard.classList.add('recommended');
+        switchGuideTab('tab-win-portable');
       } else if (os === 'mac') {
         const targetCard = document.getElementById('card-mac');
         if (targetCard) targetCard.classList.add('recommended');
+        switchGuideTab('tab-mac');
       } else if (os === 'linux') {
         const targetCard = document.getElementById('card-linux');
         if (targetCard) targetCard.classList.add('recommended');
+        switchGuideTab('tab-linux');
       }
     });
   </script>
