@@ -29,6 +29,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -36,16 +38,17 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 /* Ambient Background Orbs */
 .bg-glow-container {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
-  max-width: 1400px;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
   height: 950px;
   overflow: hidden;
   pointer-events: none;
@@ -55,9 +58,9 @@ body {
 .glow-orb-1 {
   position: absolute;
   top: -150px;
-  left: 15%;
-  width: 700px;
-  height: 700px;
+  left: max(-80px, 5%);
+  width: min(700px, 90vw);
+  height: min(700px, 90vw);
   background: radial-gradient(circle, rgba(59, 130, 246, 0.22) 0%, rgba(7, 11, 20, 0) 70%);
   filter: blur(85px);
 }
@@ -65,9 +68,9 @@ body {
 .glow-orb-2 {
   position: absolute;
   top: 100px;
-  right: 10%;
-  width: 650px;
-  height: 650px;
+  right: max(-50px, 5%);
+  width: min(650px, 85vw);
+  height: min(650px, 85vw);
   background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, rgba(7, 11, 20, 0) 70%);
   filter: blur(95px);
 }
@@ -75,9 +78,9 @@ body {
 .glow-orb-3 {
   position: absolute;
   top: 450px;
-  left: 30%;
-  width: 650px;
-  height: 650px;
+  left: 15%;
+  width: min(650px, 85vw);
+  height: min(650px, 85vw);
   background: radial-gradient(circle, rgba(6, 182, 212, 0.14) 0%, rgba(7, 11, 20, 0) 70%);
   filter: blur(105px);
 }
@@ -785,26 +788,27 @@ body {
 
 .pill-time {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #60a5fa;
   background: rgba(59, 130, 246, 0.15);
   padding: 2px 7px;
   border-radius: 5px;
+  flex-shrink: 0;
 }
 
 .pill-name {
   color: #e2e8f0;
   font-weight: 500;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: 13px;
+  line-height: 1.35;
+  word-break: break-word;
 }
 
 .persona-benefit {
   margin-top: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   font-size: 13px;
   color: #38bdf8;
@@ -813,6 +817,7 @@ body {
   padding: 10px 14px;
   border-radius: 10px;
   line-height: 1.45;
+  word-break: break-word;
 }
 
 .benefit-icon {
@@ -1665,8 +1670,15 @@ body {
   display: none;
 }
 
-/* Responsive */
+/* Responsive System */
 @media (max-width: 1024px) {
+  .nav-menu {
+    gap: 16px;
+  }
+  .nav-item a {
+    font-size: 13.5px;
+    white-space: nowrap;
+  }
   .personas-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -1691,34 +1703,38 @@ body {
   }
 }
 
+@media (max-width: 860px) {
+  .nav-menu {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-slider-header-controls {
-    flex-direction: column;
-    gap: 12px;
+    margin-bottom: 18px;
   }
   .slider-theme-toggle-group {
-    width: 100%;
-    justify-content: space-between;
-  }
-  .slider-theme-btn {
-    padding: 7px 12px;
-    font-size: 12px;
-    flex: 1;
+    width: auto;
+    max-width: 320px;
+    margin: 0 auto;
     justify-content: center;
   }
-  .slider-glass-tag {
-    font-size: 10px;
-    padding: 4px 10px;
-    top: 10px;
+  .slider-theme-btn {
+    padding: 7px 16px;
+    font-size: 12.5px;
   }
-  .slider-glass-tag.tag-left { left: 10px; }
-  .slider-glass-tag.tag-right { right: 10px; }
   .handle-knob {
     padding: 5px 9px;
     font-size: 9px;
   }
   .persona-card {
     padding: 24px 18px;
+  }
+  .personas-section {
+    padding: 60px 0;
+  }
+  .split-feature-section {
+    padding: 50px 0;
   }
   .checkout-modal-body {
     grid-template-columns: 1fr;
@@ -1735,19 +1751,56 @@ body {
 
 @media (max-width: 640px) {
   .hero-title {
-    font-size: 32px;
+    font-size: 30px;
+    line-height: 1.18;
+  }
+  .hero-subtitle {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-trust-row {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 12px;
+    margin-bottom: 28px;
+  }
+  .hero-window-titlebar {
+    padding: 10px 14px;
+  }
+  .window-glass-pill {
+    display: none;
+  }
+  .window-title-text {
+    font-size: 11.5px;
+  }
+  .section-title {
+    font-size: 26px;
+  }
+  .section-subtitle {
+    font-size: 14px;
   }
   .split-title {
-    font-size: 24px;
+    font-size: 22px;
+    line-height: 1.25;
   }
-  .nav-menu {
-    display: none;
+  .split-checklist li {
+    font-size: 13.5px;
+    gap: 10px;
   }
   .nav-intro-tag {
     display: none;
   }
   .pricing-single-card {
-    padding: 30px 20px;
+    padding: 26px 18px;
   }
   .pricing-header-row {
     flex-direction: column;
