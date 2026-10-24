@@ -1,6 +1,35 @@
-// Pauzos Sticky Parallax Showcase Controller
+// Pauzos Sticky Parallax Showcase Controller & Media Switcher
+
+function switchHeroMedia(mode) {
+  const videoFrame = document.getElementById('heroVideoContainer');
+  const sliderFrame = document.getElementById('heroSliderContainer');
+  const btnVideo = document.getElementById('btnShowVideo');
+  const btnInteractive = document.getElementById('btnShowInteractive');
+  const themeGroup = document.getElementById('themeButtonsGroup');
+  const video = document.getElementById('heroProductVideo');
+
+  if (mode === 'video') {
+    if (videoFrame) videoFrame.style.display = 'block';
+    if (sliderFrame) sliderFrame.style.display = 'none';
+    if (btnVideo) btnVideo.classList.add('active');
+    if (btnInteractive) btnInteractive.classList.remove('active');
+    if (themeGroup) themeGroup.style.display = 'none';
+    if (video) video.play().catch(() => {});
+  } else {
+    if (videoFrame) videoFrame.style.display = 'none';
+    if (sliderFrame) sliderFrame.style.display = 'block';
+    if (btnVideo) btnVideo.classList.remove('active');
+    if (btnInteractive) btnInteractive.classList.add('active');
+    if (themeGroup) themeGroup.style.display = 'flex';
+    if (video) video.pause();
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Initially hide the slider theme buttons because video is active
+  const themeGroup = document.getElementById('themeButtonsGroup');
+  if (themeGroup) themeGroup.style.display = 'none';
+
   // 0. Interactive Liquid Glass Dark/Light Comparison Slider
   const sliderViewport = document.getElementById('heroSliderViewport');
   const sliderFrame = document.getElementById('heroSliderContainer');

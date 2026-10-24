@@ -42,12 +42,15 @@
         <li class="nav-item"><a href="#overview">Overview</a></li>
         <li class="nav-item"><a href="#personas">Who It's For</a></li>
         <li class="nav-item"><a href="#features">Features</a></li>
-        <li class="nav-item"><a href="#apps">Portfolio</a></li>
+        <li class="nav-item"><a href="download.html" style="color: #60a5fa; font-weight: 700;">Download (Free Trial)</a></li>
         <li class="nav-item"><a href="#pricing">Pricing</a></li>
         <li class="nav-item"><a href="#faq">FAQ</a></li>
       </ul>
 
       <div class="nav-actions">
+        <a href="download.html" class="btn btn-secondary" style="font-size: 13px; padding: 7px 14px; margin-right: 6px; white-space: nowrap;">
+          📥 Download
+        </a>
         <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary" style="font-size: 13.5px; padding: 8px 18px; white-space: nowrap;">
           Get Access • ₹249 <span class="nav-intro-tag" style="font-size: 11px; opacity: 0.85; margin-left: 2px;">(Intro Offer)</span>
         </button>
@@ -60,48 +63,57 @@
     <div class="container">
       <div class="hero-pill">
         <span class="hero-pill-pulse"></span>
-        <span>Featured App #1 • Personal Reminder Assistant</span>
+        <span>Native Desktop App for Windows, macOS &amp; Linux • 3-Day Free Unlimited Trial</span>
       </div>
 
       <h1 class="hero-title">
-        Master Your Daily Routines.<br>
-        <span class="gradient-text">Built for Unbreakable Consistency.</span>
+        The Unmissable Desktop Routine<br>
+        <span class="gradient-text">&amp; Cut-Off Deadline Assistant.</span>
       </h1>
 
       <p class="hero-subtitle">
-        Pauzos presents <strong>Personal Reminder Assistant</strong> — the distraction-free, 
-        privacy-first desktop accountability tool for busy professionals. Unmissable on-screen alerts, 
-        ergonomic wellness breaks, and habit audit reports for Windows, macOS, and Linux.
+        Phone reminders get silenced. Browser tabs get buried. <strong>Personal Reminder Assistant</strong> lives right on your workstation desktop with unmissable floating cut-off alerts, workday calendar math, ergonomic wellness pauses, and 1-click Excel compliance audit trails — 100% offline &amp; private.
       </p>
 
       <div class="hero-cta-group">
-        <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary btn-lg">
-          ⚡ Get Lifetime Access — Only ₹249 <span style="font-size: 13px; opacity: 0.9; margin-left: 4px; font-weight: 600;">(Launch Offer)</span>
-        </button>
-        <a href="#features" class="btn btn-secondary btn-lg">
-          Explore Features ↓
+        <a href="download.html" class="btn btn-primary btn-lg" style="font-size: 16px; padding: 14px 28px; box-shadow: 0 4px 25px rgba(37, 99, 235, 0.45);">
+          📥 Download Free 3-Day Trial
         </a>
+        <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-secondary btn-lg" style="font-size: 15px; padding: 14px 24px; border-color: rgba(245, 158, 11, 0.4); color: #fcd34d;">
+          ⚡ Get Lifetime Access — ₹249
+        </button>
       </div>
 
       <div class="hero-trust-row">
         <div class="trust-item">
-          <span>🏷️</span> Introductory Price (Regular ₹999)
+          <span>✨</span> 3-Day Unlimited Free Trial
         </div>
         <div class="trust-item">
-          <span>🔒</span> 100% Offline (Local SQLite)
+          <span>🏷️</span> One-Time ₹249 (Zero Subscriptions)
         </div>
         <div class="trust-item">
-          <span>🏢</span> Office Laptop Friendly (Zero-Admin)
+          <span>🔒</span> 100% Offline (Local SQLite, Zero Snooping)
         </div>
         <div class="trust-item">
-          <span>🔄</span> Free Lifetime Updates
+          <span>🏢</span> Corporate &amp; Office Friendly (Zero-Admin)
         </div>
       </div>
 
-      <!-- Interactive Dark & Light Theme Comparison Slider (Liquid Glass Edition) -->
-      <div class="hero-slider-header-controls">
-        <div class="slider-theme-toggle-group">
-          <button type="button" class="slider-theme-btn" data-mode="dark" id="btnThemeDark">
+      <!-- Interactive Media Switcher: Product Video Tour vs Side-by-Side Dark/Light Interactive Mockup -->
+      <div class="hero-slider-header-controls" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px;">
+        <!-- Left: Video / Screenshots Tab Switcher -->
+        <div class="slider-theme-toggle-group" style="margin-bottom: 0;">
+          <button type="button" class="slider-theme-btn active" id="btnShowVideo" onclick="switchHeroMedia('video')">
+            <span class="btn-icon">▶️</span> Product Tour Video
+          </button>
+          <button type="button" class="slider-theme-btn" id="btnShowInteractive" onclick="switchHeroMedia('interactive')">
+            <span class="btn-icon">🎛️</span> Interactive Comparison
+          </button>
+        </div>
+
+        <!-- Right: Theme Mode Switcher (Active when interactive comparison is visible) -->
+        <div class="slider-theme-toggle-group" id="themeButtonsGroup" style="margin-bottom: 0;">
+          <button type="button" class="slider-theme-btn active" data-mode="dark" id="btnThemeDark">
             <span class="btn-icon">🌙</span> Dark Mode
           </button>
           <button type="button" class="slider-theme-btn" data-mode="light" id="btnThemeLight">
@@ -110,7 +122,34 @@
         </div>
       </div>
 
-      <div class="hero-app-frame hero-slider-frame" id="heroSliderContainer">
+      <!-- VIEW 1: Native High-Definition Product Tour Video inside Glass Frame -->
+      <div class="hero-app-frame hero-video-frame" id="heroVideoContainer" style="margin-bottom: 30px;">
+        <div class="hero-window-titlebar">
+          <div class="window-controls">
+            <span class="control-dot dot-close"></span>
+            <span class="control-dot dot-minimize"></span>
+            <span class="control-dot dot-maximize"></span>
+          </div>
+          <div class="window-title-text">
+            <span>Personal Reminder Assistant • UI Tour</span>
+            <span class="window-glass-pill" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.35); color: #6ee7b7;">HD 60fps</span>
+          </div>
+        </div>
+        <div style="position: relative; width: 100%; aspect-ratio: 16/9; background: #060913; overflow: hidden; border-bottom-left-radius: 14px; border-bottom-right-radius: 14px;">
+          <video id="heroProductVideo" 
+                 src="assets/video/product_ui_tour.mp4" 
+                 autoplay 
+                 muted 
+                 loop 
+                 playsinline 
+                 controls
+                 style="width: 100%; height: 100%; object-fit: contain; display: block;">
+          </video>
+        </div>
+      </div>
+
+      <!-- VIEW 2: Interactive Slider Frame (Hidden initially or toggleable) -->
+      <div class="hero-app-frame hero-slider-frame" id="heroSliderContainer" style="display: none;">
         <!-- macOS Window Glass Titlebar -->
         <div class="hero-window-titlebar">
           <div class="window-controls">
