@@ -1,6 +1,89 @@
 // Pauzos Sticky Parallax Showcase Controller
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Interactive Liquid Glass Dark/Light Comparison Slider
+  const sliderViewport = document.getElementById('heroSliderViewport');
+  const sliderFrame = document.getElementById('heroSliderContainer');
+  const sliderHandle = document.getElementById('heroSliderHandle');
+  const sliderOverlay = document.getElementById('heroSliderOverlay');
+  const btnDark = document.getElementById('btnThemeDark');
+  const btnLight = document.getElementById('btnThemeLight');
+
+  if (sliderViewport && sliderHandle && sliderOverlay) {
+    let isDragging = false;
+    let currentPos = 50; // percentage: 0 to 100
+
+    function setSplitPosition(posPercent, animate = false) {
+      const clamped = Math.max(0, Math.min(100, posPercent));
+      currentPos = clamped;
+
+      if (animate && sliderFrame) {
+        sliderFrame.classList.add('animating');
+        setTimeout(() => {
+          sliderFrame.classList.remove('animating');
+        }, 500);
+      }
+
+      sliderViewport.style.setProperty('--split-pos', `${clamped}%`);
+
+      // Update button highlights
+      if (btnDark && btnLight) {
+        btnDark.classList.toggle('active', clamped <= 10);
+        btnLight.classList.toggle('active', clamped >= 90);
+      }
+    }
+
+    function calculatePosFromEvent(e) {
+      const rect = sliderViewport.getBoundingClientRect();
+      const clientX = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
+      const xOffset = clientX - rect.left;
+      const percent = (xOffset / rect.width) * 100;
+      return percent;
+    }
+
+    // Pointer event handlers
+    function onPointerDown(e) {
+      isDragging = true;
+      setSplitPosition(calculatePosFromEvent(e), false);
+    }
+
+    function onPointerMove(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      setSplitPosition(calculatePosFromEvent(e), false);
+    }
+
+    function onPointerUp() {
+      isDragging = false;
+    }
+
+    sliderViewport.addEventListener('mousedown', onPointerDown);
+    window.addEventListener('mousemove', onPointerMove);
+    window.addEventListener('mouseup', onPointerUp);
+
+    sliderViewport.addEventListener('touchstart', onPointerDown, { passive: true });
+    window.addEventListener('touchmove', onPointerMove, { passive: false });
+    window.addEventListener('touchend', onPointerUp);
+
+    // Button event listeners
+    if (btnDark) {
+      btnDark.addEventListener('click', (e) => {
+        e.preventDefault();
+        setSplitPosition(0, true);
+      });
+    }
+
+    if (btnLight) {
+      btnLight.addEventListener('click', (e) => {
+        e.preventDefault();
+        setSplitPosition(100, true);
+      });
+    }
+
+    // Initialize to 50%
+    setSplitPosition(50, false);
+  }
+
   // 1. FAQ Accordion
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {

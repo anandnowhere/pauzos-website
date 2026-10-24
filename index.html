@@ -23,6 +23,7 @@
   <div class="bg-glow-container">
     <div class="glow-orb-1"></div>
     <div class="glow-orb-2"></div>
+    <div class="glow-orb-3"></div>
   </div>
 
   <!-- Professional Company-Level Navbar -->
@@ -39,6 +40,7 @@
       <!-- Professional Portfolio Menu -->
       <ul class="nav-menu">
         <li class="nav-item"><a href="#overview">Overview</a></li>
+        <li class="nav-item"><a href="#personas">Who It's For</a></li>
         <li class="nav-item"><a href="#features">Features</a></li>
         <li class="nav-item"><a href="#apps">Portfolio</a></li>
         <li class="nav-item"><a href="#pricing">Pricing</a></li>
@@ -96,13 +98,209 @@
         </div>
       </div>
 
-      <!-- Hero 4K Master Screenshot -->
-      <div class="hero-app-frame">
-        <div class="hero-app-img-wrapper">
-          <img src="assets/screenshots/hero_homepage_4k.png" alt="Personal Reminder Assistant 4K Master Dashboard" style="width: 100%; display: block;">
+      <!-- Interactive Dark & Light Theme Comparison Slider (Liquid Glass Edition) -->
+      <div class="hero-slider-header-controls">
+        <div class="slider-theme-toggle-group">
+          <button type="button" class="slider-theme-btn" data-mode="dark" id="btnThemeDark">
+            <span class="btn-icon">🌙</span> Dark Mode
+          </button>
+          <button type="button" class="slider-theme-btn" data-mode="light" id="btnThemeLight">
+            <span class="btn-icon">☀️</span> Light Mode
+          </button>
         </div>
       </div>
 
+      <div class="hero-app-frame hero-slider-frame" id="heroSliderContainer">
+        <!-- macOS Window Glass Titlebar -->
+        <div class="hero-window-titlebar">
+          <div class="window-controls">
+            <span class="control-dot dot-close"></span>
+            <span class="control-dot dot-minimize"></span>
+            <span class="control-dot dot-maximize"></span>
+          </div>
+          <div class="window-title-text">
+            <span>Personal Reminder Assistant v1.0.21</span>
+            <span class="window-glass-pill">Liquid Glass UI</span>
+          </div>
+        </div>
+
+        <!-- Interactive Comparison Viewport -->
+        <div class="hero-slider-viewport" id="heroSliderViewport">
+          <!-- Base Layer: Deep Obsidian Dark Mode -->
+          <img src="assets/screenshots/hero_homepage_dark_4k.png" 
+               alt="Personal Reminder Assistant - Dark Theme" 
+               class="hero-slider-img hero-img-base"
+               draggable="false">
+          
+          <!-- Overlay Layer: Warm Ivory Linen Light Mode (Clipped) -->
+          <div class="hero-slider-overlay" id="heroSliderOverlay">
+            <img src="assets/screenshots/hero_homepage_light_4k.png" 
+                 alt="Personal Reminder Assistant - Light Theme" 
+                 class="hero-slider-img hero-img-overlay"
+                 draggable="false">
+          </div>
+
+          <!-- Draggable Glass Splitter Handle -->
+          <div class="hero-slider-handle" id="heroSliderHandle">
+            <div class="handle-line"></div>
+            <div class="handle-knob">
+              <span class="handle-arrows">◂</span>
+              <span class="handle-label">SLIDE</span>
+              <span class="handle-arrows">▸</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- High-Performance Personas Section (Corporate, Traders, CEOs, Managers) -->
+  <section class="personas-section" id="personas">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">Custom Tailored Workflows</span>
+        <h2 class="section-title">Built For High-Stakes Professionals</h2>
+        <p class="section-subtitle">
+          Whether you are navigating volatile financial markets, driving executive priorities, managing engineering sprints, or sustaining healthy daily routines — Personal Reminder Assistant delivers rock-solid accountability.
+        </p>
+      </div>
+
+      <div class="personas-grid">
+        
+        <!-- Persona 1: Stock Market Traders -->
+        <div class="persona-card glass-card">
+          <div class="persona-header">
+            <div class="persona-icon-box trader-icon">📈</div>
+            <div>
+              <div class="persona-target-tag">Financial Markets</div>
+              <h3 class="persona-title">Active Traders & Investors</h3>
+            </div>
+          </div>
+          <p class="persona-desc">
+            Trading discipline requires zero missed checkpoints. Execute systematic pre-market research, audit trailing stop risk before the afternoon rush, and reconcile daily contract notes with clinical consistency.
+          </p>
+          <div class="persona-reminders-box">
+            <div class="persona-reminders-title">Real Pre-Loaded Workday Checkpoints:</div>
+            <div class="persona-reminder-pill">
+              <span class="pill-time">08:45</span>
+              <span class="pill-name">Pre-Market Global Cues & Index Open Check</span>
+            </div>
+            <div class="persona-reminder-pill">
+              <span class="pill-time">14:30</span>
+              <span class="pill-name">Intraday Risk Audit & Trailing Stop-Loss</span>
+            </div>
+            <div class="persona-reminder-pill">
+              <span class="pill-time">15:45</span>
+              <span class="pill-name">Post-Market Journal & Daily P&L Reconciliation</span>
+            </div>
+          </div>
+          <div class="persona-benefit">
+            <span class="benefit-icon">🛡️</span>
+            <span>Eliminates emotional overtrading and FOMO through mandatory compliance pauses.</span>
+          </div>
+        </div>
+
+        <!-- Persona 2: CEOs & Founders -->
+        <div class="persona-card glass-card">
+          <div class="persona-header">
+            <div class="persona-icon-box ceo-icon">👔</div>
+            <div>
+              <div class="persona-target-tag">Executive Leadership</div>
+              <h3 class="persona-title">CEOs & Founders</h3>
+            </div>
+          </div>
+          <p class="persona-desc">
+            Executive cognitive load is relentless. Protect deep strategic thinking time, align top company priorities before opening communications, and broadcast leadership summaries without getting bogged down in operational clutter.
+          </p>
+          <div class="persona-reminders-box">
+            <div class="persona-reminders-title">Real Pre-Loaded Workday Checkpoints:</div>
+            <div class="persona-reminder-pill">
+              <span class="pill-time">09:15</span>
+              <span class="pill-name">CEO Executive Standup & Strategic Priorities</span>
+            </div>
+            <div class="persona-reminder-pill">
+              <span class="pill-time">12:30</span>
+              <span class="pill-name">Capital Runway, Burn Rate & Investor Relations</span>
+            </div>
+            <div class="persona-reminder-pill">
+              <span class="pill-time">17:30</span>
+              <span class="pill-name">Executive Daily Wrap-Up & Leadership Broadcast</span>
+            </div>
+          </div>
+          <div class="persona-benefit">
+            <span class="benefit-icon">🎯</span>
+            <span>Forces daily focus on high-leverage revenue drivers and capital longevity.</span>
+          </div>
+        </div>
+
+        <!-- Persona 3: Engineering Managers & Team Leads -->
+        <div class="persona-card glass-card">
+          <div class="persona-header">
+            <div class="persona-icon-box manager-icon">💼</div>
+            <div>
+              <div class="persona-target-tag">Management & Delivery</div>
+              <h3 class="persona-title">Managers & Corporate Leads</h3>
+            </div>
+          </div>
+          <p class="persona-desc">
+            Keep engineering sprint cycles on track, sign off on contractor invoices on time, and eliminate blockers across departments without relying on messy browser tabs or missed chat pings.
+          </p>
+          <div class="persona-reminders-box">
+            <div class="persona-reminders-title">Real Pre-Loaded Workday Checkpoints:</div>
+            <div class="persona-reminder-pill">
+              <span class="pill-time">10:30</span>
+              <span class="pill-name">Sprint Deliverables & Vendor Approvals</span>
+            </div>
+            <div class="persona-reminder-pill">
+              <span class="pill-time">15:00</span>
+              <span class="pill-name">Cross-Functional Blocker Queue Resolution</span>
+            </div>
+            <div class="persona-reminder-pill">
+              <span class="pill-time">16:30</span>
+              <span class="pill-name">Weekly Timesheet & Client Billing Submission</span>
+            </div>
+          </div>
+          <div class="persona-benefit">
+            <span class="benefit-icon">⏱️</span>
+            <span>Guarantees 100% on-time project billing and timesheet compliance records.</span>
+          </div>
+        </div>
+
+        <!-- Persona 4: Health, Ergonomics & Daily Habits -->
+        <div class="persona-card glass-card">
+          <div class="persona-header">
+            <div class="persona-icon-box habit-icon">🧘</div>
+            <div>
+              <div class="persona-target-tag">Health & Sustainable Habits</div>
+              <h3 class="persona-title">Professionals & Creatives</h3>
+            </div>
+          </div>
+          <p class="persona-desc">
+            Prevent screen fatigue and sustain physical stamina over long workdays. Gentle, non-intrusive wellness breaks cue you to hydrate, reset spinal posture, and practice 20-20-20 eye strain protection.
+          </p>
+          <div class="persona-reminders-box">
+            <div class="persona-reminders-title">Real Pre-Loaded Workday Checkpoints:</div>
+            <div class="persona-reminder-pill">
+              <span class="pill-time">11:45</span>
+              <span class="pill-name">Ergonomic Posture, Hydration & Eye Break</span>
+            </div>
+            <div class="persona-reminder-pill">
+              <span class="pill-time">14:00</span>
+              <span class="pill-name">Afternoon Energy Reset & Movement Stretch</span>
+            </div>
+            <div class="persona-reminder-pill">
+              <span class="pill-time">17:00</span>
+              <span class="pill-name">Desk Organization & Tomorrow's Planning</span>
+            </div>
+          </div>
+          <div class="persona-benefit">
+            <span class="benefit-icon">🔋</span>
+            <span>Protects your posture, vision, and mental clarity through 8+ hour screen sessions.</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -157,18 +355,18 @@
           <span class="split-pill">Interactive Smart Alert</span>
           <h2 class="split-title">Actionable Reminders That Demand Attention Without Disruption</h2>
           <p class="split-desc">
-            When a critical routine or compliance deadline arrives, a focused floating alert appears directly on your screen. 
-            Review complete task instructions, record optional audit notes, or snooze in seconds without breaking your stride.
+            When a critical trade review, executive deadline, or compliance cutoff arrives, a focused floating Liquid Glass alert card appears directly on your screen. 
+            Review full instructions, monitor strict cut-off times, record optional audit notes, or snooze in seconds without breaking your workflow.
           </p>
 
           <ul class="split-checklist">
             <li>
               <span class="check-icon">✓</span>
-              <span><strong>Context-Rich Priority Badges:</strong> Immediate category classification, priority tagging, and scheduled time at a glance.</span>
+              <span><strong>Cut-off Deadline Badges:</strong> Clear ⏰ Cut-off Time warnings highlight non-negotiable tasks like market stops or timesheets.</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
-              <span><strong>1-Click Action & Audit Notes:</strong> Mark as Completed with optional reference numbers or notes saved directly to your local database.</span>
+              <span><strong>1-Click Action & Audit Notes:</strong> Mark as Completed with optional reference numbers or trade logs saved directly to your local database.</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
@@ -196,24 +394,23 @@
         <!-- Left: Text -->
         <div class="split-text-col">
           <span class="split-pill">Flexible Routine Engine</span>
-          <h2 class="split-title">Organize Work, Deliverables, Health & Habits</h2>
+          <h2 class="split-title">Organize Trading, Leadership, Sprints & Habits</h2>
           <p class="split-desc">
-            Build your custom productivity operating system. Group routines into categories, customize frequencies, 
-            and toggle triggers on or off whenever needed.
+            Build your personal productivity operating system. Categorize routines across Trading & Markets, Executive Leadership, Management, Compliance, and Health & Habits with dedicated priority tags and toggle controls.
           </p>
 
           <ul class="split-checklist">
             <li>
               <span class="check-icon">✓</span>
-              <span><strong>Complete Routine Library:</strong> Manage all recurring checkpoints across your professional and personal life.</span>
+              <span><strong>Persona-Driven Categories:</strong> Group routines under Trading & Markets, Executive Leadership, Management, and Health.</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
-              <span><strong>Advanced Recurrence:</strong> Set daily routines, specific weekdays (Mon–Fri), or custom repeating intervals.</span>
+              <span><strong>Advanced Recurrence Rules:</strong> Set workday-only schedules (Mon–Fri), custom workdays of the month, or repeating intervals.</span>
             </li>
             <li>
               <span class="check-icon">✓</span>
-              <span><strong>Priority Filtering:</strong> Isolate mission-critical deliverables from secondary daily habits.</span>
+              <span><strong>Instant Search & Filter:</strong> Instantly filter by status, priority (High, Medium, Low), or specific category.</span>
             </li>
           </ul>
         </div>
