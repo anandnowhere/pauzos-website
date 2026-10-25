@@ -4,29 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Pauzos — Workstation Access & Verification</title>
-  <!--[if mso]>
-  <style type="text/css">
-    body, table, td { font-family: Arial, Helvetica, sans-serif !important; }
-  </style>
-  <![endif]-->
 </head>
-<body style="margin: 0; padding: 0; background-color: #070b14; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: #e2e8f0;">
+<body style="margin: 0; padding: 0; background-color: #070b14; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #e2e8f0;">
 
-  <!-- Main Container Table -->
+  <!-- Main Background Container -->
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #070b14; min-height: 100vh; padding: 32px 16px;">
     <tr>
       <td align="center" valign="top">
         
-        <!-- Email Wrapper (Max width 580px) -->
+        <!-- Email Card (Max width 580px) -->
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 580px; background-color: #0d1527; border: 1px solid #1e293b; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);">
           
-          <!-- Header / Brand Banner -->
+          <!-- Brand Header Banner -->
           <tr>
             <td style="padding: 36px 36px 24px 36px; text-align: center; background: linear-gradient(180deg, #131d36 0%, #0d1527 100%); border-bottom: 1px solid #1e293b;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td align="center">
-                    <img src="https://pauzos.com/assets/logo.png" alt="Pauzos Logo" width="56" height="56" style="display: block; border-radius: 12px; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);" />
+                    <!-- Logo hosted on Supabase Storage to satisfy dashboard CSP and ensure 100% email client delivery -->
+                    <img src="https://suidnqsvuxaoqoyuqpys.supabase.co/storage/v1/object/public/public-assets/logo.png" alt="Pauzos Logo" width="56" height="56" style="display: block; border-radius: 12px; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);" />
                     <div style="font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: -0.3px; margin: 0;">
                       PAUZOS
                     </div>
@@ -43,12 +39,12 @@
           <tr>
             <td style="padding: 32px 36px 24px 36px;">
               
-              <!-- Greeting / Welcome Note -->
+              <!-- Greeting / Welcome -->
               <h1 style="font-size: 20px; font-weight: 700; color: #f8fafc; margin: 0 0 12px 0; line-height: 1.35;">
                 Welcome to Pauzos Workstation
               </h1>
               <p style="font-size: 14px; line-height: 1.6; color: #94a3b8; margin: 0 0 24px 0;">
-                Thank you for choosing <strong style="color: #f1f5f9;">Personal Reminder Assistant</strong>. Whether you have just activated your lifetime license or requested a password reset, use the 6-digit verification code below to access your account and set your permanent password.
+                Thank you for choosing <strong style="color: #f1f5f9;">Personal Reminder Assistant</strong>. Whether you have just activated your lifetime license or requested a password reset, use the 6-digit access code below to sign in and set your personal password.
               </p>
 
               <!-- 6-Digit Code Highlight Card -->
@@ -70,12 +66,12 @@
 
               <!-- Step-by-Step Quick Guide -->
               <div style="font-size: 13px; font-weight: 600; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px;">
-                Quick Workstation Setup (3 Simple Steps)
+                Quick Workstation Setup (3 Steps)
               </div>
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 28px;">
                 <tr>
                   <td style="padding: 8px 0; font-size: 13px; line-height: 1.5; color: #cbd5e1;">
-                    <strong style="color: #60a5fa;">Step 1:</strong> Download and install the application on your computer using the download button below.
+                    <strong style="color: #60a5fa;">Step 1:</strong> Download the application on your computer using the download button below.
                   </td>
                 </tr>
                 <tr>
@@ -113,15 +109,19 @@
                 </tr>
               </table>
 
-              <!-- Fallback Direct Reset Link -->
-              <div style="font-size: 12px; color: #64748b; line-height: 1.5; margin-bottom: 8px; text-align: center;">
-                Alternatively, you can verify your account via your browser with this secure link:
-              </div>
-              <div style="text-align: center; word-break: break-all; margin-bottom: 24px;">
-                <a href="{{ .ConfirmationURL }}" style="font-size: 12px; color: #38bdf8; text-decoration: underline;">
-                  {{ .ConfirmationURL }}
-                </a>
-              </div>
+              <!-- Clean Web Browser Verification Button (Replaces ugly raw URL) -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
+                <tr>
+                  <td align="center">
+                    <div style="font-size: 12px; color: #64748b; margin-bottom: 10px;">
+                      Prefer to reset your password directly in your browser?
+                    </div>
+                    <a href="{{ .ConfirmationURL }}" target="_blank" style="display: inline-block; background-color: #1e293b; color: #38bdf8; text-decoration: none; font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 8px; border: 1px solid #334155;">
+                      🌐 Verify & Set Password in Web Browser &rarr;
+                    </a>
+                  </td>
+                </tr>
+              </table>
 
             </td>
           </tr>
@@ -132,7 +132,7 @@
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="font-size: 11px; line-height: 1.6; color: #64748b; text-align: center;">
-                    🔒 <strong>Security Notice:</strong> Stratexa will never ask for your password or verification code. If you did not purchase a license or initiate this action, you can safely ignore this email.<br><br>
+                    🔒 <strong>Security Notice:</strong> Stratexa will never ask for your password or verification code. If you did not initiate this action, you can safely ignore this email.<br><br>
                     © 2026 <strong>Pauzos</strong> • Developed by <strong>Stratexa</strong> (<a href="https://stratexa.in" style="color: #94a3b8; text-decoration: none;">stratexa.in</a>)<br>
                     Need assistance? Contact our engineering team at <a href="mailto:hello@stratexa.in" style="color: #38bdf8; text-decoration: none;">hello@stratexa.in</a><br>
                     <a href="https://pauzos.com" style="color: #38bdf8; text-decoration: none;">pauzos.com</a> • <a href="https://pauzos.com/privacy.html" style="color: #64748b; text-decoration: none;">Privacy Policy</a> • <a href="https://pauzos.com/terms.html" style="color: #64748b; text-decoration: none;">Terms of Service</a>
@@ -143,7 +143,7 @@
           </tr>
 
         </table>
-        <!-- /Email Wrapper -->
+        <!-- /Email Card -->
 
       </td>
     </tr>
