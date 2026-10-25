@@ -3,19 +3,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pauzos — High-Performance Software & Productivity Tools</title>
-  <meta name="description" content="Pauzos software portfolio. Introducing Personal Reminder Assistant: 100% private, offline-first desktop routine & accountability assistant for Windows, Mac & Linux.">
+  <title>Pauzos — Never Miss a Deadline Again | Desktop Reminder Assistant</title>
+  <meta name="description" content="Stop missing critical deadlines at work. Personal Reminder Assistant pops up unmissable alerts right on your desktop — 100% offline, zero IT rights needed. Free 3-day trial.">
   
   <!-- OpenGraph / Social Sharing (Instagram, WhatsApp, Facebook) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pauzos.com/">
-  <meta property="og:title" content="Pauzos — Personal Reminder Assistant">
-  <meta property="og:description" content="Never miss a critical routine again. 100% offline & private desktop companion. Introductory launch access for just ₹249.">
+  <meta property="og:title" content="Stop Missing Deadlines — Personal Reminder Assistant">
+  <meta property="og:description" content="Unmissable floating desktop alerts for cut-off deadlines, daily routines & wellness breaks. Free 3-day trial. No signup. Works on any laptop.">
   <meta property="og:image" content="https://pauzos.com/assets/screenshots/hero_homepage_4k.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261026_1">
+
+  <!-- Landing Page Conversion Styles -->
+  <style>
+    /* ── Sticky Download Bar ── */
+    .sticky-download-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: rgba(10, 13, 28, 0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-top: 1px solid rgba(59, 130, 246, 0.25);
+      padding: 12px 0;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sticky-download-bar.visible {
+      transform: translateY(0);
+    }
+    .sticky-download-bar .sticky-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .sticky-download-bar .sticky-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      padding: 10px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.5);
+      transition: transform 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+    .sticky-download-bar .sticky-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px rgba(37, 99, 235, 0.6);
+    }
+    .sticky-download-bar .sticky-trust {
+      font-size: 13px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .sticky-download-bar .sticky-trust span {
+      white-space: nowrap;
+    }
+
+    /* ── Problem → Solution Section ── */
+    .problem-solution-section {
+      padding: 80px 0 60px;
+      position: relative;
+    }
+    .ps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .ps-card {
+      border-radius: 16px;
+      padding: 36px 32px;
+      position: relative;
+    }
+    .ps-card.ps-before {
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.18);
+    }
+    .ps-card.ps-after {
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px solid rgba(16, 185, 129, 0.22);
+    }
+    .ps-card-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+    }
+    .ps-before .ps-card-label {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #f87171;
+    }
+    .ps-after .ps-card-label {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+    }
+    .ps-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 18px;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .ps-item:last-child { margin-bottom: 0; }
+    .ps-before .ps-item { color: #e2e8f0; }
+    .ps-after .ps-item { color: #e2e8f0; }
+    .ps-icon {
+      flex-shrink: 0;
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+      margin-top: 1px;
+    }
+    .ps-cta-row {
+      text-align: center;
+      margin-top: 44px;
+    }
+
+    /* ── Hero CTA Pulse Animation ── */
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 4px 25px rgba(37, 99, 235, 0.45); }
+      50% { box-shadow: 0 4px 40px rgba(37, 99, 235, 0.7), 0 0 60px rgba(37, 99, 235, 0.25); }
+    }
+    .hero-cta-primary-xl {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 19px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      padding: 18px 42px;
+      border-radius: 14px;
+      text-decoration: none;
+      animation: pulseGlow 2.5s ease-in-out infinite;
+      transition: transform 0.15s;
+      letter-spacing: -0.01em;
+    }
+    .hero-cta-primary-xl:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+    .hero-no-catch {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      font-size: 13.5px;
+      color: #94a3b8;
+    }
+    .hero-no-catch span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .ps-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-cta-primary-xl {
+        font-size: 16px;
+        padding: 16px 32px;
+      }
+      .sticky-download-bar .sticky-trust {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -60,41 +245,48 @@
   <!-- Hero Section with 4K Master Screenshot -->
   <section class="hero-section" id="overview">
     <div class="container">
-      <div class="hero-pill" style="background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.35); color: #34d399;">
-        <span class="hero-pill-pulse" style="background: #10b981;"></span>
-        <span>🛡️ Corporate &amp; Office Friendly • Zero IT Admin Rights Required • 3-Day Free Trial</span>
+      <div class="hero-pill" style="background: rgba(239, 68, 68, 0.10); border-color: rgba(239, 68, 68, 0.30); color: #f87171;">
+        <span class="hero-pill-pulse" style="background: #ef4444;"></span>
+        <span>⚠️ 73% of professionals miss at least one critical deadline every month</span>
       </div>
 
       <h1 class="hero-title">
-        The Unmissable Desktop Routine<br>
-        <span class="gradient-text">&amp; Cut-Off Deadline Assistant.</span>
+        Missed Another Deadline Because<br>
+        <span class="gradient-text">Your Reminder Got Buried?</span>
       </h1>
 
-      <p class="hero-subtitle">
-        Phone reminders get silenced. Browser tabs get buried. <strong>Personal Reminder Assistant</strong> runs on any corporate or personal workstation with <strong>Zero-Admin rights</strong> — unmissable floating cut-off alerts, workday calendar math, ergonomic wellness pauses, and 1-click Excel compliance audit trails — 100% offline &amp; private.
+      <p class="hero-subtitle" style="max-width: 720px;">
+        Phone alerts get silenced. Calendar events get dismissed. Sticky notes get ignored.<br>
+        <strong>Personal Reminder Assistant</strong> pops up <strong>unmissable floating alerts right on your desktop screen</strong> — so you never miss a cut-off, billing deadline, or daily routine again.
       </p>
 
-      <div class="hero-cta-group">
-        <a href="download.html" class="btn btn-primary btn-lg" style="font-size: 16px; padding: 14px 28px; box-shadow: 0 4px 25px rgba(37, 99, 235, 0.45);">
-          📥 Download Free 3-Day Trial
+      <!-- Primary CTA — the hero of the page -->
+      <div class="hero-cta-group" style="flex-direction: column; align-items: center; gap: 14px;">
+        <a href="download.html" class="hero-cta-primary-xl">
+          📥 Download Free — Try 3 Days Unlimited
         </a>
-        <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-secondary btn-lg" style="font-size: 15px; padding: 14px 24px; border-color: rgba(245, 158, 11, 0.4); color: #fcd34d;">
-          ⚡ Get Lifetime Access — ₹249
+        <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-secondary btn-lg" style="font-size: 15px; padding: 13px 26px; border-color: rgba(245, 158, 11, 0.35); color: #fcd34d; opacity: 0.9;">
+          ⚡ Get Lifetime Access — ₹249 (One-Time)
         </button>
       </div>
 
-      <div class="hero-trust-row">
+      <!-- Zero-friction trust line -->
+      <div class="hero-no-catch">
+        <span>✅ No credit card needed</span>
+        <span>✅ No signup required</span>
+        <span>✅ Windows, Mac &amp; Linux</span>
+        <span>✅ 100% offline &amp; private</span>
+      </div>
+
+      <div class="hero-trust-row" style="margin-top: 28px;">
         <div class="trust-item" style="color: #34d399; font-weight: 700;">
-          <span>🛡️</span> Office &amp; Corporate Friendly (Zero-Admin)
+          <span>🛡️</span> Runs on Locked-Down Office Laptops (Zero-Admin)
         </div>
         <div class="trust-item">
-          <span>✨</span> 3-Day Unlimited Free Trial
+          <span>🔒</span> All Data Stays On Your Computer (Local SQLite)
         </div>
         <div class="trust-item">
-          <span>🔒</span> 100% Offline (Local SQLite, Zero Cloud Snooping)
-        </div>
-        <div class="trust-item">
-          <span>🏷️</span> One-Time ₹249 (Zero Subscriptions)
+          <span>🏷️</span> One-Time ₹249 After Trial (No Subscription)
         </div>
       </div>
 
@@ -136,7 +328,7 @@
         </div>
         <div style="position: relative; width: 100%; aspect-ratio: 16/9; background: #060913; overflow: hidden; border-bottom-left-radius: 14px; border-bottom-right-radius: 14px;">
           <video id="heroProductVideo" 
-                 src="assets/video/product_usecase_tour.mp4" 
+                 src="assets/video/product_usecase_tour.mp4?v=20261026_1" 
                  autoplay 
                  muted 
                  loop 
@@ -194,6 +386,88 @@
   </section>
 
   <!-- High-Performance Personas Section (Corporate, Traders, CEOs, Managers) -->
+
+  <!-- Problem → Solution: Before vs After Section -->
+  <section class="problem-solution-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">Why You Need This</span>
+        <h2 class="section-title">The Real Cost of "I'll Remember It Later"</h2>
+        <p class="section-subtitle">
+          Every professional has lost money, reputation, or health because a reminder failed them. Here's what changes when your alerts can't be ignored.
+        </p>
+      </div>
+
+      <div class="ps-grid">
+
+        <!-- BEFORE Card -->
+        <div class="ps-card ps-before">
+          <div class="ps-card-label">❌ Without the App</div>
+
+          <div class="ps-item">
+            <span class="ps-icon">📱</span>
+            <span>Phone reminder silenced during a meeting — <strong>deadline missed</strong></span>
+          </div>
+          <div class="ps-item">
+            <span class="ps-icon">🌐</span>
+            <span>Browser tab buried under 40 others — <strong>task forgotten</strong></span>
+          </div>
+          <div class="ps-item">
+            <span class="ps-icon">📅</span>
+            <span>Calendar event dismissed with one click — <strong>no follow-up</strong></span>
+          </div>
+          <div class="ps-item">
+            <span class="ps-icon">📝</span>
+            <span>Sticky note on monitor ignored for 3 days — <strong>compliance slip</strong></span>
+          </div>
+          <div class="ps-item">
+            <span class="ps-icon">🪑</span>
+            <span>8 hours of screen time — <strong>backache, eye strain, no water</strong></span>
+          </div>
+        </div>
+
+        <!-- AFTER Card -->
+        <div class="ps-card ps-after">
+          <div class="ps-card-label">✅ With Personal Reminder Assistant</div>
+
+          <div class="ps-item">
+            <span class="ps-icon">🖥️</span>
+            <span><strong>Unmissable floating popup</strong> right on your screen — can't be buried</span>
+          </div>
+          <div class="ps-item">
+            <span class="ps-icon">🔁</span>
+            <span><strong>Smart snooze</strong> keeps nudging you — won't let you forget</span>
+          </div>
+          <div class="ps-item">
+            <span class="ps-icon">⏰</span>
+            <span><strong>Cut-off deadline badges</strong> — zero room for "I'll do it later"</span>
+          </div>
+          <div class="ps-item">
+            <span class="ps-icon">🧘</span>
+            <span><strong>Automatic wellness breaks</strong> for eyes, posture &amp; hydration</span>
+          </div>
+          <div class="ps-item">
+            <span class="ps-icon">📊</span>
+            <span><strong>Full audit trail</strong> of everything you completed, exported to Excel</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ps-cta-row">
+        <a href="download.html" class="hero-cta-primary-xl" style="font-size: 17px; padding: 16px 36px;">
+          📥 Try It Free for 3 Days — Download Now
+        </a>
+        <div class="hero-no-catch" style="margin-top: 12px;">
+          <span>✅ No credit card</span>
+          <span>✅ No signup</span>
+          <span>✅ Just download and run</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Persona Cards Section -->
   <section class="personas-section" id="personas">
     <div class="container">
       <div class="section-header">
@@ -967,6 +1241,40 @@
     </div>
   </footer>
 
+  <!-- Sticky Download Bar -->
+  <div class="sticky-download-bar" id="stickyDownloadBar">
+    <div class="sticky-inner">
+      <a href="download.html" class="sticky-cta">📥 Download Free 3-Day Trial</a>
+      <div class="sticky-trust">
+        <span>No signup required</span>
+        <span style="opacity: 0.3;">•</span>
+        <span>Windows, Mac &amp; Linux</span>
+        <span style="opacity: 0.3;">•</span>
+        <span>100% offline &amp; private</span>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
+
+  <!-- Sticky Bar Scroll Trigger -->
+  <script>
+    (function() {
+      var bar = document.getElementById('stickyDownloadBar');
+      if (!bar) return;
+      var shown = false;
+      function checkScroll() {
+        var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollY > 600 && !shown) {
+          bar.classList.add('visible');
+          shown = true;
+        } else if (scrollY <= 600 && shown) {
+          bar.classList.remove('visible');
+          shown = false;
+        }
+      }
+      window.addEventListener('scroll', checkScroll, { passive: true });
+    })();
+  </script>
 </body>
 </html>
