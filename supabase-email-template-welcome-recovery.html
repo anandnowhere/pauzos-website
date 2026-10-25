@@ -21,7 +21,6 @@
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td align="center">
-                    <!-- Logo hosted on Supabase Storage to satisfy dashboard CSP and ensure 100% email client delivery -->
                     <img src="https://suidnqsvuxaoqoyuqpys.supabase.co/storage/v1/object/public/public-assets/logo.png" alt="Pauzos Logo" width="56" height="56" style="display: block; border-radius: 12px; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);" />
                     <div style="font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: -0.3px; margin: 0;">
                       PAUZOS
@@ -37,14 +36,14 @@
 
           <!-- Primary Body Content -->
           <tr>
-            <td style="padding: 32px 36px 24px 36px;">
+            <td style="padding: 32px 36px 28px 36px;">
               
               <!-- Greeting / Welcome -->
               <h1 style="font-size: 20px; font-weight: 700; color: #f8fafc; margin: 0 0 12px 0; line-height: 1.35;">
                 Welcome to Pauzos Workstation
               </h1>
               <p style="font-size: 14px; line-height: 1.6; color: #94a3b8; margin: 0 0 24px 0;">
-                Thank you for choosing <strong style="color: #f1f5f9;">Personal Reminder Assistant</strong>. Whether you have just activated your lifetime license or requested a password reset, use the 6-digit access code below to sign in and set your personal password.
+                Thank you for choosing <strong style="color: #f1f5f9;">Personal Reminder Assistant</strong>. Whether you have just activated your lifetime license or requested a password reset, use the 6-digit access code below to sign in directly inside the desktop app.
               </p>
 
               <!-- 6-Digit Code Highlight Card -->
@@ -58,7 +57,7 @@
                       {{ .Token }}
                     </div>
                     <div style="font-size: 12px; color: #94a3b8; margin-top: 8px;">
-                      Valid for 60 minutes • Enter in the application password field
+                      Valid for 60 minutes • Enter in the desktop app password field
                     </div>
                   </td>
                 </tr>
@@ -71,17 +70,17 @@
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 28px;">
                 <tr>
                   <td style="padding: 8px 0; font-size: 13px; line-height: 1.5; color: #cbd5e1;">
-                    <strong style="color: #60a5fa;">Step 1:</strong> Download the application on your computer using the download button below.
+                    <strong style="color: #60a5fa;">Step 1:</strong> Download and launch the desktop application using the button below.
                   </td>
                 </tr>
                 <tr>
                   <td style="padding: 8px 0; font-size: 13px; line-height: 1.5; color: #cbd5e1;">
-                    <strong style="color: #60a5fa;">Step 2:</strong> Launch the app, enter your email (<code style="background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #f1f5f9; font-size: 12px;">{{ .Email }}</code>), and enter the <strong>6-digit code</strong> above into the password box.
+                    <strong style="color: #60a5fa;">Step 2:</strong> Enter your email (<code style="background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #f1f5f9; font-size: 12px;">{{ .Email }}</code>), and paste the <strong>6-digit code</strong> above into the password box.
                   </td>
                 </tr>
                 <tr>
                   <td style="padding: 8px 0; font-size: 13px; line-height: 1.5; color: #cbd5e1;">
-                    <strong style="color: #60a5fa;">Step 3:</strong> Choose your personal permanent password. Your lifetime license is immediately activated!
+                    <strong style="color: #60a5fa;">Step 3:</strong> Choose your personal permanent password. Your lifetime workstation license is immediately activated!
                   </td>
                 </tr>
               </table>
@@ -98,27 +97,13 @@
               </table>
 
               <!-- OS Platform Badges Box -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #090e1a; border: 1px solid #1e293b; border-radius: 10px; padding: 14px 16px; margin-bottom: 24px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #090e1a; border: 1px solid #1e293b; border-radius: 10px; padding: 14px 16px; margin-bottom: 8px;">
                 <tr>
                   <td align="center" style="font-size: 12px; color: #94a3b8; line-height: 1.6;">
                     <strong style="color: #f1f5f9;">Supported Workstations:</strong><br>
                     🪟 <strong>Windows:</strong> 1-Click Portable (.exe) & Setup Installer • No Admin Rights Needed<br>
                     🍏 <strong>macOS:</strong> Apple Silicon (M1/M2/M3/M4) & Intel DMG / Zip<br>
                     🐧 <strong>Linux:</strong> Universal AppImage & Debian / Ubuntu (.deb)
-                  </td>
-                </tr>
-              </table>
-
-              <!-- Clean Web Browser Verification Button (Replaces ugly raw URL) -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
-                <tr>
-                  <td align="center">
-                    <div style="font-size: 12px; color: #64748b; margin-bottom: 10px;">
-                      Prefer to reset your password directly in your browser?
-                    </div>
-                    <a href="{{ .ConfirmationURL }}" target="_blank" style="display: inline-block; background-color: #1e293b; color: #38bdf8; text-decoration: none; font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 8px; border: 1px solid #334155;">
-                      🌐 Verify & Set Password in Web Browser &rarr;
-                    </a>
                   </td>
                 </tr>
               </table>
