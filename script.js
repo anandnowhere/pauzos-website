@@ -358,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const mobilePayBtn = document.querySelector('.checkout-mobile-pay-btn');
       if (mobilePayBtn && cfg.amount) {
-        mobilePayBtn.href = `upi://pay?pa=anandnowhere-2@okaxis&pn=ganapathy%20ganapathy&am=${cfg.amount}.00&cu=INR&aid=uGICAgIDAp6XKeQ`;
+        mobilePayBtn.href = `upi://pay?pa=anandnowhere-2@okaxis&pn=Pauzos%20Software&am=${cfg.amount}.00&cu=INR&aid=uGICAgIDAp6XKeQ`;
         mobilePayBtn.textContent = `📱 Tap to Pay ${cfg.price} on UPI App`;
       }
 
