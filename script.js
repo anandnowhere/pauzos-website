@@ -175,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (successState) successState.style.display = 'none';
       if (statusMsg) statusMsg.style.display = 'none';
       checkoutModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Prevent background bleed and scroll
     } else {
       alert('Connecting to secure checkout for ' + productName + ' (₹249)...');
     }
@@ -184,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkoutModal = document.getElementById('checkoutModal');
     if (checkoutModal) {
       checkoutModal.style.display = 'none';
+      document.body.style.overflow = ''; // Restore background scroll
       if (verifyPollTimer) clearTimeout(verifyPollTimer);
     }
   };

@@ -1471,14 +1471,16 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(3, 7, 18, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  height: 100dvh;
+  background: rgba(3, 7, 18, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   z-index: 9999;
   align-items: center;
   justify-content: center;
   padding: 20px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .checkout-modal-card {
@@ -1736,20 +1738,78 @@ body {
   .split-feature-section {
     padding: 50px 0;
   }
+  .checkout-modal-backdrop {
+    align-items: flex-start;
+    padding: 16px 12px calc(50px + env(safe-area-inset-bottom, 24px)) 12px;
+    background: rgba(3, 7, 18, 0.96);
+  }
+  .checkout-modal-card {
+    border-radius: 20px;
+    margin: 0 auto;
+  }
+  .checkout-modal-header {
+    padding: 16px 20px;
+  }
   .checkout-modal-body {
     grid-template-columns: 1fr;
-    gap: 22px;
-    padding: 20px 16px;
+    gap: 16px;
+    padding: 18px 16px 24px;
   }
-  .checkout-mobile-pay-btn {
-    display: block;
+  .checkout-qr-col {
+    padding: 14px;
+    border-radius: 14px;
   }
   .checkout-qr-img {
-    max-width: 240px;
+    max-width: 150px;
+  }
+  .checkout-mobile-pay-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 13px 16px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 10px;
+    margin: 8px 0;
   }
 }
 
 @media (max-width: 640px) {
+  /* Clean up crammed navbar */
+  .nav-actions .btn-secondary {
+    display: none !important; /* Hide secondary download in top bar; hero has prominent download button */
+  }
+  .nav-actions .btn-primary {
+    font-size: 12.5px !important;
+    padding: 7px 14px !important;
+  }
+  .brand-tagline {
+    display: none; /* Gives brand title breathing room */
+  }
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Hero pill alignment */
+  .hero-pill {
+    font-size: 12px;
+    padding: 6px 12px;
+    line-height: 1.35;
+  }
+  .hero-pill-pulse {
+    display: none; /* Avoid awkward double-bullet on wrapped lines */
+  }
+
+  /* Trust badges wrap cleanly in 2 columns */
+  .hero-no-catch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 12px;
+    font-size: 12px;
+    text-align: left;
+  }
   .hero-title {
     font-size: 30px;
     line-height: 1.18;
