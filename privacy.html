@@ -38,15 +38,15 @@
           <li>We do not record your screen, keystrokes, or background application activity.</li>
         </ul>
 
-        <h2>2. Information Collected During Purchase</h2>
-        <p>When you purchase a Pro license on our website (pauzos.com):</p>
+        <h2>2. Information Collected During Purchase & Licensing</h2>
+        <p>When you purchase a license or activate the application:</p>
         <ul>
-          <li><strong>Transaction Information:</strong> We collect your name, email address, and billing information to generate your license and receipt.</li>
-          <li><strong>Payment Processing:</strong> We do not store or process card numbers or UPI PINs directly. All transactions are securely handled by PCI-DSS compliant third-party payment gateways (such as Razorpay, Cashfree, or Stripe).</li>
+          <li><strong>Transaction Information:</strong> We collect your email address and 12-digit UPI Reference (UTR) number solely to verify payment credit and deliver your license credentials. We do not store banking passwords or UPI PINs.</li>
+          <li><strong>License Verification:</strong> To ensure single-device license compliance, the desktop application connects to our secure licensing database (Supabase) using a cryptographic hardware identifier (hash). No task contents, routines, or schedule details are ever transmitted during license checks.</li>
         </ul>
 
         <h2>3. Software Updates & Telemetry</h2>
-        <p>Pauzos includes an integrated version checker that queries our public GitHub release repository to see if a newer version is available. This query only checks the current version tag against the latest release and does not transmit any identifiable personal information.</p>
+        <p>Pauzos includes an integrated version checker that queries our public GitHub release repository to verify if a newer version is available. This query only checks the current version tag against the latest release and transmits zero identifiable personal task data.</p>
 
         <h2>4. Data Retention & Deletion</h2>
         <p>Because your routine data resides 100% on your machine, you have total control over it. Uninstalling Pauzos or deleting its local data directory completely removes all your records permanently.</p>
