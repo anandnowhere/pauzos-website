@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     stepCards.forEach(card => stepObserver.observe(card));
   }
 
-  // 3. Dual-Currency System (INR ₹249 vs USD $5.00)
+  // 3. Dual-Currency System with 100% Automatic Geolocation
   const CURRENCY_CONFIG = {
     INR: {
       code: 'INR',
@@ -177,9 +177,14 @@ document.addEventListener('DOMContentLoaded', () => {
       periodText: 'Introductory Price • Lifetime Access',
       cta: 'Get Instant Access for ₹249',
       heroCta: 'Or get lifetime access for ₹249 (One-Time) →',
+      heroTrust: 'One-Time ₹249 Lifetime Option (No SaaS Subscriptions)',
+      personaStrike: '₹999',
+      personaPrice: '₹249',
+      urgencyNote: '<span>⚡</span> <span><strong>Introductory Price:</strong> Early-adopter pricing is locked at ₹249 before standard price increases to ₹999. Includes all future updates forever.</span>',
       modalBtn: '⚡ Pay ₹249 via Razorpay',
       modalMethods: 'UPI (GPay, PhonePe, Paytm), Cards & NetBanking',
-      guaranteeNote: '<span>🇮🇳 1-Click UPI &amp; Cards via Razorpay</span> • <span>⚡ Instant Automated Verification</span> • <span>📥 Instant Lifetime Access</span>'
+      guaranteeNote: '<span>🇮🇳 1-Click UPI &amp; Cards via Razorpay</span> • <span>⚡ Instant Automated Verification</span> • <span>📥 Instant Lifetime Access</span>',
+      footerPricing: 'Pricing (₹249 Launch Offer)'
     },
     USD: {
       code: 'USD',
@@ -193,17 +198,20 @@ document.addEventListener('DOMContentLoaded', () => {
       periodText: 'Early Bird Price • Lifetime Access',
       cta: 'Get Instant Access for $5.00',
       heroCta: 'Or get lifetime access for $5.00 (One-Time) →',
+      heroTrust: 'One-Time $5.00 Lifetime Option (No SaaS Subscriptions)',
+      personaStrike: '$19.99',
+      personaPrice: '$5.00',
+      urgencyNote: '<span>⚡</span> <span><strong>Early Bird Price:</strong> Early-adopter pricing is locked at $5.00 before standard price increases to $19.99. Includes all future updates forever.</span>',
       modalBtn: '⚡ Pay $5.00 via Razorpay',
       modalMethods: 'International Credit & Debit Cards (Visa, MasterCard, Amex)',
-      guaranteeNote: '<span>💳 International Cards via Razorpay</span> • <span>🔒 256-Bit SSL Encrypted</span> • <span>📥 Instant Lifetime Access</span>'
+      guaranteeNote: '<span>💳 International Cards via Razorpay</span> • <span>🔒 256-Bit SSL Encrypted</span> • <span>📥 Instant Lifetime Access</span>',
+      footerPricing: 'Pricing ($5.00 Early Bird)'
     }
   };
 
-  let activeCurrency = 'INR';
+  let activeCurrency = 'USD'; // Safe international default
 
-  function detectInitialCurrency() {
-    const saved = localStorage.getItem('pauzos_currency');
-    if (saved && CURRENCY_CONFIG[saved]) return saved;
+  function detectClientCountry() {
     try {
       const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '').toLowerCase();
       if (tz.includes('calcutta') || tz.includes('kolkata')) {
@@ -220,20 +228,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.setCurrency = function(currCode) {
     if (!CURRENCY_CONFIG[currCode]) return;
     activeCurrency = currCode;
-    try { localStorage.setItem('pauzos_currency', currCode); } catch (e) {}
 
     const cfg = CURRENCY_CONFIG[currCode];
 
-    // 1. Update toggle button active states
-    document.querySelectorAll('.currency-btn').forEach(btn => {
-      if (btn.getAttribute('data-currency') === currCode) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
-    });
-
-    // 2. Update pricing display
+    // 1. Update pricing display
     const priceSymbolEl = document.getElementById('pricingCurrencySymbol');
     const priceNumEl = document.getElementById('pricingPriceNumber');
     const strikeAmountEl = document.getElementById('pricingStrikeAmount');
@@ -241,8 +239,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const introBadgeEl = document.getElementById('pricingIntroBadge');
     const periodTextEl = document.getElementById('pricingPeriodText');
     const ctaBtnEl = document.getElementById('pricingCtaBtn');
+    const urgencyNoteEl = document.getElementById('pricingUrgencyNote');
     const guaranteeNoteEl = document.getElementById('pricingGuaranteeNote');
     const heroSecondaryCtaEl = document.getElementById('heroSecondaryCta');
+    const heroTrustEl = document.getElementById('heroTrustPrice');
+    const personaStrikeEl = document.getElementById('personaStrikePrice');
+    const personaPriceEl = document.getElementById('personaPriceVal');
+    const footerPricingEl = document.getElementById('footerPricingLink');
 
     if (priceSymbolEl) priceSymbolEl.textContent = cfg.symbol;
     if (priceNumEl) priceNumEl.textContent = cfg.amount % 1 === 0 ? cfg.amount : cfg.amount.toFixed(2);
@@ -251,10 +254,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (introBadgeEl) introBadgeEl.textContent = cfg.introBadge;
     if (periodTextEl) periodTextEl.textContent = cfg.periodText;
     if (ctaBtnEl) ctaBtnEl.textContent = cfg.cta;
+    if (urgencyNoteEl) urgencyNoteEl.innerHTML = cfg.urgencyNote;
     if (guaranteeNoteEl) guaranteeNoteEl.innerHTML = cfg.guaranteeNote;
     if (heroSecondaryCtaEl) heroSecondaryCtaEl.textContent = cfg.heroCta;
+    if (heroTrustEl) heroTrustEl.textContent = cfg.heroTrust;
+    if (personaStrikeEl) personaStrikeEl.textContent = cfg.personaStrike;
+    if (personaPriceEl) personaPriceEl.textContent = cfg.personaPrice;
+    if (footerPricingEl) footerPricingEl.textContent = cfg.footerPricing;
 
-    // 3. Update modal texts
+    // 2. Update modal texts
     const modalBadge = document.getElementById('modalHeaderBadge');
     const modalStrike = document.getElementById('modalStrikePrice');
     const modalTotal = document.getElementById('modalTotalPrice');
@@ -274,18 +282,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Attach currency toggle listeners
-  document.querySelectorAll('.currency-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetCurr = btn.getAttribute('data-currency');
-      if (targetCurr) window.setCurrency(targetCurr);
-    });
-  });
-
-  // Initialize currency detection
-  activeCurrency = detectInitialCurrency();
+  // Instant local detection on page load (0ms latency)
+  activeCurrency = detectClientCountry();
   window.setCurrency(activeCurrency);
+
+  // Background IP lookup to verify true country with 100% accuracy
+  function verifyGeoLocationByIP() {
+    fetch('https://api.country.is/')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.country) {
+          const detected = (data.country === 'IN') ? 'INR' : 'USD';
+          if (detected !== activeCurrency) {
+            window.setCurrency(detected);
+          }
+        }
+      })
+      .catch(() => {
+        fetch('https://ipapi.co/json/')
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.country_code) {
+              const detected = (data.country_code === 'IN') ? 'INR' : 'USD';
+              if (detected !== activeCurrency) {
+                window.setCurrency(detected);
+              }
+            }
+          })
+          .catch(() => {});
+      });
+  }
+  verifyGeoLocationByIP();
 
   // 4. Checkout Modal Controls
   window.handleCheckout = function(productName = 'Personal Reminder Assistant') {

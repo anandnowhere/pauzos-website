@@ -15,7 +15,7 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="stylesheet" href="styles.css?v=20261101_rzp">
+  <link rel="stylesheet" href="styles.css?v=20261101_geo">
 
   <!-- Landing Page Conversion Styles -->
   <style>
@@ -264,10 +264,6 @@
       </ul>
 
       <div class="nav-actions">
-        <div class="currency-toggle-wrapper" id="navCurrencyToggle">
-          <button type="button" class="currency-btn active" data-currency="INR">🇮🇳 ₹ INR</button>
-          <button type="button" class="currency-btn" data-currency="USD">🌐 $ USD</button>
-        </div>
         <a href="download.html" class="btn btn-primary" style="font-size: 13.5px; padding: 9px 20px; white-space: nowrap; font-weight: 700;">
           📥 Download Free Trial
         </a>
@@ -324,7 +320,7 @@
           <span>🔒</span> All Routines &amp; Logs Stored 100% Locally
         </div>
         <div class="trust-item">
-          <span>🏷️</span> One-Time ₹249 Lifetime Option (No SaaS Subscriptions)
+          <span>🏷️</span> <span id="heroTrustPrice">One-Time ₹249 Lifetime Option (No SaaS Subscriptions)</span>
         </div>
       </div>
 
@@ -973,11 +969,11 @@
             <div>
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
                 <span style="font-size: 11px; font-weight: 700; color: #fbbf24; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); padding: 2px 8px; border-radius: 12px; text-transform: uppercase;">Introductory Offer</span>
-                <span style="font-size: 13px; color: #64748b; text-decoration: line-through;">₹999</span>
-                <span style="font-size: 11px; font-weight: 700; color: #34d399; background: rgba(16, 185, 129, 0.15); padding: 2px 6px; border-radius: 10px;">75% OFF</span>
+                <span style="font-size: 13px; color: #64748b; text-decoration: line-through;" id="personaStrikePrice">₹999</span>
+                <span style="font-size: 11px; font-weight: 700; color: #34d399; background: rgba(16, 185, 129, 0.15); padding: 2px 6px; border-radius: 10px;" id="personaDiscountPill">75% OFF</span>
               </div>
               <div style="font-size: 26px; font-weight: 800; color: #34d399;">
-                ₹249 <span style="font-size: 13px; font-weight: 500; color: var(--text-dim);">one-time lifetime access</span>
+                <span id="personaPriceVal">₹249</span> <span style="font-size: 13px; font-weight: 500; color: var(--text-dim);">one-time lifetime access</span>
               </div>
             </div>
             <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary">
@@ -1007,13 +1003,6 @@
         <span class="section-pill">Transparent Pricing</span>
         <h2 class="section-title">Simple One-Time Purchase</h2>
         <p class="section-subtitle">No monthly subscriptions or renewal fees. One payment unlocks lifetime access across all your devices.</p>
-        <div class="pricing-currency-toggle-box" style="margin-top: 20px;">
-          <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">Select Region:</span>
-          <div class="currency-toggle-wrapper" id="pricingCurrencyToggle">
-            <button type="button" class="currency-btn active" data-currency="INR">🇮🇳 India (₹249)</button>
-            <button type="button" class="currency-btn" data-currency="USD">🌐 International ($5.00)</button>
-          </div>
-        </div>
       </div>
 
       <div class="pricing-single-container">
@@ -1105,21 +1094,21 @@
         
         <div class="faq-item">
           <button class="faq-question">
-            <span>Why is the price ₹249, and will it increase later?</span>
+            <span>Why is the price discounted, and will it increase later?</span>
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            ₹249 is our exclusive <strong>Introductory Launch Offer</strong> (75% off the standard ₹999 price) dedicated to early adopters. If you purchase now during the introductory period, your lifetime license is permanently locked in — you will never be asked to pay more or renew, even when the standard price increases to ₹999.
+            This is our exclusive <strong>Early-Adopter Launch Offer</strong> (75% off standard pricing) dedicated to our first users. If you purchase now during this launch window, your lifetime license is permanently locked in — you will never be asked to pay more or renew, even when standard pricing takes effect.
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question">
-            <span>How do I receive the application after paying?</span>
+            <span>How do I receive the software and license after paying?</span>
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            Immediately after completing the ₹249 payment via your UPI app (Google Pay, PhonePe, Paytm, BHIM, or Cred), enter your email address and 12-digit UPI Reference (UTR) number on the checkout screen. Our automated bank listener verifies the credit within seconds and grants your lifetime access, delivering your download links and login credentials right to your screen and inbox.
+            Immediately upon completing your checkout via Razorpay (supporting 1-Click UPI, Credit/Debit Cards, and NetBanking), our automated licensing system activates your lifetime access within seconds. Your license credentials and direct download links are rendered immediately on screen and dispatched to your email inbox.
           </div>
         </div>
 
@@ -1329,7 +1318,7 @@
             <li><a href="#apps">Personal Reminder Assistant</a></li>
             <li><a href="#overview">Overview</a></li>
             <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing (₹249 Launch Offer)</a></li>
+            <li><a href="#pricing" id="footerPricingLink">Pricing (Launch Offer)</a></li>
           </ul>
         </div>
 
@@ -1392,7 +1381,7 @@
 
   <!-- Official Razorpay Checkout SDK -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  <script src="script.js?v=20261101_rzp"></script>
+  <script src="script.js?v=20261101_geo"></script>
   <script src="analytics.js?v=1.0.0"></script>
 
   <!-- Sticky Bar Scroll Trigger -->
