@@ -190,6 +190,24 @@
       color: #ffffff;
       border-color: var(--border-hover);
     }
+    .badge-store-soon {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      padding: 1.5px 6px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.18);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      line-height: 1.25;
+    }
+    .dl-btn-sub:hover .badge-store-soon {
+      background: rgba(59, 130, 246, 0.28);
+      border-color: rgba(59, 130, 246, 0.6);
+      color: #93c5fd;
+    }
     .corp-callout-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -433,9 +451,10 @@
           <a href="#download-windows-portable" onclick="triggerPauzosDownload('win-portable'); return false;" class="dl-btn dl-btn-green">
             🛡️ Download Portable (.exe)
           </a>
-          <div style="font-size: 11px; color: #34d399; text-align: center; margin-top: 5px; font-weight: 700;">
-            ✔ No Admin to Install • Office Safe
-          </div>
+          <!-- Microsoft Store (Portable) -->
+          <a href="javascript:void(0)" onclick="handleStoreClick('portable'); return false;" class="dl-btn-sub" style="margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 6px;" title="Coming soon to Microsoft Store">
+            <span>🪟</span> Also on Microsoft Store <span class="badge-store-soon">Coming Soon</span>
+          </a>
         </div>
       </div>
 
@@ -460,9 +479,9 @@
           <a href="#download-windows-setup" onclick="triggerPauzosDownload('win-setup'); return false;" class="dl-btn">
             ⚡ Download Personal Setup (.exe)
           </a>
-          <!-- Microsoft Store alternative -->
-          <a href="https://apps.microsoft.com/store/detail/personal-reminder-assistant" target="_blank" rel="noopener" class="dl-btn-sub" style="margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 6px;">
-            <span>🪟</span> Also on Microsoft Store <span style="font-size: 10px; opacity: 0.6;">(no SmartScreen)</span>
+          <!-- Microsoft Store (Personal Setup) -->
+          <a href="javascript:void(0)" onclick="handleStoreClick('setup'); return false;" class="dl-btn-sub" style="margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 6px;" title="Coming soon to Microsoft Store">
+            <span>🪟</span> Also on Microsoft Store <span class="badge-store-soon">Coming Soon</span>
           </a>
         </div>
       </div>
@@ -817,6 +836,16 @@
     </div>
   </div>
 
+  <!-- Microsoft Store Coming Soon Toast Notification -->
+  <div id="storeNotification" style="display: none; position: fixed; bottom: 24px; right: 24px; background: #0f172a; border: 1px solid #3b82f6; border-radius: 14px; padding: 14px 18px; box-shadow: 0 15px 40px rgba(0,0,0,0.85); z-index: 99999; color: #fff; font-size: 13px; align-items: flex-start; gap: 12px; max-width: 380px;">
+    <span style="font-size: 24px; line-height: 1;">🪟</span>
+    <div style="flex: 1;">
+      <div style="font-weight: 700; color: #60a5fa; margin-bottom: 3px;" id="storeNotifTitle">Microsoft Store — In Certification</div>
+      <div style="font-size: 12px; color: #cbd5e1; line-height: 1.5;" id="storeNotifDesc">The Microsoft Store edition is coming soon. Please download the direct standalone edition above to get started immediately!</div>
+    </div>
+    <button onclick="document.getElementById('storeNotification').style.display='none'" style="background: none; border: none; color: #94a3b8; font-size: 16px; cursor: pointer; padding: 0 2px; line-height: 1;" title="Dismiss">✕</button>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container" style="text-align: center; padding: 40px 0 20px; font-size: 12px; color: var(--text-dim);">
@@ -865,7 +894,52 @@
       setTimeout(() => { iframe.remove(); }, 60000);
     }
 
+    // MICROSOFT STORE CONFIGURATION
+    // Once listed & live on Microsoft Store, set isListed to true and paste the official store URLs below:
+    const MICROSOFT_STORE_CONFIG = {
+      isListed: false, // Set to true once approved by Microsoft
+      portableUrl: 'https://apps.microsoft.com/detail/personal-reminder-assistant',
+      setupUrl: 'https://apps.microsoft.com/detail/personal-reminder-assistant'
+    };
+
+    function handleStoreClick(type) {
+      if (MICROSOFT_STORE_CONFIG.isListed) {
+        const targetUrl = type === 'portable'
+          ? (MICROSOFT_STORE_CONFIG.portableUrl || MICROSOFT_STORE_CONFIG.setupUrl)
+          : MICROSOFT_STORE_CONFIG.setupUrl;
+        if (targetUrl) {
+          window.open(targetUrl, '_blank', 'noopener');
+          return;
+        }
+      }
+      showStoreComingSoonToast(type);
+    }
+
+    function showStoreComingSoonToast(type) {
+      const dlToast = document.getElementById('dlNotification');
+      if (dlToast) dlToast.style.display = 'none';
+
+      const toast = document.getElementById('storeNotification');
+      const title = document.getElementById('storeNotifTitle');
+      const desc = document.getElementById('storeNotifDesc');
+      const editionName = type === 'portable' ? 'Windows Office Portable' : 'Windows Personal Setup';
+
+      if (toast && title && desc) {
+        title.textContent = `Microsoft Store — In Certification`;
+        desc.textContent = `The official Microsoft Store edition for ${editionName} is currently undergoing review and coming soon. In the meantime, you can download the direct standalone edition above immediately!`;
+        toast.style.display = 'flex';
+
+        if (window.storeToastTimer) clearTimeout(window.storeToastTimer);
+        window.storeToastTimer = setTimeout(() => {
+          toast.style.display = 'none';
+        }, 7000);
+      }
+    }
+
     function showDownloadToast(fileName) {
+      const storeToast = document.getElementById('storeNotification');
+      if (storeToast) storeToast.style.display = 'none';
+
       const toast = document.getElementById('dlNotification');
       const desc = document.getElementById('dlNotifDesc');
       if (toast && desc) {
