@@ -15,7 +15,7 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="stylesheet" href="styles.css?v=20261027_2">
+  <link rel="stylesheet" href="styles.css?v=20261101_rzp">
 
   <!-- Landing Page Conversion Styles -->
   <style>
@@ -264,6 +264,10 @@
       </ul>
 
       <div class="nav-actions">
+        <div class="currency-toggle-wrapper" id="navCurrencyToggle">
+          <button type="button" class="currency-btn active" data-currency="INR">🇮🇳 ₹ INR</button>
+          <button type="button" class="currency-btn" data-currency="USD">🌐 $ USD</button>
+        </div>
         <a href="download.html" class="btn btn-primary" style="font-size: 13.5px; padding: 9px 20px; white-space: nowrap; font-weight: 700;">
           📥 Download Free Trial
         </a>
@@ -298,7 +302,7 @@
             <span>▶️</span> Watch 30-Second Demo
           </a>
           <span style="opacity: 0.4;">•</span>
-          <a href="#pricing" style="color: #cbd5e1; text-decoration: none;">
+          <a href="#pricing" style="color: #cbd5e1; text-decoration: none;" id="heroSecondaryCta" onclick="handleCheckout('Personal Reminder Assistant'); return false;">
             Or get lifetime access for ₹249 (One-Time) →
           </a>
         </div>
@@ -1003,6 +1007,13 @@
         <span class="section-pill">Transparent Pricing</span>
         <h2 class="section-title">Simple One-Time Purchase</h2>
         <p class="section-subtitle">No monthly subscriptions or renewal fees. One payment unlocks lifetime access across all your devices.</p>
+        <div class="pricing-currency-toggle-box" style="margin-top: 20px;">
+          <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">Select Region:</span>
+          <div class="currency-toggle-wrapper" id="pricingCurrencyToggle">
+            <button type="button" class="currency-btn active" data-currency="INR">🇮🇳 India (₹249)</button>
+            <button type="button" class="currency-btn" data-currency="USD">🌐 International ($5.00)</button>
+          </div>
+        </div>
       </div>
 
       <div class="pricing-single-container">
@@ -1011,7 +1022,7 @@
           <div class="pricing-header-row">
             <div class="pricing-plan-info">
               <div class="pricing-badge-row">
-                <span class="introductory-badge">🎉 Introductory Launch Offer</span>
+                <span class="introductory-badge" id="pricingIntroBadge">🎉 Introductory Launch Offer</span>
                 <span class="pricing-pill-badge">LIFETIME ACCESS</span>
               </div>
               <h3 class="pricing-plan-title">Personal Reminder Assistant</h3>
@@ -1021,14 +1032,14 @@
             <div class="pricing-price-display">
               <div class="pricing-original-strike">
                 <span>Regular:</span>
-                <span class="pricing-strike-amount">₹999</span>
-                <span class="discount-pill">75% OFF</span>
+                <span class="pricing-strike-amount" id="pricingStrikeAmount">₹999</span>
+                <span class="discount-pill" id="pricingDiscountPill">75% OFF</span>
               </div>
               <div class="pricing-price-val">
-                <span class="price-currency">₹</span>
-                <span class="price-number">249</span>
+                <span class="price-currency" id="pricingCurrencySymbol">₹</span>
+                <span class="price-number" id="pricingPriceNumber">249</span>
               </div>
-              <div class="price-period">Introductory Price • Lifetime Access</div>
+              <div class="price-period" id="pricingPeriodText">Introductory Price • Lifetime Access</div>
             </div>
           </div>
 
@@ -1055,24 +1066,24 @@
             </li>
             <li>
               <span class="check-icon">✓</span>
-              <span><strong>Instant Activation:</strong> Automated bank sync & immediate download delivery.</span>
+              <span><strong>Instant Activation:</strong> Automated license provisioning & immediate download delivery.</span>
             </li>
           </ul>
 
           <div class="pricing-cta-box">
-            <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary btn-full btn-lg">
+            <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary btn-full btn-lg" id="pricingCtaBtn">
               Get Instant Access for ₹249
             </button>
           </div>
 
-          <div class="pricing-urgency-note">
+          <div class="pricing-urgency-note" id="pricingUrgencyNote">
             <span>⚡</span>
             <span><strong>Introductory Price:</strong> Early-adopter pricing is locked at ₹249 before standard price increases to ₹999. Includes all future updates forever.</span>
           </div>
 
-          <div class="pricing-guarantee-note">
-            <span>🇮🇳 Direct Indian UPI (Zero Gateway Fees)</span> • 
-            <span>⚡ Automated Reference (UTR) Verification</span> • 
+          <div class="pricing-guarantee-note" id="pricingGuaranteeNote">
+            <span>🇮🇳 1-Click UPI &amp; Cards via Razorpay</span> • 
+            <span>⚡ Instant Automated Verification</span> • 
             <span>📥 Instant Lifetime Access</span>
           </div>
 
@@ -1151,30 +1162,46 @@
     <div class="checkout-modal-card">
       <div class="checkout-modal-header">
         <div class="checkout-modal-title">
-          <span>⚡ Instant UPI Checkout</span>
-          <span style="font-size: 12.5px; font-weight: 700; color: #fbbf24; background: rgba(245, 158, 11, 0.15); padding: 3px 12px; border-radius: 20px; border: 1px solid rgba(245, 158, 11, 0.3);">Launch Offer • ₹249</span>
+          <span>⚡ Secure 1-Click Checkout</span>
+          <span id="modalHeaderBadge" style="font-size: 12.5px; font-weight: 700; color: #fbbf24; background: rgba(245, 158, 11, 0.15); padding: 3px 12px; border-radius: 20px; border: 1px solid rgba(245, 158, 11, 0.3);">Launch Offer • ₹249</span>
         </div>
         <button onclick="closeModal()" class="checkout-modal-close" aria-label="Close modal">✕</button>
       </div>
 
       <div class="checkout-modal-body">
-        <!-- Left Column: Sleek UI-Matched QR Card -->
+        <!-- Left Column: Order Summary & Trust Card -->
         <div class="checkout-qr-col">
-          <img src="assets/pauzos_upi_qr.png?v=20261027c" alt="Scan to pay with UPI" class="checkout-qr-img">
-          
-          <div class="checkout-vpa-pill">
-            <span style="color: #94a3b8; font-size: 11px;">UPI ID:</span>
-            <span style="font-weight: 600; color: #f8fafc;">anandnowhere-2@okaxis</span>
-            <button type="button" id="btnCopyUpi" onclick="copyUpiId()" class="checkout-copy-btn">Copy</button>
-          </div>
+          <div style="width: 100%; text-align: left; padding: 4px 6px;">
+            <div style="font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #60a5fa; font-weight: 700; margin-bottom: 4px;">License Summary</div>
+            <h4 style="font-size: 17px; font-weight: 700; color: #f8fafc; margin-bottom: 2px;">Personal Reminder Assistant</h4>
+            <div style="font-size: 12.5px; color: #94a3b8; margin-bottom: 14px;">Pro Lifetime License (2 Workstations)</div>
 
-          <!-- Mobile Deep Link Button -->
-          <a href="upi://pay?pa=anandnowhere-2@okaxis&pn=Pauzos%20Software&am=249.00&cu=INR&aid=uGICAgIDAp6XKeQ" class="checkout-mobile-pay-btn">
-            📱 Tap to Pay ₹249 on UPI App
-          </a>
+            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 14px; margin-bottom: 16px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 13px; color: #94a3b8;">License Tier:</span>
+                <span style="font-size: 13px; font-weight: 600; color: #f8fafc;">Lifetime Access</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 13px; color: #94a3b8;">Regular Price:</span>
+                <span style="font-size: 13px; color: #64748b; text-decoration: line-through;" id="modalStrikePrice">₹999</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                <span style="font-size: 14px; font-weight: 700; color: #f8fafc;">Total Today:</span>
+                <span style="font-size: 20px; font-weight: 800; color: #38bdf8;" id="modalTotalPrice">₹249</span>
+              </div>
+            </div>
 
-          <div style="font-size: 11.5px; color: #64748b; line-height: 1.4;">
-            Scan with <strong>Google Pay, PhonePe, Paytm, BHIM</strong>, or any UPI app.
+            <ul style="list-style: none; padding: 0; margin: 0 0 16px 0; font-size: 12px; color: #94a3b8; line-height: 1.8;">
+              <li><span style="color: #34d399; margin-right: 6px;">✓</span> Windows, macOS &amp; Linux</li>
+              <li><span style="color: #34d399; margin-right: 6px;">✓</span> All future software updates included</li>
+              <li><span style="color: #34d399; margin-right: 6px;">✓</span> 100% offline local task privacy</li>
+              <li><span style="color: #34d399; margin-right: 6px;">✓</span> Instant automated license activation</li>
+            </ul>
+
+            <div style="display: flex; align-items: center; gap: 8px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.06); font-size: 11px; color: #64748b;">
+              <span style="color: #10b981; font-size: 14px;">🛡️</span>
+              <span>Secured by <strong>Razorpay</strong> • PCI-DSS Certified</span>
+            </div>
           </div>
         </div>
 
@@ -1183,40 +1210,63 @@
           
           <!-- State 1: Input Form -->
           <div id="checkoutFormState">
-            <div style="margin-bottom: 20px;">
-              <h4 style="font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 6px;">Activate Your License</h4>
+            <div style="margin-bottom: 18px;">
+              <h4 style="font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Activate Your License</h4>
               <p style="font-size: 13px; color: #94a3b8; line-height: 1.5;">
-                After completing the ₹249 payment in your UPI app, enter your details below for instant verification:
+                Enter your email address. Your license key and workstation credentials will be issued to this email:
               </p>
             </div>
 
             <div class="checkout-field-group">
-              <label for="checkoutEmail" class="checkout-label">1. Your Email Address *</label>
+              <label for="checkoutEmail" class="checkout-label">Your Email Address *</label>
               <input type="email" id="checkoutEmail" class="checkout-input" placeholder="name@example.com" required autocomplete="email">
-              <div class="checkout-helper">Your license key and login password will be delivered here.</div>
-            </div>
-
-            <div class="checkout-field-group">
-              <label for="checkoutUtr" class="checkout-label">2. 12-Digit UPI Reference (UTR) *</label>
-              <input type="text" id="checkoutUtr" class="checkout-input" placeholder="e.g. 429618294102" maxlength="12" pattern="\d{12}" required>
-              <div class="checkout-helper">Found on your UPI confirmation screen or bank SMS alert.</div>
+              <div class="checkout-helper">Used to issue your Pro workstation license key.</div>
             </div>
 
             <div id="checkoutStatusMsg" class="checkout-status-msg"></div>
 
-            <button type="button" id="btnVerifyUpi" onclick="verifyAndActivateLicense()" class="btn btn-primary btn-full btn-lg" style="margin-bottom: 8px; width: 100%;">
-              ⚡ Verify Payment & Activate (₹249)
+            <button type="button" id="btnRazorpayPay" onclick="startRazorpayPayment()" class="btn-razorpay-primary">
+              ⚡ Pay ₹249 via Razorpay
             </button>
+            <div style="text-align: center; font-size: 12px; color: #64748b; margin-top: 8px;" id="razorpayPaymentMethodsText">
+              UPI (GPay, PhonePe, Paytm), Cards &amp; NetBanking
+            </div>
+
+            <!-- Optional Manual UPI fallback for Indian users -->
+            <div id="manualUpiOption" class="checkout-manual-accordion">
+              <button type="button" onclick="toggleManualUpi()" class="checkout-manual-toggle">
+                Or pay via Direct UPI QR / 12-Digit UTR ➔
+              </button>
+              <div id="manualUpiBox" style="display: none; margin-top: 14px; text-align: left;">
+                <div style="display: flex; gap: 14px; align-items: center; margin-bottom: 12px; background: rgba(255,255,255,0.02); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                  <img src="assets/pauzos_upi_qr.png?v=20261027c" alt="Scan UPI QR" style="width: 85px; height: 85px; border-radius: 8px; background: white; padding: 4px;">
+                  <div style="font-size: 12px; color: #94a3b8;">
+                    <div>Scan with GPay, PhonePe, Paytm:</div>
+                    <div style="font-weight: 600; color: #f8fafc; margin: 4px 0;">anandnowhere-2@okaxis</div>
+                    <button type="button" id="btnCopyUpi" onclick="copyUpiId()" class="checkout-copy-btn" style="padding: 3px 8px; font-size: 11px;">Copy UPI ID</button>
+                  </div>
+                </div>
+                <div class="checkout-field-group">
+                  <label for="checkoutUtr" class="checkout-label">12-Digit UPI Reference (UTR)</label>
+                  <input type="text" id="checkoutUtr" class="checkout-input" placeholder="e.g. 429618294102" maxlength="12">
+                </div>
+                <button type="button" id="btnVerifyUpi" onclick="verifyAndActivateLicense()" class="btn btn-secondary btn-full" style="font-size: 13px; padding: 10px;">
+                  Verify UPI Reference (₹249)
+                </button>
+              </div>
+            </div>
+
           </div>
 
           <!-- State 2: Success State -->
           <div id="checkoutSuccessState" style="display: none; text-align: center; padding: 10px 0;">
             <div style="font-size: 48px; margin-bottom: 12px;">🎉</div>
-            <h4 style="font-size: 22px; font-weight: 800; color: #34d399; margin-bottom: 8px;">Payment Verified!</h4>
-            <p style="font-size: 13.5px; color: #e2e8f0; line-height: 1.6; margin-bottom: 18px;">
+            <h4 style="font-size: 22px; font-weight: 800; color: #34d399; margin-bottom: 8px;">Payment Verified &amp; Activated!</h4>
+            <p style="font-size: 13.5px; color: #e2e8f0; line-height: 1.6; margin-bottom: 14px;">
               Your lifetime license has been activated for:<br>
               <strong id="confirmedEmail" style="color: #60a5fa; font-size: 15px;"></strong>
             </p>
+            <div id="confirmedPaymentRef" style="font-size: 12px; color: #94a3b8; margin-bottom: 16px; font-family: monospace;"></div>
 
             <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; padding: 16px; margin-bottom: 22px; text-align: left; font-size: 13px; color: #94a3b8; line-height: 1.6;">
               <div style="color: #34d399; font-weight: 700; margin-bottom: 6px;">Next Steps:</div>
@@ -1340,7 +1390,9 @@
     </div>
   </div>
 
-  <script src="script.js?v=20261027_2"></script>
+  <!-- Official Razorpay Checkout SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="script.js?v=20261101_rzp"></script>
   <script src="analytics.js?v=1.0.0"></script>
 
   <!-- Sticky Bar Scroll Trigger -->

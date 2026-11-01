@@ -6,5 +6,31 @@
   "discountPercent": "75%",
   "offerLabel": "Launch Offer",
   "checkoutUrl": "https://pauzos.com/#checkout",
-  "updatedAt": "2026-10-24"
+  "updatedAt": "2026-11-01",
+  "currencies": {
+    "INR": {
+      "symbol": "₹",
+      "code": "INR",
+      "amount": 249,
+      "amountSubunit": 24900,
+      "formatted": "₹249",
+      "standard": "₹999",
+      "discount": "75% OFF",
+      "label": "Launch Offer • ₹249",
+      "cta": "Get Instant Access for ₹249",
+      "heroCta": "Or get lifetime access for ₹249 (One-Time) →"
+    },
+    "USD": {
+      "symbol": "$",
+      "code": "USD",
+      "amount": 5.00,
+      "amountSubunit": 500,
+      "formatted": "$5.00",
+      "standard": "$19.99",
+      "discount": "75% OFF",
+      "label": "Early Bird • $5.00",
+      "cta": "Get Instant Access for $5.00",
+      "heroCta": "Or get lifetime access for $5.00 (One-Time) →"
+    }
+  }
 }
