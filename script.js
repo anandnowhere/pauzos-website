@@ -268,18 +268,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTotal = document.getElementById('modalTotalPrice');
     const modalBtn = document.getElementById('btnRazorpayPay');
     const modalMethods = document.getElementById('razorpayPaymentMethodsText');
-    const manualUpiOption = document.getElementById('manualUpiOption');
 
     if (modalBadge) modalBadge.textContent = cfg.badge;
     if (modalStrike) modalStrike.textContent = cfg.strike;
     if (modalTotal) modalTotal.textContent = `${cfg.symbol}${cfg.amount % 1 === 0 ? cfg.amount : cfg.amount.toFixed(2)}`;
     if (modalBtn) modalBtn.textContent = cfg.modalBtn;
     if (modalMethods) modalMethods.textContent = cfg.modalMethods;
-
-    // Manual UPI fallback is only relevant for Indian INR buyers
-    if (manualUpiOption) {
-      manualUpiOption.style.display = currCode === 'INR' ? 'block' : 'none';
-    }
   };
 
   // Instant local detection on page load (0ms latency)
@@ -340,7 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutModal) {
       checkoutModal.style.display = 'none';
       document.body.style.overflow = '';
-      if (verifyPollTimer) clearTimeout(verifyPollTimer);
     }
   };
 
@@ -352,13 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  window.toggleManualUpi = function() {
-    const box = document.getElementById('manualUpiBox');
-    if (box) {
-      box.style.display = box.style.display === 'none' ? 'block' : 'none';
-    }
-  };
 
   // 5. Razorpay 1-Click Checkout Engine
   const RAZORPAY_KEY_ID = 'rzp_live_TuwuL0RwHNqU5z';
@@ -484,122 +470,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (successState) successState.style.display = 'block';
     }, 800);
   }
-
-  // 6. Direct UPI Clipboard Copy & Manual Fallback Verification
-  window.copyUpiId = function() {
-    const upiId = 'anandnowhere-2@okaxis';
-    navigator.clipboard.writeText(upiId).then(() => {
-      const btn = document.getElementById('btnCopyUpi');
-      if (btn) {
-        btn.textContent = 'Copied!';
-        setTimeout(() => { btn.textContent = 'Copy UPI ID'; }, 2000);
-      }
-    }).catch(() => {
-      prompt('Copy UPI ID:', upiId);
-    });
-  };
-
-  let verifyPollTimer = null;
-
-  window.verifyAndActivateLicense = async function(retryCount = 0) {
-    const emailInput = document.getElementById('checkoutEmail');
-    const utrInput = document.getElementById('checkoutUtr');
-    const verifyBtn = document.getElementById('btnVerifyUpi');
-
-    const email = (emailInput?.value || '').trim().toLowerCase();
-    const utr = (utrInput?.value || '').trim();
-
-    if (!email || !email.includes('@') || !email.includes('.')) {
-      showStatus('Please enter a valid email address.', '#ef4444', '#7f1d1d');
-      emailInput?.focus();
-      return;
-    }
-
-    if (!utr || !/^\d{12}$/.test(utr)) {
-      showStatus('Please enter a valid 12-digit UPI Reference / UTR Number.', '#ef4444', '#7f1d1d');
-      utrInput?.focus();
-      return;
-    }
-
-    if (verifyBtn) {
-      verifyBtn.disabled = true;
-      verifyBtn.textContent = retryCount > 0 ? `Syncing bank record (${retryCount}/3)...` : 'Verifying transaction...';
-    }
-    showStatus('Checking reference with bank records...', '#38bdf8', '#0369a1');
-
-    try {
-      const rpcRes = await fetch(`${SUPABASE_URL}/rest/v1/rpc/claim_upi_payment`, {
-        method: 'POST',
-        headers: {
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          p_email: email,
-          p_utr: utr,
-          p_min_amount: 249.00
-        })
-      });
-
-      const result = await rpcRes.json();
-
-      if (result.success) {
-        showStatus('License activated! Sending your access code...', '#34d399', '#065f46');
-        try {
-          await fetch(`${SUPABASE_URL}/auth/v1/recover`, {
-            method: 'POST',
-            headers: {
-              'apikey': SUPABASE_ANON_KEY,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email: email })
-          });
-        } catch (e) {}
-
-        setTimeout(() => {
-          const formState = document.getElementById('checkoutFormState');
-          const successState = document.getElementById('checkoutSuccessState');
-          const confirmedEmail = document.getElementById('confirmedEmail');
-          const paymentRef = document.getElementById('confirmedPaymentRef');
-          if (confirmedEmail) confirmedEmail.textContent = email;
-          if (paymentRef) paymentRef.textContent = `UPI Reference: ${utr}`;
-          if (formState) formState.style.display = 'none';
-          if (successState) successState.style.display = 'block';
-        }, 1000);
-        return;
-      }
-
-      if (result.error && result.error.includes('already been redeemed')) {
-        showStatus(result.error, '#ef4444', '#7f1d1d');
-        if (verifyBtn) {
-          verifyBtn.disabled = false;
-          verifyBtn.textContent = 'Verify UPI Reference (₹249)';
-        }
-        return;
-      }
-
-      if (retryCount < 2) {
-        showStatus(`Bank sync in progress. Auto-checking again in 10s (${retryCount + 1}/2)...`, '#f59e0b', '#78350f');
-        clearTimeout(verifyPollTimer);
-        verifyPollTimer = setTimeout(() => {
-          window.verifyAndActivateLicense(retryCount + 1);
-        }, 10000);
-      } else {
-        showStatus(result.error || 'Transaction not found yet. Please wait a moment and try again.', '#f59e0b', '#78350f');
-        if (verifyBtn) {
-          verifyBtn.disabled = false;
-          verifyBtn.textContent = 'Verify UPI Reference (₹249)';
-        }
-      }
-    } catch (err) {
-      showStatus('Network connection error. Please try again.', '#ef4444', '#7f1d1d');
-      if (verifyBtn) {
-        verifyBtn.disabled = false;
-        verifyBtn.textContent = 'Verify UPI Reference (₹249)';
-      }
-    }
-  };
 
   function showStatus(text, textColor, bgColor) {
     const statusMsg = document.getElementById('checkoutStatusMsg');

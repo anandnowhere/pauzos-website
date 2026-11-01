@@ -1220,31 +1220,6 @@
             <div style="text-align: center; font-size: 12px; color: #64748b; margin-top: 8px;" id="razorpayPaymentMethodsText">
               UPI (GPay, PhonePe, Paytm), Cards &amp; NetBanking
             </div>
-
-            <!-- Optional Manual UPI fallback for Indian users -->
-            <div id="manualUpiOption" class="checkout-manual-accordion">
-              <button type="button" onclick="toggleManualUpi()" class="checkout-manual-toggle">
-                Or pay via Direct UPI QR / 12-Digit UTR ➔
-              </button>
-              <div id="manualUpiBox" style="display: none; margin-top: 14px; text-align: left;">
-                <div style="display: flex; gap: 14px; align-items: center; margin-bottom: 12px; background: rgba(255,255,255,0.02); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
-                  <img src="assets/pauzos_upi_qr.png?v=20261027c" alt="Scan UPI QR" style="width: 85px; height: 85px; border-radius: 8px; background: white; padding: 4px;">
-                  <div style="font-size: 12px; color: #94a3b8;">
-                    <div>Scan with GPay, PhonePe, Paytm:</div>
-                    <div style="font-weight: 600; color: #f8fafc; margin: 4px 0;">anandnowhere-2@okaxis</div>
-                    <button type="button" id="btnCopyUpi" onclick="copyUpiId()" class="checkout-copy-btn" style="padding: 3px 8px; font-size: 11px;">Copy UPI ID</button>
-                  </div>
-                </div>
-                <div class="checkout-field-group">
-                  <label for="checkoutUtr" class="checkout-label">12-Digit UPI Reference (UTR)</label>
-                  <input type="text" id="checkoutUtr" class="checkout-input" placeholder="e.g. 429618294102" maxlength="12">
-                </div>
-                <button type="button" id="btnVerifyUpi" onclick="verifyAndActivateLicense()" class="btn btn-secondary btn-full" style="font-size: 13px; padding: 10px;">
-                  Verify UPI Reference (₹249)
-                </button>
-              </div>
-            </div>
-
           </div>
 
           <!-- State 2: Success State -->
