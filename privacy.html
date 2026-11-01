@@ -24,38 +24,40 @@
     <div class="legal-container">
       <div class="legal-header">
         <h1 class="legal-title">Privacy Policy</h1>
-        <div class="legal-meta">Last Updated: October 23, 2026 • Effective Date: October 23, 2026</div>
+        <div class="legal-meta">Last Updated: November 1, 2026 • Effective Date: November 1, 2026</div>
       </div>
 
       <div class="legal-content">
-        <p>At <strong>Pauzos</strong> (referred to as "we", "our", or "us", operated under Stratexa), your privacy is our foundational principle. We build desktop productivity software engineered to keep your data strictly on your personal device.</p>
+        <p>At <strong>Pauzos</strong> (pauzos.com), owned and operated by <strong>STRATEXA</strong> (Proprietorship), your personal and workstation privacy is our core architectural foundation. We develop offline-first workstation software engineered specifically to ensure your daily routines and task records never leave your local hard drive.</p>
 
         <h2>1. Information We Do NOT Collect</h2>
-        <p>Unlike cloud productivity apps, Pauzos is an <strong>offline-first local application</strong>:</p>
+        <p>Unlike cloud software and web trackers, Pauzos is strictly an <strong>offline-first local application</strong>:</p>
         <ul>
-          <li>We do <strong>not</strong> collect, upload, or sync your daily routines, tasks, calendar data, or personal notes to any cloud server.</li>
-          <li>Your application data is stored exclusively in a local SQLite database or encrypted file on your local computer hard drive.</li>
-          <li>We do not record your screen, keystrokes, or background application activity.</li>
+          <li>We do <strong>not</strong> collect, upload, or sync your daily routines, tasks, calendar reminders, compliance logs, or personal notes to any cloud server.</li>
+          <li>Your application data is stored locally in an encrypted JSON or SQLite file located strictly within your computer's user directory.</li>
+          <li>We never record your screen, log your keystrokes, or monitor background application processes.</li>
         </ul>
 
-        <h2>2. Information Collected During Purchase & Licensing</h2>
-        <p>When you purchase a license or activate the application:</p>
+        <h2>2. Information Collected During Purchase & Payment Processing</h2>
+        <p>When you purchase a Pauzos Pro Lifetime License:</p>
         <ul>
-          <li><strong>Transaction Information:</strong> We collect your email address and 12-digit UPI Reference (UTR) number solely to verify payment credit and deliver your license credentials. We do not store banking passwords or UPI PINs.</li>
-          <li><strong>License Verification:</strong> To ensure single-device license compliance, the desktop application connects to our secure licensing database (Supabase) using a cryptographic hardware identifier (hash). No task contents, routines, or schedule details are ever transmitted during license checks.</li>
+          <li><strong>Transaction Information:</strong> We collect your email address and transaction reference (such as the 12-digit UPI UTR number or Gateway Order ID) solely to verify payment settlement and dispatch your activation credentials.</li>
+          <li><strong>Payment Processing Safety:</strong> All online payments are handled directly by PCI-DSS compliant and RBI-authorized payment gateway partners. <strong>STRATEXA does not capture, store, or have access to your credit/debit card numbers, CVVs, net banking credentials, or UPI PINs.</strong></li>
+          <li><strong>Hardware Fingerprinting:</strong> To enforce our 2-device concurrent seat policy, the application verifies activation using a one-way SHA-256 cryptographic hardware hash (derived from host architecture and network interface). This token contains zero readable personal files, documents, or names.</li>
         </ul>
 
         <h2>3. Software Updates & Telemetry</h2>
-        <p>Pauzos includes an integrated version checker that queries our public GitHub release repository to verify if a newer version is available. This query only checks the current version tag against the latest release and transmits zero identifiable personal task data.</p>
+        <p>Pauzos contains an automated version checker querying our public GitHub release repository to verify whether an update is available. This check transmits only the current version string and client OS type. No user routine data or telemetry is attached.</p>
 
         <h2>4. Data Retention & Deletion</h2>
-        <p>Because your routine data resides 100% on your machine, you have total control over it. Uninstalling Pauzos or deleting its local data directory completely removes all your records permanently.</p>
+        <p>Because your reminder and schedule database resides 100% on your local workstation, you maintain complete data sovereignty. Deleting the application or removing its local configuration directory permanently erases all your task records.</p>
 
-        <h2>5. Contact Information</h2>
-        <p>If you have any questions or concerns regarding our privacy practices, please contact us at:</p>
+        <h2>5. Operating Entity & Inquiries</h2>
+        <p>For questions or privacy inquiries regarding Pauzos, please contact our data desk:</p>
         <ul>
-          <li>Email: <a href="mailto:support@pauzos.com" style="color: #60a5fa;">support@pauzos.com</a></li>
-          <li>Business Name: Pauzos (Stratexa)</li>
+          <li><strong>Entity Name:</strong> STRATEXA (Proprietorship)</li>
+          <li><strong>Registered Office:</strong> 7, Pilliyar Koil Street, Soniya Gandhi Nagar, Kombakkam, Puducherry - 605110, India</li>
+          <li><strong>Email:</strong> <a href="mailto:support@pauzos.com" style="color: #60a5fa;">support@pauzos.com</a> | <a href="mailto:hello@stratexa.in" style="color: #60a5fa;">hello@stratexa.in</a></li>
         </ul>
       </div>
     </div>
@@ -75,8 +77,9 @@
         </a>
       </div>
       <div class="footer-legal-links">
-        <a href="privacy.html">Privacy</a>
+        <a href="privacy.html" style="color: var(--text-main);">Privacy</a>
         <a href="terms.html">Terms</a>
+        <a href="refund.html">Refund Policy</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>

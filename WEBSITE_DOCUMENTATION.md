@@ -16,8 +16,9 @@
 | `download/index.html` | Canonical directory route serving the identical OS download experience for visitors navigating to `pauzos.com/download/`. |
 | `pricing.json` | Source of truth for live pricing (₹249 introductory / ₹999 standard, currency, and strike-through amounts), synchronized dynamically across all buttons on page load. |
 | `contact.html` | Support request form and direct contact details (`hello@stratexa.in`). |
-| `privacy.html` | Comprehensive privacy statement: 100% local task storage, zero routine tracking, and transparent disclosure of Supabase hardware-hash licensing and UPI UTR payment verification. |
-| `terms.html` | Software license agreement, 2-device concurrent activation rules, and refund policy. |
+| `privacy.html` | Comprehensive privacy statement: 100% local task storage, zero routine tracking, and transparent disclosure of Supabase hardware-hash licensing and PCI-DSS / RBI-compliant payment gateway processing. |
+| `terms.html` | Software license agreement, 2-device concurrent activation rules, pricing terms, and merchant legal entity disclosure (STRATEXA). |
+| `refund.html` | Dedicated Cancellation & Refund Policy: Clear 3-day unrestricted free trial disclosure, non-refundable paid digital license terms, cancellation rules, and 5-7 business day reversal protocol for duplicate deductions. |
 | `styles.css` | Liquid Obsidian Glass CSS design system with specular highlights, responsive grid breakpoints, mobile drawer rules, and interactive state transitions. Cache-busted via `styles.css?v=20261027_2`. |
 | `script.js` | Client-side logic: FAQ accordions, dual-theme interactive slider, dynamic UPI QR code generator, checkout modal state management, background scroll lock, and OS detection. Cache-busted via `script.js?v=20261027_2`. |
 | `google-apps-script-hdfc-listener.js` | Automated Google Apps Script processing HDFC bank alert emails and automatically provisioning Supabase accounts. |
