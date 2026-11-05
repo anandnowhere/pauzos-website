@@ -1,0 +1,2 @@
+[functions.pauzos-api]
+verify_jwt = false

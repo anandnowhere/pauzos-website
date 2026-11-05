@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /test-payment.html
+Sitemap: https://pauzos.com/sitemap.xml
