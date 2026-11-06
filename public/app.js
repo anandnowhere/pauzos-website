@@ -95,12 +95,12 @@ productTabs.forEach((button, index) => {
 const releaseBase = 'https://github.com/anandnowhere/stratexa-releases/releases/download/';
 const editions = {
   'win-portable': {
-    os: 'windows', name: 'Windows Portable', version: '1.0.30', option: 'Portable · run without installing (.exe)', file: 'Personal-Reminder-Assistant-Portable-1.0.30.exe',
+    os: 'windows', name: 'Windows Portable', version: '1.0.31', option: 'Portable · run without installing (.exe)', file: 'Personal-Reminder-Assistant-Portable-1.0.31.exe',
     description: 'Run directly from a folder without an installer or administrator access.', spec: 'Windows 10 / 11 · .exe · 85 MB',
     steps: ['Save the portable file to your computer.', 'Open it from your Downloads folder.', 'Launch Pauzos. Your 72-hour trial begins now, with no signup or payment details.']
   },
   'win-setup': {
-    os: 'windows', name: 'Windows Installer', version: '1.0.30', option: 'Installer · standard setup (.exe)', file: 'Personal-Reminder-Assistant-Setup-1.0.30.exe',
+    os: 'windows', name: 'Windows Installer', version: '1.0.31', option: 'Installer · standard setup (.exe)', file: 'Personal-Reminder-Assistant-Setup-1.0.31.exe',
     description: 'Install Pauzos with a standard setup and a Start menu shortcut.', spec: 'Windows 10 / 11 · .exe · 85 MB',
     steps: ['Save the installer to your computer.', 'Open the installer and follow the setup prompts.', 'Launch Pauzos and create your first reminder to start the trial.']
   },
@@ -115,12 +115,12 @@ const editions = {
     steps: ['Save and extract the ZIP archive on your Mac.', 'Move Personal Reminder Assistant to Applications.', 'Open Pauzos to start your trial. See the official guide for installation help.']
   },
   'linux-appimage': {
-    os: 'linux', name: 'Linux AppImage', version: '1.0.30', option: 'Standalone AppImage (.AppImage)', file: 'Personal-Reminder-Assistant-1.0.30.AppImage',
+    os: 'linux', name: 'Linux AppImage', version: '1.0.31', option: 'Standalone AppImage (.AppImage)', file: 'Personal-Reminder-Assistant-1.0.31.AppImage',
     description: 'A standalone app for compatible Linux desktop distributions.', spec: 'Linux · AppImage · 115 MB',
     steps: ['Save the AppImage to your computer.', 'In file properties, allow the file to run as a program.', 'Open the AppImage and create your first reminder to start the trial.']
   },
   'linux-deb': {
-    os: 'linux', name: 'Linux Debian package', version: '1.0.30', option: 'Debian / Ubuntu package (.deb)', file: 'Personal-Reminder-Assistant-1.0.30.deb',
+    os: 'linux', name: 'Linux Debian package', version: '1.0.31', option: 'Debian / Ubuntu package (.deb)', file: 'Personal-Reminder-Assistant-1.0.31.deb',
     description: 'Install the desktop app on Debian or Ubuntu using your package manager.', spec: 'Linux · Debian / Ubuntu · .deb · 77 MB',
     steps: ['Save the Debian package to your computer.', 'Install the package with your software installer.', 'Open Pauzos from your applications to start the trial.']
   }
