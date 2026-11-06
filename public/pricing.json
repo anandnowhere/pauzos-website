@@ -1,0 +1,89 @@
+{
+  "price": "₹349",
+  "amount": 349,
+  "currency": "INR",
+  "standardPrice": "₹499",
+  "discountPercent": "30%",
+  "offerLabel": "Early Bird Offer",
+  "checkoutUrl": "https://pauzos.com/payment.html",
+  "updatedAt": "2026-11-07",
+  "currencies": {
+    "INR": {
+      "symbol": "₹",
+      "code": "INR",
+      "amount": 349,
+      "amountSubunit": 34900,
+      "formatted": "₹349",
+      "standard": "₹499",
+      "discount": "30% OFF",
+      "label": "Early Bird Launch • ₹349",
+      "cta": "Get Instant Access for ₹349"
+    },
+    "USD": {
+      "symbol": "$",
+      "code": "USD",
+      "amount": 9.99,
+      "amountSubunit": 999,
+      "formatted": "$9.99",
+      "standard": "$14.99",
+      "discount": "33% OFF",
+      "label": "Early Bird • $9.99",
+      "cta": "Get Instant Access for $9.99"
+    },
+    "GBP": {
+      "symbol": "£",
+      "code": "GBP",
+      "amount": 7.99,
+      "amountSubunit": 799,
+      "formatted": "£7.99",
+      "standard": "£11.99",
+      "discount": "33% OFF",
+      "label": "Early Bird • £7.99",
+      "cta": "Get Instant Access for £7.99"
+    },
+    "EUR": {
+      "symbol": "€",
+      "code": "EUR",
+      "amount": 9.99,
+      "amountSubunit": 999,
+      "formatted": "€9.99",
+      "standard": "€14.99",
+      "discount": "33% OFF",
+      "label": "Early Bird • €9.99",
+      "cta": "Get Instant Access for €9.99"
+    },
+    "CAD": {
+      "symbol": "CA$",
+      "code": "CAD",
+      "amount": 13.99,
+      "amountSubunit": 1399,
+      "formatted": "CA$13.99",
+      "standard": "CA$19.99",
+      "discount": "30% OFF",
+      "label": "Early Bird • CA$13.99",
+      "cta": "Get Instant Access for CA$13.99"
+    },
+    "AUD": {
+      "symbol": "A$",
+      "code": "AUD",
+      "amount": 15.99,
+      "amountSubunit": 1599,
+      "formatted": "A$15.99",
+      "standard": "A$22.99",
+      "discount": "30% OFF",
+      "label": "Early Bird • A$15.99",
+      "cta": "Get Instant Access for A$15.99"
+    },
+    "AED": {
+      "symbol": "AED",
+      "code": "AED",
+      "amount": 39,
+      "amountSubunit": 3900,
+      "formatted": "39 AED",
+      "standard": "59 AED",
+      "discount": "34% OFF",
+      "label": "Early Bird • 39 AED",
+      "cta": "Get Instant Access for 39 AED"
+    }
+  }
+}
