@@ -1,3 +1,5 @@
+> **Current website handoff — 5 November 2026:** [Regional pricing, local source, test checkout, and release status](../shared-prototype/LOCAL_HANDOFF.md). This supersedes older website prices/payment instructions below. Early bird INR 349 / USD 9.99; INR 499 / USD 14.99 from 1 January 2027, 00:00 IST; additional fixed currencies are listed in the handoff. Canonical website source: `shared-prototype/`. No public-domain cutover or application release has been performed.
+
 # Pauzos Website — Architecture, Marketing & Payment Webhook Guide
 
 **Domain:** [https://pauzos.com](https://pauzos.com)  

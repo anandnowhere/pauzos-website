@@ -4,1373 +4,926 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pauzos — Desktop Reminder Software for Deadlines You Can't Afford to Miss</title>
-  <meta name="description" content="Pauzos puts unmissable, floating reminder alerts directly over Excel, ERPs, and desktop windows. Never miss critical work cut-offs, timesheets, or daily routines. Free 3-day trial.">
+  <meta name="description" content="Pauzos puts unmissable, floating liquid-glass reminder alerts directly over Excel, ERPs, and full-screen windows. Never miss billing cut-offs, timesheets, or daily routines. Free 3-day trial.">
   
-  <!-- OpenGraph / Social Sharing (Instagram, WhatsApp, Facebook) -->
+  <!-- OpenGraph / Social Sharing -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pauzos.com/">
   <meta property="og:title" content="Pauzos — Desktop Reminder Software for Deadlines You Can't Afford to Miss">
-  <meta property="og:description" content="Unmissable floating desktop alerts for billing cut-offs, timesheets & daily work routines. Free 3-day trial. No signup. Zero IT admin rights needed.">
-  <meta property="og:image" content="https://pauzos.com/assets/screenshots/hero_homepage_4k.png">
+  <meta property="og:description" content="Unmissable floating desktop alerts for billing cut-offs, timesheets & daily work routines. Free 3-day trial. Zero IT admin rights needed.">
+  <meta property="og:image" content="assets/screenshots/hero_homepage_4k.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="stylesheet" href="styles.css?v=20261101_geo">
-
-  <!-- Landing Page Conversion Styles -->
-  <style>
-    /* ── Sticky Download Bar ── */
-    .sticky-download-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-      background: rgba(10, 13, 28, 0.92);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-top: 1px solid rgba(59, 130, 246, 0.25);
-      padding: 12px 0;
-      transform: translateY(100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .sticky-download-bar.visible {
-      transform: translateY(0);
-    }
-    .sticky-download-bar .sticky-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-    .sticky-download-bar .sticky-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 15px;
-      font-weight: 700;
-      color: #fff;
-      background: linear-gradient(135deg, #2563eb, #3b82f6);
-      padding: 10px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.5);
-      transition: transform 0.15s, box-shadow 0.15s;
-      white-space: nowrap;
-    }
-    .sticky-download-bar .sticky-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 28px rgba(37, 99, 235, 0.6);
-    }
-    .sticky-download-bar .sticky-trust {
-      font-size: 13px;
-      color: #94a3b8;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .sticky-download-bar .sticky-trust span {
-      white-space: nowrap;
-    }
-
-    /* ── Problem → Solution Section ── */
-    .problem-solution-section {
-      padding: 80px 0 60px;
-      position: relative;
-    }
-    .ps-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .ps-card {
-      border-radius: 16px;
-      padding: 36px 32px;
-      position: relative;
-    }
-    .ps-card.ps-before {
-      background: rgba(239, 68, 68, 0.06);
-      border: 1px solid rgba(239, 68, 68, 0.18);
-    }
-    .ps-card.ps-after {
-      background: rgba(16, 185, 129, 0.06);
-      border: 1px solid rgba(16, 185, 129, 0.22);
-    }
-    .ps-card-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 5px 14px;
-      border-radius: 20px;
-      margin-bottom: 22px;
-    }
-    .ps-before .ps-card-label {
-      background: rgba(239, 68, 68, 0.12);
-      border: 1px solid rgba(239, 68, 68, 0.25);
-      color: #f87171;
-    }
-    .ps-after .ps-card-label {
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34d399;
-    }
-    .ps-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 18px;
-      font-size: 15px;
-      line-height: 1.55;
-    }
-    .ps-item:last-child { margin-bottom: 0; }
-    .ps-before .ps-item { color: #e2e8f0; }
-    .ps-after .ps-item { color: #e2e8f0; }
-    .ps-icon {
-      flex-shrink: 0;
-      font-size: 18px;
-      width: 24px;
-      text-align: center;
-      margin-top: 1px;
-    }
-    .ps-cta-row {
-      text-align: center;
-      margin-top: 44px;
-    }
-
-    /* ── Hero CTA Pulse Animation ── */
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 4px 25px rgba(37, 99, 235, 0.45); }
-      50% { box-shadow: 0 4px 40px rgba(37, 99, 235, 0.7), 0 0 60px rgba(37, 99, 235, 0.25); }
-    }
-    .hero-cta-primary-xl {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 19px;
-      font-weight: 800;
-      color: #fff;
-      background: linear-gradient(135deg, #2563eb, #3b82f6);
-      padding: 18px 42px;
-      border-radius: 14px;
-      text-decoration: none;
-      animation: pulseGlow 2.5s ease-in-out infinite;
-      transition: transform 0.15s;
-      letter-spacing: -0.01em;
-    }
-    .hero-cta-primary-xl:hover {
-      transform: translateY(-2px) scale(1.02);
-    }
-    .hero-no-catch {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-      font-size: 13.5px;
-      color: #94a3b8;
-    }
-    .hero-no-catch span {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .ps-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      .ps-card {
-        padding: 24px 20px;
-      }
-      .ps-item {
-        font-size: 14px;
-        margin-bottom: 14px;
-      }
-      .hero-cta-primary-xl {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-        font-size: 15.5px;
-        padding: 14px 20px;
-        box-sizing: border-box;
-      }
-      .hero-cta-group {
-        width: 100%;
-      }
-      .hero-cta-group .btn {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-      }
-      .hero-no-catch {
-        gap: 10px 14px;
-        font-size: 12.5px;
-      }
-      .sticky-download-bar .sticky-trust {
-        display: none;
-      }
-      .sticky-download-bar .sticky-cta {
-        width: 100%;
-        max-width: 340px;
-        justify-content: center;
-        padding: 11px 20px;
-        font-size: 14px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Ambient Glow -->
-  <div class="bg-glow-container">
-    <div class="glow-orb-1"></div>
-    <div class="glow-orb-2"></div>
-    <div class="glow-orb-3"></div>
-  </div>
+  <!-- Background Particle Canvas (Apple / Stripe Ambient Atmosphere) -->
+  <canvas id="ambientCanvas"></canvas>
 
-  <!-- Professional Company-Level Navbar -->
+  <!-- Studio Ambient Lighting (Linear Spotlight) -->
+  <div class="ambient-spotlight"></div>
+  <div class="ambient-grid"></div>
+
+  <!-- Header / Navigation (Floating Glass Island) -->
   <header class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="brand-link">
+    <nav class="nav-island">
+      <a href="index.html" class="brand-link">
         <img src="assets/logo.png" alt="Pauzos Logo" class="brand-logo">
-        <div class="brand-text-block">
-          <span class="brand-title">Pauzos</span>
-          <span class="brand-tagline">Software & Tools</span>
-        </div>
+        <span class="brand-text">Pauzos</span>
+        <span class="brand-badge">v1.0.28</span>
       </a>
 
-      <!-- Professional Portfolio Menu -->
-      <ul class="nav-menu">
-        <li class="nav-item"><a href="#overview">Overview</a></li>
-        <li class="nav-item"><a href="#how-it-works">How It Works</a></li>
-        <li class="nav-item"><a href="#personas">Who It's For</a></li>
-        <li class="nav-item"><a href="#features">Features</a></li>
-        <li class="nav-item"><a href="#pricing">Pricing</a></li>
-        <li class="nav-item"><a href="#faq">FAQ</a></li>
+      <ul class="nav-links">
+        <li><a href="#features" class="nav-link">Pillars</a></li>
+        <li><a href="#architecture" class="nav-link">Architecture</a></li>
+        <li><a href="#showcase" class="nav-link">Screenshots</a></li>
+        <li><a href="#pricing" class="nav-link" id="footerPricingLink">Pricing</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
       </ul>
 
       <div class="nav-actions">
-        <a href="download.html" class="btn btn-primary" style="font-size: 13.5px; padding: 9px 20px; white-space: nowrap; font-weight: 700;">
-          📥 Download Free Trial
-        </a>
+        <a href="download.html" class="btn btn-secondary">Download Free</a>
+        <button onclick="handleCheckout()" class="btn btn-primary">Get Pro</button>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <!-- Hero Section with 4K Master Screenshot -->
-  <section class="hero-section" id="overview">
+  <!-- Hero Section -->
+  <section class="hero-section">
     <div class="container">
-      <div class="hero-pill" style="background: rgba(59, 130, 246, 0.12); border-color: rgba(59, 130, 246, 0.35); color: #93c5fd;">
-        <span class="hero-pill-pulse" style="background: #3b82f6;"></span>
-        <span>🖥️ Desktop Reminder Software for Windows, macOS &amp; Linux</span>
+      <!-- Animated Rotating Border Beam Pill -->
+      <div class="hero-pill-animated">
+        <span class="hero-pill-indicator"></span>
+        <span>v1.0.28 Native Build • Windows, macOS &amp; Linux • Zero IT Admin Rights</span>
       </div>
 
-      <h1 class="hero-title">
-        Desktop Reminder Software for<br>
-        <span class="gradient-text">Deadlines You Can't Afford to Miss</span>
+      <h1 class="hero-headline">
+        Desktop reminders for cut-offs you <span class="shimmer-text">can't afford to miss.</span>
       </h1>
 
-      <p class="hero-subtitle" style="max-width: 720px;">
-        <strong>Pauzos</strong> displays floating reminder cards directly over your work — so critical billing cut-offs, timesheets, and daily routines are impossible to miss.
+      <p class="hero-subhead">
+        Floating liquid-glass alerts placed directly over full-screen spreadsheets, ERPs, and browsers. Never miss critical billing cut-offs, timesheet submissions, or daily routines.
       </p>
 
-      <!-- Primary CTA — the hero of the page -->
-      <div class="hero-cta-group" style="flex-direction: column; align-items: center; gap: 14px;">
-        <a href="download.html" class="hero-cta-primary-xl">
-          📥 Download Free Trial — 3 Days Unlimited
+      <div class="hero-cta-group">
+        <a href="download.html" class="btn btn-primary btn-lg" id="heroDownloadBtn">
+          <span>Download Free 3-Day Trial</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <div style="font-size: 13.5px; color: #94a3b8; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center;">
-          <a href="#demo" onclick="switchHeroMedia('video')" style="color: #60a5fa; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; font-weight: 600;">
-            <span>▶️</span> Watch 30-Second Demo
-          </a>
-          <span style="opacity: 0.4;">•</span>
-          <a href="#pricing" style="color: #cbd5e1; text-decoration: none;" id="heroSecondaryCta" onclick="handleCheckout('Personal Reminder Assistant'); return false;">
-            Or get lifetime access for ₹249 (One-Time) →
-          </a>
-        </div>
+        <button onclick="handleCheckout()" class="btn btn-secondary btn-lg" id="heroSecondaryCta">
+          Or get lifetime access for ₹249 (One-Time) →
+        </button>
       </div>
 
-      <!-- Zero-friction trust line -->
-      <div class="hero-no-catch">
-        <span>✅ No credit card required</span>
-        <span>✅ No account or signup needed</span>
-        <span>✅ Windows, macOS &amp; Linux</span>
-        <span>✅ 100% offline task privacy</span>
+      <div class="hero-trust-bar">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          No credit card required
+        </span>
+        <span style="opacity: 0.25;">•</span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Zero cloud telemetry (100% private)
+        </span>
+        <span style="opacity: 0.25;">•</span>
+        <span id="heroTrustPrice">One-Time ₹249 Lifetime Option (No Subscriptions)</span>
+        <span style="opacity: 0.25;">•</span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Permanent 2-routine fallback
+        </span>
       </div>
 
-      <div class="hero-trust-row" style="margin-top: 28px;">
-        <div class="trust-item" style="color: #34d399; font-weight: 700;">
-          <span>🛡️</span> Zero-Admin Portable Mode for Work PCs
-        </div>
-        <div class="trust-item">
-          <span>🔒</span> All Routines &amp; Logs Stored 100% Locally
-        </div>
-        <div class="trust-item">
-          <span>🏷️</span> <span id="heroTrustPrice">One-Time ₹249 Lifetime Option (No SaaS Subscriptions)</span>
-        </div>
-      </div>
-
-      <!-- Interactive Media Switcher: Product Video Tour vs Side-by-Side Dark/Light Interactive Mockup -->
-      <div class="hero-slider-header-controls" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px;">
-        <!-- Left: Video / Screenshots Tab Switcher -->
-        <div class="slider-theme-toggle-group" style="margin-bottom: 0;">
-          <button type="button" class="slider-theme-btn active" id="btnShowVideo" onclick="switchHeroMedia('video')">
-            <span class="btn-icon">▶️</span> Product Tour Video
+      <!-- Media Switcher (Interactive Simulator vs 4K Product Tour Video) -->
+      <div class="media-switcher-wrap">
+        <div class="media-switcher">
+          <button class="media-switch-btn active" id="btnModeSim" onclick="switchHeroMode('sim')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Interactive Simulation
           </button>
-          <button type="button" class="slider-theme-btn" id="btnShowInteractive" onclick="switchHeroMedia('interactive')">
-            <span class="btn-icon">🎛️</span> Interactive Comparison
-          </button>
-        </div>
-
-        <!-- Right: Theme Mode Switcher (Active when interactive comparison is visible) -->
-        <div class="slider-theme-toggle-group" id="themeButtonsGroup" style="margin-bottom: 0;">
-          <button type="button" class="slider-theme-btn active" data-mode="dark" id="btnThemeDark">
-            <span class="btn-icon">🌙</span> Dark Mode
-          </button>
-          <button type="button" class="slider-theme-btn" data-mode="light" id="btnThemeLight">
-            <span class="btn-icon">☀️</span> Light Mode
+          <button class="media-switch-btn" id="btnModeVideo" onclick="switchHeroMode('video')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+            4K Video Tour
           </button>
         </div>
       </div>
 
-      <div id="demo" style="position: relative; top: -80px;"></div>
-      <!-- VIEW 1: Native High-Definition Product Storyboard & Use-Case Tour Video -->
-      <div class="hero-app-frame hero-video-frame" id="heroVideoContainer" style="margin-bottom: 30px;">
-        <div class="hero-window-titlebar">
-          <div class="window-controls">
-            <span class="control-dot dot-close"></span>
-            <span class="control-dot dot-minimize"></span>
-            <span class="control-dot dot-maximize"></span>
-          </div>
-          <div class="window-title-text">
-            <span>The Workstation Struggle vs. Personal Reminder Assistant</span>
-            <span class="window-glass-pill" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.35); color: #6ee7b7;">Storyboard Demo</span>
-          </div>
-        </div>
-        <div style="position: relative; width: 100%; aspect-ratio: 16/9; background: #060913; overflow: hidden; border-bottom-left-radius: 14px; border-bottom-right-radius: 14px;">
-          <video id="heroProductVideo" 
-                 src="assets/video/product_usecase_tour.mp4?v=20261027c" 
-                 autoplay 
-                 muted 
-                 loop 
-                 playsinline 
-                 controls
-                 style="width: 100%; height: 100%; object-fit: contain; display: block;">
-          </video>
-        </div>
-      </div>
-
-      <!-- VIEW 2: Interactive Slider Frame (Hidden initially or toggleable) -->
-      <div class="hero-app-frame hero-slider-frame" id="heroSliderContainer" style="display: none;">
-        <!-- macOS Window Glass Titlebar -->
-        <div class="hero-window-titlebar">
-          <div class="window-controls">
-            <span class="control-dot dot-close"></span>
-            <span class="control-dot dot-minimize"></span>
-            <span class="control-dot dot-maximize"></span>
-          </div>
-          <div class="window-title-text">
-            <span>Personal Reminder Assistant v1.0.28</span>
-            <span class="window-glass-pill">Liquid Glass UI</span>
-          </div>
-        </div>
-
-        <!-- Interactive Comparison Viewport -->
-        <div class="hero-slider-viewport" id="heroSliderViewport">
-          <!-- Base Layer: Deep Obsidian Dark Mode -->
-          <img src="assets/screenshots/hero_homepage_dark_4k.png?v=20261027c" 
-               alt="Personal Reminder Assistant - Dark Theme" 
-               class="hero-slider-img hero-img-base"
-               draggable="false">
-          
-          <!-- Overlay Layer: Warm Ivory Linen Light Mode (Clipped) -->
-          <div class="hero-slider-overlay" id="heroSliderOverlay">
-            <img src="assets/screenshots/hero_homepage_light_4k.png?v=20261027c" 
-                 alt="Personal Reminder Assistant - Light Theme" 
-                 class="hero-slider-img hero-img-overlay"
-                 draggable="false">
-          </div>
-
-          <!-- Draggable Glass Splitter Handle -->
-          <div class="hero-slider-handle" id="heroSliderHandle">
-            <div class="handle-line"></div>
-            <div class="handle-knob">
-              <span class="handle-arrows">◂</span>
-              <span class="handle-label">SLIDE</span>
-              <span class="handle-arrows">▸</span>
+      <!-- Hero Product Showcase: 3D Perspective Tilt Stage -->
+      <div class="hero-stage" id="hero3DStage">
+        <div class="hero-viewport-bezel" id="heroBezel">
+          <div class="viewport-header">
+            <div class="viewport-dots">
+              <span class="viewport-dot"></span>
+              <span class="viewport-dot"></span>
+              <span class="viewport-dot"></span>
             </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- How It Works / See It In Action Section -->
-  <section class="how-it-works-section" id="how-it-works" style="padding: 75px 0 45px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">See It In Action</span>
-        <h2 class="section-title">How Pauzos Keeps Deadlines Unmissable</h2>
-        <p class="section-subtitle">
-          Unlike ordinary reminder apps buried under dozens of browser tabs, Pauzos commands attention directly on your screen without disrupting your active workflow.
-        </p>
-      </div>
-
-      <div class="split-row" style="align-items: center; gap: 48px;">
-        <div class="split-text-col">
-          <div style="display: flex; flex-direction: column; gap: 26px;">
-            <div style="display: flex; gap: 16px; align-items: flex-start;">
-              <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(59, 130, 246, 0.2); border: 1px solid #3b82f6; color: #60a5fa; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0;">1</div>
-              <div>
-                <h3 style="font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Keep working in your usual apps</h3>
-                <p style="font-size: 14.5px; color: #94a3b8; line-height: 1.55;">Whether you are deep in Excel spreadsheets, an ERP system, terminal windows, or browser tabs, Pauzos stays lightweight and silent in the background.</p>
-              </div>
+            <div class="viewport-filename">
+              <span>pauzos_workstation_overlay.exe</span>
+              <span style="opacity: 0.3; margin: 0 4px;">/</span>
+              <span style="color: #60a5fa;" id="stageModeText">Interactive Live Simulation</span>
             </div>
-
-            <div style="display: flex; gap: 16px; align-items: flex-start;">
-              <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #34d399; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0;">2</div>
-              <div>
-                <h3 style="font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Floating alert appears right on top</h3>
-                <p style="font-size: 14.5px; color: #94a3b8; line-height: 1.55;">At your scheduled cut-off, a focused alert card pops up directly over your screen. It can never be buried, yet won't steal your active typing focus.</p>
-              </div>
-            </div>
-
-            <div style="display: flex; gap: 16px; align-items: flex-start;">
-              <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(139, 92, 246, 0.2); border: 1px solid #8b5cf6; color: #a78bfa; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0;">3</div>
-              <div>
-                <h3 style="font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Take action in one click</h3>
-                <p style="font-size: 14.5px; color: #94a3b8; line-height: 1.55;">Mark Completed with optional audit notes, snooze for 15, 30, or 60 minutes, or skip today. Every action is recorded in your local audit log.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="split-visual-col">
-          <div class="split-app-frame compact" style="max-width: 500px; box-shadow: 0 24px 60px rgba(0,0,0,0.65); border: 1px solid rgba(255,255,255,0.18); border-radius: 14px; overflow: hidden;">
-            <img src="assets/screenshots/reminder_popup_timesheet.png?v=20261027d" alt="Pauzos Floating Reminder Alert on Screen" style="display: block; width: 100%; height: auto;">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Problem → Solution: Before vs After Section -->
-  <section class="problem-solution-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">Why You Need This</span>
-        <h2 class="section-title">The Real Cost of "I'll Remember It Later"</h2>
-        <p class="section-subtitle">
-          Every professional has lost money, reputation, or health because a reminder failed them. Here's what changes when your alerts can't be ignored.
-        </p>
-      </div>
-
-      <div class="ps-grid">
-
-        <!-- BEFORE Card -->
-        <div class="ps-card ps-before">
-          <div class="ps-card-label">❌ Without the App</div>
-
-          <div class="ps-item">
-            <span class="ps-icon">📱</span>
-            <span>Phone reminder silenced during a meeting — <strong>deadline missed</strong></span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">🌐</span>
-            <span>Calendar tab lost among background windows — <strong>task forgotten</strong></span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">📅</span>
-            <span>Calendar event dismissed with one click — <strong>no follow-up</strong></span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">📝</span>
-            <span>Sticky note on monitor ignored for 3 days — <strong>compliance slip</strong></span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">🪑</span>
-            <span>8 hours of screen time — <strong>backache, eye strain, no water</strong></span>
-          </div>
-        </div>
-
-        <!-- AFTER Card -->
-        <div class="ps-card ps-after">
-          <div class="ps-card-label">✅ With Personal Reminder Assistant</div>
-
-          <div class="ps-item">
-            <span class="ps-icon">🖥️</span>
-            <span><strong>Unmissable floating popup</strong> right on your screen — can't be buried</span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">🔁</span>
-            <span><strong>Smart snooze</strong> keeps nudging you — won't let you forget</span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">⏰</span>
-            <span><strong>Cut-off deadline badges</strong> — zero room for "I'll do it later"</span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">🧘</span>
-            <span><strong>Automatic wellness breaks</strong> for eyes, posture &amp; hydration</span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">📊</span>
-            <span><strong>Full audit trail</strong> of everything you completed, exported to Excel</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="ps-cta-row">
-        <a href="download.html" class="hero-cta-primary-xl" style="font-size: 17px; padding: 16px 36px;">
-          📥 Try It Free for 3 Days — Download Now
-        </a>
-        <div class="hero-no-catch" style="margin-top: 12px;">
-          <span>✅ No credit card</span>
-          <span>✅ No signup</span>
-          <span>✅ Just download and run</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Persona Cards Section -->
-  <section class="personas-section" id="personas">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">Custom Tailored Workflows</span>
-        <h2 class="section-title">Built For High-Stakes Professionals</h2>
-        <p class="section-subtitle">
-          Whether you are navigating volatile financial markets, driving executive priorities, managing engineering sprints, or sustaining healthy daily routines — Personal Reminder Assistant delivers rock-solid accountability.
-        </p>
-      </div>
-
-      <div class="personas-grid">
-        
-        <!-- Persona 1: Engineering Managers & Team Leads -->
-        <div class="persona-card glass-card">
-          <div class="persona-header">
-            <div class="persona-icon-box manager-icon">💼</div>
-            <div>
-              <div class="persona-target-tag">Management & Delivery</div>
-              <h3 class="persona-title">Managers & Corporate Leads</h3>
-            </div>
-          </div>
-          <p class="persona-desc">
-            Keep sprint cycles on track, sign off on vendor invoices on time, and eliminate blockers across departments without relying on messy browser tabs or missed chat pings.
-          </p>
-          <div class="persona-reminders-box">
-            <div class="persona-reminders-title">Real Pre-Loaded Workday Checkpoints:</div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">10:30</span>
-              <span class="pill-name">Sprint Deliverables & Vendor Approvals</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">15:00</span>
-              <span class="pill-name">Cross-Functional Blocker Queue Resolution</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">16:30</span>
-              <span class="pill-name">Weekly Timesheet & Client Billing Submission</span>
-            </div>
-          </div>
-          <div class="persona-benefit">
-            <span class="benefit-icon">⏱️</span>
-            <span>Keeps critical billing cut-offs and weekly timesheet deadlines strictly on schedule.</span>
-          </div>
-        </div>
-
-        <!-- Persona 2: CEOs & Founders -->
-        <div class="persona-card glass-card">
-          <div class="persona-header">
-            <div class="persona-icon-box ceo-icon">👔</div>
-            <div>
-              <div class="persona-target-tag">Executive Leadership</div>
-              <h3 class="persona-title">CEOs & Founders</h3>
-            </div>
-          </div>
-          <p class="persona-desc">
-            Executive cognitive load is relentless. Protect deep strategic thinking time, align top company priorities before opening communications, and broadcast leadership summaries without getting bogged down in operational clutter.
-          </p>
-          <div class="persona-reminders-box">
-            <div class="persona-reminders-title">Real Pre-Loaded Workday Checkpoints:</div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">09:15</span>
-              <span class="pill-name">CEO Executive Standup & Strategic Priorities</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">12:30</span>
-              <span class="pill-name">Capital Runway, Burn Rate & Investor Relations</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">17:30</span>
-              <span class="pill-name">Executive Daily Wrap-Up & Leadership Broadcast</span>
-            </div>
-          </div>
-          <div class="persona-benefit">
-            <span class="benefit-icon">🎯</span>
-            <span>Forces daily focus on high-leverage revenue drivers and capital longevity.</span>
-          </div>
-        </div>
-
-        <!-- Persona 3: Stock Market Traders -->
-        <div class="persona-card glass-card">
-          <div class="persona-header">
-            <div class="persona-icon-box trader-icon">📈</div>
-            <div>
-              <div class="persona-target-tag">Financial Markets</div>
-              <h3 class="persona-title">Active Traders & Investors</h3>
-            </div>
-          </div>
-          <p class="persona-desc">
-            Trading discipline requires zero missed checkpoints. Execute systematic pre-market research, audit trailing stop risk before the afternoon rush, and reconcile daily contract notes with clinical consistency.
-          </p>
-          <div class="persona-reminders-box">
-            <div class="persona-reminders-title">Real Pre-Loaded Workday Checkpoints:</div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">08:45</span>
-              <span class="pill-name">Pre-Market Global Cues & Index Open Check</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">14:30</span>
-              <span class="pill-name">Intraday Risk Audit & Trailing Stop-Loss</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">15:45</span>
-              <span class="pill-name">Post-Market Journal & Daily P&L Reconciliation</span>
-            </div>
-          </div>
-          <div class="persona-benefit">
-            <span class="benefit-icon">🛡️</span>
-            <span>Eliminates emotional overtrading and FOMO through mandatory compliance pauses.</span>
-          </div>
-        </div>
-
-        <!-- Persona 4: Health, Ergonomics & Daily Habits -->
-        <div class="persona-card glass-card">
-          <div class="persona-header">
-            <div class="persona-icon-box habit-icon">🧘</div>
-            <div>
-              <div class="persona-target-tag">Health & Sustainable Habits</div>
-              <h3 class="persona-title">Professionals & Creatives</h3>
-            </div>
-          </div>
-          <p class="persona-desc">
-            Prevent screen fatigue and sustain physical stamina over long workdays. Gentle, non-intrusive wellness breaks cue you to hydrate, reset spinal posture, and practice 20-20-20 eye strain protection.
-          </p>
-          <div class="persona-reminders-box">
-            <div class="persona-reminders-title">Real Pre-Loaded Workday Checkpoints:</div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">11:45</span>
-              <span class="pill-name">Ergonomic Posture, Hydration & Eye Break</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">14:00</span>
-              <span class="pill-name">Afternoon Energy Reset & Movement Stretch</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">17:00</span>
-              <span class="pill-name">Desk Organization & Tomorrow's Planning</span>
-            </div>
-          </div>
-          <div class="persona-benefit">
-            <span class="benefit-icon">🔋</span>
-            <span>Protects your posture, vision, and mental clarity through 8+ hour screen sessions.</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Marketing Feature 1: Today's Agenda -->
-  <section class="split-feature-section" id="features">
-    <div class="container">
-      <div class="split-row">
-        
-        <!-- Left: Text -->
-        <div class="split-text-col">
-          <span class="split-pill">Daily Agenda Command Center</span>
-          <h2 class="split-title">Start Every Morning With Absolute Clarity</h2>
-          <p class="split-desc">
-            Your centralized daily dashboard. View scheduled routines, live completion scores, 
-            and pending checkpoints with clean, real-time status counters.
-          </p>
-
-          <ul class="split-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Live KPI Dashboard:</strong> Real-time overview of Scheduled, Completed, Pending, and Snoozed tasks for today.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>1-Click Do Not Disturb:</strong> Silence all reminder popups while presenting or in deep work; resets automatically tomorrow.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Immediate Action Rows:</strong> Mark completed or test alert triggers directly from the table.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: Real Screenshot of Today's Agenda -->
-        <div class="split-visual-col">
-          <div class="split-app-frame">
-            <img src="assets/screenshots/tab_today_agenda.png?v=20261027c" alt="Today's Agenda Tab Screenshot">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Marketing Feature: Interactive Reminder Alert Pop-up -->
-  <section class="split-feature-section">
-    <div class="container">
-      <div class="split-row">
-        
-        <!-- Left: Text -->
-        <div class="split-text-col">
-          <span class="split-pill">Interactive Smart Alert</span>
-          <h2 class="split-title">Actionable Reminders That Demand Attention Without Disruption</h2>
-          <p class="split-desc">
-            When a critical trade review, executive deadline, or compliance cutoff arrives, a focused floating Liquid Glass alert card appears directly on your screen. 
-            Review full instructions, monitor strict cut-off times, record optional audit notes, or snooze in seconds without breaking your workflow.
-          </p>
-
-          <ul class="split-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Cut-off Deadline Badges:</strong> Clear ⏰ Cut-off Time warnings highlight non-negotiable tasks like market stops or timesheets.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>1-Click Action & Audit Notes:</strong> Mark as Completed with optional reference numbers or trade logs saved directly to your local database.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Smart Snooze & Skip Controls:</strong> Postpone in 1 click for 15, 30, or 60 minutes, or skip today while keeping full audit integrity.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: Real Screenshot of Reminder Alert Pop-up -->
-        <div class="split-visual-col">
-          <div class="split-app-frame compact" style="max-width: 520px;">
-            <img src="assets/screenshots/reminder_popup_timesheet.png?v=20261027d" alt="Interactive Reminder Alert Pop-up">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Marketing Feature 2: All Reminders (Routine Engine) -->
-  <section class="split-feature-section">
-    <div class="container">
-      <div class="split-row">
-        
-        <!-- Left: Text -->
-        <div class="split-text-col">
-          <span class="split-pill">Flexible Routine Engine</span>
-          <h2 class="split-title">Organize Trading, Leadership, Sprints & Habits</h2>
-          <p class="split-desc">
-            Build your personal productivity operating system. Categorize routines across Trading & Markets, Executive Leadership, Management, Compliance, and Health & Habits with dedicated priority tags and toggle controls.
-          </p>
-
-          <ul class="split-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Persona-Driven Categories:</strong> Group routines under Trading & Markets, Executive Leadership, Management, and Health.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Advanced Recurrence Rules:</strong> Set workday-only schedules (Mon–Fri), custom workdays of the month, or repeating intervals.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Instant Search & Filter:</strong> Instantly filter by status, priority (High, Medium, Low), or specific category.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: Real Screenshot of All Reminders Tab -->
-        <div class="split-visual-col">
-          <div class="split-app-frame">
-            <img src="assets/screenshots/tab_all_reminders.png?v=20261027c" alt="All Reminders Tab Screenshot">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Marketing Feature 3: Add New Routine & Custom Categories -->
-  <section class="split-feature-section">
-    <div class="container">
-      <div class="split-row">
-        
-        <!-- Left: Text -->
-        <div class="split-text-col">
-          <span class="split-pill">Precision Scheduling</span>
-          <h2 class="split-title">Add New Routines with Flexible Frequency Rules</h2>
-          <p class="split-desc">
-            Effortlessly configure routines with custom categories, priority levels, and flexible frequency schedules 
-            including workday-of-month, daily, weekly, or specific calendar dates.
-          </p>
-
-          <ul class="split-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Workday-of-Month Frequency:</strong> Schedule routines for specific business days (e.g., WD 3, WD 4) ideal for accounting & billing.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Custom Categories:</strong> Create and manage custom tags like Accounting - AR, Treasury, Compliance, and Operations.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Priority & Toggle Controls:</strong> Assign priority levels and enable or pause routines with a single click.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: User Attached New Routine Modal Screenshot -->
-        <div class="split-visual-col">
-          <div class="split-app-frame compact" style="max-width: 520px;">
-            <img src="assets/screenshots/modal_new_routine_attached.png?v=20261027c" alt="New Reminder Routine Modal">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Marketing Feature 4: Audit & Reports -->
-  <section class="split-feature-section">
-    <div class="container">
-      <div class="split-row">
-        
-        <!-- Left: Text -->
-        <div class="split-text-col">
-          <span class="split-pill">Accountability & Excel</span>
-          <h2 class="split-title">Verify Consistency with 1-Click Excel Audit Logs</h2>
-          <p class="split-desc">
-            Prove your habit consistency to yourself. An immutable, local audit log timestamps every action 
-            and allows you to export complete spreadsheets in a single click.
-          </p>
-
-          <ul class="split-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>1-Click Excel Export:</strong> Download comprehensive `.xlsx` logs for personal reviews or work compliance.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>100% Local Data Storage:</strong> All your routines, notes, and completion history remain stored strictly on your local computer hard drive.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Zero Routine Tracking:</strong> We never collect, monitor, or sync your personal tasks, schedules, or work habits to cloud servers.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: Real Screenshot of Audit & Reports Tab -->
-        <div class="split-visual-col">
-          <div class="split-app-frame">
-            <img src="assets/screenshots/tab_audit_reports.png?v=20261027c" alt="Audit & Reports Tab Screenshot">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Marketing Feature 5: Health & Wellness Notification Pop-Up -->
-  <section class="split-feature-section">
-    <div class="container">
-      <div class="split-row">
-        
-        <!-- Left: Text -->
-        <div class="split-text-col">
-          <span class="split-pill">Health & Ergonomics</span>
-          <h2 class="split-title">Notification Pop-Up for Health & Wellness</h2>
-          <p class="split-desc">
-            Long hours in front of screens cause eye fatigue, stiffness, and mental burnout. 
-            The integrated Health & Wellness companion delivers gentle, timely prompts to reset posture, 
-            hydrate, and relax your eyes.
-          </p>
-
-          <ul class="split-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>20-20-20 Eye Strain Rule:</strong> Timely cues to look 20 feet away for 20 seconds, preventing chronic digital eye strain.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Hydration Checkpoints:</strong> Prompts to drink water at regular intervals to sustain focus.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Ergonomic Stretches:</strong> Micro-cues for shoulder rolls and neck releases that keep physical stiffness away.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Seamless Dark Theme:</strong> Clean notification design that blends naturally into your dark workspace.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: Clean Health & Wellness Pop-Up Screenshot -->
-        <div class="split-visual-col">
-          <div class="split-app-frame compact" style="max-width: 440px;">
-            <img src="assets/screenshots/notification_wellness.png?v=20261027c" alt="Health and Wellness Notification Pop-Up">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio Suite Section -->
-  <section class="portfolio-section" id="apps">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">The Pauzos Portfolio</span>
-        <h2 class="section-title">Practical Software Engineered For Output</h2>
-        <p class="section-subtitle">Pauzos develops dedicated, standalone desktop and web tools designed without unnecessary bloat or recurring SaaS subscriptions.</p>
-      </div>
-
-      <div class="portfolio-grid">
-        
-        <!-- App 1: Personal Reminder Assistant -->
-        <div class="portfolio-card-featured">
-          <h3 style="font-size: 26px; font-weight: 800; margin-bottom: 10px;">Personal Reminder Assistant</h3>
-          <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6;">
-            A privacy-first desktop routine manager. Features intelligent on-screen popups with custom placement memory, 1-click Do Not Disturb, zero-admin portable mode for office laptops, and automated Excel audit exports.
-          </p>
-          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-            <div>
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                <span style="font-size: 11px; font-weight: 700; color: #fbbf24; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); padding: 2px 8px; border-radius: 12px; text-transform: uppercase;">Introductory Offer</span>
-                <span style="font-size: 13px; color: #64748b; text-decoration: line-through;" id="personaStrikePrice">₹999</span>
-                <span style="font-size: 11px; font-weight: 700; color: #34d399; background: rgba(16, 185, 129, 0.15); padding: 2px 6px; border-radius: 10px;" id="personaDiscountPill">75% OFF</span>
-              </div>
-              <div style="font-size: 26px; font-weight: 800; color: #34d399;">
-                <span id="personaPriceVal">₹249</span> <span style="font-size: 13px; font-weight: 500; color: var(--text-dim);">one-time lifetime access</span>
-              </div>
-            </div>
-            <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary">
-              ⚡ Buy License & Get Access
-            </button>
-          </div>
-        </div>
-
-        <!-- Future Apps Teaser -->
-        <div class="portfolio-upcoming-card">
-          <div style="font-size: 36px; margin-bottom: 14px;">🚀</div>
-          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">More Pauzos Apps Coming Soon</h3>
-          <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
-            We are actively developing specialized tools for professionals, traders, focus management, and workflow automation.
-          </p>
-          <div style="margin-top: 18px; font-size: 12px; color: #60a5fa; font-weight: 600;">Stay Tuned on Instagram</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Professionally Formatted Pricing Section -->
-  <section class="pricing-section" id="pricing">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">Transparent Pricing</span>
-        <h2 class="section-title">Simple One-Time Purchase</h2>
-        <p class="section-subtitle">No monthly subscriptions or renewal fees. One payment unlocks lifetime access across all your devices.</p>
-      </div>
-
-      <div class="pricing-single-container">
-        <div class="pricing-single-card">
-          
-          <div class="pricing-header-row">
-            <div class="pricing-plan-info">
-              <div class="pricing-badge-row">
-                <span class="introductory-badge" id="pricingIntroBadge">🎉 Introductory Launch Offer</span>
-                <span class="pricing-pill-badge">LIFETIME ACCESS</span>
-              </div>
-              <h3 class="pricing-plan-title">Personal Reminder Assistant</h3>
-              <p class="pricing-plan-sub">Full multi-platform suite for Windows, macOS, and Linux.</p>
-            </div>
-            
-            <div class="pricing-price-display">
-              <div class="pricing-original-strike">
-                <span>Regular:</span>
-                <span class="pricing-strike-amount" id="pricingStrikeAmount">₹999</span>
-                <span class="discount-pill" id="pricingDiscountPill">75% OFF</span>
-              </div>
-              <div class="pricing-price-val">
-                <span class="price-currency" id="pricingCurrencySymbol">₹</span>
-                <span class="price-number" id="pricingPriceNumber">249</span>
-              </div>
-              <div class="price-period" id="pricingPeriodText">Introductory Price • Lifetime Access</div>
-            </div>
-          </div>
-
-          <ul class="pricing-features-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Cross-Platform Package:</strong> Windows (.exe + Portable), macOS (.dmg), and Linux (.deb).</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Unlimited Routines:</strong> Create and track habits without restrictions.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Office Laptop & Corporate Friendly:</strong> Zero-admin standalone edition runs on restricted work systems without IT passwords.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Audit Trails & Excel:</strong> Export full completion history to `.xlsx`.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Lifetime Updates:</strong> Receive all future version releases included.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Instant Activation:</strong> Automated license provisioning & immediate download delivery.</span>
-            </li>
-          </ul>
-
-          <div class="pricing-cta-box">
-            <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary btn-full btn-lg" id="pricingCtaBtn">
-              Get Instant Access for ₹249
-            </button>
-          </div>
-
-          <div class="pricing-urgency-note" id="pricingUrgencyNote">
-            <span>⚡</span>
-            <span><strong>Introductory Price:</strong> Early-adopter pricing is locked at ₹249 before standard price increases to ₹999. Includes all future updates forever.</span>
-          </div>
-
-          <div class="pricing-guarantee-note" id="pricingGuaranteeNote">
-            <span>🇮🇳 1-Click UPI &amp; Cards via Razorpay</span> • 
-            <span>⚡ Instant Automated Verification</span> • 
-            <span>📥 Instant Lifetime Access</span>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section class="faq-section" id="faq">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">Got Questions?</span>
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Everything you need to know about purchasing and using Pauzos apps.</p>
-      </div>
-
-      <div class="faq-grid">
-        
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Why is the price discounted, and will it increase later?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            This is our exclusive <strong>Early-Adopter Launch Offer</strong> (75% off standard pricing) dedicated to our first users. If you purchase now during this launch window, your lifetime license is permanently locked in — you will never be asked to pay more or renew, even when standard pricing takes effect.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>How do I receive the software and license after paying?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            Immediately upon completing your checkout via Razorpay (supporting 1-Click UPI, Credit/Debit Cards, and NetBanking), our automated licensing system activates your lifetime access within seconds. Your license credentials and direct download links are rendered immediately on screen and dispatched to your email inbox.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Can I use this on my office laptop without admin access?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            Yes! Your purchase includes the <strong>Windows Portable (.exe)</strong> edition. You can simply double-click and run it directly without installing anything or requiring administrator permissions.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Is my personal data and schedule kept private?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <strong>100% private task storage.</strong> The application stores all your schedules, routines, checklists, and audit logs locally on your computer in SQLite. We never collect or track your routines or notes. Online connectivity is used exclusively for one-time license verification and automated version update checks.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What payment methods are supported?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            We support direct 1-click UPI payments via Google Pay, PhonePe, Paytm, BHIM, Cred, and any UPI banking app. Scan the dynamic QR code on checkout, enter your 12-digit UPI reference number, and your license is instantly activated with zero payment gateway fees.
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Checkout / Payment Modal -->
-  <div id="checkoutModal" class="checkout-modal-backdrop">
-    <div class="checkout-modal-card">
-      <div class="checkout-modal-header">
-        <div class="checkout-modal-title">
-          <span>⚡ Secure 1-Click Checkout</span>
-          <span id="modalHeaderBadge" style="font-size: 12.5px; font-weight: 700; color: #fbbf24; background: rgba(245, 158, 11, 0.15); padding: 3px 12px; border-radius: 20px; border: 1px solid rgba(245, 158, 11, 0.3);">Launch Offer • ₹249</span>
-        </div>
-        <button onclick="closeModal()" class="checkout-modal-close" aria-label="Close modal">✕</button>
-      </div>
-
-      <div class="checkout-modal-body">
-        <!-- Left Column: Order Summary & Trust Card -->
-        <div class="checkout-qr-col">
-          <div style="width: 100%; text-align: left; padding: 4px 6px;">
-            <div style="font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #60a5fa; font-weight: 700; margin-bottom: 4px;">License Summary</div>
-            <h4 style="font-size: 17px; font-weight: 700; color: #f8fafc; margin-bottom: 2px;">Personal Reminder Assistant</h4>
-            <div style="font-size: 12.5px; color: #94a3b8; margin-bottom: 14px;">Pro Lifetime License (2 Workstations)</div>
-
-            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 14px; margin-bottom: 16px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <span style="font-size: 13px; color: #94a3b8;">License Tier:</span>
-                <span style="font-size: 13px; font-weight: 600; color: #f8fafc;">Lifetime Access</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <span style="font-size: 13px; color: #94a3b8;">Regular Price:</span>
-                <span style="font-size: 13px; color: #64748b; text-decoration: line-through;" id="modalStrikePrice">₹999</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
-                <span style="font-size: 14px; font-weight: 700; color: #f8fafc;">Total Today:</span>
-                <span style="font-size: 20px; font-weight: 800; color: #38bdf8;" id="modalTotalPrice">₹249</span>
-              </div>
-            </div>
-
-            <ul style="list-style: none; padding: 0; margin: 0 0 16px 0; font-size: 12px; color: #94a3b8; line-height: 1.8;">
-              <li><span style="color: #34d399; margin-right: 6px;">✓</span> Windows, macOS &amp; Linux</li>
-              <li><span style="color: #34d399; margin-right: 6px;">✓</span> All future software updates included</li>
-              <li><span style="color: #34d399; margin-right: 6px;">✓</span> 100% offline local task privacy</li>
-              <li><span style="color: #34d399; margin-right: 6px;">✓</span> Instant automated license activation</li>
-            </ul>
-
-            <div style="display: flex; align-items: center; gap: 8px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.06); font-size: 11px; color: #64748b;">
-              <span style="color: #10b981; font-size: 14px;">🛡️</span>
-              <span>Secured by <strong>Razorpay</strong> • PCI-DSS Certified</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column: Verification Form / Success State -->
-        <div class="checkout-form-col">
-          
-          <!-- State 1: Input Form -->
-          <div id="checkoutFormState">
-            <div style="margin-bottom: 18px;">
-              <h4 style="font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Activate Your License</h4>
-              <p style="font-size: 13px; color: #94a3b8; line-height: 1.5;">
-                Enter your email address. Your license key and workstation credentials will be issued to this email:
-              </p>
-            </div>
-
-            <div class="checkout-field-group">
-              <label for="checkoutEmail" class="checkout-label">Your Email Address *</label>
-              <input type="email" id="checkoutEmail" class="checkout-input" placeholder="name@example.com" required autocomplete="email">
-              <div class="checkout-helper">Used to issue your Pro workstation license key.</div>
-            </div>
-
-            <div id="checkoutStatusMsg" class="checkout-status-msg"></div>
-
-            <button type="button" id="btnRazorpayPay" onclick="startRazorpayPayment()" class="btn-razorpay-primary">
-              ⚡ Pay ₹249 via Razorpay
-            </button>
-            <div style="text-align: center; font-size: 12px; color: #64748b; margin-top: 8px;" id="razorpayPaymentMethodsText">
-              UPI (GPay, PhonePe, Paytm), Cards &amp; NetBanking
-            </div>
-          </div>
-
-          <!-- State 2: Success State -->
-          <div id="checkoutSuccessState" style="display: none; text-align: center; padding: 10px 0;">
-            <div style="font-size: 48px; margin-bottom: 12px;">🎉</div>
-            <h4 style="font-size: 22px; font-weight: 800; color: #34d399; margin-bottom: 8px;">Payment Verified &amp; Activated!</h4>
-            <p style="font-size: 13.5px; color: #e2e8f0; line-height: 1.6; margin-bottom: 14px;">
-              Your lifetime license has been activated for:<br>
-              <strong id="confirmedEmail" style="color: #60a5fa; font-size: 15px;"></strong>
-            </p>
-            <div id="confirmedPaymentRef" style="font-size: 12px; color: #94a3b8; margin-bottom: 16px; font-family: monospace;"></div>
-
-            <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; padding: 16px; margin-bottom: 22px; text-align: left; font-size: 13px; color: #94a3b8; line-height: 1.6;">
-              <div style="color: #34d399; font-weight: 700; margin-bottom: 6px;">Next Steps:</div>
-              <div>1. We have sent your temporary login code to your email.</div>
-              <div>2. Download and launch Personal Reminder Assistant below.</div>
-              <div>3. Sign in with your email and code to start using the app.</div>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              <a href="download/" class="btn btn-primary btn-full" style="text-decoration: none; display: block; text-align: center;">
-                ⬇ Download Personal Reminder Assistant
-              </a>
-              <button onclick="closeModal()" class="btn btn-secondary" style="font-size: 13px; padding: 8px 24px; align-self: center; margin-top: 6px;">
-                Close
+            <div class="viewport-controls">
+              <!-- Equalizer Bars + Chime Button -->
+              <button class="viewport-control-btn" id="btnSimSound" onclick="triggerSimulatorChime()">
+                <div class="eq-bars" id="eqBars">
+                  <span class="eq-bar"></span>
+                  <span class="eq-bar"></span>
+                  <span class="eq-bar"></span>
+                </div>
+                Play Chime
+              </button>
+              <button class="viewport-control-btn" id="btnSimTheme" onclick="toggleSimulatorTheme()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                Theme: Obsidian
+              </button>
+              <button class="viewport-control-btn" onclick="triggerAlertAnimation()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                Retrigger
               </button>
             </div>
           </div>
 
+          <div class="viewport-screen">
+            <!-- Mode 1: Real 4K Screenshot Layer -->
+            <img src="assets/screenshots/hero_homepage_dark_4k.png" alt="Pauzos Desktop Application Dashboard" class="viewport-app-screenshot" id="heroBackdropScreenshot">
+
+            <!-- Mode 2: 4K Product Tour Video Layer -->
+            <video class="viewport-video-player" id="heroProductVideo" playsinline loop muted>
+              <source src="assets/video/product_ui_tour.mp4" type="video/mp4">
+            </video>
+
+            <!-- Floating Liquid Glass Reminder Card (3D Physics & Radar Pulse) -->
+            <div class="liquid-alert-overlay" id="interactiveAlertCard">
+              <div class="radar-ring"></div>
+              <div class="alert-top">
+                <span class="alert-tag">
+                  <span style="display:inline-block; width:5px; height:5px; border-radius:50%; background:#3b82f6;"></span>
+                  CRITICAL CUT-OFF
+                </span>
+                <span class="alert-due">DUE IN 14:32 MINS</span>
+              </div>
+              <h3 class="alert-title">GST 3B Filing &amp; Timesheet Sign-Off</h3>
+              <p class="alert-subtitle">
+                Scheduled statutory cutoff. Screen-anchored overlay demands explicit acknowledgment before window dismissal.
+              </p>
+              <div class="alert-actions-row">
+                <button class="btn-alert-ack" id="btnAckAlert" onclick="handleSimulatorDone(event)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                  Acknowledge &amp; Log
+                </button>
+                <button class="btn-alert-snooze" onclick="handleSimulatorSnooze()">
+                  Snooze 5 Min
+                </button>
+              </div>
+              <div class="alert-audit-pill" id="simStatusBanner">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                Logged to immutable local SQLite audit trail (0ms)
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Proof / Workflow Chips -->
+  <section class="proof-section reveal-on-scroll">
+    <div class="container">
+      <div class="proof-eyebrow">Engineered for time-critical workflows</div>
+      <div class="proof-grid">
+        <div class="proof-chip">
+          <span class="proof-dot"></span>
+          <span>Active Day Traders (Market Cut-Offs &amp; Options)</span>
+        </div>
+        <div class="proof-chip">
+          <span class="proof-dot"></span>
+          <span>Chartered Accountants &amp; Tax Teams</span>
+        </div>
+        <div class="proof-chip">
+          <span class="proof-dot"></span>
+          <span>Remote Software Engineers</span>
+        </div>
+        <div class="proof-chip">
+          <span class="proof-dot"></span>
+          <span>Operations &amp; Compliance Officers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Core Benefit Pillars (Dynamic Spotlight Tracking) -->
+  <section class="section-spacer reveal-on-scroll" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Pillar Architecture</span>
+        <h2 class="section-title">Built for high-stakes focus where missing a timer is not an option.</h2>
+        <p class="section-subtitle">
+          Standard calendar notifications hide quietly in the corner tray and disappear when you need them most. Pauzos is engineered from the ground up to guarantee compliance.
+        </p>
+      </div>
+
+      <div class="pillars-row">
+        <!-- Pillar 1 -->
+        <div class="spotlight-card pillar-box">
+          <div class="spotlight-content">
+            <span class="pillar-order">01</span>
+            <div class="pillar-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </div>
+            <h3 class="pillar-heading">Unmissable On-Screen Presence</h3>
+            <p class="pillar-body">
+              Floats directly over your active spreadsheets, Bloomberg/TradingView charts, ERPs, and full-screen presentations. It stays visible and insists on explicit acknowledgment so you never overlook a deadline in deep work.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="spotlight-card pillar-box">
+          <div class="spotlight-content">
+            <span class="pillar-order">02</span>
+            <div class="pillar-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="pillar-heading">Zero Corporate IT Friction</h3>
+            <p class="pillar-body">
+              No administrator credentials or IT elevation required. Available as a standalone Portable executable or user-space installer that runs cleanly on strictly monitored enterprise and banking laptops.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="spotlight-card pillar-box">
+          <div class="spotlight-content">
+            <span class="pillar-order">03</span>
+            <div class="pillar-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3 class="pillar-heading">Honest Workstation Economics</h3>
+            <p class="pillar-body">
+              No recurring monthly SaaS subscriptions leeching your bank account. One-time payment with free lifetime updates, 2 concurrent devices, and a permanent 2-routine freemium fallback when your 3-day trial completes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bento Grid: Deep Architecture (Dynamic Spotlight Tracking) -->
+  <section class="section-spacer reveal-on-scroll" id="architecture" style="background: rgba(255, 255, 255, 0.008);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Crafted Engineering</span>
+        <h2 class="section-title">Purpose-built workstation utilities for serious operators.</h2>
+        <p class="section-subtitle">
+          Every capability is built local-first for zero latency, zero cloud dependency, and total offline privacy.
+        </p>
+      </div>
+
+      <div class="bento-container">
+        <!-- Bento 1: Workday Math (8 col) -->
+        <div class="spotlight-card bento-item bento-span-8">
+          <div class="spotlight-content">
+            <div class="bento-tagline">Algorithmic Scheduling</div>
+            <h3 class="bento-headline">Smart Business Day Calculations (WD N)</h3>
+            <p class="bento-text">
+              Set reminders for complex calendar rules like "Every 3rd Workday of the month", "Last business day before quarter end", or "Alternate Mondays", automatically skipping national holidays and weekends.
+            </p>
+            <div class="bento-terminal-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Next trigger: Friday, Nov 6 (WD 5) • Automatically adjusted for Holiday Exclusion</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento 2: Local SQLite (4 col) -->
+        <div class="spotlight-card bento-item bento-span-4">
+          <div class="spotlight-content">
+            <div class="bento-tagline">Privacy First</div>
+            <h3 class="bento-headline">100% Offline &amp; Local SQLite</h3>
+            <p class="bento-text">
+              All schedules, notes, and routines are stored locally in SQLite on your disk. Zero cloud telemetry. Your corporate notes never leave your computer.
+            </p>
+            <div class="bento-terminal-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              <span>sqlite3 / local_storage (0ms)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento 3: Immutable Audit (6 col) -->
+        <div class="spotlight-card bento-item bento-span-6">
+          <div class="spotlight-content">
+            <div class="bento-tagline">Compliance Proof</div>
+            <h3 class="bento-headline">Immutable Audit Trail &amp; Excel Export</h3>
+            <p class="bento-text">
+              Every completed, snoozed, or dismissed reminder generates an immutable audit record with microsecond timestamps. Export professional Excel/CSV reports for manager reviews and compliance audits in 1 click.
+            </p>
+            <div class="bento-terminal-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span>export_audit_log_2026.xlsx (Generated)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento 4: Wellness Timers (6 col) -->
+        <div class="spotlight-card bento-item bento-span-6">
+          <div class="spotlight-content">
+            <div class="bento-tagline">Ergonomic Health</div>
+            <h3 class="bento-headline">Integrated 20-20-20 Wellness Timers</h3>
+            <p class="bento-text">
+              Gentle 15-second eye relaxation, hydration, and posture prompts that keep your mind sharp and your body healthy during grueling 12-hour workstation sessions.
+            </p>
+            <div class="bento-terminal-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <span>20-20-20 Ergonomic Rest Interval Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UI Showcase Carousel / Tabs -->
+  <section class="section-spacer reveal-on-scroll" id="showcase">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">User Interface Tour</span>
+        <h2 class="section-title">Designed for clarity. Polished for speed.</h2>
+        <p class="section-subtitle">
+          Explore the clean Obsidian Dark and Warm Ivory interfaces engineered for frictionless daily use.
+        </p>
+      </div>
+
+      <div class="showcase-block">
+        <div class="showcase-nav-pills">
+          <button class="showcase-nav-pill active" onclick="switchShowcaseTab(this, 'assets/screenshots/tab_today_agenda.png')">Today's Agenda</button>
+          <button class="showcase-nav-pill" onclick="switchShowcaseTab(this, 'assets/screenshots/tab_all_reminders.png')">All Routines</button>
+          <button class="showcase-nav-pill" onclick="switchShowcaseTab(this, 'assets/screenshots/tab_workdays_calendar.png')">Workdays Calendar</button>
+          <button class="showcase-nav-pill" onclick="switchShowcaseTab(this, 'assets/screenshots/tab_audit_reports.png')">Audit Reports</button>
+          <button class="showcase-nav-pill" onclick="switchShowcaseTab(this, 'assets/screenshots/tab_health_wellness.png')">Wellness Popups</button>
+        </div>
+
+        <div class="showcase-display">
+          <img src="assets/screenshots/tab_today_agenda.png" alt="Pauzos Workstation Interface" class="showcase-image" id="showcaseMainImg">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing: The High-Conversion Monolith (Dynamic Spotlight Tracking) -->
+  <section class="section-spacer reveal-on-scroll" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Straightforward Licensing</span>
+        <h2 class="section-title">Pay once. Use forever. No subscriptions.</h2>
+        <p class="section-subtitle">
+          Start with our unrestricted 3-day free trial. Upgrade to Pro Lifetime whenever you're ready to unlock unlimited routines.
+        </p>
+      </div>
+
+      <div class="pricing-layout">
+        <div class="spotlight-card pricing-monolith">
+          <div class="spotlight-content">
+            <div class="pricing-pill-status">
+              <span class="pricing-tag-launch" id="pricingIntroBadge">Introductory Launch Offer</span>
+              <span class="pricing-tag-save" id="pricingDiscountPill">Save 75% Off</span>
+            </div>
+
+            <div class="pricing-number-line">
+              <span class="pricing-curr-symbol" id="pricingCurrencySymbol">₹</span>
+              <span class="pricing-big-num" id="pricingPriceNumber">249</span>
+              <span class="pricing-strike-num" id="pricingStrikeAmount">₹999</span>
+            </div>
+
+            <div class="pricing-period-line" id="pricingPeriodText">One-Time Payment • Lifetime Software Updates Included</div>
+
+            <div class="pricing-urgency-box" id="pricingUrgencyNote">
+              <span><strong>Early Bird Price:</strong> Early-adopter pricing is locked at ₹249 before standard price increases to ₹999. Includes all future updates forever.</span>
+            </div>
+
+            <ul class="pricing-checklist">
+              <li class="pricing-item">
+                <span class="pricing-check-icon">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </span>
+                <span><strong>Unlimited Routines &amp; Reminders</strong> (No limits)</span>
+              </li>
+              <li class="pricing-item">
+                <span class="pricing-check-icon">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </span>
+                <span><strong>2 Concurrent Devices</strong> (e.g. Work PC + Personal Laptop)</span>
+              </li>
+              <li class="pricing-item">
+                <span class="pricing-check-icon">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </span>
+                <span><strong>Windows, macOS &amp; Linux</strong> native support</span>
+              </li>
+              <li class="pricing-item">
+                <span class="pricing-check-icon">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </span>
+                <span><strong>Smart Workday Logic (WD N)</strong> &amp; Holiday Exclusions</span>
+              </li>
+              <li class="pricing-item">
+                <span class="pricing-check-icon">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </span>
+                <span><strong>Immutable Audit Logging</strong> &amp; One-Click Excel Export</span>
+              </li>
+              <li class="pricing-item">
+                <span class="pricing-check-icon">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </span>
+                <span><strong>Free Lifetime Updates</strong> &amp; Direct Priority Support</span>
+              </li>
+            </ul>
+
+            <button onclick="handleCheckout()" class="btn btn-primary pricing-action-btn" id="pricingCtaBtn">
+              Buy Lifetime License for ₹249
+            </button>
+
+            <div class="pricing-guarantee-note" id="pricingGuaranteeNote">
+              <span>UPI, Cards &amp; NetBanking via Razorpay</span> • <span>256-Bit SSL Encrypted</span> • <span>Instant Activation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion -->
+  <section class="section-spacer reveal-on-scroll" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Frequently Asked Questions</span>
+        <h2 class="section-title">Everything you need to know.</h2>
+      </div>
+
+      <div class="faq-accordion-group">
+        <div class="faq-card open">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>Do I need administrator privileges on my corporate workstation?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-content">
+            <strong>No administrator rights are needed.</strong> Pauzos offers a standalone Portable edition for Windows (.exe) and user-space installer for macOS and Linux that install cleanly into your user directory. It requires zero IT elevation and complies with strict enterprise laptop policies.
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>What happens after the 3-day free trial ends?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-content">
+            Unlike software that locks you out abruptly, Pauzos falls back to a <strong>permanent Freemium 2-routine mode</strong>. Your two most critical routines will keep firing forever at zero cost. To schedule unlimited routines and unlock Excel compliance audits, you can upgrade to Pro Lifetime for ₹249 at any time.
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>Can I use my license on multiple computers?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-content">
+            Yes. Every Pro license grants you <strong>2 concurrent device activations</strong>. You can run Pauzos on your office workstation and your home MacBook or Linux laptop simultaneously under the same license key.
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>Is my routine or task data sent to the cloud?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-content">
+            <strong>Zero cloud telemetry.</strong> All your schedules, task titles, checklists, and audit logs are stored exclusively in local SQLite on your own physical computer. We never read or collect your tasks. Internet access is used solely for one-time license activation and release checks.
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span>How is my license delivered after payment?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-content">
+            Immediately upon successful payment via Razorpay, your Pro license key is displayed on screen and emailed to your address. You simply enter the license email in the Pauzos desktop app to instantly unlock Pro capabilities.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer-wrap">
     <div class="container">
-      <div class="footer-top">
-        <div>
-          <a href="#" class="brand-link">
-            <img src="assets/logo.png" alt="Pauzos Logo" class="brand-logo" style="width: 32px; height: 32px;">
-            <div class="brand-text-block">
-              <span class="brand-title" style="font-size: 18px;">Pauzos</span>
-            </div>
+      <div class="footer-top-grid">
+        <div class="footer-identity">
+          <a href="index.html" class="brand-link">
+            <img src="assets/logo.png" alt="Pauzos" class="brand-logo">
+            <span class="brand-text">Pauzos</span>
           </a>
-          <p class="footer-brand-desc">
-            Independent software portfolio developing practical, distraction-free desktop and productivity tools.
+          <p class="footer-about">
+            Distraction-free, local-first workstation reminder software for deadlines you cannot afford to miss. Developed by STRATEXA.
           </p>
-
-          <a href="https://stratexa.in" target="_blank" rel="noopener noreferrer" class="stratexa-badge-container">
-            <span class="stratexa-badge-label">A Product Of</span>
-            <div class="stratexa-badge-content">
-              <div class="stratexa-logo-box">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M25 75L75 25M75 25H45M75 25V55" stroke="#10b981" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M25 45V75H55" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="stratexa-brand-info">
-                <span class="stratexa-title">STRATEXA<span class="tld">.IN</span></span>
-                <span class="stratexa-tagline">Automate • Execute • Elevate</span>
-              </div>
-              <span class="stratexa-arrow">↗</span>
-            </div>
-          </a>
         </div>
 
-        <div>
-          <h4 class="footer-col-title">Portfolio</h4>
-          <ul class="footer-links">
-            <li><a href="#apps">Personal Reminder Assistant</a></li>
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pricing" id="footerPricingLink">Pricing (Launch Offer)</a></li>
-          </ul>
-        </div>
+        <div class="footer-nav-columns">
+          <div>
+            <h4 class="footer-header-label">Product</h4>
+            <ul class="footer-link-items">
+              <li><a href="download.html" class="footer-single-link">Download</a></li>
+              <li><a href="#features" class="footer-single-link">Pillars</a></li>
+              <li><a href="#architecture" class="footer-single-link">Architecture</a></li>
+              <li><a href="#pricing" class="footer-single-link">Pricing (₹249)</a></li>
+            </ul>
+          </div>
 
-        <div>
-          <h4 class="footer-col-title">Platforms Supported</h4>
-          <ul class="footer-links">
-            <li><a href="#pricing">Windows</a></li>
-            <li><a href="#pricing">macOS</a></li>
-            <li><a href="#pricing">Linux</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Legal & Trust</h4>
-          <ul class="footer-links">
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-            <li><a href="refund.html">Refund & Cancellation</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
+          <div>
+            <h4 class="footer-header-label">Legal &amp; Policy</h4>
+            <ul class="footer-link-items">
+              <li><a href="terms.html" class="footer-single-link">Terms of Service</a></li>
+              <li><a href="privacy.html" class="footer-single-link">Privacy Policy</a></li>
+              <li><a href="refund.html" class="footer-single-link">Refund Policy</a></li>
+              <li><a href="delivery.html" class="footer-single-link">Digital Delivery</a></li>
+              <li><a href="contact.html" class="footer-single-link">Contact &amp; Support</a></li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div class="footer-bottom-copy">
-          <span>© 2026 Pauzos. All rights reserved.</span>
-          <span style="opacity: 0.3;">•</span>
-          <a href="https://stratexa.in" target="_blank" rel="noopener noreferrer" class="footer-bottom-stratexa">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="mini-stratexa-svg">
-              <path d="M25 75L75 25M75 25H45M75 25V55" stroke="#10b981" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M25 45V75H55" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>A Product of <strong>Stratexa.in</strong></span>
-          </a>
-        </div>
-        <div class="footer-legal-links">
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
-          <a href="refund.html">Refund Policy</a>
-          <a href="delivery.html">Shipping &amp; Delivery</a>
-          <a href="contact.html">Contact</a>
+      <div class="footer-sub-bar">
+        <div>© 2026 STRATEXA (Proprietorship). All rights reserved. • 7, Pilliyar Koil St, Kombakkam, Puducherry - 605110.</div>
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+          pauzos.com • Native • Local-First • Private
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Sticky Download Bar -->
+  <!-- Sticky Bottom Floating Bar -->
   <div class="sticky-download-bar" id="stickyDownloadBar">
-    <div class="sticky-inner">
-      <a href="download.html" class="sticky-cta">📥 Download Free 3-Day Trial</a>
-      <div class="sticky-trust">
-        <span>No signup required</span>
+    <div class="sticky-inner-box">
+      <div class="sticky-meta-info">
+        <span style="font-weight: 700; color: #fff;">Pauzos v1.0.28</span>
         <span style="opacity: 0.3;">•</span>
-        <span>Windows, Mac &amp; Linux</span>
+        <span>Unrestricted 3-Day Trial</span>
         <span style="opacity: 0.3;">•</span>
-        <span>100% offline &amp; private</span>
+        <span>Windows, macOS &amp; Linux</span>
+      </div>
+      <a href="download.html" class="sticky-download-cta">
+        <span>Download Free Trial</span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Checkout / Payment Modal (Maintains full script.js compatibility) -->
+  <div id="checkoutModal" class="checkout-modal-backdrop">
+    <div class="checkout-modal-card">
+      <div class="checkout-modal-header">
+        <div class="checkout-modal-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>Secure 1-Click Checkout</span>
+          <span id="modalHeaderBadge" style="font-size: 11.5px; font-weight: 700; color: #fbbf24; background: rgba(245, 158, 11, 0.12); padding: 2px 10px; border-radius: 20px; border: 1px solid rgba(245, 158, 11, 0.3);">Launch Offer • ₹249</span>
+        </div>
+        <button onclick="closeModal()" class="checkout-modal-close" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="checkout-modal-body">
+        <div class="checkout-qr-col">
+          <div id="checkoutFormState">
+            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 13px; color: var(--text-secondary);">Product:</span>
+                <span style="font-size: 14px; font-weight: 700; color: #fff;">Personal Reminder Assistant (Pro)</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 13px; color: var(--text-secondary);">Devices:</span>
+                <span style="font-size: 13px; color: #60a5fa; font-weight: 600;">2 Workstations (Lifetime Access)</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 13px; color: var(--text-secondary);">Total Due:</span>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span id="modalStrikePrice" style="font-size: 13px; color: var(--text-muted); text-decoration: line-through;">₹999</span>
+                  <span id="modalTotalPrice" style="font-size: 20px; font-weight: 800; color: #34d399;">₹249</span>
+                </div>
+              </div>
+            </div>
+
+            <label for="checkoutEmail" style="display: block; font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">
+              Your Email Address (For License Key Delivery):
+            </label>
+            <input type="email" id="checkoutEmail" class="checkout-input" placeholder="name@company.com" required autocomplete="email">
+
+            <div id="checkoutStatusMsg" style="display: none; padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 14px;"></div>
+
+            <button type="button" id="btnRazorpayPay" onclick="startRazorpayPayment()" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 15px; font-weight: 700; border-radius: var(--radius-md);">
+              Pay ₹249 via Razorpay (UPI &amp; Cards)
+            </button>
+
+            <div style="text-align: center; margin-top: 14px; font-size: 12px; color: var(--text-muted);" id="razorpayPaymentMethodsText">
+              Direct UPI (GPay, PhonePe, Paytm, BHIM, Cred) • All Indian Credit/Debit Cards • NetBanking
+            </div>
+          </div>
+
+          <div id="checkoutSuccessState" style="display: none; text-align: center; padding: 20px 10px;">
+            <div style="width: 52px; height: 52px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); color: #34d399; font-size: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">✓</div>
+            <h3 style="font-size: 21px; font-weight: 800; color: #fff; margin-bottom: 8px;">Payment Successful!</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px;">
+              Your Pro Lifetime license has been provisioned for <strong id="confirmedEmail" style="color: #60a5fa;"></strong>.
+            </p>
+            <div id="confirmedPaymentRef" style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); background: rgba(255, 255, 255, 0.04); padding: 8px 12px; border-radius: 6px; margin-bottom: 24px;"></div>
+            <a href="download.html" class="btn btn-primary" style="width: 100%; padding: 12px;">Download Pauzos Desktop App</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Official Razorpay Checkout SDK -->
+  <!-- Official Scripts -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  <script src="script.js?v=20261101_geo"></script>
+  <script src="script.js?v=20261102_geo"></script>
   <script src="analytics.js?v=1.0.0"></script>
 
-  <!-- Sticky Bar Scroll Trigger -->
+  <!-- Emil Kowalski Micro-Interactions, 3D Tilt, Particle Canvas & Sound Controller -->
   <script>
+    // ── 1. Ambient Floating Starfield / Particle Canvas ──
+    (function initAmbientCanvas() {
+      var canvas = document.getElementById('ambientCanvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var width = canvas.width = window.innerWidth;
+      var height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', function() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      var particles = [];
+      var count = Math.min(45, Math.floor(width / 35));
+      for (var i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 1.5 + 0.5,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: -Math.random() * 0.35 - 0.1,
+          alpha: Math.random() * 0.5 + 0.2
+        });
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, width, height);
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.y < 0) { p.y = height; p.x = Math.random() * width; }
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(96, 165, 250, ' + p.alpha + ')';
+          ctx.fill();
+        }
+        requestAnimationFrame(drawParticles);
+      }
+      drawParticles();
+    })();
+
+    // ── 2. Interactive 3D Perspective Tilt for Hero Bezel ──
+    (function init3DTilt() {
+      var stage = document.getElementById('hero3DStage');
+      var bezel = document.getElementById('heroBezel');
+      if (!stage || !bezel) return;
+
+      stage.addEventListener('mousemove', function(e) {
+        if (window.innerWidth < 1024) return;
+        var rect = stage.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        var centerX = rect.width / 2;
+        var centerY = rect.height / 2;
+        var rotateX = ((y - centerY) / centerY) * -5;
+        var rotateY = ((x - centerX) / centerX) * 5;
+        bezel.style.transform = 'perspective(1200px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg)';
+      });
+
+      stage.addEventListener('mouseleave', function() {
+        bezel.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+      });
+    })();
+
+    // ── 3. Cursor Spotlight Tracking (Linear / Vercel style) ──
+    (function initSpotlights() {
+      var cards = document.querySelectorAll('.spotlight-card');
+      cards.forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+          var rect = card.getBoundingClientRect();
+          var x = e.clientX - rect.left;
+          var y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', x + 'px');
+          card.style.setProperty('--mouse-y', y + 'px');
+        });
+      });
+    })();
+
+    // ── 4. Media Mode Switcher (Simulator vs 4K Video) ──
+    function switchHeroMode(mode) {
+      var btnSim = document.getElementById('btnModeSim');
+      var btnVid = document.getElementById('btnModeVideo');
+      var img = document.getElementById('heroBackdropScreenshot');
+      var vid = document.getElementById('heroProductVideo');
+      var alertCard = document.getElementById('interactiveAlertCard');
+      var modeText = document.getElementById('stageModeText');
+
+      if (mode === 'video') {
+        if (btnSim) btnSim.classList.remove('active');
+        if (btnVid) btnVid.classList.add('active');
+        if (img) img.style.display = 'none';
+        if (vid) {
+          vid.style.display = 'block';
+          vid.play().catch(function() {});
+        }
+        if (alertCard) alertCard.style.opacity = '0.2';
+        if (modeText) modeText.textContent = '4K Product UI Tour Video';
+      } else {
+        if (btnSim) btnSim.classList.add('active');
+        if (btnVid) btnVid.classList.remove('active');
+        if (vid) {
+          vid.style.display = 'none';
+          vid.pause();
+        }
+        if (img) img.style.display = 'block';
+        if (alertCard) alertCard.style.opacity = '1';
+        if (modeText) modeText.textContent = 'Interactive Live Simulation';
+      }
+    }
+
+    // ── 5. Procedural Web Audio API Chime & Visualizer ──
+    var audioCtx = null;
+    function triggerSimulatorChime() {
+      var eq = document.getElementById('eqBars');
+      if (eq) {
+        eq.classList.add('active');
+        setTimeout(function() { eq.classList.remove('active'); }, 1200);
+      }
+
+      try {
+        var AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!audioCtx) audioCtx = new AudioContext();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        var now = audioCtx.currentTime;
+        var osc1 = audioCtx.createOscillator();
+        var osc2 = audioCtx.createOscillator();
+        var gain = audioCtx.createGain();
+
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(587.33, now); // D5
+        osc1.frequency.exponentialRampToValueAtTime(880.00, now + 0.15); // A5
+
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(1174.66, now);
+        osc2.frequency.exponentialRampToValueAtTime(1760.00, now + 0.15);
+
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.25, now + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+
+        osc1.connect(gain);
+        osc2.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc1.start(now);
+        osc2.start(now);
+        osc1.stop(now + 1.2);
+        osc2.stop(now + 1.2);
+      } catch (e) {
+        console.warn('Audio chime error:', e);
+      }
+    }
+
+    // ── 6. Alert Card Actions & Confetti Burst ──
+    function handleSimulatorDone(e) {
+      triggerSimulatorChime();
+      var card = document.getElementById('interactiveAlertCard');
+      var banner = document.getElementById('simStatusBanner');
+      if (banner) banner.style.display = 'flex';
+
+      if (card) {
+        card.style.transform = 'scale(0.96)';
+        setTimeout(function() {
+          card.style.transform = 'scale(1.02)';
+          setTimeout(function() { card.style.transform = 'scale(1)'; }, 150);
+        }, 120);
+      }
+    }
+
+    function handleSimulatorSnooze() {
+      var card = document.getElementById('interactiveAlertCard');
+      if (card) {
+        card.style.opacity = '0.35';
+        card.style.transform = 'translateY(16px) scale(0.96)';
+        setTimeout(function() {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0) scale(1)';
+        }, 800);
+      }
+    }
+
+    function triggerAlertAnimation() {
+      var card = document.getElementById('interactiveAlertCard');
+      var banner = document.getElementById('simStatusBanner');
+      if (banner) banner.style.display = 'none';
+      if (card) {
+        card.style.transform = 'scale(0.88) translateY(24px)';
+        card.style.opacity = '0';
+        setTimeout(function() {
+          card.style.transform = 'scale(1) translateY(0)';
+          card.style.opacity = '1';
+          triggerSimulatorChime();
+        }, 120);
+      }
+    }
+
+    function toggleSimulatorTheme() {
+      var card = document.getElementById('interactiveAlertCard');
+      var btn = document.getElementById('btnSimTheme');
+      var screenshot = document.getElementById('heroBackdropScreenshot');
+      if (!card || !btn) return;
+      var isLight = card.classList.toggle('theme-light');
+      btn.innerHTML = isLight 
+        ? '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> Theme: Warm Ivory' 
+        : '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> Theme: Obsidian';
+      if (screenshot) {
+        screenshot.src = isLight ? 'assets/screenshots/hero_homepage_light_4k.png' : 'assets/screenshots/hero_homepage_dark_4k.png';
+      }
+    }
+
+    // ── 7. UI Showcase Tab Switcher ──
+    function switchShowcaseTab(tabBtn, imgSrc) {
+      var tabs = document.querySelectorAll('.showcase-nav-pill');
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tabBtn.classList.add('active');
+
+      var img = document.getElementById('showcaseMainImg');
+      if (img) {
+        img.style.opacity = '0.3';
+        setTimeout(function() {
+          img.src = imgSrc;
+          img.style.opacity = '1';
+        }, 150);
+      }
+    }
+
+    // ── 8. FAQ Accordion Toggle ──
+    function toggleFaq(btn) {
+      var item = btn.parentElement;
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-card').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    }
+
+    // ── 9. Reveal on Scroll (IntersectionObserver) ──
+    (function initScrollReveal() {
+      var items = document.querySelectorAll('.reveal-on-scroll');
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(function(el) { el.classList.add('revealed'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      items.forEach(function(el) { observer.observe(el); });
+    })();
+
+    // ── 10. Sticky Download Bar Observer ──
     (function() {
       var bar = document.getElementById('stickyDownloadBar');
       if (!bar) return;
       var shown = false;
       function checkScroll() {
         var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollY > 600 && !shown) {
+        if (scrollY > 550 && !shown) {
           bar.classList.add('visible');
           shown = true;
-        } else if (scrollY <= 600 && shown) {
+        } else if (scrollY <= 550 && shown) {
           bar.classList.remove('visible');
           shown = false;
         }
