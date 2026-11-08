@@ -17,7 +17,7 @@
 | `download.html` | Dynamic OS download hub: Detects visitor OS (Windows, macOS, Linux) and delivers 1-click downloads directly from GitHub releases (`v1.0.28`), with detailed corporate zero-admin install instructions. |
 | `download/index.html` | Canonical directory route serving the identical OS download experience for visitors navigating to `pauzos.com/download/`. |
 | `pricing.json` | Source of truth for live pricing (₹249 introductory / ₹999 standard, currency, and strike-through amounts), synchronized dynamically across all buttons on page load. |
-| `contact.html` | Support request form and direct contact details (`hello@stratexa.in`). |
+| `contact.html` | Support request form and direct contact details (`support@pauzos.com`). |
 | `privacy.html` | Comprehensive privacy statement: 100% local task storage, zero routine tracking, and transparent disclosure of Supabase hardware-hash licensing and PCI-DSS / RBI-compliant payment gateway processing. |
 | `terms.html` | Software license agreement, 2-device concurrent activation rules, pricing terms, and merchant legal entity disclosure (STRATEXA). |
 | `refund.html` | Dedicated Cancellation & Refund Policy: Clear 3-day unrestricted free trial disclosure, non-refundable paid digital license terms, cancellation rules, and 5-7 business day reversal protocol for duplicate deductions. |
@@ -118,7 +118,7 @@ The website features custom mobile optimizations for iOS Safari and Android Chro
         │  User completes ₹249 payment via GPay / PhonePe / Paytm / Cred
         ▼
 [ HDFC Bank UPI Credit Notification Email ]
-        │  Sent to hello@stratexa.in
+        │  Sent to support@pauzos.com
         ▼
 [ Google Apps Script Webhook Listener ]
         │  Triggered every 1-2 minutes on inbox
@@ -148,4 +148,4 @@ git push origin main
 The site updates live at **https://pauzos.com** within approximately 60 seconds.
 
 ---
-*Maintained by Stratexa Core Engineering Team (`hello@stratexa.in`).*
+*Maintained by Stratexa Core Engineering Team (`support@pauzos.com`).*
