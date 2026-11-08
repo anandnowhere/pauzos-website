@@ -1,89 +1,412 @@
 {
-  "price": "₹349",
-  "amount": 349,
-  "currency": "INR",
-  "standardPrice": "₹499",
-  "discountPercent": "30%",
-  "offerLabel": "Early Bird Offer",
-  "checkoutUrl": "https://pauzos.com/payment.html",
-  "updatedAt": "2026-11-07",
+  "updatedAt": "2026-11-08",
+  "switchAt": "2027-01-01T00:00:00+05:30",
+  "defaultCurrency": "USD",
   "currencies": {
     "INR": {
       "symbol": "₹",
       "code": "INR",
-      "amount": 349,
-      "amountSubunit": 34900,
-      "formatted": "₹349",
-      "standard": "₹499",
-      "discount": "30% OFF",
-      "label": "Early Bird Launch • ₹349",
-      "cta": "Get Instant Access for ₹349"
+      "country": "India",
+      "annual": {
+        "amount": 349,
+        "amountSubunit": 34900,
+        "formatted": "₹349",
+        "period": "/year",
+        "standard": "₹499",
+        "discount": "30% OFF",
+        "label": "Annual Pass • ₹349/yr",
+        "cta": "Get Annual Pass for ₹349/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 999,
+        "amountSubunit": 99900,
+        "formatted": "₹999",
+        "period": "one-time",
+        "standard": "₹1,499",
+        "discount": "33% OFF",
+        "label": "Lifetime Pro • ₹999 once",
+        "cta": "Get Lifetime Pro for ₹999",
+        "devices": 2
+      }
     },
     "USD": {
       "symbol": "$",
       "code": "USD",
-      "amount": 9.99,
-      "amountSubunit": 999,
-      "formatted": "$9.99",
-      "standard": "$14.99",
-      "discount": "33% OFF",
-      "label": "Early Bird • $9.99",
-      "cta": "Get Instant Access for $9.99"
+      "country": "United States",
+      "annual": {
+        "amount": 9.99,
+        "amountSubunit": 999,
+        "formatted": "$9.99",
+        "period": "/year",
+        "standard": "$14.99",
+        "discount": "33% OFF",
+        "label": "Annual Pass • $9.99/yr",
+        "cta": "Get Annual Pass for $9.99/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 29.99,
+        "amountSubunit": 2999,
+        "formatted": "$29.99",
+        "period": "one-time",
+        "standard": "$39.99",
+        "discount": "25% OFF",
+        "label": "Lifetime Pro • $29.99 once",
+        "cta": "Get Lifetime Pro for $29.99",
+        "devices": 2
+      }
     },
     "GBP": {
       "symbol": "£",
       "code": "GBP",
-      "amount": 7.99,
-      "amountSubunit": 799,
-      "formatted": "£7.99",
-      "standard": "£11.99",
-      "discount": "33% OFF",
-      "label": "Early Bird • £7.99",
-      "cta": "Get Instant Access for £7.99"
+      "country": "United Kingdom",
+      "annual": {
+        "amount": 7.99,
+        "amountSubunit": 799,
+        "formatted": "£7.99",
+        "period": "/year",
+        "standard": "£11.99",
+        "discount": "33% OFF",
+        "label": "Annual Pass • £7.99/yr",
+        "cta": "Get Annual Pass for £7.99/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 24.99,
+        "amountSubunit": 2499,
+        "formatted": "£24.99",
+        "period": "one-time",
+        "standard": "£34.99",
+        "discount": "28% OFF",
+        "label": "Lifetime Pro • £24.99 once",
+        "cta": "Get Lifetime Pro for £24.99",
+        "devices": 2
+      }
     },
     "EUR": {
       "symbol": "€",
       "code": "EUR",
-      "amount": 9.99,
-      "amountSubunit": 999,
-      "formatted": "€9.99",
-      "standard": "€14.99",
-      "discount": "33% OFF",
-      "label": "Early Bird • €9.99",
-      "cta": "Get Instant Access for €9.99"
+      "country": "Eurozone",
+      "annual": {
+        "amount": 9.99,
+        "amountSubunit": 999,
+        "formatted": "€9.99",
+        "period": "/year",
+        "standard": "€14.99",
+        "discount": "33% OFF",
+        "label": "Annual Pass • €9.99/yr",
+        "cta": "Get Annual Pass for €9.99/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 29.99,
+        "amountSubunit": 2999,
+        "formatted": "€29.99",
+        "period": "one-time",
+        "standard": "€39.99",
+        "discount": "25% OFF",
+        "label": "Lifetime Pro • €29.99 once",
+        "cta": "Get Lifetime Pro for €29.99",
+        "devices": 2
+      }
     },
     "CAD": {
       "symbol": "CA$",
       "code": "CAD",
-      "amount": 13.99,
-      "amountSubunit": 1399,
-      "formatted": "CA$13.99",
-      "standard": "CA$19.99",
-      "discount": "30% OFF",
-      "label": "Early Bird • CA$13.99",
-      "cta": "Get Instant Access for CA$13.99"
+      "country": "Canada",
+      "annual": {
+        "amount": 13.99,
+        "amountSubunit": 1399,
+        "formatted": "CA$13.99",
+        "period": "/year",
+        "standard": "CA$19.99",
+        "discount": "30% OFF",
+        "label": "Annual Pass • CA$13.99/yr",
+        "cta": "Get Annual Pass for CA$13.99/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 39.99,
+        "amountSubunit": 3999,
+        "formatted": "CA$39.99",
+        "period": "one-time",
+        "standard": "CA$54.99",
+        "discount": "27% OFF",
+        "label": "Lifetime Pro • CA$39.99 once",
+        "cta": "Get Lifetime Pro for CA$39.99",
+        "devices": 2
+      }
     },
     "AUD": {
       "symbol": "A$",
       "code": "AUD",
-      "amount": 15.99,
-      "amountSubunit": 1599,
-      "formatted": "A$15.99",
-      "standard": "A$22.99",
-      "discount": "30% OFF",
-      "label": "Early Bird • A$15.99",
-      "cta": "Get Instant Access for A$15.99"
+      "country": "Australia",
+      "annual": {
+        "amount": 15.99,
+        "amountSubunit": 1599,
+        "formatted": "A$15.99",
+        "period": "/year",
+        "standard": "A$22.99",
+        "discount": "30% OFF",
+        "label": "Annual Pass • A$15.99/yr",
+        "cta": "Get Annual Pass for A$15.99/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 44.99,
+        "amountSubunit": 4499,
+        "formatted": "A$44.99",
+        "period": "one-time",
+        "standard": "A$59.99",
+        "discount": "25% OFF",
+        "label": "Lifetime Pro • A$44.99 once",
+        "cta": "Get Lifetime Pro for A$44.99",
+        "devices": 2
+      }
+    },
+    "SGD": {
+      "symbol": "SG$",
+      "code": "SGD",
+      "country": "Singapore",
+      "annual": {
+        "amount": 13.99,
+        "amountSubunit": 1399,
+        "formatted": "SG$13.99",
+        "period": "/year",
+        "standard": "SG$19.99",
+        "discount": "30% OFF",
+        "label": "Annual Pass • SG$13.99/yr",
+        "cta": "Get Annual Pass for SG$13.99/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 39.99,
+        "amountSubunit": 3999,
+        "formatted": "SG$39.99",
+        "period": "one-time",
+        "standard": "SG$54.99",
+        "discount": "27% OFF",
+        "label": "Lifetime Pro • SG$39.99 once",
+        "cta": "Get Lifetime Pro for SG$39.99",
+        "devices": 2
+      }
+    },
+    "NZD": {
+      "symbol": "NZ$",
+      "code": "NZD",
+      "country": "New Zealand",
+      "annual": {
+        "amount": 17.99,
+        "amountSubunit": 1799,
+        "formatted": "NZ$17.99",
+        "period": "/year",
+        "standard": "NZ$24.99",
+        "discount": "28% OFF",
+        "label": "Annual Pass • NZ$17.99/yr",
+        "cta": "Get Annual Pass for NZ$17.99/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 49.99,
+        "amountSubunit": 4999,
+        "formatted": "NZ$49.99",
+        "period": "one-time",
+        "standard": "NZ$69.99",
+        "discount": "28% OFF",
+        "label": "Lifetime Pro • NZ$49.99 once",
+        "cta": "Get Lifetime Pro for NZ$49.99",
+        "devices": 2
+      }
     },
     "AED": {
       "symbol": "AED",
       "code": "AED",
-      "amount": 39,
-      "amountSubunit": 3900,
-      "formatted": "39 AED",
-      "standard": "59 AED",
-      "discount": "34% OFF",
-      "label": "Early Bird • 39 AED",
-      "cta": "Get Instant Access for 39 AED"
+      "country": "United Arab Emirates",
+      "annual": {
+        "amount": 39,
+        "amountSubunit": 3900,
+        "formatted": "39 AED",
+        "period": "/year",
+        "standard": "59 AED",
+        "discount": "34% OFF",
+        "label": "Annual Pass • 39 AED/yr",
+        "cta": "Get Annual Pass for 39 AED/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 109,
+        "amountSubunit": 10900,
+        "formatted": "109 AED",
+        "period": "one-time",
+        "standard": "159 AED",
+        "discount": "31% OFF",
+        "label": "Lifetime Pro • 109 AED once",
+        "cta": "Get Lifetime Pro for 109 AED",
+        "devices": 2
+      }
+    },
+    "SAR": {
+      "symbol": "SAR",
+      "code": "SAR",
+      "country": "Saudi Arabia",
+      "annual": {
+        "amount": 39,
+        "amountSubunit": 3900,
+        "formatted": "39 SAR",
+        "period": "/year",
+        "standard": "59 SAR",
+        "discount": "34% OFF",
+        "label": "Annual Pass • 39 SAR/yr",
+        "cta": "Get Annual Pass for 39 SAR/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 109,
+        "amountSubunit": 10900,
+        "formatted": "109 SAR",
+        "period": "one-time",
+        "standard": "159 SAR",
+        "discount": "31% OFF",
+        "label": "Lifetime Pro • 109 SAR once",
+        "cta": "Get Lifetime Pro for 109 SAR",
+        "devices": 2
+      }
+    },
+    "QAR": {
+      "symbol": "QAR",
+      "code": "QAR",
+      "country": "Qatar",
+      "annual": {
+        "amount": 39,
+        "amountSubunit": 3900,
+        "formatted": "39 QAR",
+        "period": "/year",
+        "standard": "59 QAR",
+        "discount": "34% OFF",
+        "label": "Annual Pass • 39 QAR/yr",
+        "cta": "Get Annual Pass for 39 QAR/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 109,
+        "amountSubunit": 10900,
+        "formatted": "109 QAR",
+        "period": "one-time",
+        "standard": "159 QAR",
+        "discount": "31% OFF",
+        "label": "Lifetime Pro • 109 QAR once",
+        "cta": "Get Lifetime Pro for 109 QAR",
+        "devices": 2
+      }
+    },
+    "KWD": {
+      "symbol": "KWD",
+      "code": "KWD",
+      "country": "Kuwait",
+      "annual": {
+        "amount": 3,
+        "amountSubunit": 3000,
+        "formatted": "3 KWD",
+        "period": "/year",
+        "standard": "5 KWD",
+        "discount": "40% OFF",
+        "label": "Annual Pass • 3 KWD/yr",
+        "cta": "Get Annual Pass for 3 KWD/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 9,
+        "amountSubunit": 9000,
+        "formatted": "9 KWD",
+        "period": "one-time",
+        "standard": "13 KWD",
+        "discount": "30% OFF",
+        "label": "Lifetime Pro • 9 KWD once",
+        "cta": "Get Lifetime Pro for 9 KWD",
+        "devices": 2
+      }
+    },
+    "BHD": {
+      "symbol": "BHD",
+      "code": "BHD",
+      "country": "Bahrain",
+      "annual": {
+        "amount": 4,
+        "amountSubunit": 4000,
+        "formatted": "4 BHD",
+        "period": "/year",
+        "standard": "6 BHD",
+        "discount": "33% OFF",
+        "label": "Annual Pass • 4 BHD/yr",
+        "cta": "Get Annual Pass for 4 BHD/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 11,
+        "amountSubunit": 11000,
+        "formatted": "11 BHD",
+        "period": "one-time",
+        "standard": "16 BHD",
+        "discount": "31% OFF",
+        "label": "Lifetime Pro • 11 BHD once",
+        "cta": "Get Lifetime Pro for 11 BHD",
+        "devices": 2
+      }
+    },
+    "OMR": {
+      "symbol": "OMR",
+      "code": "OMR",
+      "country": "Oman",
+      "annual": {
+        "amount": 4,
+        "amountSubunit": 4000,
+        "formatted": "4 OMR",
+        "period": "/year",
+        "standard": "6 OMR",
+        "discount": "33% OFF",
+        "label": "Annual Pass • 4 OMR/yr",
+        "cta": "Get Annual Pass for 4 OMR/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 11,
+        "amountSubunit": 11000,
+        "formatted": "11 OMR",
+        "period": "one-time",
+        "standard": "16 OMR",
+        "discount": "31% OFF",
+        "label": "Lifetime Pro • 11 OMR once",
+        "cta": "Get Lifetime Pro for 11 OMR",
+        "devices": 2
+      }
+    },
+    "JPY": {
+      "symbol": "¥",
+      "code": "JPY",
+      "country": "Japan",
+      "annual": {
+        "amount": 1500,
+        "amountSubunit": 1500,
+        "formatted": "¥1,500",
+        "period": "/year",
+        "standard": "¥2,200",
+        "discount": "31% OFF",
+        "label": "Annual Pass • ¥1,500/yr",
+        "cta": "Get Annual Pass for ¥1,500/yr",
+        "devices": 1
+      },
+      "lifetime": {
+        "amount": 4500,
+        "amountSubunit": 4500,
+        "formatted": "¥4,500",
+        "period": "one-time",
+        "standard": "¥6,500",
+        "discount": "30% OFF",
+        "label": "Lifetime Pro • ¥4,500 once",
+        "cta": "Get Lifetime Pro for ¥4,500",
+        "devices": 2
+      }
     }
   }
 }

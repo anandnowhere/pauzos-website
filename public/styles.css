@@ -2305,3 +2305,214 @@ body{font-size:18px}.hero-copy{max-width:1000px}.hero-copy h1{font-size:clamp(54
 @media(max-width:600px){.hero-tour-heading{flex-wrap:wrap;gap:12px}.showcase-controls{width:100%;justify-content:space-between}.theme-options button{min-height:40px}}
 
 .sheet-formula,.sheet-formula > i{color:#425562}
+
+/* ==========================================================================
+   Dual-Tier Pricing Grid (Annual Pass vs. Lifetime Pro)
+   ========================================================================== */
+.pricing-grid-dual {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  max-width: 1040px;
+  margin: 36px auto 0;
+  align-items: stretch;
+}
+
+.pricing-card-box {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(240, 248, 255, 0.92));
+  border: 1px solid rgba(181, 201, 216, 0.6);
+  border-radius: 24px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px -10px rgba(23, 52, 73, 0.08);
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pricing-card-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px -12px rgba(23, 52, 73, 0.14);
+}
+
+.pricing-card-featured {
+  background: linear-gradient(145deg, #ffffff, #f0f7ff);
+  border: 2px solid #2362e8;
+  box-shadow: 0 14px 40px -10px rgba(35, 98, 232, 0.18);
+}
+
+.plan-badge-top {
+  position: absolute;
+  top: -14px;
+  right: 28px;
+  background: linear-gradient(135deg, #2362e8, #1d4ed8);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  box-shadow: 0 4px 12px rgba(35, 98, 232, 0.3);
+}
+
+.plan-type-pill {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #2362e8;
+  background: rgba(35, 98, 232, 0.08);
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 12px;
+}
+
+.plan-card-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #173449;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.plan-card-sub {
+  font-size: 14.5px;
+  color: #4b6b82;
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+.plan-price-wrap {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(181, 201, 216, 0.4);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+
+.plan-price-standard {
+  font-size: 13px;
+  color: #718d9f;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.plan-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.plan-price-main {
+  font-size: 38px;
+  font-weight: 800;
+  color: #173449;
+  letter-spacing: -0.02em;
+}
+
+.plan-price-period {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4b6b82;
+}
+
+.plan-schedule-note {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+.plan-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-features-list li {
+  font-size: 14.5px;
+  color: #2c4456;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.45;
+}
+
+.plan-features-list li svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #10b981;
+  margin-top: 2px;
+}
+
+.pricing-card-box .button {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  padding: 14px 24px;
+  font-size: 15.5px;
+  font-weight: 700;
+  border-radius: 12px;
+}
+
+.button-accent {
+  background: linear-gradient(135deg, #2362e8, #1d4ed8) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(35, 98, 232, 0.35);
+}
+
+.button-accent:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af) !important;
+  transform: translateY(-1px);
+}
+
+.plan-bottom-note {
+  font-size: 12px;
+  color: #6b8293;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Plan Switcher Tabs (for Checkout Modal & Payment Portal) */
+.checkout-plan-switcher {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  background: rgba(23, 52, 73, 0.05);
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.checkout-plan-tab {
+  flex: 1;
+  border: none;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+  color: #4b6b82;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.checkout-plan-tab.active {
+  background: #ffffff;
+  color: #173449;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-weight: 700;
+}
+
+.checkout-plan-tab.tab-lifetime.active {
+  color: #2362e8;
+}

@@ -1,1 +1,163 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Test checkout — Pauzos</title><link rel="icon" href="assets/logo.webp"><link rel="stylesheet" href="styles.css"><script src="checkout.js" defer></script><script src="pricing.js" defer></script><script src="api-config.js"></script></head><body data-test-checkout="true"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner wrap"><a class="brand" href="index.html"><img src="assets/logo.webp" width="38" height="38" alt=""><span>Pauzos<span class="brand-sub">Desktop reminders</span></span></a><nav class="page-nav" aria-label="Main navigation"><a href="guide.html">Get started</a><a href="index.html#pricing">Pricing</a><a class="button button-small" href="index.html#download">Free trial ↓</a></nav></div></header><main id="main" class="wrap subpage"><aside class="test-banner"><strong>RAZORPAY TEST MODE — NO REAL PAYMENT</strong><p>Use Razorpay test payment details only. This validates checkout and payment verification; it does not create a production license or send an activation email.</p><a href="payment.html">Return to live checkout</a></aside><div class="page-intro"><p class="eyebrow">PAUZOS LIFETIME</p><h1>One payment.<br>More room to focus.</h1><p>Unlock unlimited routines for your workday. Future updates included.</p></div><div class="checkout-layout"><article class="price-card"><span class="offer-label"><span data-offer>EARLY-BIRD LIFETIME ACCESS</span></span><h2>Your lifetime license</h2><p data-price-schedule class="price-schedule"></p><div class="price"><span data-price>…</span> <span><span data-currency>one time</span></span></div><ul class="check-list"><li>Unlimited reminders and routines</li><li>Wellness reminders, workday calendar & reports</li><li>Two simultaneous logins</li><li>Future updates included</li><li>No recurring subscription</li></ul><p>Digital delivery · No shipping charge</p><a class="text-link" href="index.html#download">Try it free for 3 days first ↗</a></article><section class="checkout-form"><h2>Try a test payment.</h2><p>Use your email to test checkout. No license or activation email will be issued.</p><p id="currency-status" class="pricing-status" role="status">Loading current prices…</p><form id="checkout-form"><label for="customer-name">Full name</label><input id="customer-name" name="name" autocomplete="name" required maxlength="100"><label for="customer-email">Email for this test</label><input id="customer-email" name="email" type="email" autocomplete="email" required maxlength="254"><label class="terms-check"><input type="checkbox" required><span>I agree to the <a href="terms.html">Terms</a> and <a href="refund.html">Refund Policy</a>. I understand this is a digital software license.</span></label><div class="order-total"><span>Total payable</span><strong><span data-price>…</span></strong></div><button class="button" id="pay-button" type="submit" disabled>Test payment</button><p class="checkout-note">Secure checkout powered by Razorpay.</p></form><div id="payment-status" class="payment-status" role="status" hidden></div><button class="button" id="retry-payment" hidden>Retry test confirmation</button><p><a class="text-link" href="contact.html">Need help with a payment?</a></p></section></div><section class="guide-section"><h2>What happens next?</h2><div class="steps"><article><span class="step-number">01 /</span><h3>Pay securely</h3><p>Complete your payment in Razorpay. Keep this page open while it verifies.</p></article><article><span class="step-number">02 /</span><h3>Verify the test payment</h3><p>The server confirms the test order, amount, currency and payment status.</p></article><article><span class="step-number">03 /</span><h3>Review the result</h3><p>Look for the test success message. This test does not modify production accounts or send emails.</p></article></div></section></main><footer class="site-footer wrap"><div class="footer-main"><div><a class="brand" href="index.html"><img src="assets/logo.webp" width="32" height="32" alt=""><span>Pauzos</span></a><p>Personal Reminder Assistant.<br>A little more space to focus.</p><div class="stratexa-brand"><img src="assets/stratexa-logo.svg" width="44" height="44" alt="Stratexa logo"><span>A PRODUCT OF<strong>STRATEXA</strong></span></div></div><nav aria-label="Product and support"><a href="index.html#download">Download free trial</a><a href="payment.html">Lifetime access · <span data-price>…</span></a><a href="guide.html">Getting started</a><a href="contact.html">Contact & support</a></nav><nav aria-label="Legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds & cancellation</a><a href="delivery.html">Digital delivery</a></nav></div><div class="footer-bottom"><span>© 2026 STRATEXA. All rights reserved.</span><a href="mailto:support@pauzos.com">support@pauzos.com</a></div></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Test checkout — Pauzos</title>
+  <link rel="icon" href="assets/logo.webp">
+  <link rel="stylesheet" href="styles.css">
+  <script src="pricing.js" defer></script>
+  <script src="checkout.js" defer></script>
+  <script src="api-config.js"></script>
+</head>
+<body data-test-checkout="true">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.webp" width="38" height="38" alt="">
+        <span>Pauzos<span class="brand-sub">Desktop reminders</span></span>
+      </a>
+      <nav class="page-nav" aria-label="Main navigation">
+        <a href="guide.html">Get started</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a class="button button-small" href="index.html#download">Free trial ↓</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap subpage">
+    <aside class="test-banner">
+      <strong>RAZORPAY TEST MODE — NO REAL PAYMENT</strong>
+      <p>Use Razorpay test payment details only. This validates checkout and payment verification; it does not create a production license or send an activation email.</p>
+      <a href="payment.html">Return to live checkout</a>
+    </aside>
+
+    <div class="page-intro">
+      <p class="eyebrow" data-offer>RAZORPAY TEST ENVIRONMENT</p>
+      <h1>Test your checkout flow.</h1>
+      <p>Verify checkout in any of the 15 supported regional currencies with instant gateway test confirmation.</p>
+    </div>
+
+    <!-- Plan Switcher Tabs -->
+    <div style="max-width: 440px; margin: 0 auto 28px;">
+      <div class="checkout-plan-switcher" role="tablist" aria-label="Select test tier">
+        <button type="button" class="checkout-plan-tab" data-plan-tab="annual" role="tab" aria-selected="false">
+          Annual Pass
+        </button>
+        <button type="button" class="checkout-plan-tab tab-lifetime" data-plan-tab="lifetime" role="tab" aria-selected="false">
+          ★ Lifetime Pro
+        </button>
+      </div>
+    </div>
+
+    <div class="checkout-layout">
+      <article class="price-card">
+        <span class="offer-label"><span data-offer>TEST CHECKOUT ACCESS</span></span>
+        <h2 data-license-title>Your test license</h2>
+        <p data-price-schedule class="price-schedule"></p>
+
+        <div class="price">
+          <span data-price>…</span> <span><span data-currency>/ year</span></span>
+        </div>
+
+        <ul class="check-list">
+          <li>Unlimited reminders and routines</li>
+          <li>Wellness reminders, workday calendar & reports</li>
+          <li><span data-plan-devices>1 workstation login</span></li>
+          <li>Future updates included</li>
+          <li>Frictionless 1-click test flow</li>
+        </ul>
+
+        <p>Test environment · No real charge</p>
+        <a class="text-link" href="index.html#download">Try it free for 3 days first ↗</a>
+      </article>
+
+      <section class="checkout-form">
+        <h2>Try a test payment.</h2>
+        <p>Use your email to test checkout. No real money will be charged.</p>
+        <p id="currency-status" class="pricing-status" role="status">Loading current prices…</p>
+
+        <form id="checkout-form">
+          <label for="customer-name">Full name</label>
+          <input id="customer-name" name="name" autocomplete="name" required maxlength="100" value="Test User">
+
+          <label for="customer-email">Email for this test</label>
+          <input id="customer-email" name="email" type="email" autocomplete="email" required maxlength="254" value="test@pauzos.com">
+
+          <label class="terms-check">
+            <input type="checkbox" required checked>
+            <span>I understand this is Razorpay test mode. No actual charge occurs.</span>
+          </label>
+
+          <div class="order-total">
+            <span>Total payable</span>
+            <strong><span data-price>…</span></strong>
+          </div>
+
+          <button class="button" id="pay-button" type="submit" disabled>Test payment</button>
+          <p class="checkout-note">Secure checkout powered by Razorpay test gateway.</p>
+        </form>
+
+        <div id="payment-status" class="payment-status" role="status" hidden></div>
+        <button class="button" id="retry-payment" hidden>Retry test confirmation</button>
+        <p><a class="text-link" href="contact.html">Need help with a payment?</a></p>
+      </section>
+    </div>
+
+    <section class="guide-section">
+      <h2>What happens next?</h2>
+      <div class="steps">
+        <article>
+          <span class="step-number">01 /</span>
+          <h3>Pay securely</h3>
+          <p>Complete your payment in Razorpay test mode using test cards or test UPI.</p>
+        </article>
+        <article>
+          <span class="step-number">02 /</span>
+          <h3>Verify the test payment</h3>
+          <p>The server confirms the test order, amount, currency and payment status.</p>
+        </article>
+        <article>
+          <span class="step-number">03 /</span>
+          <h3>Review the result</h3>
+          <p>Look for the test success message. This test does not modify production accounts or send emails.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <div class="footer-main">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="assets/logo.webp" width="32" height="32" alt="">
+          <span>Pauzos</span>
+        </a>
+        <p>Personal Reminder Assistant.<br>A little more space to focus.</p>
+        <div class="stratexa-brand">
+          <img src="assets/stratexa-logo.svg" width="44" height="44" alt="Stratexa logo">
+          <span>A PRODUCT OF<strong>STRATEXA</strong></span>
+        </div>
+      </div>
+      <nav aria-label="Product and support">
+        <a href="index.html#download">Download free trial</a>
+        <a href="payment.html">Workday licenses · <span data-price>…</span></a>
+        <a href="guide.html">Getting started</a>
+        <a href="contact.html">Contact & support</a>
+      </nav>
+      <nav aria-label="Legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="refund.html">Refunds & cancellation</a>
+        <a href="delivery.html">Digital delivery</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 STRATEXA. All rights reserved.</span>
+      <a href="mailto:support@pauzos.com">support@pauzos.com</a>
+    </div>
+  </footer>
+</body>
+</html>
