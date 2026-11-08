@@ -13,7 +13,7 @@ export async function payments(request, env, fetcher=fetch) {
  if(test)env={...env,RAZORPAY_KEY_ID:env.RAZORPAY_TEST_KEY_ID,RAZORPAY_KEY_SECRET:env.RAZORPAY_TEST_KEY_SECRET};
  if(!env.RAZORPAY_KEY_ID?.startsWith(test?'rzp_test_':'rzp_live_'))return json({error:test?'Test checkout is not configured yet. No live payment will be attempted.':'Live checkout is unavailable.'},503);
  if(request.method!=='POST')return json({error:'Method not allowed'},405);
- if(!(env.ALLOWED_ORIGINS || '').split(',').map(s=>s.trim()).includes(request.headers.get('origin')))return json({error:'Please open checkout on this website.'},403);
+ if(request.headers.get('origin')!==new URL(request.url).origin)return json({error:'Please open checkout on this website.'},403);
  if(!env.RAZORPAY_KEY_SECRET||!env.RAZORPAY_KEY_ID||(!test&&(!env.SUPABASE_SERVICE_ROLE_KEY||!env.SUPABASE_URL)))return json({error:'Checkout is temporarily unavailable. Please contact support.'},503);
  const call=async(url,options={})=>{const r=await fetcher(url,{...options,signal:AbortSignal.timeout(15000)});let data;try{data=await r.json();}catch{data={};}return {ok:r.ok,status:r.status,data};};
  const rzp=async(path,body)=>call('https://api.razorpay.com/v1/'+path,{method:body?'POST':'GET',headers:{Authorization:'Basic '+btoa(env.RAZORPAY_KEY_ID+':'+env.RAZORPAY_KEY_SECRET),'Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{})});
@@ -23,13 +23,14 @@ export async function payments(request, env, fetcher=fetch) {
   let input;try{input=JSON.parse(raw);}catch{return json({error:'Invalid request'},400);}
   if(path==='/api/order') {
    const email=String(input.email||'').trim().toLowerCase(),name=String(input.name||'').trim();
+   const plan=input.plan==='lifetime'?'lifetime':'annual';
    if(email.length>254||!/^\S+@\S+\.\S+$/.test(email)||!name||name.length>100)return json({error:'Enter your name and a valid email address.'},400);
    const ready=test?{ok:true}:await sb('/rest/v1/licenses?select=email&limit=0');if(!ready.ok)return json({error:'License activation is temporarily unavailable. No payment has been taken.'},503);
-   let price;try{price=quote(input.currency||'INR');}catch{return json({error:'Unsupported currency'},400);}
+   let price;try{price=quote(input.currency||'INR',plan);}catch{return json({error:'Unsupported currency'},400);}
    if(input.amount!==price.amount||input.phase!==price.phase)return json({error:'The price has changed. Refresh the page to review the current price before paying.'},409);
-   const order=await rzp('orders',{amount:price.amount,currency:price.currency,receipt:'pz_'+crypto.randomUUID().replaceAll('-',''),notes:{product:price.product,email,name},partial_payment:false});
+   const order=await rzp('orders',{amount:price.amount,currency:price.currency,receipt:'pz_'+crypto.randomUUID().replaceAll('-',''),notes:{product:price.product,plan,email,name},partial_payment:false});
    if(!order.ok)return json({error:'Razorpay could not start checkout. Please try again later.'},502);
-   return json({key:env.RAZORPAY_KEY_ID,order_id:order.data.id,amount:price.amount,currency:price.currency,test,token:await sign('recover|'+order.data.id,env.RAZORPAY_KEY_SECRET)});
+   return json({key:env.RAZORPAY_KEY_ID,order_id:order.data.id,amount:price.amount,currency:price.currency,plan,test,token:await sign('recover|'+order.data.id,env.RAZORPAY_KEY_SECRET)});
   }
   if(path!=='/api/verify')return json({error:'Not found'},404);
   const orderId=String(input.order_id||'');
@@ -46,18 +47,48 @@ export async function payments(request, env, fetcher=fetch) {
   if(!payment)return json({pending:true,can_replace:canReplaceUnpaidOrder(o,listing.data),message:'No captured payment yet. If you completed payment, wait a moment and check again. Do not pay twice.'});
   if(test)return json({success:true,test:true,payment_id:payment.id,message:'Test payment verified. No real money was charged. No production license or activation email was created.'});
   const email=o.notes.email;
+  const isLifetime = o.notes?.product === 'pauzos-lifetime-regional-v1' || o.notes?.product === 'pauzos-lifetime-299-v1';
+  const plan = isLifetime ? 'lifetime' : 'annual';
+  const max_devices = isLifetime ? 2 : 1;
+  const expires_at = isLifetime ? null : new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
   const previous=await sb('/rest/v1/razorpay_payments?payment_id=eq.'+encodeURIComponent(payment.id)+'&select=email');
   if(!previous.ok)return json({error:'Payment is confirmed but activation is pending. Keep your payment ID and check again.',payment_id:payment.id},503);
   if(previous.data.length&&previous.data[0].email!==email)return json({error:'This payment is already associated with another account. Contact support.'},409);
   const account=await sb('/auth/v1/admin/users','POST',{email,password:crypto.randomUUID()+crypto.randomUUID(),email_confirm:true,user_metadata:{customer_name:o.notes.name,must_change_password:true}});
   if(!account.ok&&!['email_exists','user_already_exists'].includes(account.data.code||account.data.error_code))return json({error:'Payment confirmed. Account setup is pending; please contact support or check again.',payment_id:payment.id},503);
-  const license=await sb('/rest/v1/licenses?on_conflict=email','POST',{email,customer_name:o.notes.name,plan:'lifetime',status:'active'},{Prefer:'resolution=merge-duplicates,return=minimal'});
+  const license=await sb('/rest/v1/licenses?on_conflict=email','POST',{
+    email,
+    customer_name:o.notes.name,
+    plan,
+    status:'active',
+    max_devices,
+    expires_at,
+    starts_at:new Date().toISOString(),
+    last_renewed_at:new Date().toISOString()
+  },{Prefer:'resolution=merge-duplicates,return=minimal'});
   if(!license.ok)return json({error:'Payment confirmed. License activation is pending; please check again or contact support.',payment_id:payment.id},503);
-  const recorded=await sb('/rest/v1/razorpay_payments?on_conflict=payment_id','POST',{payment_id:payment.id,order_id:orderId,email,amount:o.amount/(PRICES[o.currency]?.[2]||100),currency:o.currency,status:'captured'},{Prefer:'resolution=ignore-duplicates,return=minimal'});
+  const recorded=await sb('/rest/v1/razorpay_payments?on_conflict=payment_id','POST',{
+    payment_id:payment.id,
+    order_id:orderId,
+    email,
+    amount:o.amount/(PRICES[o.currency]?.[2]||100),
+    currency:o.currency,
+    plan,
+    status:'captured'
+  },{Prefer:'resolution=ignore-duplicates,return=minimal'});
   if(!recorded.ok)return json({error:'Your license is active, but the receipt record is pending. Keep your payment ID and contact support.',payment_id:payment.id},503);
   let emailSent=false;
   if(!previous.data.length){const recovery=await sb('/auth/v1/recover','POST',{email});emailSent=recovery.ok;}
-  return json({success:true,email,payment_id:payment.id,email_sent:emailSent,message:emailSent?'Your lifetime license is active. Check your email for password instructions, then sign in to Pauzos.':'Your lifetime license is active. In Pauzos, use Forgot Password with your purchase email to set or recover your password, then sign in.'});
+  const planLabel = isLifetime ? 'Lifetime Pro license' : 'Annual Pass';
+  return json({
+    success:true,
+    email,
+    payment_id:payment.id,
+    email_sent:emailSent,
+    message:emailSent
+      ? `Your ${planLabel} is active. Check your email for password instructions, then sign in to Pauzos.`
+      : `Your ${planLabel} is active. In Pauzos, use Forgot Password with your purchase email to set or recover your password, then sign in.`
+  });
  }catch{return json({error:'The connection was interrupted. If you paid, do not pay again. Use Check payment or contact support.'},503);}
 }
 

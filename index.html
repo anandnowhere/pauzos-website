@@ -298,8 +298,8 @@
             <span>▶️</span> Watch 30-Second Demo
           </a>
           <span style="opacity: 0.4;">•</span>
-          <a href="#pricing" style="color: #cbd5e1; text-decoration: none;" id="heroSecondaryCta" onclick="handleCheckout('Personal Reminder Assistant'); return false;">
-            Or get lifetime access for ₹249 (One-Time) →
+          <a href="#pricing" style="color: #cbd5e1; text-decoration: none;" id="heroSecondaryCta" onclick="handleCheckout('lifetime'); return false;">
+            Or choose your license from ₹349/yr →
           </a>
         </div>
       </div>
@@ -320,7 +320,7 @@
           <span>🔒</span> All Routines &amp; Logs Stored 100% Locally
         </div>
         <div class="trust-item">
-          <span>🏷️</span> <span id="heroTrustPrice">One-Time ₹249 Lifetime Option (No SaaS Subscriptions)</span>
+          <span>🏷️</span> <span id="heroTrustPrice">Lifetime Option from ₹999 • Zero SaaS Subscriptions</span>
         </div>
       </div>
 
@@ -968,16 +968,16 @@
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
             <div>
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                <span style="font-size: 11px; font-weight: 700; color: #fbbf24; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); padding: 2px 8px; border-radius: 12px; text-transform: uppercase;">Introductory Offer</span>
-                <span style="font-size: 13px; color: #64748b; text-decoration: line-through;" id="personaStrikePrice">₹999</span>
-                <span style="font-size: 11px; font-weight: 700; color: #34d399; background: rgba(16, 185, 129, 0.15); padding: 2px 6px; border-radius: 10px;" id="personaDiscountPill">75% OFF</span>
+                <span style="font-size: 11px; font-weight: 700; color: #fbbf24; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); padding: 2px 8px; border-radius: 12px; text-transform: uppercase;">Launch Offer</span>
+                <span style="font-size: 13px; color: #64748b; text-decoration: line-through;" id="personaStrikePrice">₹1,499</span>
+                <span style="font-size: 11px; font-weight: 700; color: #34d399; background: rgba(16, 185, 129, 0.15); padding: 2px 6px; border-radius: 10px;" id="personaDiscountPill">33% OFF</span>
               </div>
-              <div style="font-size: 26px; font-weight: 800; color: #34d399;">
-                <span id="personaPriceVal">₹249</span> <span style="font-size: 13px; font-weight: 500; color: var(--text-dim);">one-time lifetime access</span>
+              <div style="font-size: 26px; font-weight: 800; color: #fbbf24;">
+                <span id="personaPriceVal">₹999</span> <span style="font-size: 13px; font-weight: 500; color: var(--text-dim);">lifetime (or ₹349/yr)</span>
               </div>
             </div>
-            <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary">
-              ⚡ Buy License & Get Access
+            <button onclick="handleCheckout('lifetime')" class="btn btn-primary">
+              ⚡ Choose License &amp; Get Access
             </button>
           </div>
         </div>
@@ -1001,82 +1001,126 @@
     <div class="container">
       <div class="section-header">
         <span class="section-pill">Transparent Pricing</span>
-        <h2 class="section-title">Simple One-Time Purchase</h2>
-        <p class="section-subtitle">No monthly subscriptions or renewal fees. One payment unlocks lifetime access across all your devices.</p>
+        <h2 class="section-title">Choose Your Workday License</h2>
+        <p class="section-subtitle">No forced auto-renewal mandates. 1-click standard checkout with instant digital provisioning.</p>
       </div>
 
-      <div class="pricing-single-container">
-        <div class="pricing-single-card">
-          
-          <div class="pricing-header-row">
-            <div class="pricing-plan-info">
-              <div class="pricing-badge-row">
-                <span class="introductory-badge" id="pricingIntroBadge">🎉 Introductory Launch Offer</span>
-                <span class="pricing-pill-badge">LIFETIME ACCESS</span>
+      <div class="pricing-grid-dual">
+        
+        <!-- CARD 1: Annual Pass -->
+        <div class="pricing-card-box">
+          <div>
+            <div class="plan-type-pill">Standard Workday Access</div>
+            <h3 class="plan-card-title">Annual Pass</h3>
+            <p class="plan-card-sub">Perfect for single-workstation daily deadline adherence and compliance.</p>
+
+            <div class="plan-price-wrap">
+              <div class="plan-price-standard">
+                <span>Standard:</span>
+                <span style="text-decoration: line-through;" id="cardAnnualStandard">₹499/yr</span>
+                <span class="discount-pill" id="cardAnnualDiscount">30% OFF</span>
               </div>
-              <h3 class="pricing-plan-title">Personal Reminder Assistant</h3>
-              <p class="pricing-plan-sub">Full multi-platform suite for Windows, macOS, and Linux.</p>
+              <div class="plan-price-row">
+                <span class="plan-price-main" id="cardAnnualPrice">₹349</span>
+                <span class="plan-price-period">/ year</span>
+              </div>
             </div>
-            
-            <div class="pricing-price-display">
-              <div class="pricing-original-strike">
-                <span>Regular:</span>
-                <span class="pricing-strike-amount" id="pricingStrikeAmount">₹999</span>
-                <span class="discount-pill" id="pricingDiscountPill">75% OFF</span>
-              </div>
-              <div class="pricing-price-val">
-                <span class="price-currency" id="pricingCurrencySymbol">₹</span>
-                <span class="price-number" id="pricingPriceNumber">249</span>
-              </div>
-              <div class="price-period" id="pricingPeriodText">Introductory Price • Lifetime Access</div>
-            </div>
+
+            <ul class="plan-features-list">
+              <li>
+                <span class="plan-check">✓</span>
+                <span><strong>1 Workstation Device</strong> (Work PC or Laptop)</span>
+              </li>
+              <li>
+                <span class="plan-check">✓</span>
+                <span><strong>1 Year of Updates &amp; Pro Routines:</strong> All newly released templates &amp; routine types included</span>
+              </li>
+              <li>
+                <span class="plan-check">✓</span>
+                <span><strong>Smart Workday Logic (WD N):</strong> Business-day cutoffs &amp; bank holiday exclusions</span>
+              </li>
+              <li>
+                <span class="plan-check">✓</span>
+                <span><strong>1-Click Excel Compliance:</strong> Export tamper-evident `.xlsx` logs</span>
+              </li>
+              <li>
+                <span class="plan-check">✓</span>
+                <span><strong>Frictionless 1-Click Renewal:</strong> No forced bank AutoPay mandate. Gentle Day-360 in-app reminder</span>
+              </li>
+            </ul>
           </div>
 
-          <ul class="pricing-features-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Cross-Platform Package:</strong> Windows (.exe + Portable), macOS (.dmg), and Linux (.deb).</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Unlimited Routines:</strong> Create and track habits without restrictions.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Office Laptop & Corporate Friendly:</strong> Zero-admin standalone edition runs on restricted work systems without IT passwords.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Audit Trails & Excel:</strong> Export full completion history to `.xlsx`.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Lifetime Updates:</strong> Receive all future version releases included.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Instant Activation:</strong> Automated license provisioning & immediate download delivery.</span>
-            </li>
-          </ul>
-
-          <div class="pricing-cta-box">
-            <button onclick="handleCheckout('Personal Reminder Assistant')" class="btn btn-primary btn-full btn-lg" id="pricingCtaBtn">
-              Get Instant Access for ₹249
+          <div>
+            <button onclick="handleCheckout('annual')" class="btn-plan-annual" id="btnCardAnnualCta">
+              Get Annual Pass (₹349/yr)
             </button>
+            <div class="plan-sub-note">
+              Standard 1-Click Checkout • Zero Bank Mandate • Renew Anytime
+            </div>
           </div>
-
-          <div class="pricing-urgency-note" id="pricingUrgencyNote">
-            <span>⚡</span>
-            <span><strong>Introductory Price:</strong> Early-adopter pricing is locked at ₹249 before standard price increases to ₹999. Includes all future updates forever.</span>
-          </div>
-
-          <div class="pricing-guarantee-note" id="pricingGuaranteeNote">
-            <span>🇮🇳 1-Click UPI &amp; Cards via Razorpay</span> • 
-            <span>⚡ Instant Automated Verification</span> • 
-            <span>📥 Instant Lifetime Access</span>
-          </div>
-
         </div>
+
+        <!-- CARD 2: Lifetime Pro (Featured Anchor) -->
+        <div class="pricing-card-box pricing-card-featured">
+          <div class="featured-ribbon-badge">★ BEST VALUE • 3-YR BREAKEVEN</div>
+          
+          <div>
+            <div class="plan-type-pill featured-pill">🎉 Lifetime Pro License</div>
+            <h3 class="plan-card-title">Lifetime Pro</h3>
+            <p class="plan-card-sub">Complete multi-device peace of mind. Pay once forever with zero subscriptions.</p>
+
+            <div class="plan-price-wrap" style="background: rgba(245, 158, 11, 0.05); border-color: rgba(245, 158, 11, 0.2);">
+              <div class="plan-price-standard">
+                <span>Standard:</span>
+                <span style="text-decoration: line-through;" id="cardLifetimeStandard">₹1,499</span>
+                <span class="discount-pill" id="cardLifetimeDiscount" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border-color: rgba(245, 158, 11, 0.4);">33% OFF</span>
+              </div>
+              <div class="plan-price-row">
+                <span class="plan-price-main" id="cardLifetimePrice" style="color: #fbbf24;">₹999</span>
+                <span class="plan-price-period">one-time</span>
+              </div>
+            </div>
+
+            <ul class="plan-features-list">
+              <li>
+                <span class="plan-check" style="color: #fbbf24;">✓</span>
+                <span><strong>2 Concurrent Devices:</strong> Seamlessly use on your Work PC + Personal Laptop</span>
+              </li>
+              <li>
+                <span class="plan-check" style="color: #fbbf24;">✓</span>
+                <span><strong>Pay Once Forever:</strong> Zero renewal fees, zero SaaS subscriptions, never pay again</span>
+              </li>
+              <li>
+                <span class="plan-check" style="color: #fbbf24;">✓</span>
+                <span><strong>Lifetime Software Updates:</strong> Every major and minor upgrade included for life</span>
+              </li>
+              <li>
+                <span class="plan-check" style="color: #fbbf24;">✓</span>
+                <span><strong>Full Pro Feature Suite:</strong> Ergonomic health breaks, Excel exports, and smart recurring rules</span>
+              </li>
+              <li>
+                <span class="plan-check" style="color: #fbbf24;">✓</span>
+                <span><strong>Priority Support &amp; Instant Provisioning:</strong> Immediate digital activation</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <button onclick="handleCheckout('lifetime')" class="btn-plan-lifetime" id="btnCardLifetimeCta">
+              Get Lifetime Pro (₹999)
+            </button>
+            <div class="plan-sub-note">
+              Pay Once • 2 Devices • Permanent Access • All Future Updates Included
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pricing-guarantee-note" style="margin-top: 32px;">
+        <span>🔒 256-Bit SSL Encrypted Razorpay Checkout</span> • 
+        <span>⚡ Instant Automated License Provisioning</span> • 
+        <span>🛡️ 100% Offline Task Privacy</span>
       </div>
     </div>
   </section>
@@ -1094,11 +1138,22 @@
         
         <div class="faq-item">
           <button class="faq-question">
+            <span>What is the difference between the Annual Pass and Lifetime Pro?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            The <strong>Annual Pass</strong> gives you 1 full year of unlimited routines, workday logic, and software updates on <strong>1 workstation device</strong> with a standard 1-click payment (zero forced bank mandates) and gentle renewal reminders at Day 360.<br><br>
+            The <strong>Lifetime Pro</strong> tier allows you to pay once and use Pauzos forever on <strong>2 concurrent devices</strong> (e.g. your work PC + personal laptop) with all future updates included for life and zero renewal fees ever.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
             <span>Why is the price discounted, and will it increase later?</span>
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            This is our exclusive <strong>Early-Adopter Launch Offer</strong> (75% off standard pricing) dedicated to our first users. If you purchase now during this launch window, your lifetime license is permanently locked in — you will never be asked to pay more or renew, even when standard pricing takes effect.
+            Our current prices are exclusive <strong>Early-Adopter Launch Offers</strong> valid through 31 December 2026. Standard pricing takes effect automatically on 1 January 2027. If you purchase now, your rate is locked in with zero price increases.
           </div>
         </div>
 
@@ -1108,7 +1163,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            Immediately upon completing your checkout via Razorpay (supporting 1-Click UPI, Credit/Debit Cards, and NetBanking), our automated licensing system activates your lifetime access within seconds. Your license credentials and direct download links are rendered immediately on screen and dispatched to your email inbox.
+            Immediately upon completing your 1-click checkout via Razorpay (supporting 1-Click UPI, Credit/Debit Cards, and NetBanking), our automated licensing system provisions your workstation license within seconds. Your credentials and download links are rendered immediately on screen and dispatched to your email inbox.
           </div>
         </div>
 
@@ -1118,7 +1173,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            Yes! Your purchase includes the <strong>Windows Portable (.exe)</strong> edition. You can simply double-click and run it directly without installing anything or requiring administrator permissions.
+            Yes! Your purchase includes the <strong>Windows Portable (.exe)</strong> edition. You can simply double-click and run it directly without installing anything or requiring administrator permissions. We also offer the official <strong>Microsoft Store edition</strong> for enterprise IT compliance.
           </div>
         </div>
 
@@ -1138,7 +1193,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            We support direct 1-click UPI payments via Google Pay, PhonePe, Paytm, BHIM, Cred, and any UPI banking app. Scan the dynamic QR code on checkout, enter your 12-digit UPI reference number, and your license is instantly activated with zero payment gateway fees.
+            We support frictionless 1-click payments powered by Razorpay: UPI (Google Pay, PhonePe, Paytm, BHIM, Cred), Credit and Debit Cards (Visa, MasterCard, Amex), and NetBanking. We do NOT force any recurring AutoPay banking mandates on checkout.
           </div>
         </div>
 
@@ -1161,35 +1216,46 @@
         <!-- Left Column: Order Summary & Trust Card -->
         <div class="checkout-qr-col">
           <div style="width: 100%; text-align: left; padding: 4px 6px;">
+            
+            <!-- Plan Selector Tabs inside Modal -->
+            <div style="display: flex; gap: 8px; margin-bottom: 16px; background: rgba(255, 255, 255, 0.05); padding: 4px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.08);">
+              <button type="button" id="togglePlanLifetime" onclick="setCheckoutPlan('lifetime')" class="checkout-plan-tab active tab-lifetime">
+                ★ Lifetime Pro
+              </button>
+              <button type="button" id="togglePlanAnnual" onclick="setCheckoutPlan('annual')" class="checkout-plan-tab">
+                Annual Pass
+              </button>
+            </div>
+
             <div style="font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #60a5fa; font-weight: 700; margin-bottom: 4px;">License Summary</div>
             <h4 style="font-size: 17px; font-weight: 700; color: #f8fafc; margin-bottom: 2px;">Personal Reminder Assistant</h4>
-            <div style="font-size: 12.5px; color: #94a3b8; margin-bottom: 14px;">Pro Lifetime License (2 Workstations)</div>
+            <div style="font-size: 12.5px; color: #94a3b8; margin-bottom: 14px;" id="modalDeviceHint">2 Concurrent Devices (Lifetime Updates)</div>
 
             <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 14px; margin-bottom: 16px;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                 <span style="font-size: 13px; color: #94a3b8;">License Tier:</span>
-                <span style="font-size: 13px; font-weight: 600; color: #f8fafc;">Lifetime Access</span>
+                <span style="font-size: 13px; font-weight: 600; color: #f8fafc;" id="modalTierLabel">Lifetime Pro (2 Workstations)</span>
               </div>
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <span style="font-size: 13px; color: #94a3b8;">Regular Price:</span>
-                <span style="font-size: 13px; color: #64748b; text-decoration: line-through;" id="modalStrikePrice">₹999</span>
+                <span style="font-size: 13px; color: #94a3b8;">Standard Price:</span>
+                <span style="font-size: 13px; color: #64748b; text-decoration: line-through;" id="modalStrikePrice">₹1,499</span>
               </div>
               <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
                 <span style="font-size: 14px; font-weight: 700; color: #f8fafc;">Total Today:</span>
-                <span style="font-size: 20px; font-weight: 800; color: #38bdf8;" id="modalTotalPrice">₹249</span>
+                <span style="font-size: 20px; font-weight: 800; color: #fbbf24;" id="modalTotalPrice">₹999</span>
               </div>
             </div>
 
             <ul style="list-style: none; padding: 0; margin: 0 0 16px 0; font-size: 12px; color: #94a3b8; line-height: 1.8;">
-              <li><span style="color: #34d399; margin-right: 6px;">✓</span> Windows, macOS &amp; Linux</li>
-              <li><span style="color: #34d399; margin-right: 6px;">✓</span> All future software updates included</li>
-              <li><span style="color: #34d399; margin-right: 6px;">✓</span> 100% offline local task privacy</li>
-              <li><span style="color: #34d399; margin-right: 6px;">✓</span> Instant automated license activation</li>
+              <li><span style="color: #34d399; margin-right: 6px;">✓</span> Windows (.exe &amp; Portable), macOS &amp; Linux</li>
+              <li><span style="color: #34d399; margin-right: 6px;">✓</span> Standard 1-Click Checkout (No bank AutoPay mandate)</li>
+              <li><span style="color: #34d399; margin-right: 6px;">✓</span> 100% offline local task privacy &amp; SQLite store</li>
+              <li><span style="color: #34d399; margin-right: 6px;">✓</span> Instant automated license provisioning</li>
             </ul>
 
             <div style="display: flex; align-items: center; gap: 8px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.06); font-size: 11px; color: #64748b;">
               <span style="color: #10b981; font-size: 14px;">🛡️</span>
-              <span>Secured by <strong>Razorpay</strong> • PCI-DSS Certified</span>
+              <span>Secured by <strong>Razorpay</strong> • 256-Bit SSL Encrypted</span>
             </div>
           </div>
         </div>
@@ -1227,7 +1293,7 @@
             <div style="font-size: 48px; margin-bottom: 12px;">🎉</div>
             <h4 style="font-size: 22px; font-weight: 800; color: #34d399; margin-bottom: 8px;">Payment Verified &amp; Activated!</h4>
             <p style="font-size: 13.5px; color: #e2e8f0; line-height: 1.6; margin-bottom: 14px;">
-              Your lifetime license has been activated for:<br>
+              <span id="successPlanText">Your license has been activated</span> for:<br>
               <strong id="confirmedEmail" style="color: #60a5fa; font-size: 15px;"></strong>
             </p>
             <div id="confirmedPaymentRef" style="font-size: 12px; color: #94a3b8; margin-bottom: 16px; font-family: monospace;"></div>
@@ -1269,7 +1335,7 @@
             Independent software portfolio developing practical, distraction-free desktop and productivity tools.
           </p>
 
-          <a href="https://stratexa.in" target="_blank" rel="noopener noreferrer" class="stratexa-badge-container">
+          <div class="stratexa-badge-container" style="cursor: default;">
             <span class="stratexa-badge-label">A Product Of</span>
             <div class="stratexa-badge-content">
               <div class="stratexa-logo-box">
@@ -1279,12 +1345,11 @@
                 </svg>
               </div>
               <div class="stratexa-brand-info">
-                <span class="stratexa-title">STRATEXA<span class="tld">.IN</span></span>
+                <span class="stratexa-title">STRATEXA</span>
                 <span class="stratexa-tagline">Automate • Execute • Elevate</span>
               </div>
-              <span class="stratexa-arrow">↗</span>
             </div>
-          </a>
+          </div>
         </div>
 
         <div>
