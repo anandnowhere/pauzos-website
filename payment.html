@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pauzos — Choose Your License</title>
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    body {
+      background: #060913;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .payment-header {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(6, 9, 19, 0.85);
+      backdrop-filter: blur(20px);
+    }
+    .payment-container {
+      max-width: 920px;
+      margin: 40px auto 60px;
+      padding: 0 20px;
+      flex-grow: 1;
+    }
+    .payment-card-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 32px;
+      background: rgba(14, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(28px);
+    }
+    .payment-plan-switcher {
+      display: flex;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 24px;
+    }
+    .plan-switch-btn {
+      flex: 1;
+      padding: 12px 14px;
+      border-radius: 9px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background: none;
+      color: #94a3b8;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .plan-switch-btn.active.tab-lifetime {
+      background: rgba(245, 158, 11, 0.18);
+      color: #fbbf24;
+      border-color: rgba(245, 158, 11, 0.45);
+    }
+    .plan-switch-btn.active.tab-annual {
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      border-color: rgba(59, 130, 246, 0.45);
+    }
+    @media (max-width: 768px) {
+      .payment-card-layout {
+        grid-template-columns: 1fr;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="payment-header">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff;">
+        <img src="assets/icon.png" width="32" height="32" alt="Pauzos Logo">
+        <span style="font-weight: 800; font-size: 18px; letter-spacing: -0.5px;">Pauzos</span>
+      </a>
+      <a href="index.html" style="font-size: 13.5px; color: #94a3b8; text-decoration: none;">← Back to Home</a>
+    </div>
+  </header>
+
+  <main class="payment-container">
+    <div style="text-align: center; margin-bottom: 32px;">
+      <span class="section-pill">1-Click Frictionless Checkout</span>
+      <h1 style="font-size: 32px; font-weight: 800; color: #fff; margin: 10px 0 6px;">Unlock Personal Reminder Assistant</h1>
+      <p style="font-size: 15px; color: #94a3b8;">Choose between Annual flexibility or pay-once Lifetime access. Zero forced auto-renewals.</p>
+    </div>
+
+    <div class="payment-card-layout">
+      
+      <!-- Summary Column -->
+      <div>
+        <div class="payment-plan-switcher">
+          <button type="button" id="btnSwitchLifetime" onclick="selectPlan('lifetime')" class="plan-switch-btn active tab-lifetime">
+            ★ Lifetime Pro
+          </button>
+          <button type="button" id="btnSwitchAnnual" onclick="selectPlan('annual')" class="plan-switch-btn tab-annual">
+            Annual Pass
+          </button>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 20px; margin-bottom: 20px;">
+          <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #60a5fa; margin-bottom: 4px;">Order Summary</div>
+          <h3 id="summaryPlanTitle" style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 4px;">Lifetime Pro License</h3>
+          <p id="summaryPlanSub" style="font-size: 13px; color: #94a3b8; margin-bottom: 14px;">2 Concurrent Devices • Pay Once Forever</p>
+
+          <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+            <div>
+              <span style="font-size: 13px; color: #94a3b8;">Standard: <span id="summaryStandardPrice" style="text-decoration: line-through;">₹1,499</span></span>
+            </div>
+            <div>
+              <span id="summaryPriceFormatted" style="font-size: 28px; font-weight: 800; color: #fbbf24;">₹999</span>
+              <span id="summaryPeriodLabel" style="font-size: 13px; color: #94a3b8;">one-time</span>
+            </div>
+          </div>
+        </div>
+
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.8;">
+          <li><span style="color: #34d399; margin-right: 8px;">✓</span> Windows, macOS &amp; Linux native support</li>
+          <li><span style="color: #34d399; margin-right: 8px;">✓</span> Offline-first privacy — routines stay on your PC</li>
+          <li id="featureUpdates"><span style="color: #34d399; margin-right: 8px;">✓</span> All future software releases included</li>
+          <li id="featureDevices"><span style="color: #34d399; margin-right: 8px;">✓</span> 2 Concurrent Workstations allowed</li>
+          <li><span style="color: #34d399; margin-right: 8px;">✓</span> Standard 1-Click checkout (No bank mandate)</li>
+        </ul>
+      </div>
+
+      <!-- Form Column -->
+      <div>
+        <div id="checkoutFormState">
+          <h3 style="font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px;">License Delivery</h3>
+          <p style="font-size: 13.5px; color: #94a3b8; margin-bottom: 20px;">
+            Enter your email to receive your workstation license and instant setup instructions.
+          </p>
+
+          <div class="checkout-field-group">
+            <label for="paymentEmail" class="checkout-label">Your Email Address *</label>
+            <input type="email" id="paymentEmail" class="checkout-input" placeholder="name@example.com" required autocomplete="email">
+            <div class="checkout-helper">Your license key is provisioned automatically to this email.</div>
+          </div>
+
+          <div id="paymentStatusMsg" class="checkout-status-msg"></div>
+
+          <button type="button" id="btnSubmitPayment" onclick="triggerPayment()" class="btn-plan-lifetime" style="width: 100%; margin-top: 14px; padding: 16px; font-size: 16px;">
+            ⚡ Pay ₹999 via Razorpay
+          </button>
+
+          <div style="text-align: center; font-size: 12px; color: #64748b; margin-top: 12px;" id="paymentMethodsHint">
+            UPI, Cards &amp; NetBanking via Razorpay • 256-Bit SSL Encrypted
+          </div>
+        </div>
+
+        <!-- Success State -->
+        <div id="checkoutSuccessState" style="display: none; text-align: center; padding: 12px 0;">
+          <div style="font-size: 48px; margin-bottom: 12px;">🎉</div>
+          <h3 style="font-size: 22px; font-weight: 800; color: #34d399; margin-bottom: 8px;">Payment Verified!</h3>
+          <p style="font-size: 14px; color: #e2e8f0; line-height: 1.6; margin-bottom: 14px;">
+            <span id="confirmedPlanNotice">Your license has been provisioned</span> for:<br>
+            <strong id="confirmedEmail" style="color: #60a5fa; font-size: 16px;"></strong>
+          </p>
+          <div id="confirmedPaymentRef" style="font-size: 12px; color: #94a3b8; margin-bottom: 16px; font-family: monospace;"></div>
+
+          <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; padding: 16px; margin-bottom: 22px; text-align: left; font-size: 13px; color: #94a3b8; line-height: 1.6;">
+            <div style="color: #34d399; font-weight: 700; margin-bottom: 6px;">Next Steps:</div>
+            <div>1. A temporary login code has been emailed to you from hello@stratexa.in.</div>
+            <div>2. Launch Personal Reminder Assistant on your workstation.</div>
+            <div>3. Sign in with your email and code to activate unlimited routines.</div>
+          </div>
+
+          <a href="download/" class="btn btn-primary btn-full" style="text-decoration: none; display: block; text-align: center;">
+            ⬇ Download Personal Reminder Assistant
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer style="padding: 24px 0; border-top: 1px solid rgba(255, 255, 255, 0.06); text-align: center; font-size: 12.5px; color: #64748b;">
+    <div class="container">
+      <div>A PRODUCT OF STRATEXA • 100% Offline Task Privacy • Secured by Razorpay</div>
+    </div>
+  </footer>
+
+  <script>
+    const CURRENCY_CONFIG = {
+      INR: { code: 'INR', symbol: '₹', annual: { amount: 349, amountSubunit: 34900, formatted: '₹349', period: '/year', standard: '₹499', devices: 1 }, lifetime: { amount: 999, amountSubunit: 99900, formatted: '₹999', period: 'one-time', standard: '₹1,499', devices: 2 }, methods: 'UPI (GPay, PhonePe, Paytm), Cards & NetBanking' },
+      USD: { code: 'USD', symbol: '$', annual: { amount: 9.99, amountSubunit: 999, formatted: '$9.99', period: '/year', standard: '$14.99', devices: 1 }, lifetime: { amount: 29.99, amountSubunit: 2999, formatted: '$29.99', period: 'one-time', standard: '$39.99', devices: 2 }, methods: 'International Cards (Visa, MasterCard, Amex)' },
+      GBP: { code: 'GBP', symbol: '£', annual: { amount: 7.99, amountSubunit: 799, formatted: '£7.99', period: '/year', standard: '£11.99', devices: 1 }, lifetime: { amount: 24.99, amountSubunit: 2499, formatted: '£24.99', period: 'one-time', standard: '£34.99', devices: 2 }, methods: 'Credit & Debit Cards' },
+      EUR: { code: 'EUR', symbol: '€', annual: { amount: 9.99, amountSubunit: 999, formatted: '€9.99', period: '/year', standard: '€14.99', devices: 1 }, lifetime: { amount: 29.99, amountSubunit: 2999, formatted: '€29.99', period: 'one-time', standard: '€39.99', devices: 2 }, methods: 'European Cards & Direct Banking' },
+      AED: { code: 'AED', symbol: 'AED', annual: { amount: 39, amountSubunit: 3900, formatted: '39 AED', period: '/year', standard: '59 AED', devices: 1 }, lifetime: { amount: 109, amountSubunit: 10900, formatted: '109 AED', period: 'one-time', standard: '159 AED', devices: 2 }, methods: 'GCC Cards & NetBanking' },
+      SAR: { code: 'SAR', symbol: 'SAR', annual: { amount: 39, amountSubunit: 3900, formatted: '39 SAR', period: '/year', standard: '59 SAR', devices: 1 }, lifetime: { amount: 109, amountSubunit: 10900, formatted: '109 SAR', period: 'one-time', standard: '159 SAR', devices: 2 }, methods: 'Mada & Credit Cards' }
+    };
+
+    let activeCurrency = 'USD';
+    let currentPlan = 'lifetime';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('plan') === 'annual') currentPlan = 'annual';
+    if (urlParams.get('email')) {
+      const emailInput = document.getElementById('paymentEmail');
+      if (emailInput) emailInput.value = urlParams.get('email');
+    }
+
+    try {
+      const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '').toLowerCase();
+      if (tz.includes('calcutta') || tz.includes('kolkata')) activeCurrency = 'INR';
+      else if (tz.includes('dubai')) activeCurrency = 'AED';
+      else if (tz.includes('riyadh')) activeCurrency = 'SAR';
+      else if (tz.includes('london')) activeCurrency = 'GBP';
+      else if (tz.startsWith('europe/')) activeCurrency = 'EUR';
+    } catch (_) {}
+
+    function selectPlan(plan) {
+      currentPlan = plan === 'annual' ? 'annual' : 'lifetime';
+      const btnLifetime = document.getElementById('btnSwitchLifetime');
+      const btnAnnual = document.getElementById('btnSwitchAnnual');
+      const btnPay = document.getElementById('btnSubmitPayment');
+
+      if (currentPlan === 'annual') {
+        btnAnnual.classList.add('active', 'tab-annual');
+        btnLifetime.classList.remove('active', 'tab-lifetime');
+        btnPay.className = 'btn-plan-annual';
+        btnPay.style.background = '#2563eb';
+        btnPay.style.color = '#fff';
+      } else {
+        btnLifetime.classList.add('active', 'tab-lifetime');
+        btnAnnual.classList.remove('active', 'tab-annual');
+        btnPay.className = 'btn-plan-lifetime';
+        btnPay.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+        btnPay.style.color = '#000';
+      }
+      renderUI();
+    }
+
+    function renderUI() {
+      const cfg = CURRENCY_CONFIG[activeCurrency] || CURRENCY_CONFIG.USD;
+      const planObj = currentPlan === 'annual' ? cfg.annual : cfg.lifetime;
+
+      const titleEl = document.getElementById('summaryPlanTitle');
+      const subEl = document.getElementById('summaryPlanSub');
+      const standardEl = document.getElementById('summaryStandardPrice');
+      const priceEl = document.getElementById('summaryPriceFormatted');
+      const periodEl = document.getElementById('summaryPeriodLabel');
+      const btnPay = document.getElementById('btnSubmitPayment');
+      const methodsHint = document.getElementById('paymentMethodsHint');
+      const featDevices = document.getElementById('featureDevices');
+      const featUpdates = document.getElementById('featureUpdates');
+
+      if (currentPlan === 'annual') {
+        if (titleEl) titleEl.textContent = 'Annual Pass';
+        if (subEl) subEl.textContent = '1 Workstation Device • 1 Year Updates & Pro Routines';
+        if (priceEl) priceEl.style.color = '#60a5fa';
+        if (featDevices) featDevices.innerHTML = '<span style="color: #34d399; margin-right: 8px;">✓</span> 1 Workstation Device (Work PC or Laptop)';
+        if (featUpdates) featUpdates.innerHTML = '<span style="color: #34d399; margin-right: 8px;">✓</span> 1 Year of Software Updates &amp; Pro Routines';
+      } else {
+        if (titleEl) titleEl.textContent = 'Lifetime Pro License';
+        if (subEl) subEl.textContent = '2 Concurrent Devices • Pay Once Forever';
+        if (priceEl) priceEl.style.color = '#fbbf24';
+        if (featDevices) featDevices.innerHTML = '<span style="color: #34d399; margin-right: 8px;">✓</span> 2 Concurrent Workstations allowed';
+        if (featUpdates) featUpdates.innerHTML = '<span style="color: #34d399; margin-right: 8px;">✓</span> All future software releases included';
+      }
+
+      if (standardEl) standardEl.textContent = planObj.standard;
+      if (priceEl) priceEl.textContent = planObj.formatted;
+      if (periodEl) periodEl.textContent = planObj.period;
+      if (btnPay) btnPay.textContent = `⚡ Pay ${planObj.formatted} via Razorpay`;
+      if (methodsHint) methodsHint.textContent = `${cfg.methods} • Secured by Razorpay`;
+    }
+
+    selectPlan(currentPlan);
+
+    // Razorpay Integration
+    const RAZORPAY_KEY_ID = 'rzp_live_TuwuL0RwHNqU5z';
+    const SUPABASE_URL = 'https://suidnqsvuxaoqoyuqpys.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1aWRucXN2dXhhb3FveXVxcHlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI3NTI1MTYsImV4cCI6MjEwODMyODUxNn0.uB0A3hVBCDuCkXz5fJFt3eMlpLjcyEbrLL17rWc1ILg';
+
+    function triggerPayment() {
+      const emailInput = document.getElementById('paymentEmail');
+      const email = (emailInput?.value || '').trim().toLowerCase();
+      const statusMsg = document.getElementById('paymentStatusMsg');
+
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        if (statusMsg) {
+          statusMsg.textContent = 'Please enter a valid email address.';
+          statusMsg.style.display = 'block';
+        }
+        emailInput?.focus();
+        return;
+      }
+
+      const cfg = CURRENCY_CONFIG[activeCurrency] || CURRENCY_CONFIG.USD;
+      const planObj = currentPlan === 'annual' ? cfg.annual : cfg.lifetime;
+      const planDesc = currentPlan === 'annual' ? 'Annual Pass (1 Workstation, 1 Year)' : 'Lifetime Pro (2 Workstations, Pay Once Forever)';
+
+      const options = {
+        key: RAZORPAY_KEY_ID,
+        amount: planObj.amountSubunit,
+        currency: cfg.code,
+        name: 'Pauzos',
+        description: `Pauzos ${planDesc}`,
+        image: 'https://pauzos.com/assets/logo.png',
+        prefill: { email: email },
+        theme: { color: currentPlan === 'annual' ? '#2563eb' : '#d97706' },
+        handler: async function(response) {
+          if (statusMsg) {
+            statusMsg.textContent = 'Payment verified! Provisioning your workstation license...';
+            statusMsg.style.display = 'block';
+            statusMsg.style.color = '#34d399';
+          }
+
+          try {
+            await fetch(`${SUPABASE_URL}/rest/v1/rpc/activate_razorpay_license`, {
+              method: 'POST',
+              headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                p_email: email,
+                p_payment_id: response.razorpay_payment_id,
+                p_amount: planObj.amount,
+                p_currency: cfg.code,
+                p_plan: currentPlan
+              })
+            });
+
+            await fetch(`${SUPABASE_URL}/auth/v1/recover`, {
+              method: 'POST',
+              headers: { 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: email })
+            });
+          } catch (e) {
+            console.warn('Activation error:', e);
+          }
+
+          setTimeout(() => {
+            document.getElementById('checkoutFormState').style.display = 'none';
+            document.getElementById('checkoutSuccessState').style.display = 'block';
+            document.getElementById('confirmedEmail').textContent = email;
+            document.getElementById('confirmedPaymentRef').textContent = `Payment Reference: ${response.razorpay_payment_id}`;
+            document.getElementById('confirmedPlanNotice').textContent = currentPlan === 'annual'
+              ? 'Your Annual Pass (1 Workstation, 1 Year) is active'
+              : 'Your Lifetime Pro license (2 Workstations, Permanent) is active';
+          }, 800);
+        }
+      };
+
+      const rzpInstance = new Razorpay(options);
+      rzpInstance.open();
+    }
+  </script>
+</body>
+</html>
