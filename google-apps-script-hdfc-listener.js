@@ -1,6 +1,6 @@
 /**
  * Google Apps Script: Automated HDFC UPI Email Listener for Pauzos
- * Account: hello@stratexa.in (or the Gmail receiving HDFC transaction alerts)
+ * Account: support@pauzos.com (or the Gmail receiving HDFC transaction alerts)
  * Runs automatically every 1 minute with 0 server costs.
  */
 
