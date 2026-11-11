@@ -1,1447 +1,473 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pauzos — Desktop Reminder Software for Deadlines You Can't Afford to Miss</title>
-  <meta name="description" content="Pauzos puts unmissable, floating reminder alerts directly over Excel, ERPs, and desktop windows. Never miss critical work cut-offs, timesheets, or daily routines. Free 3-day trial.">
-  
-  <!-- OpenGraph / Social Sharing (Instagram, WhatsApp, Facebook) -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#f7f9fb">
+  <title>Pauzos — Desktop Reminder App for Windows &amp; Mac | Floating Cut-off Alerts</title>
+  <meta name="description" content="Pauzos is a distraction-free desktop reminder app for Windows, macOS and Linux. Floating alerts stay in sight over Excel and desktop apps for critical deadlines, timesheets &amp; routines. Free 3-day trial.">
+  <link rel="canonical" href="https://pauzos.com/">
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pauzos.com/">
-  <meta property="og:title" content="Pauzos — Desktop Reminder Software for Deadlines You Can't Afford to Miss">
-  <meta property="og:description" content="Unmissable floating desktop alerts for billing cut-offs, timesheets & daily work routines. Free 3-day trial. No signup. Zero IT admin rights needed.">
-  <meta property="og:image" content="https://pauzos.com/assets/screenshots/hero_homepage_4k.png">
+  <meta property="og:title" content="Pauzos — Desktop Reminder App for Windows &amp; Mac">
+  <meta property="og:description" content="Distraction-free desktop reminder assistant with unmissable floating alerts that never steal keyboard focus. 100% offline privacy, zero IT admin rights needed.">
+  <meta property="og:image" content="https://pauzos.com/assets/hero-agenda-dark.webp">
+  <meta property="og:site_name" content="Pauzos">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="stylesheet" href="styles.css?v=20261101_geo">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://pauzos.com/">
+  <meta name="twitter:title" content="Pauzos — Desktop Reminder App for Windows &amp; Mac">
+  <meta name="twitter:description" content="Distraction-free desktop reminder assistant with unmissable floating alerts that stay in sight above all apps.">
+  <meta name="twitter:image" content="https://pauzos.com/assets/hero-agenda-dark.webp">
 
-  <!-- Landing Page Conversion Styles -->
-  <style>
-    /* ── Sticky Download Bar ── */
-    .sticky-download-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-      background: rgba(10, 13, 28, 0.92);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-top: 1px solid rgba(59, 130, 246, 0.25);
-      padding: 12px 0;
-      transform: translateY(100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .sticky-download-bar.visible {
-      transform: translateY(0);
-    }
-    .sticky-download-bar .sticky-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-    .sticky-download-bar .sticky-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 15px;
-      font-weight: 700;
-      color: #fff;
-      background: linear-gradient(135deg, #2563eb, #3b82f6);
-      padding: 10px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.5);
-      transition: transform 0.15s, box-shadow 0.15s;
-      white-space: nowrap;
-    }
-    .sticky-download-bar .sticky-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 28px rgba(37, 99, 235, 0.6);
-    }
-    .sticky-download-bar .sticky-trust {
-      font-size: 13px;
-      color: #94a3b8;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .sticky-download-bar .sticky-trust span {
-      white-space: nowrap;
-    }
+  <!-- Structured Data: SoftwareApplication & Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://pauzos.com/#software",
+        "name": "Pauzos",
+        "alternateName": "Pauzos - Personal Reminder Assistant",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Windows 10, Windows 11, macOS, Linux",
+        "url": "https://pauzos.com/",
+        "image": "https://pauzos.com/assets/logo.png",
+        "description": "Distraction-free desktop reminder assistant with floating on-screen alerts, workday scheduling, and ergonomic break timers. 100% offline privacy and zero IT admin rights needed.",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Free Trial",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "3-day unrestricted free trial with unlimited routines."
+          },
+          {
+            "@type": "Offer",
+            "name": "Annual Pass",
+            "price": "349",
+            "priceCurrency": "INR",
+            "description": "Early bird annual activation with 1 device and 1 year of updates."
+          },
+          {
+            "@type": "Offer",
+            "name": "Lifetime Pro License",
+            "price": "999",
+            "priceCurrency": "INR",
+            "description": "Early bird lifetime activation with 2 concurrent devices and lifetime updates."
+          }
+        ],
+        "sameAs": [
+          "https://apps.microsoft.com/detail/9mtxk2l4jh6l"
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://pauzos.com/#organization",
+        "name": "Pauzos",
+        "url": "https://pauzos.com/",
+        "logo": "https://pauzos.com/assets/logo.png",
+        "sameAs": [
+          "https://apps.microsoft.com/detail/9mtxk2l4jh6l"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://pauzos.com/#website",
+        "url": "https://pauzos.com/",
+        "name": "Pauzos",
+        "publisher": {
+          "@id": "https://pauzos.com/#organization"
+        }
+      }
+    ]
+  }
+  </script>
 
-    /* ── Problem → Solution Section ── */
-    .problem-solution-section {
-      padding: 80px 0 60px;
-      position: relative;
-    }
-    .ps-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .ps-card {
-      border-radius: 16px;
-      padding: 36px 32px;
-      position: relative;
-    }
-    .ps-card.ps-before {
-      background: rgba(239, 68, 68, 0.06);
-      border: 1px solid rgba(239, 68, 68, 0.18);
-    }
-    .ps-card.ps-after {
-      background: rgba(16, 185, 129, 0.06);
-      border: 1px solid rgba(16, 185, 129, 0.22);
-    }
-    .ps-card-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 5px 14px;
-      border-radius: 20px;
-      margin-bottom: 22px;
-    }
-    .ps-before .ps-card-label {
-      background: rgba(239, 68, 68, 0.12);
-      border: 1px solid rgba(239, 68, 68, 0.25);
-      color: #f87171;
-    }
-    .ps-after .ps-card-label {
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34d399;
-    }
-    .ps-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 18px;
-      font-size: 15px;
-      line-height: 1.55;
-    }
-    .ps-item:last-child { margin-bottom: 0; }
-    .ps-before .ps-item { color: #e2e8f0; }
-    .ps-after .ps-item { color: #e2e8f0; }
-    .ps-icon {
-      flex-shrink: 0;
-      font-size: 18px;
-      width: 24px;
-      text-align: center;
-      margin-top: 1px;
-    }
-    .ps-cta-row {
-      text-align: center;
-      margin-top: 44px;
-    }
-
-    /* ── Hero CTA Pulse Animation ── */
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 4px 25px rgba(37, 99, 235, 0.45); }
-      50% { box-shadow: 0 4px 40px rgba(37, 99, 235, 0.7), 0 0 60px rgba(37, 99, 235, 0.25); }
-    }
-    .hero-cta-primary-xl {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 19px;
-      font-weight: 800;
-      color: #fff;
-      background: linear-gradient(135deg, #2563eb, #3b82f6);
-      padding: 18px 42px;
-      border-radius: 14px;
-      text-decoration: none;
-      animation: pulseGlow 2.5s ease-in-out infinite;
-      transition: transform 0.15s;
-      letter-spacing: -0.01em;
-    }
-    .hero-cta-primary-xl:hover {
-      transform: translateY(-2px) scale(1.02);
-    }
-    .hero-no-catch {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-      font-size: 13.5px;
-      color: #94a3b8;
-    }
-    .hero-no-catch span {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .ps-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      .ps-card {
-        padding: 24px 20px;
-      }
-      .ps-item {
-        font-size: 14px;
-        margin-bottom: 14px;
-      }
-      .hero-cta-primary-xl {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-        font-size: 15.5px;
-        padding: 14px 20px;
-        box-sizing: border-box;
-      }
-      .hero-cta-group {
-        width: 100%;
-      }
-      .hero-cta-group .btn {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-      }
-      .hero-no-catch {
-        gap: 10px 14px;
-        font-size: 12.5px;
-      }
-      .sticky-download-bar .sticky-trust {
-        display: none;
-      }
-      .sticky-download-bar .sticky-cta {
-        width: 100%;
-        max-width: 340px;
-        justify-content: center;
-        padding: 11px 20px;
-        font-size: 14px;
-      }
-    }
-  </style>
-</head>
+  <link rel="icon" href="assets/logo.webp" type="image/webp">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+  <script src="pricing.js" defer></script>
+  <script src="api-config.js"></script></head>
 <body>
-
-  <!-- Ambient Glow -->
-  <div class="bg-glow-container">
-    <div class="glow-orb-1"></div>
-    <div class="glow-orb-2"></div>
-    <div class="glow-orb-3"></div>
-  </div>
-
-  <!-- Professional Company-Level Navbar -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="brand-link">
-        <img src="assets/logo.png" alt="Pauzos Logo" class="brand-logo">
-        <div class="brand-text-block">
-          <span class="brand-title">Pauzos</span>
-          <span class="brand-tagline">Software & Tools</span>
-        </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="#" >
+        <img src="assets/logo.webp" width="38" height="38" alt="">
+        <span>Pauzos<span class="brand-sub">Desktop reminders</span></span>
       </a>
-
-      <!-- Professional Portfolio Menu -->
-      <ul class="nav-menu">
-        <li class="nav-item"><a href="#overview">Overview</a></li>
-        <li class="nav-item"><a href="#how-it-works">How It Works</a></li>
-        <li class="nav-item"><a href="#personas">Who It's For</a></li>
-        <li class="nav-item"><a href="#features">Features</a></li>
-        <li class="nav-item"><a href="#pricing">Pricing</a></li>
-        <li class="nav-item"><a href="#faq">FAQ</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <a href="download.html" class="btn btn-primary" style="font-size: 13.5px; padding: 9px 20px; white-space: nowrap; font-weight: 700;">
-          📥 Download Free Trial
-        </a>
-      </div>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#how-it-works">How it works</a>
+        <a href="#features">Inside the app</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#pricing">Pricing</a><a href="guide.html">Get started</a><a href="#faq">FAQ</a>
+      </nav>
+      <a class="button button-small header-cta" href="#download"><span class="cta-label cta-label-desktop">Download free trial</span><span class="cta-label cta-label-mobile">Free trial</span><span aria-hidden="true">↓</span></a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
+    <nav id="mobile-nav" class="mobile-nav wrap" aria-label="Mobile navigation" hidden>
+      <a href="#how-it-works">How it works <span aria-hidden="true">↗</span></a>
+      <a href="#features">Inside the app <span aria-hidden="true">↗</span></a>
+      <a href="#reviews">Reviews <span aria-hidden="true">↗</span></a>
+      <a href="#pricing">Pricing</a><a href="guide.html">Get started</a><a href="#faq">FAQ <span aria-hidden="true">↗</span></a>
+      <a href="#download">Download free trial <span aria-hidden="true">↓</span></a>
+    </nav>
   </header>
 
-  <!-- Hero Section with 4K Master Screenshot -->
-  <section class="hero-section" id="overview">
-    <div class="container">
-      <div class="hero-pill" style="background: rgba(59, 130, 246, 0.12); border-color: rgba(59, 130, 246, 0.35); color: #93c5fd;">
-        <span class="hero-pill-pulse" style="background: #3b82f6;"></span>
-        <span>🖥️ Desktop Reminder Software for Windows, macOS &amp; Linux</span>
-      </div>
-
-      <h1 class="hero-title">
-        Desktop Reminder Software for<br>
-        <span class="gradient-text">Deadlines You Can't Afford to Miss</span>
-      </h1>
-
-      <p class="hero-subtitle" style="max-width: 720px;">
-        <strong>Pauzos</strong> displays floating reminder cards directly over your work — so critical billing cut-offs, timesheets, and daily routines are impossible to miss.
-      </p>
-
-      <!-- Primary CTA — the hero of the page -->
-      <div class="hero-cta-group" style="flex-direction: column; align-items: center; gap: 14px;">
-        <a href="download.html" class="hero-cta-primary-xl">
-          📥 Download Free Trial — 3 Days Unlimited
-        </a>
-        <div style="font-size: 13.5px; color: #94a3b8; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center;">
-          <a href="#demo" onclick="switchHeroMedia('video')" style="color: #60a5fa; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; font-weight: 600;">
-            <span>▶️</span> Watch 30-Second Demo
-          </a>
-          <span style="opacity: 0.4;">•</span>
-          <a href="#pricing" style="color: #cbd5e1; text-decoration: none;" id="heroSecondaryCta" onclick="handleCheckout('lifetime'); return false;">
-            Or choose your license from ₹349/yr →
-          </a>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="small-dot" aria-hidden="true"></span> BUILT FOR YOUR WORKDAY · WINDOWS PORTABLE</div>
+        <h1 id="hero-title">Built for your <br><em>work laptop.</em></h1>
+        <p class="hero-description">Built with corporate users in mind. Run Pauzos for Windows from a folder, without an installer or administrator access. Floating reminders keep deadlines visible above your spreadsheets, browser, and other work apps.</p>
+        <div class="hero-actions">
+          <a class="button" href="#download">Download free trial <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></svg></a>
+          <a class="text-link" href="#preview">Try the reminder <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="workplace-note">Designed for everyday work.</p><p class="trial-note">3 days unlimited <span aria-hidden="true">·</span> No signup or credit card</p>
+        <div class="platforms" aria-label="Available for Windows, macOS and Linux">
+          <span><svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="m1 3 8-1v8H1V3Zm10-1 8-1v9h-8V2ZM1 12h8v8l-8-1v-7Zm10 0h8v9l-8-1v-8Z"/></svg> Windows</span>
+          <span><svg viewBox="0 0 20 22" aria-hidden="true"><path fill="currentColor" d="M13 4c1.2-1.3 1-2.9 1-3-1.5.1-3.1 1-3.9 2.1-.8 1-1.3 2.3-1.2 3.5 1.7.1 3.1-.7 4.1-2.6ZM16.8 12c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.8-1.9-3.4-1.9-1.5-.2-2.9.9-3.7.9-.7 0-1.9-.9-3.2-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.4 7.6 1.3 10.1.9 1.2 1.9 2.5 3.2 2.4 1.3-.1 1.8-.8 3.4-.8s2.1.8 3.5.8c1.4 0 2.3-1.2 3.1-2.4.9-1.4 1.3-2.8 1.3-2.9-.1 0-3.4-1.3-3.4-4.1Z" transform="translate(-2 -1)"/></svg> macOS</span>
+          <span><svg viewBox="0 0 20 22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 7C6 0 14 0 14 7c0 3 3 5 3 9 0 5-14 5-14 0 0-4 3-6 3-9Z"/><path d="m7 10 3 2 3-2M3 18l-2 3h6m10-3 2 3h-6"/><circle cx="8" cy="7" r=".6" fill="currentColor"/><circle cx="12" cy="7" r=".6" fill="currentColor"/></svg> Linux</span>
         </div>
       </div>
 
-      <!-- Zero-friction trust line -->
-      <div class="hero-no-catch">
-        <span>✅ No credit card required</span>
-        <span>✅ No account or signup needed</span>
-        <span>✅ Windows, macOS &amp; Linux</span>
-        <span>✅ 100% offline task privacy</span>
-      </div>
+      <div class="hero-app-tour" aria-label="Automatic tour of the Pauzos application" aria-roledescription="carousel">
+        <div class="hero-tour-heading"><span><span class="live-dot" aria-hidden="true"></span> EXPLORE THE REAL APPLICATION</span><div class="showcase-controls"><div class="theme-options" role="group" aria-label="Application appearance"><button type="button" data-app-theme="light" aria-pressed="true">Light</button><button type="button" data-app-theme="dark" aria-pressed="false">Dark</button></div><button id="hero-tour-toggle" type="button">Pause tour Ⅱ</button></div></div>
+        <div class="hero-app-tabs" role="tablist" aria-label="Application screens"><button id="hero-tab-agenda" role="tab" aria-selected="true" aria-controls="hero-panel-agenda" tabindex="0" data-hero-tab="0"><span>01</span>Today’s Agenda<i aria-hidden="true"></i></button><button id="hero-tab-routines" role="tab" aria-selected="false" aria-controls="hero-panel-routines" tabindex="-1" data-hero-tab="1"><span>02</span>All Reminders<i aria-hidden="true"></i></button><button id="hero-tab-wellness" role="tab" aria-selected="false" aria-controls="hero-panel-wellness" tabindex="-1" data-hero-tab="2"><span>03</span>Health & Wellness<i aria-hidden="true"></i></button><button id="hero-tab-reports" role="tab" aria-selected="false" aria-controls="hero-panel-reports" tabindex="-1" data-hero-tab="3"><span>04</span>Audit & Reports<i aria-hidden="true"></i></button><button id="hero-tab-calendar" role="tab" aria-selected="false" aria-controls="hero-panel-calendar" tabindex="-1" data-hero-tab="4"><span>05</span>Workdays & Holidays<i aria-hidden="true"></i></button></div><div class="hero-screen-stack"><div id="hero-panel-agenda" role="tabpanel" aria-labelledby="hero-tab-agenda" class="hero-screen" ><a href="assets/hero-agenda-light.webp" target="_blank" rel="noopener" aria-label="Open Today’s Agenda at full size"><img data-app-screen="hero-agenda" src="assets/hero-agenda-light.webp" srcset="assets/hero-agenda-light-720.webp 720w, assets/hero-agenda-light.webp 1440w" sizes="(max-width: 760px) 94vw, 1400px" width="1440" height="980" alt="Pauzos Today’s Agenda screen with illustrative data" fetchpriority=high/></a></div><div id="hero-panel-routines" role="tabpanel" aria-labelledby="hero-tab-routines" class="hero-screen" hidden><a href="assets/hero-routines-light.webp" target="_blank" rel="noopener" aria-label="Open All Reminders at full size"><img data-app-screen="hero-routines" src="assets/hero-routines-light.webp" srcset="assets/hero-routines-light-720.webp 720w, assets/hero-routines-light.webp 1440w" sizes="(max-width: 760px) 94vw, 1400px" width="1440" height="980" alt="Pauzos All Reminders screen with illustrative data" loading=lazy/></a></div><div id="hero-panel-wellness" role="tabpanel" aria-labelledby="hero-tab-wellness" class="hero-screen" hidden><a href="assets/hero-wellness-light.webp" target="_blank" rel="noopener" aria-label="Open Health & Wellness at full size"><img data-app-screen="hero-wellness" src="assets/hero-wellness-light.webp" srcset="assets/hero-wellness-light-720.webp 720w, assets/hero-wellness-light.webp 1440w" sizes="(max-width: 760px) 94vw, 1400px" width="1440" height="980" alt="Pauzos Health & Wellness screen with illustrative data" loading=lazy/></a></div><div id="hero-panel-reports" role="tabpanel" aria-labelledby="hero-tab-reports" class="hero-screen" hidden><a href="assets/hero-reports-light.webp" target="_blank" rel="noopener" aria-label="Open Audit & Reports at full size"><img data-app-screen="hero-reports" src="assets/hero-reports-light.webp" srcset="assets/hero-reports-light-720.webp 720w, assets/hero-reports-light.webp 1440w" sizes="(max-width: 760px) 94vw, 1400px" width="1440" height="980" alt="Pauzos Audit & Reports screen with illustrative data" loading=lazy/></a></div><div id="hero-panel-calendar" role="tabpanel" aria-labelledby="hero-tab-calendar" class="hero-screen" hidden><a href="assets/hero-calendar-light.webp" target="_blank" rel="noopener" aria-label="Open Workdays & Holidays at full size"><img data-app-screen="hero-calendar" src="assets/hero-calendar-light.webp" srcset="assets/hero-calendar-light-720.webp 720w, assets/hero-calendar-light.webp 1440w" sizes="(max-width: 760px) 94vw, 1400px" width="1440" height="980" alt="Pauzos Workdays & Holidays screen with illustrative data" loading=lazy/></a></div></div><div class="hero-tour-caption"><p id="hero-tour-description">See your scheduled, completed, pending, and snoozed reminders.</p><span id="hero-tour-count">01 / 05</span></div><p class="hero-tour-note">Real application · Sample data · Select any tab to explore at your pace</p></div>
+    </section>
 
-      <div class="hero-trust-row" style="margin-top: 28px;">
-        <div class="trust-item" style="color: #34d399; font-weight: 700;">
-          <span>🛡️</span> Zero-Admin Portable Mode for Work PCs
-        </div>
-        <div class="trust-item">
-          <span>🔒</span> All Routines &amp; Logs Stored 100% Locally
-        </div>
-        <div class="trust-item">
-          <span>🏷️</span> <span id="heroTrustPrice">Lifetime Option from ₹999 • Zero SaaS Subscriptions</span>
-        </div>
-      </div>
-
-      <!-- Interactive Media Switcher: Product Video Tour vs Side-by-Side Dark/Light Interactive Mockup -->
-      <div class="hero-slider-header-controls" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px;">
-        <!-- Left: Video / Screenshots Tab Switcher -->
-        <div class="slider-theme-toggle-group" style="margin-bottom: 0;">
-          <button type="button" class="slider-theme-btn active" id="btnShowVideo" onclick="switchHeroMedia('video')">
-            <span class="btn-icon">▶️</span> Product Tour Video
-          </button>
-          <button type="button" class="slider-theme-btn" id="btnShowInteractive" onclick="switchHeroMedia('interactive')">
-            <span class="btn-icon">🎛️</span> Interactive Comparison
-          </button>
-        </div>
-
-        <!-- Right: Theme Mode Switcher (Active when interactive comparison is visible) -->
-        <div class="slider-theme-toggle-group" id="themeButtonsGroup" style="margin-bottom: 0;">
-          <button type="button" class="slider-theme-btn active" data-mode="dark" id="btnThemeDark">
-            <span class="btn-icon">🌙</span> Dark Mode
-          </button>
-          <button type="button" class="slider-theme-btn" data-mode="light" id="btnThemeLight">
-            <span class="btn-icon">☀️</span> Light Mode
-          </button>
-        </div>
-      </div>
-
-      <div id="demo" style="position: relative; top: -80px;"></div>
-      <!-- VIEW 1: Native High-Definition Product Storyboard & Use-Case Tour Video -->
-      <div class="hero-app-frame hero-video-frame" id="heroVideoContainer" style="margin-bottom: 30px;">
-        <div class="hero-window-titlebar">
-          <div class="window-controls">
-            <span class="control-dot dot-close"></span>
-            <span class="control-dot dot-minimize"></span>
-            <span class="control-dot dot-maximize"></span>
-          </div>
-          <div class="window-title-text">
-            <span>The Workstation Struggle vs. Personal Reminder Assistant</span>
-            <span class="window-glass-pill" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.35); color: #6ee7b7;">Storyboard Demo</span>
-          </div>
-        </div>
-        <div style="position: relative; width: 100%; aspect-ratio: 16/9; background: #060913; overflow: hidden; border-bottom-left-radius: 14px; border-bottom-right-radius: 14px;">
-          <video id="heroProductVideo" 
-                 src="assets/video/product_usecase_tour.mp4?v=20261027c" 
-                 autoplay 
-                 muted 
-                 loop 
-                 playsinline 
-                 controls
-                 style="width: 100%; height: 100%; object-fit: contain; display: block;">
-          </video>
-        </div>
-      </div>
-
-      <!-- VIEW 2: Interactive Slider Frame (Hidden initially or toggleable) -->
-      <div class="hero-app-frame hero-slider-frame" id="heroSliderContainer" style="display: none;">
-        <!-- macOS Window Glass Titlebar -->
-        <div class="hero-window-titlebar">
-          <div class="window-controls">
-            <span class="control-dot dot-close"></span>
-            <span class="control-dot dot-minimize"></span>
-            <span class="control-dot dot-maximize"></span>
-          </div>
-          <div class="window-title-text">
-            <span>Personal Reminder Assistant v1.0.28</span>
-            <span class="window-glass-pill">Liquid Glass UI</span>
-          </div>
-        </div>
-
-        <!-- Interactive Comparison Viewport -->
-        <div class="hero-slider-viewport" id="heroSliderViewport">
-          <!-- Base Layer: Deep Obsidian Dark Mode -->
-          <img src="assets/screenshots/hero_homepage_dark_4k.png?v=20261027c" 
-               alt="Personal Reminder Assistant - Dark Theme" 
-               class="hero-slider-img hero-img-base"
-               draggable="false">
-          
-          <!-- Overlay Layer: Warm Ivory Linen Light Mode (Clipped) -->
-          <div class="hero-slider-overlay" id="heroSliderOverlay">
-            <img src="assets/screenshots/hero_homepage_light_4k.png?v=20261027c" 
-                 alt="Personal Reminder Assistant - Light Theme" 
-                 class="hero-slider-img hero-img-overlay"
-                 draggable="false">
-          </div>
-
-          <!-- Draggable Glass Splitter Handle -->
-          <div class="hero-slider-handle" id="heroSliderHandle">
-            <div class="handle-line"></div>
-            <div class="handle-knob">
-              <span class="handle-arrows">◂</span>
-              <span class="handle-label">SLIDE</span>
-              <span class="handle-arrows">▸</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div class="trust-strip wrap">
+      <div><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>Windows Portable · No admin access needed</span></div>
+      <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4v6c0 4-8 8-8 8s-8-4-8-8V7l8-4Z"/><path d="m8 12 3 3 5-6"/></svg><span>Your reminders and notes stay local</span></div>
+      <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Free trial starts when you first launch</span></div>
     </div>
-  </section>
 
-  <!-- How It Works / See It In Action Section -->
-  <section class="how-it-works-section" id="how-it-works" style="padding: 75px 0 45px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">See It In Action</span>
-        <h2 class="section-title">How Pauzos Keeps Deadlines Unmissable</h2>
-        <p class="section-subtitle">
-          Unlike ordinary reminder apps buried under dozens of browser tabs, Pauzos commands attention directly on your screen without disrupting your active workflow.
-        </p>
-      </div>
-
-      <div class="split-row" style="align-items: center; gap: 48px;">
-        <div class="split-text-col">
-          <div style="display: flex; flex-direction: column; gap: 26px;">
-            <div style="display: flex; gap: 16px; align-items: flex-start;">
-              <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(59, 130, 246, 0.2); border: 1px solid #3b82f6; color: #60a5fa; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0;">1</div>
-              <div>
-                <h3 style="font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Keep working in your usual apps</h3>
-                <p style="font-size: 14.5px; color: #94a3b8; line-height: 1.55;">Whether you are deep in Excel spreadsheets, an ERP system, terminal windows, or browser tabs, Pauzos stays lightweight and silent in the background.</p>
-              </div>
+    <section class="wrap section-space workflow-preview" aria-labelledby="workflow-preview-title"><div class="section-heading"><div><p class="eyebrow">WHEN IT’S TIME TO ACT</p><h2 id="workflow-preview-title">A reminder that comes<br>to you.</h2></div><p>Keep working in your usual apps. Pauzos brings the next action into view.</p></div>      <div class="hero-visual" id="preview">
+        <div class="demo-topline"><span><span class="live-dot" aria-hidden="true"></span> SEE A REMINDER IN ACTION</span><span class="preview-label">Interactive preview</span></div>
+        <div class="desktop-scene">
+          <div class="scene-toolbar"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div><span>Monthly billing · Spreadsheet</span><span aria-hidden="true">⌕</span></div>
+          <div class="sheet-menu" aria-hidden="true"><b>File</b><span>Home</span><span>Insert</span><span>Data</span><span>Review</span></div>
+          <div class="sheet-formula" aria-hidden="true"><span>D8</span><i>ƒx</i> = SUM(D3:D7)</div>
+          <div class="sheet-grid" aria-hidden="true">
+            <div class="sheet-row letters"><span></span><span>A</span><span>B</span><span>C</span><span>D</span></div>
+            <div class="sheet-row"><span>1</span><b>Client billing</b><span></span><span></span><span></span></div>
+            <div class="sheet-row sheet-head"><span>2</span><b>Account</b><b>Reference</b><b>Status</b><b>Amount</b></div>
+            <div class="sheet-row"><span>3</span><span>North studio</span><span>INV-2041</span><span>Ready</span><span>24,500</span></div>
+            <div class="sheet-row"><span>4</span><span>Acme partners</span><span>INV-2042</span><span>Ready</span><span>18,000</span></div>
+            <div class="sheet-row"><span>5</span><span>Fieldwork co.</span><span>INV-2043</span><span>Review</span><span>32,750</span></div>
+            <div class="sheet-row"><span>6</span><span>Orion design</span><span>INV-2044</span><span>Ready</span><span>12,000</span></div>
+            <div class="sheet-row"><span>7</span><span>Atlas projects</span><span>INV-2045</span><span>Ready</span><span>21,250</span></div>
+            <div class="sheet-row"><span>8</span><b>Total</b><span></span><span></span><b class="selected-cell">108,500</b></div>
+            <div class="sheet-row"><span>9</span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="floating-reminder">
+            <div class="reminder-brand"><img src="assets/logo.webp" width="24" height="24" alt=""><span>Pauzos reminder</span><span id="reminder-badge">DUE NOW</span></div>
+            <div class="reminder-body" id="reminder-body">
+              <p class="reminder-category" id="reminder-category">BILLING & OPERATIONS</p>
+              <h2 id="reminder-title">Submit the billing run</h2>
+              <p id="reminder-detail">Review invoices and submit before the 4 PM cut-off.</p>
+              <div class="reminder-meta"><span id="reminder-time">16:00</span><span id="reminder-schedule">Monthly · Workday 3</span></div>
+              <div class="reminder-actions"><button id="complete-demo" class="complete-button"><span aria-hidden="true">✓</span> Complete</button><button id="snooze-demo">Snooze 15m</button></div>
             </div>
-
-            <div style="display: flex; gap: 16px; align-items: flex-start;">
-              <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #34d399; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0;">2</div>
-              <div>
-                <h3 style="font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Floating alert appears right on top</h3>
-                <p style="font-size: 14.5px; color: #94a3b8; line-height: 1.55;">At your scheduled cut-off, a focused alert card pops up directly over your screen. It can never be buried, yet won't steal your active typing focus.</p>
-              </div>
+            <div id="reminder-result" class="reminder-result" hidden>
+              <span class="result-icon" id="result-icon" aria-hidden="true">✓</span>
+              <h2 id="result-title">One less thing to remember.</h2>
+              <p id="result-detail">Marked complete. Saved to your activity history.</p>
+              <button class="replay-button" id="replay-demo">Replay reminder <span aria-hidden="true">↻</span></button>
             </div>
-
-            <div style="display: flex; gap: 16px; align-items: flex-start;">
-              <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(139, 92, 246, 0.2); border: 1px solid #8b5cf6; color: #a78bfa; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0;">3</div>
-              <div>
-                <h3 style="font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Take action in one click</h3>
-                <p style="font-size: 14.5px; color: #94a3b8; line-height: 1.55;">Mark Completed with optional audit notes, snooze for 15, 30, or 60 minutes, or skip today. Every action is recorded in your local audit log.</p>
-              </div>
-            </div>
+            <p class="demo-disclaimer">Sample reminder · try the buttons</p>
           </div>
+          <div class="scene-taskbar" aria-hidden="true"><span>▦</span><span>▱</span><img src="assets/logo.webp" width="20" height="20" alt=""><span class="taskbar-time">16:00</span></div>
         </div>
-
-        <div class="split-visual-col">
-          <div class="split-app-frame compact" style="max-width: 500px; box-shadow: 0 24px 60px rgba(0,0,0,0.65); border: 1px solid rgba(255,255,255,0.18); border-radius: 14px; overflow: hidden;">
-            <img src="assets/screenshots/reminder_popup_timesheet.png?v=20261027d" alt="Pauzos Floating Reminder Alert on Screen" style="display: block; width: 100%; height: auto;">
-          </div>
-        </div>
+        <div class="scenario-bar"><span>TRY A ROUTINE</span><div class="scenario-options" role="group" aria-label="Reminder examples"><button class="active" aria-pressed="true" data-scenario="billing">Billing cut-off</button><button aria-pressed="false" data-scenario="timesheet">Timesheet</button><button aria-pressed="false" data-scenario="break">Eye break</button></div></div>
+        <p class="visual-caption"><span aria-hidden="true">↳</span> A floating alert above your work. Your typing stays in focus.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Problem → Solution: Before vs After Section -->
-  <section class="problem-solution-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">Why You Need This</span>
-        <h2 class="section-title">The Real Cost of "I'll Remember It Later"</h2>
-        <p class="section-subtitle">
-          Every professional has lost money, reputation, or health because a reminder failed them. Here's what changes when your alerts can't be ignored.
-        </p>
+</section>
+    <section class="wrap section-space routine-preview" aria-labelledby="routine-preview-title"><div class="section-heading"><div><p class="eyebrow">SET IT UP YOUR WAY</p><h2 id="routine-preview-title">A time. A routine.<br>One less thing to remember.</h2></div><p>Add a title, schedule, priority, and useful notes. Save your reminder and get back to work.</p></div><a href="assets/new-routine-light.webp" target="_blank" rel="noopener"><img data-app-screen="new-routine" src="assets/new-routine-light.webp" srcset="assets/new-routine-light-720.webp 720w, assets/new-routine-light.webp 1440w" sizes="(max-width: 760px) 94vw, 1400px" width="1440" height="980" alt="Actual Pauzos New Reminder form with a sample client follow-up" loading="lazy"/></a></section>
+    <section class="how-section wrap section-space" id="how-it-works" aria-labelledby="how-title">
+      <div class="section-heading"><div><p class="eyebrow">FROM “I’LL REMEMBER” TO DONE</p><h2 id="how-title">Give important tasks<br>a place on your screen.</h2></div><p>For billing cut-offs, Friday timesheets, and the small breaks that make a long workday better.</p></div>
+      <div class="steps">
+        <article><span class="step-number">01 /</span><h3>Set your schedule</h3><p>Choose a time, a recurring day, or a specific business day of the month.</p><span class="step-example">Every month · Workday 3 · 16:00</span></article>
+        <article><span class="step-number">02 /</span><h3>See it above your work</h3><p>A floating reminder appears over your open apps at the time you chose.</p><span class="step-example">Your spreadsheet can stay open.</span></article>
+        <article><span class="step-number">03 /</span><h3>Act, then carry on</h3><p>Complete, snooze, or skip today. Keep a local record of the action you took.</p><span class="step-example">Done today. Remembered tomorrow.</span></article>
       </div>
+    </section>
 
-      <div class="ps-grid">
-
-        <!-- BEFORE Card -->
-        <div class="ps-card ps-before">
-          <div class="ps-card-label">❌ Without the App</div>
-
-          <div class="ps-item">
-            <span class="ps-icon">📱</span>
-            <span>Phone reminder silenced during a meeting — <strong>deadline missed</strong></span>
+    <section class="product-section section-space" id="features" aria-labelledby="product-title">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">A LOOK INSIDE PAUZOS</p><h2 id="product-title">Your workday,<br>a little more together.</h2></div><p>Plan the routine. See what’s due. Keep the record. All in one desktop app.</p></div>
+        <div class="product-tour">
+          <div class="tour-sidebar" role="tablist" aria-label="Explore the app">
+            <button id="tab-agenda" class="tour-tab active" role="tab" aria-selected="true" aria-controls="product-panel" data-product="agenda"><span class="tour-tab-number">01</span><span><strong>Today’s agenda</strong><small>See scheduled, completed, pending, and snoozed reminders at a glance.</small></span><span class="tour-arrow" aria-hidden="true">↗</span></button>
+            <button id="tab-routines" class="tour-tab" role="tab" aria-selected="false" aria-controls="product-panel" tabindex="-1" data-product="routines"><span class="tour-tab-number">02</span><span><strong>Routines that repeat</strong><small>Daily, weekly, and workday-of-month schedules with custom categories.</small></span><span class="tour-arrow" aria-hidden="true">↗</span></button>
+            <button id="tab-reports" class="tour-tab" role="tab" aria-selected="false" aria-controls="product-panel" tabindex="-1" data-product="reports"><span class="tour-tab-number">03</span><span><strong>A record you can keep</strong><small>Review completed actions and export your local history to Excel.</small></span><span class="tour-arrow" aria-hidden="true">↗</span></button>
           </div>
-          <div class="ps-item">
-            <span class="ps-icon">🌐</span>
-            <span>Calendar tab lost among background windows — <strong>task forgotten</strong></span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">📅</span>
-            <span>Calendar event dismissed with one click — <strong>no follow-up</strong></span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">📝</span>
-            <span>Sticky note on monitor ignored for 3 days — <strong>compliance slip</strong></span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">🪑</span>
-            <span>8 hours of screen time — <strong>backache, eye strain, no water</strong></span>
+          <div id="product-panel" class="product-panel" role="tabpanel" aria-labelledby="tab-agenda" tabindex="0">
+            <div class="screenshot-label"><span class="small-dot" aria-hidden="true"></span> FROM THE DESKTOP APP <span id="screenshot-count">01 / 03</span></div>
+            <a id="screenshot-link" href="assets/agenda-light.webp" target="_blank" rel="noopener" aria-label="Open the agenda screenshot at full size"><img id="product-screenshot" data-app-screen="agenda" src="assets/agenda-light.webp" srcset="assets/agenda-light-720.webp 720w, assets/agenda-light.webp 1440w" sizes="(max-width: 760px) 94vw, 1400px" width="1440" height="980" alt="Pauzos Today's Agenda showing scheduled tasks, completion counts, and due reminders" loading="lazy"></a>
+            <p class="screenshot-caption"><span id="screenshot-caption">Your daily overview, with the next action always visible.</span><a id="screenshot-expand" href="assets/agenda-light.webp" target="_blank" rel="noopener">Full size <span aria-hidden="true">↗</span></a></p>
           </div>
         </div>
-
-        <!-- AFTER Card -->
-        <div class="ps-card ps-after">
-          <div class="ps-card-label">✅ With Personal Reminder Assistant</div>
-
-          <div class="ps-item">
-            <span class="ps-icon">🖥️</span>
-            <span><strong>Unmissable floating popup</strong> right on your screen — can't be buried</span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">🔁</span>
-            <span><strong>Smart snooze</strong> keeps nudging you — won't let you forget</span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">⏰</span>
-            <span><strong>Cut-off deadline badges</strong> — zero room for "I'll do it later"</span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">🧘</span>
-            <span><strong>Automatic wellness breaks</strong> for eyes, posture &amp; hydration</span>
-          </div>
-          <div class="ps-item">
-            <span class="ps-icon">📊</span>
-            <span><strong>Full audit trail</strong> of everything you completed, exported to Excel</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="ps-cta-row">
-        <a href="download.html" class="hero-cta-primary-xl" style="font-size: 17px; padding: 16px 36px;">
-          📥 Try It Free for 3 Days — Download Now
-        </a>
-        <div class="hero-no-catch" style="margin-top: 12px;">
-          <span>✅ No credit card</span>
-          <span>✅ No signup</span>
-          <span>✅ Just download and run</span>
+        <div class="feature-notes">
+          <article><span aria-hidden="true">◷</span><div><h3>Make room for a break</h3><p>Eye, hydration, and posture reminders for long days at your desk.</p></div></article>
+          <article><span aria-hidden="true">☾</span><div><h3>Pause when you need to</h3><p>Do Not Disturb silences alerts and resets automatically the next day.</p></div></article>
+          <article><span aria-hidden="true">◐</span><div><h3>Match your workspace</h3><p>Choose a light or dark theme for your desktop environment.</p></div></article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Persona Cards Section -->
-  <section class="personas-section" id="personas">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">Custom Tailored Workflows</span>
-        <h2 class="section-title">Built For High-Stakes Professionals</h2>
-        <p class="section-subtitle">
-          Whether you are navigating volatile financial markets, driving executive priorities, managing engineering sprints, or sustaining healthy daily routines — Personal Reminder Assistant delivers rock-solid accountability.
-        </p>
+    <section class="download-section wrap section-space" id="download" aria-labelledby="download-title">
+      <div class="download-copy">
+        <p class="eyebrow">LESS REMEMBERING. MORE DOING.</p>
+        <h2 id="download-title">Put your next<br>deadline <em>on screen.</em></h2>
+        <p>Try every feature with unlimited routines for 72 hours from your first launch.</p>
+        <ul class="download-benefits"><li><span aria-hidden="true">✓</span> No account or payment details to start</li><li><span aria-hidden="true">✓</span> Your first 2 routines stay free after the trial</li><li><span aria-hidden="true">✓</span> Early-bird plans: Annual (<span data-annual-price>₹349</span>/yr) &amp; Lifetime (<span data-lifetime-price>₹999</span>)</li></ul>
+        <a class="text-link" href="#pricing" id="downloadPricingLink">Early bird plans: <span data-annual-price>₹349</span>/yr &middot; <span data-lifetime-price>₹999</span> lifetime <span aria-hidden="true">↗</span></a><p class="download-price-schedule" id="downloadPriceScheduleNote" data-price-schedule-short>Early-bird offer through 31 December 2026. Standard pricing applies from 1 January 2027 (₹499/yr Annual, ₹1,499 Lifetime).</p>
+        <div class="privacy-note"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><p>Routines, notes, and activity history stay on your computer. Online services support sign-in, license and trial checks, pricing information, and updates.</p></div>
       </div>
-
-      <div class="personas-grid">
-        
-        <!-- Persona 1: Engineering Managers & Team Leads -->
-        <div class="persona-card glass-card">
-          <div class="persona-header">
-            <div class="persona-icon-box manager-icon">💼</div>
-            <div>
-              <div class="persona-target-tag">Management & Delivery</div>
-              <h3 class="persona-title">Managers & Corporate Leads</h3>
-            </div>
-          </div>
-          <p class="persona-desc">
-            Keep sprint cycles on track, sign off on vendor invoices on time, and eliminate blockers across departments without relying on messy browser tabs or missed chat pings.
-          </p>
-          <div class="persona-reminders-box">
-            <div class="persona-reminders-title">Real Pre-Loaded Workday Checkpoints:</div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">10:30</span>
-              <span class="pill-name">Sprint Deliverables & Vendor Approvals</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">15:00</span>
-              <span class="pill-name">Cross-Functional Blocker Queue Resolution</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">16:30</span>
-              <span class="pill-name">Weekly Timesheet & Client Billing Submission</span>
-            </div>
-          </div>
-          <div class="persona-benefit">
-            <span class="benefit-icon">⏱️</span>
-            <span>Keeps critical billing cut-offs and weekly timesheet deadlines strictly on schedule.</span>
-          </div>
-        </div>
-
-        <!-- Persona 2: CEOs & Founders -->
-        <div class="persona-card glass-card">
-          <div class="persona-header">
-            <div class="persona-icon-box ceo-icon">👔</div>
-            <div>
-              <div class="persona-target-tag">Executive Leadership</div>
-              <h3 class="persona-title">CEOs & Founders</h3>
-            </div>
-          </div>
-          <p class="persona-desc">
-            Executive cognitive load is relentless. Protect deep strategic thinking time, align top company priorities before opening communications, and broadcast leadership summaries without getting bogged down in operational clutter.
-          </p>
-          <div class="persona-reminders-box">
-            <div class="persona-reminders-title">Real Pre-Loaded Workday Checkpoints:</div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">09:15</span>
-              <span class="pill-name">CEO Executive Standup & Strategic Priorities</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">12:30</span>
-              <span class="pill-name">Capital Runway, Burn Rate & Investor Relations</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">17:30</span>
-              <span class="pill-name">Executive Daily Wrap-Up & Leadership Broadcast</span>
-            </div>
-          </div>
-          <div class="persona-benefit">
-            <span class="benefit-icon">🎯</span>
-            <span>Forces daily focus on high-leverage revenue drivers and capital longevity.</span>
-          </div>
-        </div>
-
-        <!-- Persona 3: Stock Market Traders -->
-        <div class="persona-card glass-card">
-          <div class="persona-header">
-            <div class="persona-icon-box trader-icon">📈</div>
-            <div>
-              <div class="persona-target-tag">Financial Markets</div>
-              <h3 class="persona-title">Active Traders & Investors</h3>
-            </div>
-          </div>
-          <p class="persona-desc">
-            Trading discipline requires zero missed checkpoints. Execute systematic pre-market research, audit trailing stop risk before the afternoon rush, and reconcile daily contract notes with clinical consistency.
-          </p>
-          <div class="persona-reminders-box">
-            <div class="persona-reminders-title">Real Pre-Loaded Workday Checkpoints:</div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">08:45</span>
-              <span class="pill-name">Pre-Market Global Cues & Index Open Check</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">14:30</span>
-              <span class="pill-name">Intraday Risk Audit & Trailing Stop-Loss</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">15:45</span>
-              <span class="pill-name">Post-Market Journal & Daily P&L Reconciliation</span>
-            </div>
-          </div>
-          <div class="persona-benefit">
-            <span class="benefit-icon">🛡️</span>
-            <span>Eliminates emotional overtrading and FOMO through mandatory compliance pauses.</span>
-          </div>
-        </div>
-
-        <!-- Persona 4: Health, Ergonomics & Daily Habits -->
-        <div class="persona-card glass-card">
-          <div class="persona-header">
-            <div class="persona-icon-box habit-icon">🧘</div>
-            <div>
-              <div class="persona-target-tag">Health & Sustainable Habits</div>
-              <h3 class="persona-title">Professionals & Creatives</h3>
-            </div>
-          </div>
-          <p class="persona-desc">
-            Prevent screen fatigue and sustain physical stamina over long workdays. Gentle, non-intrusive wellness breaks cue you to hydrate, reset spinal posture, and practice 20-20-20 eye strain protection.
-          </p>
-          <div class="persona-reminders-box">
-            <div class="persona-reminders-title">Real Pre-Loaded Workday Checkpoints:</div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">11:45</span>
-              <span class="pill-name">Ergonomic Posture, Hydration & Eye Break</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">14:00</span>
-              <span class="pill-name">Afternoon Energy Reset & Movement Stretch</span>
-            </div>
-            <div class="persona-reminder-pill">
-              <span class="pill-time">17:00</span>
-              <span class="pill-name">Desk Organization & Tomorrow's Planning</span>
-            </div>
-          </div>
-          <div class="persona-benefit">
-            <span class="benefit-icon">🔋</span>
-            <span>Protects your posture, vision, and mental clarity through 8+ hour screen sessions.</span>
-          </div>
-        </div>
-
+      <div class="download-card">
+        <div class="download-card-heading"><h3>Get Pauzos for your computer</h3><span class="version" id="edition-version">v1.0.29</span></div>
+        <p id="os-detected" class="os-detected">Choose your operating system below.</p>
+        <div class="os-tabs" role="group" aria-label="Choose your computer's operating system"><button data-os="windows" class="active" aria-pressed="true">Windows</button><button data-os="mac" aria-pressed="false">macOS</button><button data-os="linux" aria-pressed="false">Linux</button></div>
+        <label class="format-label" for="download-format">Choose an edition</label>
+        <select id="download-format"><option value="win-portable">Portable · run without installing (.exe)</option><option value="win-setup">Installer · standard setup (.exe)</option></select>
+        <div class="edition-info"><span class="edition-icon" aria-hidden="true">↓</span><div><h4 id="edition-title">Windows Portable</h4><p id="edition-description">Run directly from a folder without an installer or administrator access.</p><span class="edition-spec" id="edition-spec">Windows 10 / 11 · .exe</span></div></div>
+        <a id="download-link" class="button download-button" href="https://github.com/anandnowhere/stratexa-releases/releases/download/v1.0.34/Personal-Reminder-Assistant-Portable-1.0.34.exe">Download for Windows <span aria-hidden="true">↓</span></a>
+        <p class="download-source">Official Pauzos release <span aria-hidden="true">·</span> Hosted on GitHub</p>
+        <div class="download-feedback" id="download-feedback" role="status" hidden></div>
+        <details class="install-help"><summary>How do I get started?<span aria-hidden="true">+</span></summary><ol id="install-steps"><li>Save the portable file to your computer.</li><li>Open it from your Downloads folder.</li><li>Create a reminder. Your 72-hour trial begins at first launch.</li></ol><p>Keep Pauzos running and your computer awake for scheduled alerts.</p><a class="text-link" href="guide.html">Full setup & first-reminder guide ↗</a></details>
+        <a class="store-link" href="https://apps.microsoft.com/detail/9mtxk2l4jh6l" target="_blank" rel="noopener"><span class="windows-mark" aria-hidden="true">⊞</span><span>Windows App on Microsoft Store<small>Official Microsoft Store container edition · Safe & certified for corporate PCs ↗</small></span></a><div class="desktop-copy"><p>Browsing on your phone?<br><span>Open this page on the computer you’ll use.</span></p><button class="copy-link" id="copy-desktop-link">Copy link <span aria-hidden="true">↗</span></button></div>
+        <p id="copy-feedback" role="status" class="copy-feedback"></p>
+        <input id="copy-fallback" class="copy-fallback" aria-label="Desktop download page link" readonly hidden>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Marketing Feature 1: Today's Agenda -->
-  <section class="split-feature-section" id="features">
-    <div class="container">
-      <div class="split-row">
-        
-        <!-- Left: Text -->
-        <div class="split-text-col">
-          <span class="split-pill">Daily Agenda Command Center</span>
-          <h2 class="split-title">Start Every Morning With Absolute Clarity</h2>
-          <p class="split-desc">
-            Your centralized daily dashboard. View scheduled routines, live completion scores, 
-            and pending checkpoints with clean, real-time status counters.
-          </p>
-
-          <ul class="split-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Live KPI Dashboard:</strong> Real-time overview of Scheduled, Completed, Pending, and Snoozed tasks for today.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>1-Click Do Not Disturb:</strong> Silence all reminder popups while presenting or in deep work; resets automatically tomorrow.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Immediate Action Rows:</strong> Mark completed or test alert triggers directly from the table.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: Real Screenshot of Today's Agenda -->
-        <div class="split-visual-col">
-          <div class="split-app-frame">
-            <img src="assets/screenshots/tab_today_agenda.png?v=20261027c" alt="Today's Agenda Tab Screenshot">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Marketing Feature: Interactive Reminder Alert Pop-up -->
-  <section class="split-feature-section">
-    <div class="container">
-      <div class="split-row">
-        
-        <!-- Left: Text -->
-        <div class="split-text-col">
-          <span class="split-pill">Interactive Smart Alert</span>
-          <h2 class="split-title">Actionable Reminders That Demand Attention Without Disruption</h2>
-          <p class="split-desc">
-            When a critical trade review, executive deadline, or compliance cutoff arrives, a focused floating Liquid Glass alert card appears directly on your screen. 
-            Review full instructions, monitor strict cut-off times, record optional audit notes, or snooze in seconds without breaking your workflow.
-          </p>
-
-          <ul class="split-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Cut-off Deadline Badges:</strong> Clear ⏰ Cut-off Time warnings highlight non-negotiable tasks like market stops or timesheets.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>1-Click Action & Audit Notes:</strong> Mark as Completed with optional reference numbers or trade logs saved directly to your local database.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Smart Snooze & Skip Controls:</strong> Postpone in 1 click for 15, 30, or 60 minutes, or skip today while keeping full audit integrity.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: Real Screenshot of Reminder Alert Pop-up -->
-        <div class="split-visual-col">
-          <div class="split-app-frame compact" style="max-width: 520px;">
-            <img src="assets/screenshots/reminder_popup_timesheet.png?v=20261027d" alt="Interactive Reminder Alert Pop-up">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Marketing Feature 2: All Reminders (Routine Engine) -->
-  <section class="split-feature-section">
-    <div class="container">
-      <div class="split-row">
-        
-        <!-- Left: Text -->
-        <div class="split-text-col">
-          <span class="split-pill">Flexible Routine Engine</span>
-          <h2 class="split-title">Organize Trading, Leadership, Sprints & Habits</h2>
-          <p class="split-desc">
-            Build your personal productivity operating system. Categorize routines across Trading & Markets, Executive Leadership, Management, Compliance, and Health & Habits with dedicated priority tags and toggle controls.
-          </p>
-
-          <ul class="split-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Persona-Driven Categories:</strong> Group routines under Trading & Markets, Executive Leadership, Management, and Health.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Advanced Recurrence Rules:</strong> Set workday-only schedules (Mon–Fri), custom workdays of the month, or repeating intervals.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Instant Search & Filter:</strong> Instantly filter by status, priority (High, Medium, Low), or specific category.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: Real Screenshot of All Reminders Tab -->
-        <div class="split-visual-col">
-          <div class="split-app-frame">
-            <img src="assets/screenshots/tab_all_reminders.png?v=20261027c" alt="All Reminders Tab Screenshot">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Marketing Feature 3: Add New Routine & Custom Categories -->
-  <section class="split-feature-section">
-    <div class="container">
-      <div class="split-row">
-        
-        <!-- Left: Text -->
-        <div class="split-text-col">
-          <span class="split-pill">Precision Scheduling</span>
-          <h2 class="split-title">Add New Routines with Flexible Frequency Rules</h2>
-          <p class="split-desc">
-            Effortlessly configure routines with custom categories, priority levels, and flexible frequency schedules 
-            including workday-of-month, daily, weekly, or specific calendar dates.
-          </p>
-
-          <ul class="split-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Workday-of-Month Frequency:</strong> Schedule routines for specific business days (e.g., WD 3, WD 4) ideal for accounting & billing.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Custom Categories:</strong> Create and manage custom tags like Accounting - AR, Treasury, Compliance, and Operations.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Priority & Toggle Controls:</strong> Assign priority levels and enable or pause routines with a single click.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: User Attached New Routine Modal Screenshot -->
-        <div class="split-visual-col">
-          <div class="split-app-frame compact" style="max-width: 520px;">
-            <img src="assets/screenshots/modal_new_routine_attached.png?v=20261027c" alt="New Reminder Routine Modal">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Marketing Feature 4: Audit & Reports -->
-  <section class="split-feature-section">
-    <div class="container">
-      <div class="split-row">
-        
-        <!-- Left: Text -->
-        <div class="split-text-col">
-          <span class="split-pill">Accountability & Excel</span>
-          <h2 class="split-title">Verify Consistency with 1-Click Excel Audit Logs</h2>
-          <p class="split-desc">
-            Prove your habit consistency to yourself. An immutable, local audit log timestamps every action 
-            and allows you to export complete spreadsheets in a single click.
-          </p>
-
-          <ul class="split-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>1-Click Excel Export:</strong> Download comprehensive `.xlsx` logs for personal reviews or work compliance.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>100% Local Data Storage:</strong> All your routines, notes, and completion history remain stored strictly on your local computer hard drive.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Zero Routine Tracking:</strong> We never collect, monitor, or sync your personal tasks, schedules, or work habits to cloud servers.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: Real Screenshot of Audit & Reports Tab -->
-        <div class="split-visual-col">
-          <div class="split-app-frame">
-            <img src="assets/screenshots/tab_audit_reports.png?v=20261027c" alt="Audit & Reports Tab Screenshot">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Marketing Feature 5: Health & Wellness Notification Pop-Up -->
-  <section class="split-feature-section">
-    <div class="container">
-      <div class="split-row">
-        
-        <!-- Left: Text -->
-        <div class="split-text-col">
-          <span class="split-pill">Health & Ergonomics</span>
-          <h2 class="split-title">Notification Pop-Up for Health & Wellness</h2>
-          <p class="split-desc">
-            Long hours in front of screens cause eye fatigue, stiffness, and mental burnout. 
-            The integrated Health & Wellness companion delivers gentle, timely prompts to reset posture, 
-            hydrate, and relax your eyes.
-          </p>
-
-          <ul class="split-checklist">
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>20-20-20 Eye Strain Rule:</strong> Timely cues to look 20 feet away for 20 seconds, preventing chronic digital eye strain.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Hydration Checkpoints:</strong> Prompts to drink water at regular intervals to sustain focus.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Ergonomic Stretches:</strong> Micro-cues for shoulder rolls and neck releases that keep physical stiffness away.</span>
-            </li>
-            <li>
-              <span class="check-icon">✓</span>
-              <span><strong>Seamless Dark Theme:</strong> Clean notification design that blends naturally into your dark workspace.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: Clean Health & Wellness Pop-Up Screenshot -->
-        <div class="split-visual-col">
-          <div class="split-app-frame compact" style="max-width: 440px;">
-            <img src="assets/screenshots/notification_wellness.png?v=20261027c" alt="Health and Wellness Notification Pop-Up">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio Suite Section -->
-  <section class="portfolio-section" id="apps">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">The Pauzos Portfolio</span>
-        <h2 class="section-title">Practical Software Engineered For Output</h2>
-        <p class="section-subtitle">Pauzos develops dedicated, standalone desktop and web tools designed without unnecessary bloat or recurring SaaS subscriptions.</p>
-      </div>
-
-      <div class="portfolio-grid">
-        
-        <!-- App 1: Personal Reminder Assistant -->
-        <div class="portfolio-card-featured">
-          <h3 style="font-size: 26px; font-weight: 800; margin-bottom: 10px;">Personal Reminder Assistant</h3>
-          <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6;">
-            A privacy-first desktop routine manager. Features intelligent on-screen popups with custom placement memory, 1-click Do Not Disturb, zero-admin portable mode for office laptops, and automated Excel audit exports.
-          </p>
-          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-            <div>
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                <span style="font-size: 11px; font-weight: 700; color: #fbbf24; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); padding: 2px 8px; border-radius: 12px; text-transform: uppercase;">Launch Offer</span>
-                <span style="font-size: 13px; color: #64748b; text-decoration: line-through;" id="personaStrikePrice">₹1,499</span>
-                <span style="font-size: 11px; font-weight: 700; color: #34d399; background: rgba(16, 185, 129, 0.15); padding: 2px 6px; border-radius: 10px;" id="personaDiscountPill">33% OFF</span>
-              </div>
-              <div style="font-size: 26px; font-weight: 800; color: #fbbf24;">
-                <span id="personaPriceVal">₹999</span> <span style="font-size: 13px; font-weight: 500; color: var(--text-dim);">lifetime (or ₹349/yr)</span>
-              </div>
-            </div>
-            <button onclick="handleCheckout('lifetime')" class="btn btn-primary">
-              ⚡ Choose License &amp; Get Access
-            </button>
-          </div>
-        </div>
-
-        <!-- Future Apps Teaser -->
-        <div class="portfolio-upcoming-card">
-          <div style="font-size: 36px; margin-bottom: 14px;">🚀</div>
-          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">More Pauzos Apps Coming Soon</h3>
-          <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
-            We are actively developing specialized tools for professionals, traders, focus management, and workflow automation.
-          </p>
-          <div style="margin-top: 18px; font-size: 12px; color: #60a5fa; font-weight: 600;">Stay Tuned on Instagram</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Professionally Formatted Pricing Section -->
-  <section class="pricing-section" id="pricing">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">Transparent Pricing</span>
-        <h2 class="section-title">Choose Your Workday License</h2>
-        <p class="section-subtitle">No forced auto-renewal mandates. 1-click standard checkout with instant digital provisioning.</p>
+<section id="pricing" class="wrap section-space pricing-section">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto 36px;">
+        <p class="eyebrow">TRANSPARENT WORKDAY PRICING</p>
+        <h2>Choose Your Workday License</h2>
+        <p>No forced bank auto-debit mandates. Standard 1-click checkout with instant digital provisioning.</p>
+        <p id="currency-status" class="pricing-status" role="status">Loading current prices…</p>
       </div>
 
       <div class="pricing-grid-dual">
-        
         <!-- CARD 1: Annual Pass -->
-        <div class="pricing-card-box">
+        <article class="pricing-card-box pricing-card-annual">
           <div>
             <div class="plan-type-pill">Standard Workday Access</div>
             <h3 class="plan-card-title">Annual Pass</h3>
             <p class="plan-card-sub">Perfect for single-workstation daily deadline adherence and compliance.</p>
 
             <div class="plan-price-wrap">
-              <div class="plan-price-standard">
-                <span>Standard:</span>
-                <span style="text-decoration: line-through;" id="cardAnnualStandard">₹499/yr</span>
-                <span class="discount-pill" id="cardAnnualDiscount">30% OFF</span>
-              </div>
               <div class="plan-price-row">
-                <span class="plan-price-main" id="cardAnnualPrice">₹349</span>
+                <span class="plan-price-main" data-annual-price>…</span>
                 <span class="plan-price-period">/ year</span>
               </div>
+              <div class="plan-schedule-note" data-annual-schedule>
+                Available through 31 December 2026. Standard price applies from 1 January 2027.
+              </div>
             </div>
 
             <ul class="plan-features-list">
               <li>
-                <span class="plan-check">✓</span>
-                <span><strong>1 Workstation Device</strong> (Work PC or Laptop)</span>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span><strong>1 Workstation Device</strong> login</span>
               </li>
               <li>
-                <span class="plan-check">✓</span>
-                <span><strong>1 Year of Updates &amp; Pro Routines:</strong> All newly released templates &amp; routine types included</span>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span><strong>Unlimited</strong> reminders and recurring routines</span>
               </li>
               <li>
-                <span class="plan-check">✓</span>
-                <span><strong>Smart Workday Logic (WD N):</strong> Business-day cutoffs &amp; bank holiday exclusions</span>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Workday schedules, wellness routines & reports</span>
               </li>
               <li>
-                <span class="plan-check">✓</span>
-                <span><strong>1-Click Excel Compliance:</strong> Export tamper-evident `.xlsx` logs</span>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span><strong>1 Year of Updates</strong> & pro routines included</span>
               </li>
               <li>
-                <span class="plan-check">✓</span>
-                <span><strong>Frictionless 1-Click Renewal:</strong> No forced bank AutoPay mandate. Gentle Day-360 in-app reminder</span>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Standard 1-click checkout (<strong>Zero bank mandate</strong>)</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Gentle Day-360 annual renewal reminders</span>
               </li>
             </ul>
           </div>
 
           <div>
-            <button onclick="handleCheckout('annual')" class="btn-plan-annual" id="btnCardAnnualCta">
-              Get Annual Pass (₹349/yr)
-            </button>
-            <div class="plan-sub-note">
-              Standard 1-Click Checkout • Zero Bank Mandate • Renew Anytime
-            </div>
+            <a class="button" href="payment.html?plan=annual">Get Annual Pass <span>↗</span></a>
+            <div class="plan-bottom-note">Standard 1-Click Checkout • Zero Bank Mandate</div>
           </div>
-        </div>
+        </article>
 
-        <!-- CARD 2: Lifetime Pro (Featured Anchor) -->
-        <div class="pricing-card-box pricing-card-featured">
-          <div class="featured-ribbon-badge">★ BEST VALUE • 3-YR BREAKEVEN</div>
-          
+        <!-- CARD 2: Lifetime Pro -->
+        <article class="pricing-card-box pricing-card-featured pricing-card-lifetime">
+          <div class="plan-badge-top">★ Best Long-Term Value</div>
           <div>
-            <div class="plan-type-pill featured-pill">🎉 Lifetime Pro License</div>
+            <div class="plan-type-pill" style="color: #1d4ed8; background: rgba(35, 98, 232, 0.12);">Most Popular • Pay Once Forever</div>
             <h3 class="plan-card-title">Lifetime Pro</h3>
-            <p class="plan-card-sub">Complete multi-device peace of mind. Pay once forever with zero subscriptions.</p>
+            <p class="plan-card-sub">For professionals working across office PC and personal laptop.</p>
 
-            <div class="plan-price-wrap" style="background: rgba(245, 158, 11, 0.05); border-color: rgba(245, 158, 11, 0.2);">
-              <div class="plan-price-standard">
-                <span>Standard:</span>
-                <span style="text-decoration: line-through;" id="cardLifetimeStandard">₹1,499</span>
-                <span class="discount-pill" id="cardLifetimeDiscount" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border-color: rgba(245, 158, 11, 0.4);">33% OFF</span>
-              </div>
+            <div class="plan-price-wrap" style="background: rgba(35, 98, 232, 0.04); border-color: rgba(35, 98, 232, 0.25);">
               <div class="plan-price-row">
-                <span class="plan-price-main" id="cardLifetimePrice" style="color: #fbbf24;">₹999</span>
-                <span class="plan-price-period">one-time</span>
+                <span class="plan-price-main" style="color: #1d4ed8;" data-lifetime-price>…</span>
+                <span class="plan-price-period">one time</span>
+              </div>
+              <div class="plan-schedule-note" data-lifetime-schedule>
+                Early-bird price through 31 December 2026. Standard price applies from 1 January 2027.
               </div>
             </div>
 
             <ul class="plan-features-list">
               <li>
-                <span class="plan-check" style="color: #fbbf24;">✓</span>
-                <span><strong>2 Concurrent Devices:</strong> Seamlessly use on your Work PC + Personal Laptop</span>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span><strong>2 Simultaneous Devices</strong> (Work PC + Laptop)</span>
               </li>
               <li>
-                <span class="plan-check" style="color: #fbbf24;">✓</span>
-                <span><strong>Pay Once Forever:</strong> Zero renewal fees, zero SaaS subscriptions, never pay again</span>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span><strong>Unlimited</strong> reminders and recurring routines</span>
               </li>
               <li>
-                <span class="plan-check" style="color: #fbbf24;">✓</span>
-                <span><strong>Lifetime Software Updates:</strong> Every major and minor upgrade included for life</span>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Workday schedules, wellness routines & reports</span>
               </li>
               <li>
-                <span class="plan-check" style="color: #fbbf24;">✓</span>
-                <span><strong>Full Pro Feature Suite:</strong> Ergonomic health breaks, Excel exports, and smart recurring rules</span>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span><strong>All Future Updates Included For Life</strong></span>
               </li>
               <li>
-                <span class="plan-check" style="color: #fbbf24;">✓</span>
-                <span><strong>Priority Support &amp; Instant Provisioning:</strong> Immediate digital activation</span>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span><strong>Pay Once Forever</strong> — Zero renewal fees ever</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Priority email & onboarding support</span>
               </li>
             </ul>
           </div>
 
           <div>
-            <button onclick="handleCheckout('lifetime')" class="btn-plan-lifetime" id="btnCardLifetimeCta">
-              Get Lifetime Pro (₹999)
-            </button>
-            <div class="plan-sub-note">
-              Pay Once • 2 Devices • Permanent Access • All Future Updates Included
-            </div>
+            <a class="button button-accent" href="payment.html?plan=lifetime">Get Lifetime Pro <span>↗</span></a>
+            <div class="plan-bottom-note">Pay Once Forever • Zero Renewal Fees • Windows, macOS & Linux</div>
           </div>
-        </div>
+        </article>
+      </div>
+    </section>
 
+    <!-- Proven Trust & Impact Testimonials Section (Styled to match Stratexa impact) -->
+    <section class="wrap section-space testimonials-section" id="reviews" aria-labelledby="testimonials-title">
+      <div class="testimonials-header">
+        <p class="eyebrow">PROVEN TRUST &amp; IMPACT</p>
+        <h2 id="testimonials-title">Built for Focus-Driven Workdays</h2>
+        <p>Real feedback from corporate controllers, remote engineers, and traders who rely on unmissable workday alerts.</p>
       </div>
 
-      <div class="pricing-guarantee-note" style="margin-top: 32px;">
-        <span>🔒 256-Bit SSL Encrypted Razorpay Checkout</span> • 
-        <span>⚡ Instant Automated License Provisioning</span> • 
-        <span>🛡️ 100% Offline Task Privacy</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section class="faq-section" id="faq">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-pill">Got Questions?</span>
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Everything you need to know about purchasing and using Pauzos apps.</p>
-      </div>
-
-      <div class="faq-grid">
-        
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What is the difference between the Annual Pass and Lifetime Pro?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            The <strong>Annual Pass</strong> gives you 1 full year of unlimited routines, workday logic, and software updates on <strong>1 workstation device</strong> with a standard 1-click payment (zero forced bank mandates) and gentle renewal reminders at Day 360.<br><br>
-            The <strong>Lifetime Pro</strong> tier allows you to pay once and use Pauzos forever on <strong>2 concurrent devices</strong> (e.g. your work PC + personal laptop) with all future updates included for life and zero renewal fees ever.
+      <div class="testimonials-grid">
+        <!-- CARD 1: North America -->
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-quote">“Our close cycle operates strictly on Workday 3 and Workday 18 cutoffs. Calendar notifications always got lost under 25 open Excel workbooks. Pauzos’ floating card stays right in my peripheral vision without stealing typing focus. We haven't missed a month-end accrual cutoff since.”</p>
+          <div class="testimonial-user">
+            <div class="testimonial-avatar" aria-hidden="true">SJ</div>
+            <div class="testimonial-info">
+              <h4>Sarah J.</h4>
+              <p>Corporate Controller · Chicago, USA</p>
+            </div>
           </div>
-        </div>
+        </article>
 
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Why is the price discounted, and will it increase later?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            Our current prices are exclusive <strong>Early-Adopter Launch Offers</strong> valid through 31 December 2026. Standard pricing takes effect automatically on 1 January 2027. If you purchase now, your rate is locked in with zero price increases.
+        <!-- CARD 2: United Kingdom / Europe -->
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-quote">“Our corporate laptops are locked down tight with zero admin rights. The portable edition of Pauzos ran cleanly from my user directory without triggering CrowdStrike alerts or modifying the Windows registry. It’s the only reminder utility our security team approved.”</p>
+          <div class="testimonial-user">
+            <div class="testimonial-avatar avatar-devops" aria-hidden="true">DK</div>
+            <div class="testimonial-info">
+              <h4>David K.</h4>
+              <p>Lead Systems Architect · London, UK</p>
+            </div>
           </div>
-        </div>
+        </article>
 
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>How do I receive the software and license after paying?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            Immediately upon completing your 1-click checkout via Razorpay (supporting 1-Click UPI, Credit/Debit Cards, and NetBanking), our automated licensing system provisions your workstation license within seconds. Your credentials and download links are rendered immediately on screen and dispatched to your email inbox.
+        <!-- CARD 3: Germany / Europe -->
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-quote">“When executing intraday orders, the worst thing an alert can do is hijack keyboard focus mid-keystroke. Pauzos floats over TradingView and my risk models, reminds me of the European session close, and never steals cursor focus.”</p>
+          <div class="testimonial-user">
+            <div class="testimonial-avatar avatar-trader" aria-hidden="true">EM</div>
+            <div class="testimonial-info">
+              <h4>Elena M.</h4>
+              <p>Quantitative Futures Trader · Frankfurt, Germany</p>
+            </div>
           </div>
-        </div>
+        </article>
 
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Can I use this on my office laptop without admin access?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            Yes! Your purchase includes the <strong>Windows Portable (.exe)</strong> edition. You can simply double-click and run it directly without installing anything or requiring administrator permissions. We also offer the official <strong>Microsoft Store edition</strong> for enterprise IT compliance.
+        <!-- CARD 4: Singapore / APAC -->
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-quote">“The 1-click Excel audit export is indispensable for compliance. Being able to pull a clean timestamped spreadsheet proving our daily statutory reviews and operational checks were signed off on time saved our team days during audit season.”</p>
+          <div class="testimonial-user">
+            <div class="testimonial-avatar avatar-ops" aria-hidden="true">MC</div>
+            <div class="testimonial-info">
+              <h4>Marcus Chen</h4>
+              <p>Head of Corporate Operations · Singapore</p>
+            </div>
           </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Is my personal data and schedule kept private?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <strong>100% private task storage.</strong> The application stores all your schedules, routines, checklists, and audit logs locally on your computer in SQLite. We never collect or track your routines or notes. Online connectivity is used exclusively for one-time license verification and automated version update checks.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What payment methods are supported?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            We support frictionless 1-click payments powered by Razorpay: UPI (Google Pay, PhonePe, Paytm, BHIM, Cred), Credit and Debit Cards (Visa, MasterCard, Amex), and NetBanking. We do NOT force any recurring AutoPay banking mandates on checkout.
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Checkout / Payment Modal -->
-  <div id="checkoutModal" class="checkout-modal-backdrop">
-    <div class="checkout-modal-card">
-      <div class="checkout-modal-header">
-        <div class="checkout-modal-title">
-          <span>⚡ Secure 1-Click Checkout</span>
-          <span id="modalHeaderBadge" style="font-size: 12.5px; font-weight: 700; color: #fbbf24; background: rgba(245, 158, 11, 0.15); padding: 3px 12px; border-radius: 20px; border: 1px solid rgba(245, 158, 11, 0.3);">Launch Offer • ₹249</span>
-        </div>
-        <button onclick="closeModal()" class="checkout-modal-close" aria-label="Close modal">✕</button>
+        </article>
       </div>
 
-      <div class="checkout-modal-body">
-        <!-- Left Column: Order Summary & Trust Card -->
-        <div class="checkout-qr-col">
-          <div style="width: 100%; text-align: left; padding: 4px 6px;">
-            
-            <!-- Plan Selector Tabs inside Modal -->
-            <div style="display: flex; gap: 8px; margin-bottom: 16px; background: rgba(255, 255, 255, 0.05); padding: 4px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.08);">
-              <button type="button" id="togglePlanLifetime" onclick="setCheckoutPlan('lifetime')" class="checkout-plan-tab active tab-lifetime">
-                ★ Lifetime Pro
-              </button>
-              <button type="button" id="togglePlanAnnual" onclick="setCheckoutPlan('annual')" class="checkout-plan-tab">
-                Annual Pass
-              </button>
-            </div>
-
-            <div style="font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #60a5fa; font-weight: 700; margin-bottom: 4px;">License Summary</div>
-            <h4 style="font-size: 17px; font-weight: 700; color: #f8fafc; margin-bottom: 2px;">Personal Reminder Assistant</h4>
-            <div style="font-size: 12.5px; color: #94a3b8; margin-bottom: 14px;" id="modalDeviceHint">2 Concurrent Devices (Lifetime Updates)</div>
-
-            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 14px; margin-bottom: 16px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <span style="font-size: 13px; color: #94a3b8;">License Tier:</span>
-                <span style="font-size: 13px; font-weight: 600; color: #f8fafc;" id="modalTierLabel">Lifetime Pro (2 Workstations)</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <span style="font-size: 13px; color: #94a3b8;">Standard Price:</span>
-                <span style="font-size: 13px; color: #64748b; text-decoration: line-through;" id="modalStrikePrice">₹1,499</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
-                <span style="font-size: 14px; font-weight: 700; color: #f8fafc;">Total Today:</span>
-                <span style="font-size: 20px; font-weight: 800; color: #fbbf24;" id="modalTotalPrice">₹999</span>
-              </div>
-            </div>
-
-            <ul style="list-style: none; padding: 0; margin: 0 0 16px 0; font-size: 12px; color: #94a3b8; line-height: 1.8;">
-              <li><span style="color: #34d399; margin-right: 6px;">✓</span> Windows (.exe &amp; Portable), macOS &amp; Linux</li>
-              <li><span style="color: #34d399; margin-right: 6px;">✓</span> Standard 1-Click Checkout (No bank AutoPay mandate)</li>
-              <li><span style="color: #34d399; margin-right: 6px;">✓</span> 100% offline local task privacy &amp; SQLite store</li>
-              <li><span style="color: #34d399; margin-right: 6px;">✓</span> Instant automated license provisioning</li>
-            </ul>
-
-            <div style="display: flex; align-items: center; gap: 8px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.06); font-size: 11px; color: #64748b;">
-              <span style="color: #10b981; font-size: 14px;">🛡️</span>
-              <span>Secured by <strong>Razorpay</strong> • 256-Bit SSL Encrypted</span>
-            </div>
-          </div>
+      <!-- Trust & Security Badge Banner -->
+      <div class="trust-security-bar">
+        <div class="trust-security-eyebrow">ENTERPRISE SECURITY &amp; DATA PRIVACY</div>
+        <div class="trust-security-chips">
+          <span class="trust-chip">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"/></svg>
+            100% Offline Local Privacy
+          </span>
+          <span class="trust-chip">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z" clip-rule="evenodd"/></svg>
+            Zero Cloud Telemetry
+          </span>
+          <span class="trust-chip">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
+            Zero IT Admin Rights Needed
+          </span>
+          <span class="trust-chip">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            1-Click Excel (.xlsx) Export
+          </span>
         </div>
-
-        <!-- Right Column: Verification Form / Success State -->
-        <div class="checkout-form-col">
-          
-          <!-- State 1: Input Form -->
-          <div id="checkoutFormState">
-            <div style="margin-bottom: 18px;">
-              <h4 style="font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Activate Your License</h4>
-              <p style="font-size: 13px; color: #94a3b8; line-height: 1.5;">
-                Enter your email address. Your license key and workstation credentials will be issued to this email:
-              </p>
-            </div>
-
-            <div class="checkout-field-group">
-              <label for="checkoutEmail" class="checkout-label">Your Email Address *</label>
-              <input type="email" id="checkoutEmail" class="checkout-input" placeholder="name@example.com" required autocomplete="email">
-              <div class="checkout-helper">Used to issue your Pro workstation license key.</div>
-            </div>
-
-            <div id="checkoutStatusMsg" class="checkout-status-msg"></div>
-
-            <button type="button" id="btnRazorpayPay" onclick="startRazorpayPayment()" class="btn-razorpay-primary">
-              ⚡ Pay ₹249 via Razorpay
-            </button>
-            <div style="text-align: center; font-size: 12px; color: #64748b; margin-top: 8px;" id="razorpayPaymentMethodsText">
-              UPI (GPay, PhonePe, Paytm), Cards &amp; NetBanking
-            </div>
-          </div>
-
-          <!-- State 2: Success State -->
-          <div id="checkoutSuccessState" style="display: none; text-align: center; padding: 10px 0;">
-            <div style="font-size: 48px; margin-bottom: 12px;">🎉</div>
-            <h4 style="font-size: 22px; font-weight: 800; color: #34d399; margin-bottom: 8px;">Payment Verified &amp; Activated!</h4>
-            <p style="font-size: 13.5px; color: #e2e8f0; line-height: 1.6; margin-bottom: 14px;">
-              <span id="successPlanText">Your license has been activated</span> for:<br>
-              <strong id="confirmedEmail" style="color: #60a5fa; font-size: 15px;"></strong>
-            </p>
-            <div id="confirmedPaymentRef" style="font-size: 12px; color: #94a3b8; margin-bottom: 16px; font-family: monospace;"></div>
-
-            <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; padding: 16px; margin-bottom: 22px; text-align: left; font-size: 13px; color: #94a3b8; line-height: 1.6;">
-              <div style="color: #34d399; font-weight: 700; margin-bottom: 6px;">Next Steps:</div>
-              <div>1. We have sent your temporary login code to your email.</div>
-              <div>2. Download and launch Personal Reminder Assistant below.</div>
-              <div>3. Sign in with your email and code to start using the app.</div>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-              <a href="download/" class="btn btn-primary btn-full" style="text-decoration: none; display: block; text-align: center;">
-                ⬇ Download Personal Reminder Assistant
-              </a>
-              <button onclick="closeModal()" class="btn btn-secondary" style="font-size: 13px; padding: 8px 24px; align-self: center; margin-top: 6px;">
-                Close
-              </button>
-            </div>
-          </div>
-
-        </div>
+        <p class="trust-security-subline">✓ No signup or credit card required · ✓ Windows, macOS &amp; Linux · ✓ Full 72-hour unrestricted free trial</p>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div>
-          <a href="#" class="brand-link">
-            <img src="assets/logo.png" alt="Pauzos Logo" class="brand-logo" style="width: 32px; height: 32px;">
-            <div class="brand-text-block">
-              <span class="brand-title" style="font-size: 18px;">Pauzos</span>
-            </div>
-          </a>
-          <p class="footer-brand-desc">
-            Independent software portfolio developing practical, distraction-free desktop and productivity tools.
-          </p>
-
-          <div class="stratexa-badge-container" style="cursor: default;">
-            <span class="stratexa-badge-label">A Product Of</span>
-            <div class="stratexa-badge-content">
-              <div class="stratexa-logo-box">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M25 75L75 25M75 25H45M75 25V55" stroke="#10b981" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M25 45V75H55" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="stratexa-brand-info">
-                <span class="stratexa-title">STRATEXA</span>
-                <span class="stratexa-tagline">Automate • Execute • Elevate</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Portfolio</h4>
-          <ul class="footer-links">
-            <li><a href="#apps">Personal Reminder Assistant</a></li>
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pricing" id="footerPricingLink">Pricing (Launch Offer)</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Platforms Supported</h4>
-          <ul class="footer-links">
-            <li><a href="#pricing">Windows</a></li>
-            <li><a href="#pricing">macOS</a></li>
-            <li><a href="#pricing">Linux</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Legal & Trust</h4>
-          <ul class="footer-links">
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-            <li><a href="refund.html">Refund & Cancellation</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </div>
+    <section class="faq-section wrap section-space" id="faq" aria-labelledby="faq-title">
+      <div><p class="eyebrow">BEFORE YOU DOWNLOAD</p><h2 id="faq-title">A few good<br>questions.</h2><p>Need a hand?<br><a class="text-link" href="contact.html">Contact Pauzos <span aria-hidden="true">↗</span></a></p></div>
+      <div class="faq-list">
+        <details><summary>What exactly is Pauzos?<span aria-hidden="true">+</span></summary><p>Pauzos Personal Reminder Assistant is a desktop app for Windows, macOS, and Linux. You schedule a task and it shows a floating reminder above your open desktop apps. You can complete, snooze, or skip the reminder and review your local activity history.</p></details>
+        <details><summary>What happens after the free trial?<span aria-hidden="true">+</span></summary><p>The trial lasts exactly 72 hours from first launch. Afterward, the first two routines you created stay active for free. Additional routines remain locked until you activate a lifetime license.</p></details>
+        <details><summary>Does it work on my phone?<span aria-hidden="true">+</span></summary><p>Pauzos runs on desktop computers with Windows, macOS, or Linux. Use this page on your computer to download the matching edition. You can copy the page link from the download section.</p></details>
+        <details><summary>Can I use it on a work laptop?<span aria-hidden="true">+</span></summary><p>Yes—Pauzos was designed and built specifically with corporate users and work laptops in mind. In <strong>Windows Portable</strong> mode, it runs directly from any local folder without requiring administrator privileges or a standard system installer. It writes no files to restricted root directories in the C: drive and does not install any background Windows Services, leaving no intrusive system traces that typical organization security scans flag or block.</p><p>For enterprise laptops and strictly managed workstations, we also provide the official <strong>Microsoft Store edition</strong>. Fully authenticated and certified by Microsoft, it runs inside secure Windows App containers—the modern golden standard for corporate desktops and IT compliance.</p><p>Your routines, notes, and activity history remain entirely private on your computer; reminder scheduling runs 100% locally. <a href="https://apps.microsoft.com/detail/9mtxk2l4jh6l" target="_blank" rel="noopener">Get it on Microsoft Store ↗</a> or download the Windows Portable edition above.</p></details>
+        <details><summary>Where are my reminders and notes stored?<span aria-hidden="true">+</span></summary><p>Your schedules, checklists, notes, and activity logs are stored locally on your computer. Online services support authentication, license and trial checks, pricing information, and updates. <a href="privacy.html">Read the privacy policy ↗</a></p></details>
+        <details><summary>What is the difference between the Annual Pass and Lifetime Pro?<span aria-hidden="true">+</span></summary><p>The <strong>Annual Pass</strong> provides 1 full year of unlimited routines and updates for <strong>1 workstation device</strong> with frictionless 1-click checkout (zero forced bank mandates) and gentle renewal reminders at Day 360.</p><p>The <strong>Lifetime Pro</strong> tier allows you to pay once and use Pauzos forever on <strong>2 concurrent devices</strong> (e.g. your work PC + personal laptop) with all future updates included for life and zero recurring fees ever.</p><a href="#pricing">Compare license options ↗</a></details>
       </div>
+    </section>
 
-      <div class="footer-bottom">
-        <div class="footer-bottom-copy">
-          <span>© 2026 Pauzos. All rights reserved.</span>
-          <span style="opacity: 0.3;">•</span>
-          <a href="https://stratexa.in" target="_blank" rel="noopener noreferrer" class="footer-bottom-stratexa">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="mini-stratexa-svg">
-              <path d="M25 75L75 25M75 25H45M75 25V55" stroke="#10b981" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M25 45V75H55" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>A Product of <strong>Stratexa</strong></span>
-          </a>
-        </div>
-        <div class="footer-legal-links">
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
-          <a href="refund.html">Refund Policy</a>
-          <a href="delivery.html">Shipping &amp; Delivery</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+    <section class="closing-cta wrap"><div><span class="small-dot" aria-hidden="true"></span><h2>Your next deadline deserves a reminder.</h2></div><a class="button" href="#download">Try Pauzos free <span aria-hidden="true">↗</span></a></section>
+  </main>
 
-  <!-- Sticky Download Bar -->
-  <div class="sticky-download-bar" id="stickyDownloadBar">
-    <div class="sticky-inner">
-      <a href="download.html" class="sticky-cta">📥 Download Free 3-Day Trial</a>
-      <div class="sticky-trust">
-        <span>No signup required</span>
-        <span style="opacity: 0.3;">•</span>
-        <span>Windows, Mac &amp; Linux</span>
-        <span style="opacity: 0.3;">•</span>
-        <span>100% offline &amp; private</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Official Razorpay Checkout SDK -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  <script src="script.js?v=20261101_geo"></script>
-  <script src="analytics.js?v=1.0.0"></script>
-
-  <!-- Sticky Bar Scroll Trigger -->
-  <script>
-    (function() {
-      var bar = document.getElementById('stickyDownloadBar');
-      if (!bar) return;
-      var shown = false;
-      function checkScroll() {
-        var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollY > 600 && !shown) {
-          bar.classList.add('visible');
-          shown = true;
-        } else if (scrollY <= 600 && shown) {
-          bar.classList.remove('visible');
-          shown = false;
-        }
-      }
-      window.addEventListener('scroll', checkScroll, { passive: true });
-    })();
-  </script>
+  <footer class="site-footer wrap"><div class="footer-main"><div><a class="brand" href="index.html"><img src="assets/logo.webp" width="32" height="32" alt=""><span>Pauzos</span></a><p>Personal Reminder Assistant.<br>A little more space to focus.</p><div class="stratexa-brand"><img src="assets/stratexa-logo.svg" width="44" height="44" alt="Stratexa logo"><span>A PRODUCT OF<strong>STRATEXA</strong></span></div></div><nav aria-label="Product and support"><a href="#download">Download free trial</a><a href="payment.html">Workday licenses · <span data-price>…</span></a><a href="guide.html">Getting started</a><a href="contact.html">Contact & support</a></nav><nav aria-label="Legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds & cancellation</a><a href="delivery.html">Digital delivery</a></nav></div><div class="footer-bottom"><span>© 2026 STRATEXA. All rights reserved.</span><a href="mailto:support@pauzos.com">support@pauzos.com</a></div></footer>
+  <div class="mobile-download" id="mobile-download" role="region" aria-label="Quick download"><span>Desktop reminders<span>3-day free trial</span></span><a class="button button-small" href="#download">Get the app <span aria-hidden="true">↓</span></a></div>
 </body>
 </html>

@@ -312,6 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const annualDiscountEl = document.getElementById('cardAnnualDiscount');
     const annualCtaBtn = document.getElementById('btnCardAnnualCta');
 
+    document.querySelectorAll('[data-annual-price]').forEach(el => el.textContent = ann.formatted);
+    document.querySelectorAll('[data-annual-schedule]').forEach(el => el.textContent = `Early-bird price through 31 December 2026. Standard price applies from 1 January 2027 (${ann.standard}/yr).`);
     if (annualPriceEl) annualPriceEl.textContent = ann.formatted;
     if (annualStandardEl) annualStandardEl.textContent = ann.standard + '/yr';
     if (annualDiscountEl) annualDiscountEl.textContent = ann.discount;
@@ -323,6 +325,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const lifetimeDiscountEl = document.getElementById('cardLifetimeDiscount');
     const lifetimeCtaBtn = document.getElementById('btnCardLifetimeCta');
 
+    document.querySelectorAll('[data-lifetime-price]').forEach(el => el.textContent = lft.formatted);
+    document.querySelectorAll('[data-lifetime-schedule]').forEach(el => el.textContent = `Early-bird price through 31 December 2026. Standard price applies from 1 January 2027 (${lft.standard}).`);
     if (lifetimePriceEl) lifetimePriceEl.textContent = lft.formatted;
     if (lifetimeStandardEl) lifetimeStandardEl.textContent = lft.standard;
     if (lifetimeDiscountEl) lifetimeDiscountEl.textContent = lft.discount;
@@ -331,13 +335,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Update Hero and Download section references
     const heroPriceEl = document.getElementById('heroTrustPrice');
     const heroSecondaryCta = document.getElementById('heroSecondaryCta');
+    const downloadPricingLink = document.getElementById('downloadPricingLink');
     const downloadAnnualNote = document.getElementById('downloadPriceScheduleNote');
     const footerPricingLink = document.getElementById('footerPricingLink');
+    const currencyStatus = document.getElementById('currency-status');
 
-    if (heroPriceEl) heroPriceEl.textContent = `Lifetime Option from ${lft.formatted} • Zero SaaS Subscriptions`;
-    if (heroSecondaryCta) heroSecondaryCta.textContent = `Or get lifetime access from ${lft.formatted} →`;
-    if (downloadAnnualNote) downloadAnnualNote.textContent = `Early-bird pricing through 31 December 2026. Standard pricing applies from 1 January 2027 (${ann.standard}/yr Annual, ${lft.standard} Lifetime).`;
+    if (heroPriceEl) heroPriceEl.textContent = `Early Bird Offer: ${ann.formatted}/yr Annual • ${lft.formatted} Lifetime`;
+    if (heroSecondaryCta) heroSecondaryCta.textContent = `View early bird plans from ${ann.formatted}/yr →`;
+    if (downloadPricingLink) downloadPricingLink.innerHTML = `Early bird plans: <span data-annual-price>${ann.formatted}</span>/yr &middot; <span data-lifetime-price>${lft.formatted}</span> lifetime <span aria-hidden="true">↗</span>`;
+    if (downloadAnnualNote) downloadAnnualNote.textContent = `Early-bird offer through 31 December 2026. Standard pricing applies from 1 January 2027 (${ann.standard}/yr Annual, ${lft.standard} Lifetime).`;
     if (footerPricingLink) footerPricingLink.textContent = `Pricing (${ann.formatted}/yr • ${lft.formatted} lifetime)`;
+    if (currencyStatus) currencyStatus.textContent = '';
 
     // 4. Update Modal details
     updateModalPricing();
