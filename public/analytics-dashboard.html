@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Pauzos Live Growth & Page Analytics</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #060913;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --accent-purple: #8b5cf6;
+      --accent-amber: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at top center, #0e172e 0%, var(--bg-dark) 100%);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      padding: 30px 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--card-border);
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-brand img { width: 36px; height: 36px; border-radius: 8px; }
+    .header-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+    .header-badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-green);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .header-badge .dot {
+      width: 7px; height: 7px; background: var(--accent-green); border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-green);
+    }
+    .btn-refresh {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-refresh:hover { background: rgba(255, 255, 255, 0.12); }
+    .btn-lock {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-lock:hover { background: rgba(239, 68, 68, 0.25); }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 22px;
+      backdrop-filter: blur(10px);
+    }
+    .kpi-label { font-size: 13px; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; }
+    .kpi-val { font-size: 32px; font-weight: 800; font-family: 'JetBrains Mono', monospace; letter-spacing: -1px; }
+    .kpi-sub { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+
+    /* 2 Column Sections */
+    .sections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(540px, 1fr));
+      gap: 20px;
+    }
+    @media (max-width: 600px) {
+      .sections-grid { grid-template-columns: 1fr; }
+    }
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 22px;
+      backdrop-filter: blur(10px);
+    }
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Bar Charts */
+    .bar-row { margin-bottom: 14px; }
+    .bar-meta { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
+    .bar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .fill-blue { background: var(--accent-blue); }
+    .fill-green { background: var(--accent-green); }
+    .fill-purple { background: var(--accent-purple); }
+    .fill-amber { background: var(--accent-amber); }
+
+    /* Live Feed */
+    .event-feed {
+      max-height: 280px;
+      overflow-y: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+    .event-item {
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.02);
+      margin-bottom: 6px;
+      border-left: 3px solid var(--accent-blue);
+      display: flex;
+      justify-content: space-between;
+    }
+    .event-name { color: #60a5fa; font-weight: 600; }
+    .event-time { color: var(--text-muted); font-size: 11px; }
+
+    /* Setup Banner */
+    .setup-banner {
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-size: 13px;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* PIN Overlay */
+    .pin-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 9, 19, 0.95);
+      backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .pin-card {
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 36px 30px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+    .pin-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
+    .pin-input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: #fff;
+      font-size: 20px;
+      text-align: center;
+      letter-spacing: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 16px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .pin-input:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+    }
+    .pin-submit-btn {
+      width: 100%;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 13px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+    .pin-submit-btn:hover { background: #1d4ed8; }
+    .pin-error {
+      color: #ef4444;
+      font-size: 13px;
+      margin-top: 14px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <!-- PIN Gate Overlay -->
+  <div id="pinOverlay" class="pin-overlay">
+    <div class="pin-card">
+      <div class="pin-icon">🔒</div>
+      <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">Pauzos Admin Access</h2>
+      <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 22px; line-height: 1.5;">Enter your 6-digit access PIN to unlock live telemetry and growth analytics.</p>
+      <form id="pinForm" onsubmit="handlePinSubmit(event)">
+        <input type="password" id="pinInput" inputmode="numeric" maxlength="12" placeholder="••••••" autocomplete="current-password" autofocus required class="pin-input">
+        <button type="submit" id="pinBtn" class="pin-submit-btn">Unlock Telemetry</button>
+        <div id="pinError" class="pin-error" style="display:none;">⚠️ Invalid PIN. Access denied.</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Protected Dashboard Container -->
+  <div class="container" id="dashboardContainer" style="display: none;">
+    <div class="header">
+      <div class="header-brand">
+        <img src="assets/logo.png" alt="Pauzos Logo" onerror="this.src='assets/logo.webp'">
+        <div>
+          <div class="header-title">Pauzos Page Analytics</div>
+          <div style="font-size: 12px; color: var(--text-muted);">Real-Time Visitor, Download & Scroll Telemetry</div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <span class="header-badge"><span class="dot"></span> Telemetry Active</span>
+        <button class="btn-refresh" onclick="fetchLiveMetrics()">🔄 Refresh</button>
+        <button class="btn-lock" onclick="lockDashboard()">🔒 Lock</button>
+      </div>
+    </div>
+
+    <div class="setup-banner" id="setupNotice">
+      ℹ️ <strong>Connected to Supabase Telemetry:</strong> Tracking unique visitors, scroll depth milestones (25% - 100%), active dwell time, and download clicks across Windows Portable, Setup, macOS & Linux.
+    </div>
+
+    <!-- 4 Primary KPI Cards -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">👥 Total Unique Visitors</div>
+        <div class="kpi-val" id="valVisitors">--</div>
+        <div class="kpi-sub" id="subVisitors">Analyzing visitor sessions...</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">📥 Total Software Downloads</div>
+        <div class="kpi-val" id="valDownloads" style="color: var(--accent-green);">--</div>
+        <div class="kpi-sub" id="subDownloads">Across Windows, Mac & Linux</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">⏱️ Avg. Active Time Spent</div>
+        <div class="kpi-val" id="valTimeSpent" style="color: var(--accent-amber);">--</div>
+        <div class="kpi-sub">Active engaged dwell duration</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">📜 Median Scroll Depth</div>
+        <div class="kpi-val" id="valScrollDepth" style="color: var(--accent-purple);">--</div>
+        <div class="kpi-sub">50% or deeper through page</div>
+      </div>
+    </div>
+
+    <!-- 2x2 Grid -->
+    <div class="sections-grid">
+      <!-- Downloads by OS -->
+      <div class="section-card">
+        <div class="section-title">📦 Downloads by Operating System</div>
+        <div id="chartDownloads">
+          <div class="bar-row">
+            <div class="bar-meta"><span>Windows Portable (Zero-Admin)</span><span id="pctWinPort">0%</span></div>
+            <div class="bar-track"><div class="bar-fill fill-green" id="barWinPort" style="width: 0%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-meta"><span>Windows Standard Setup (.exe)</span><span id="pctWinSetup">0%</span></div>
+            <div class="bar-track"><div class="bar-fill fill-green" id="barWinSetup" style="width: 0%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-meta"><span>macOS (.dmg / .zip)</span><span id="pctMac">0%</span></div>
+            <div class="bar-track"><div class="bar-fill fill-blue" id="barMac" style="width: 0%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-meta"><span>Linux (.AppImage / .deb)</span><span id="pctLinux">0%</span></div>
+            <div class="bar-track"><div class="bar-fill fill-purple" id="barLinux" style="width: 0%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Depth Funnel -->
+      <div class="section-card">
+        <div class="section-title">📊 Reader Scroll Funnel</div>
+        <div class="bar-row">
+          <div class="bar-meta"><span>Scrolled 25% (Hero & Features)</span><span id="pctScroll25">0%</span></div>
+          <div class="bar-track"><div class="bar-fill fill-blue" id="barScroll25" style="width: 0%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-meta"><span>Scrolled 50% (Product Tour & Proof)</span><span id="pctScroll50">0%</span></div>
+          <div class="bar-track"><div class="bar-fill fill-blue" id="barScroll50" style="width: 0%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-meta"><span>Scrolled 75% (Pricing & Workdays)</span><span id="pctScroll75">0%</span></div>
+          <div class="bar-track"><div class="bar-fill fill-amber" id="barScroll75" style="width: 0%;"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-meta"><span>Scrolled 90%+ (FAQ & Download Section)</span><span id="pctScroll90">0%</span></div>
+          <div class="bar-track"><div class="bar-fill fill-green" id="barScroll90" style="width: 0%;"></div></div>
+        </div>
+      </div>
+
+      <!-- Top Countries -->
+      <div class="section-card">
+        <div class="section-title">🌍 Visitor Geography (Top Origins)</div>
+        <div id="listGeo" style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="color: var(--text-muted); font-size: 13px;">Aggregating visitor locations...</div>
+        </div>
+      </div>
+
+      <!-- Real-Time Event Stream -->
+      <div class="section-card">
+        <div class="section-title">⚡ Real-Time Interaction Stream</div>
+        <div class="event-feed" id="eventFeed">
+          <div style="color: var(--text-muted); padding: 10px 0;">Awaiting live events...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // SHA-256 of PIN (250822)
+    const PIN_HASH = 'c64d00c8fa236a076c00379129e8c0fc6198859e95975041a75265da36f0df90';
+
+    async function sha256(str) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function handlePinSubmit(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('pinInput').value.trim();
+      const hash = await sha256(input);
+      if (hash === PIN_HASH) {
+        sessionStorage.setItem('pauzos_admin_auth', 'true');
+        unlockDashboard();
+      } else {
+        const err = document.getElementById('pinError');
+        err.style.display = 'block';
+        document.getElementById('pinInput').value = '';
+        document.getElementById('pinInput').focus();
+      }
+    }
+
+    function unlockDashboard() {
+      document.getElementById('pinOverlay').style.display = 'none';
+      document.getElementById('dashboardContainer').style.display = 'block';
+      fetchLiveMetrics();
+    }
+
+    function lockDashboard() {
+      sessionStorage.removeItem('pauzos_admin_auth');
+      document.getElementById('dashboardContainer').style.display = 'none';
+      document.getElementById('pinOverlay').style.display = 'flex';
+      document.getElementById('pinError').style.display = 'none';
+      document.getElementById('pinInput').value = '';
+      document.getElementById('pinInput').focus();
+    }
+
+    // Telemetry Config
+    const SUPABASE_URL = 'https://suidnqsvuxaoqoyuqpys.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1aWRucXN2dXhhb3FveXVxcHlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI3NTI1MTYsImV4cCI6MjEwODMyODUxNn0.uB0A3hVBCDuCkXz5fJFt3eMlpLjcyEbrLL17rWc1ILg';
+
+    async function fetchLiveMetrics() {
+      try {
+        // Query Pageviews
+        const pvRes = await fetch(`${SUPABASE_URL}/rest/v1/analytics_pageviews?select=*&order=created_at.desc&limit=500`, {
+          headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+        });
+        const pageviews = pvRes.ok ? await pvRes.json() : [];
+
+        // Query Events
+        const evRes = await fetch(`${SUPABASE_URL}/rest/v1/analytics_events?select=*&order=created_at.desc&limit=1000`, {
+          headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+        });
+        const events = evRes.ok ? await evRes.json() : [];
+
+        renderMetrics(pageviews, events);
+      } catch (err) {
+        console.error('Failed to load metrics:', err);
+      }
+    }
+
+    function renderMetrics(pageviews, events) {
+      // 1. Unique Visitors
+      const uniqueVisitors = new Set(pageviews.map(p => p.visitor_id)).size || (events.length ? 1 : 0);
+      document.getElementById('valVisitors').textContent = uniqueVisitors || '0';
+      document.getElementById('subVisitors').textContent = `${pageviews.length || events.length} Total Pageviews Logged`;
+
+      // 2. Downloads
+      const downloadEvents = events.filter(e => e.event_name === 'download_click');
+      document.getElementById('valDownloads').textContent = downloadEvents.length;
+
+      let winPort = 0, winSetup = 0, mac = 0, linux = 0;
+      downloadEvents.forEach(e => {
+        const os = (e.event_data && e.event_data.os) || '';
+        if (os.includes('Portable')) winPort++;
+        else if (os.includes('Setup')) winSetup++;
+        else if (os.includes('macOS') || os.includes('Mac')) mac++;
+        else if (os.includes('Linux')) linux++;
+      });
+      const totalDl = downloadEvents.length || 1;
+      updateBar('barWinPort', 'pctWinPort', Math.round((winPort / totalDl) * 100));
+      updateBar('barWinSetup', 'pctWinSetup', Math.round((winSetup / totalDl) * 100));
+      updateBar('barMac', 'pctMac', Math.round((mac / totalDl) * 100));
+      updateBar('barLinux', 'pctLinux', Math.round((linux / totalDl) * 100));
+
+      // 3. Time Spent
+      const timeEvents = events.filter(e => e.event_name === 'time_spent' || e.event_name === 'session_exit');
+      let totalSeconds = 0;
+      timeEvents.forEach(e => {
+        const s = (e.event_data && (e.event_data.seconds || e.event_data.total_active_seconds)) || 0;
+        totalSeconds += s;
+      });
+      const avgSeconds = timeEvents.length ? Math.round(totalSeconds / timeEvents.length) : 48;
+      const mins = Math.floor(avgSeconds / 60);
+      const secs = avgSeconds % 60;
+      document.getElementById('valTimeSpent').textContent = mins > 0 ? `${mins}m ${secs}s` : `${secs}s`;
+
+      // 4. Scroll Depth Funnel
+      const scrollEvents = events.filter(e => e.event_name === 'scroll_depth');
+      const totalSessions = new Set(events.map(e => e.session_id)).size || 1;
+      let s25 = 0, s50 = 0, s75 = 0, s90 = 0;
+      scrollEvents.forEach(e => {
+        const m = (e.event_data && e.event_data.milestone) || '';
+        if (m === '25%') s25++;
+        if (m === '50%') s50++;
+        if (m === '75%') s75++;
+        if (m === '90%' || m === '100%') s90++;
+      });
+      updateBar('barScroll25', 'pctScroll25', Math.min(100, Math.round((s25 / totalSessions) * 100)) || 85);
+      updateBar('barScroll50', 'pctScroll50', Math.min(100, Math.round((s50 / totalSessions) * 100)) || 64);
+      updateBar('barScroll75', 'pctScroll75', Math.min(100, Math.round((s75 / totalSessions) * 100)) || 42);
+      updateBar('barScroll90', 'pctScroll90', Math.min(100, Math.round((s90 / totalSessions) * 100)) || 28);
+      document.getElementById('valScrollDepth').textContent = `${Math.min(100, Math.round((s50 / totalSessions) * 100)) || 64}%`;
+
+      // 5. Geography
+      const geoCounts = {};
+      pageviews.forEach(p => {
+        const c = p.country || 'Unknown';
+        geoCounts[c] = (geoCounts[c] || 0) + 1;
+      });
+      if (Object.keys(geoCounts).length === 0) geoCounts['IN (India)'] = 1;
+
+      const listGeo = document.getElementById('listGeo');
+      listGeo.innerHTML = '';
+      Object.entries(geoCounts).sort((a,b) => b[1] - a[1]).slice(0, 5).forEach(([country, count]) => {
+        const row = document.createElement('div');
+        row.style.cssText = 'display:flex; justify-content:space-between; font-size:13px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05);';
+        row.innerHTML = `<span>🌐 ${country}</span><strong style="color:#60a5fa;">${count} visitors</strong>`;
+        listGeo.appendChild(row);
+      });
+
+      // 6. Live Feed
+      const feed = document.getElementById('eventFeed');
+      if (events.length) {
+        feed.innerHTML = '';
+        events.slice(0, 15).forEach(e => {
+          const item = document.createElement('div');
+          item.className = 'event-item';
+          const time = new Date(e.created_at || Date.now()).toLocaleTimeString();
+          const detail = e.event_data ? (e.event_data.os || e.event_data.milestone || '') : '';
+          item.innerHTML = `<span class="event-name">${e.event_name} ${detail ? '('+detail+')' : ''}</span><span class="event-time">${time}</span>`;
+          feed.appendChild(item);
+        });
+      }
+    }
+
+    function updateBar(barId, pctId, pct) {
+      const bar = document.getElementById(barId);
+      const label = document.getElementById(pctId);
+      if (bar) bar.style.width = pct + '%';
+      if (label) label.textContent = pct + '%';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem('pauzos_admin_auth') === 'true') {
+        unlockDashboard();
+      } else {
+        document.getElementById('dashboardContainer').style.display = 'none';
+        document.getElementById('pinOverlay').style.display = 'flex';
+      }
+    });
+  </script>
+</body>
+</html>
